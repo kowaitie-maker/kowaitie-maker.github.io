@@ -1,18 +1,19 @@
 {
  "version": 1,
- "generatedAt": 1793369374561,
+ "generatedAt": 1793382229058,
  "since": 1793307600000,
  "intervalMin": 30,
  "repo": "kowaitie-maker/kowaitie-maker.github.io",
  "capabilities": {
   "browser": true,
   "ytdlp": "2026.10.26",
-  "instagramLogin": false,
+  "instagramLogin": true,
   "telegram": true,
   "telegramStatus": {
-   "lastSentAt": null,
-   "lastError": "Unauthorized",
-   "lastErrorAt": 1793369374473
+   "lastSentAt": 1793372073381,
+   "lastError": null,
+   "lastErrorAt": null,
+   "verifiedAt": 1793382197251
   }
  },
  "accounts": [
@@ -29,8 +30,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793369340405,
-   "lastOkAt": 1793369341034,
+   "lastCheckAt": 1793382197251,
+   "lastOkAt": 1793382197700,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362740000,
@@ -49,8 +50,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793369343261,
-   "lastOkAt": 1793369368285,
+   "lastCheckAt": 1793382201309,
+   "lastOkAt": 1793382228930,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793307100000,
@@ -70,10 +71,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 7445,
-    "likes": 64,
-    "comments": 11,
-    "shares": 141
+    "views": 71000,
+    "likes": 631,
+    "comments": 136,
+    "shares": 1209
    },
    "cover": "media/tiktok-7702434277270621441.jpg"
   }

@@ -19,8 +19,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793369340405,
-   "lastOkAt": 1793369341034,
+   "lastCheckAt": 1793382197251,
+   "lastOkAt": 1793382197700,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
@@ -46,14 +46,14 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793369343261,
-   "lastOkAt": 1793369368285,
+   "lastCheckAt": 1793382201309,
+   "lastOkAt": 1793382228930,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793307100000,
    "strategy": "browser",
-   "profileAt": 1793369368285,
+   "profileAt": 1793382228930,
    "meta": {}
   }
  ],
@@ -70,10 +70,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 7445,
-    "likes": 64,
-    "comments": 11,
-    "shares": 141
+    "views": 71000,
+    "likes": 631,
+    "comments": 136,
+    "shares": 1209
    },
    "cover": "tiktok-7702434277270621441.jpg",
    "coverRemote": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oYlPQvCVDAUgf3jYfI6leEmAJdCGyLbURoDFlI~tplv-tiktokx-dmt-logom:tos-alisg-i-0068/oMAA9Afi8wcy1X5KPIBWI8AnAgE9iDCABzDkik.image?dr=9634&x-expires=1793534400&x-signature=abj1vGAlord7Ef%2Bextfx4fyt5DQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
@@ -82,13 +82,14 @@
   }
  ],
  "run": {
-  "lastRunAt": 1793369340405,
-  "lastFinishedAt": 1793369368285,
+  "lastRunAt": 1793382197251,
+  "lastFinishedAt": 1793382228930,
   "lastNewCount": 0
  },
  "telegramStatus": {
-  "lastSentAt": null,
-  "lastError": "Unauthorized",
-  "lastErrorAt": 1793369374473
+  "lastSentAt": 1793372073381,
+  "lastError": null,
+  "lastErrorAt": null,
+  "verifiedAt": 1793382197251
  }
 }
