@@ -35,6 +35,32 @@ async function writeJson(file, data) {
   await fs.rename(`${file}.tmp`, file);
 }
 
+/** Keep only the sessionid value (people often paste the whole cookie line, quotes or spaces). */
+export function cleanSessionId(raw) {
+  let v = String(raw || '').replace(/[\s"'\u200B-\u200F\u202A-\u202E\u2066-\u2069\uFEFF]/g, '');
+  const m = v.match(/sessionid=([^;]+)/i);
+  if (m) v = m[1];
+  return v.replace(/;.*$/, '');
+}
+
+/** Describe the shape of the Instagram login value without revealing it. */
+export function describeSession(raw) {
+  const original = String(raw || '');
+  if (!original.trim()) return null;
+  const v = cleanSessionId(original);
+  const parts = v.split(/%3A|:/i);
+  const notes = [];
+  if (/sessionid=/i.test(original)) notes.push('had_prefix');
+  if (/[;]/.test(original)) notes.push('had_other_cookies');
+  if (/["'\s]/.test(original.trim())) notes.push('had_quotes_or_spaces');
+  return {
+    length: v.length,
+    segments: parts.length,
+    startsWithUserId: /^\d{5,}$/.test(parts[0] || ''),
+    notes,
+  };
+}
+
 /** Turn Telegram's API errors into advice. */
 export function friendlyTelegramError(message) {
   const m = String(message || '');
@@ -108,7 +134,7 @@ export async function update({
   db.settings = {
     since: config.since,
     intervalMin: config.intervalMin,
-    igSessionId: String(env.IG_SESSIONID || '').trim().replace(/^sessionid=/, ''),
+    igSessionId: cleanSessionId(env.IG_SESSIONID),
     telegram: { token, chatId },
   };
 
@@ -209,7 +235,7 @@ export async function update({
     since: config.since,
     intervalMin: config.intervalMin,
     repo: env.GITHUB_REPOSITORY || null,
-    capabilities: { ...state.capabilities, instagramLogin: !!db.settings.igSessionId, telegram: telegramOn || telegramSecretsSet, telegramStatus: db.telegramStatus },
+    capabilities: { ...state.capabilities, instagramLogin: !!db.settings.igSessionId, instagramSession: describeSession(env.IG_SESSIONID), telegram: telegramOn || telegramSecretsSet, telegramStatus: db.telegramStatus },
     accounts: state.accounts.map((a) => ({
       ...a,
       avatar: rel(a.avatar),
@@ -248,7 +274,7 @@ export async function update({
   return { feed, result };
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   update().catch((err) => {
     console.error(err);
     process.exit(1);

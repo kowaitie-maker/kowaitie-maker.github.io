@@ -37,7 +37,7 @@ export async function applyRequest(title, file) {
   };
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const file = path.join(here, '..', 'accounts.json');
   const { changed, message } = await applyRequest(process.env.ISSUE_TITLE, file);
   console.log(message);

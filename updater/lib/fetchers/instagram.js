@@ -378,6 +378,12 @@ export async function fetchStories(account, ctx) {
     redirect: 'manual',
     strategy: S,
   });
+  if ((res.text || '').trim().startsWith('<')) {
+    // Instagram answers with a web page when it doesn't accept the login.
+    const title = ((res.text.match(/<title[^>]*>([^<]*)</i) || [])[1] || '').trim().slice(0, 60);
+    const challenge = /checkpoint|challenge/i.test(res.text) ? ', security check' : '';
+    throw new FetchError('login', `login not accepted (HTTP ${res.status}, page "${title}"${challenge})`, S);
+  }
   const json = checkIgResponse(res, S);
   const reel = json.reels?.[userId] || (Array.isArray(json.reels_media) ? json.reels_media[0] : null);
   return (Array.isArray(reel?.items) ? reel.items : []).map(parseStoryItem).filter(Boolean);
