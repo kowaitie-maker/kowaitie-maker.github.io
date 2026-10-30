@@ -165,3 +165,24 @@ test('Instagram: profile embed page markup is understood', async () => {
   assert.equal(r.profile.displayName, 'محمد عوف');
   assert.equal(r.profile.avatarUrl, 'https://scontent.cdninstagram.com/av.jpg?a=1&b=2');
 });
+
+test('Instagram: rendered profile embed (contextJSON with graphql_media)', async () => {
+  const { parseProfileEmbed } = await import('../lib/fetchers/instagram.js');
+  const context = {
+    context: {
+      username: 'someone', full_name: 'Some One', is_verified: false, profile_pic_url: 'https://scontent.cdninstagram.com/p.jpg',
+      followers_count: 2399963, posts_count: 820, owner_id: '33020898390',
+      graphql_media: [{ shortcode_media: {
+        __typename: 'GraphVideo', id: '1', shortcode: 'DfF6AUUtWFk', is_video: true, display_url: 'https://scontent.cdninstagram.com/1.jpg',
+        edge_media_to_caption: { edges: [{ node: { text: 'ليه ابويا بيظهر معايا؟' } }] }, edge_media_to_comment: { count: 426 },
+        edge_liked_by: { count: 14244 }, taken_at_timestamp: 1793307100, pinned_for_users: [],
+      } }],
+    },
+  };
+  const html = `<script>requireLazy(["ServerJS"],function(){s.handle({"require":[["PolarisEmbedSimple","init",[],[{"isProfileEmbed":true,"contextJSON":${JSON.stringify(JSON.stringify(context))}}]]]})});</script>`;
+  const r = parseProfileEmbed(html, 'someone');
+  assert.equal(r.posts.length, 1);
+  assert.deepEqual([r.posts[0].postId, r.posts[0].kind, r.posts[0].createdAt, r.posts[0].stats.likes], ['DfF6AUUtWFk', 'video', 1793307100000, 14244]);
+  assert.equal(r.profile.followers, 2399963);
+  assert.equal(r.profile.displayName, 'Some One');
+});

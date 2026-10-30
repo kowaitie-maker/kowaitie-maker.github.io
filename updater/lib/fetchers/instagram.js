@@ -175,6 +175,20 @@ export function postsFromAnyJson(json) {
     out.profile = r.profile;
     out.posts.push(...r.posts);
   }
+  // Profile embed (instagram.com/<user>/embed/): context.graphql_media[].shortcode_media
+  const embedCtx = Array.isArray(json?.graphql_media) ? json : findKey(json, 'context', (c) => c && Array.isArray(c.graphql_media));
+  if (embedCtx) {
+    out.posts.push(...embedCtx.graphql_media.map((m) => parseGraphNode(m?.shortcode_media || m?.node || m)).filter(Boolean));
+    out.profile ||= {
+      displayName: str(embedCtx.full_name) || str(embedCtx.username),
+      avatarUrl: str(embedCtx.profile_pic_url),
+      followers: num(embedCtx.followers_count),
+      postsCount: num(embedCtx.posts_count),
+      bio: '',
+      verified: !!(embedCtx.is_verified || embedCtx.verified),
+      meta: { userId: str(embedCtx.owner_id) },
+    };
+  }
   const conn = findKey(json, 'xdt_api__v1__feed__user_timeline_graphql_connection', (c) => c && Array.isArray(c.edges));
   if (conn) {
     out.posts.push(...conn.edges.map((e) => parseV1Item(e?.node)).filter(Boolean));
