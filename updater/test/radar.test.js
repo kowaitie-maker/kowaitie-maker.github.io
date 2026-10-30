@@ -4,6 +4,10 @@ import { createRadar, seedData, DEFAULT_SINCE_DATE, SEED_ACCOUNTS } from '../lib
 import { FetchError } from '../lib/errors.js';
 import { localMidnight } from '../lib/util.js';
 
+// Fake bot token, joined at run time so these files never contain anything that
+// looks like a real Telegram token (GitHub's secret scanner flags those).
+const FAKE = ['TEST', 'ONLY', 'not', 'a', 'real', 'bot', 'token', 'x'.repeat(14)].join('_').slice(0, 35);
+
 function setup({ fetchers, since = Date.UTC(2026, 9, 30), now = Date.UTC(2026, 9, 30, 12) } = {}) {
   const data = seedData({ since, accounts: [{ platform: 'tiktok', username: 'a' }, { platform: 'instagram', username: 'b' }] });
   let clock = now;
@@ -117,10 +121,10 @@ test('mark seen, pause, remove, settings validation', async () => {
   assert.deepEqual(radar.updateSettings({ intervalMin: 30, since: since - 86400_000 }), []);
   assert.equal(radar.state().settings.intervalMin, 30);
   assert.equal(radar.updateSettings({ telegram: { token: 'bad' } }).length, 1);
-  assert.deepEqual(radar.updateSettings({ telegram: { token: '123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw', chatId: '-100123' } }), []);
+  assert.deepEqual(radar.updateSettings({ telegram: { token: `123456789:${FAKE}`, chatId: '-100123' } }), []);
   const st = radar.state().settings;
   assert.equal(st.telegram.tokenSet, true);
-  assert.equal(JSON.stringify(st).includes('AAHdq'), false, 'token never leaves the server');
+  assert.equal(JSON.stringify(st).includes(FAKE), false, 'token never leaves the server');
 });
 
 test('adding accounts validates input and rejects duplicates', () => {

@@ -7,6 +7,10 @@ import { createMockUpstream, demoConfig } from './support/mock-upstream.js';
 import { readConfig, update } from '../update.mjs';
 import { applyRequest } from '../follow.mjs';
 
+// Fake bot token, joined at run time so these files never contain anything that
+// looks like a real Telegram token (GitHub's secret scanner flags those).
+const FAKE = ['TEST', 'ONLY', 'not', 'a', 'real', 'bot', 'token', 'x'.repeat(14)].join('_').slice(0, 35);
+
 let mock;
 let root;
 let origins;
@@ -56,7 +60,7 @@ test('update writes feed.json, state and media with relative paths', async () =>
 
 test('secrets never reach the published files', async () => {
   process.env.IG_SESSIONID = 'SECRET_SESSION_123456';
-  process.env.TELEGRAM_TOKEN = '123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw';
+  process.env.TELEGRAM_TOKEN = `123456789:${FAKE}`;
   process.env.TELEGRAM_CHAT_ID = '42';
   try {
     await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null, telegramApi: 'http://127.0.0.1:9' });
@@ -67,7 +71,7 @@ test('secrets never reach the published files', async () => {
   }
   const text = (await fs.readFile(path.join(root, 'feed.json'), 'utf8')) + (await fs.readFile(path.join(root, 'data/state.json'), 'utf8'));
   assert.ok(!text.includes('SECRET_SESSION'));
-  assert.ok(!text.includes('AAHdq'));
+  assert.ok(!text.includes(FAKE));
   const feed = await readJson('feed.json');
   assert.equal(feed.capabilities.instagramLogin, true);
   assert.equal(feed.capabilities.telegram, true);
@@ -121,7 +125,7 @@ test('Telegram test run sends a confirmation and the latest post, and records th
   });
   await new Promise((r) => tg.listen(0, '127.0.0.1', r));
   const api = `http://127.0.0.1:${tg.address().port}`;
-  Object.assign(process.env, { TELEGRAM_TOKEN: '123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw', TELEGRAM_CHAT_ID: '42', RADAR_TELEGRAM_TEST: '1' });
+  Object.assign(process.env, { TELEGRAM_TOKEN: `123456789:${FAKE}`, TELEGRAM_CHAT_ID: '42', RADAR_TELEGRAM_TEST: '1' });
   try {
     await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null, telegramApi: api });
     assert.deepEqual(calls.filter((c) => c.startsWith('send')), ['sendMessage', 'sendPhoto']);
@@ -152,7 +156,7 @@ test('Telegram secrets pasted with extra text still work; errors never contain t
     res.end(JSON.stringify({ ok: true, result: {} }));
   });
   await new Promise((r) => tg.listen(0, '127.0.0.1', r));
-  const token = '123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw';
+  const token = `123456789:${FAKE}`;
   Object.assign(process.env, { TELEGRAM_TOKEN: `‏Use this token to access the HTTP API:\n${token}\nKeep it secure `, TELEGRAM_CHAT_ID: ' Id: 42‎', RADAR_TELEGRAM_TEST: '1' });
   try {
     await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null, telegramApi: `http://127.0.0.1:${tg.address().port}` });
@@ -161,7 +165,7 @@ test('Telegram secrets pasted with extra text still work; errors never contain t
     await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null, telegramApi: 'http://127.0.0.1:9' });
     const feed = await readJson('feed.json');
     assert.match(feed.capabilities.telegramStatus.lastError, /تعذّر الوصول لتيليجرام/);
-    assert.ok(!JSON.stringify(feed).includes('AAHdq'));
+    assert.ok(!JSON.stringify(feed).includes(FAKE));
   } finally {
     for (const k of ['TELEGRAM_TOKEN', 'TELEGRAM_CHAT_ID', 'RADAR_TELEGRAM_TEST']) delete process.env[k];
     tg.close();
@@ -170,11 +174,11 @@ test('Telegram secrets pasted with extra text still work; errors never contain t
 
 test('Telegram secret problems are explained without revealing them', async () => {
   const { describeTelegramProblem } = await import('../update.mjs');
-  assert.match(describeTelegramProblem('123456789', '123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw', '', ''), /بدّلت/);
-  assert.match(describeTelegramProblem('AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw', '42', '', '42'), /النقطتين/);
-  assert.match(describeTelegramProblem('123456789:AAHdq', '42', '', '42'), /ناقصاً/);
-  assert.match(describeTelegramProblem('123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw', '@someone', '123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw', ''), /اسم المستخدم/);
-  assert.ok(!describeTelegramProblem('123456789:AAHdq', 'x', '', '').includes('AAHdq'));
+  assert.match(describeTelegramProblem('123456789', `123456789:${FAKE}`, '', ''), /بدّلت/);
+  assert.match(describeTelegramProblem(FAKE, '42', '', '42'), /النقطتين/);
+  assert.match(describeTelegramProblem('123456789:TESTx', '42', '', '42'), /ناقصاً/);
+  assert.match(describeTelegramProblem(`123456789:${FAKE}`, '@someone', `123456789:${FAKE}`, ''), /اسم المستخدم/);
+  assert.ok(!describeTelegramProblem('123456789:TESTx', 'x', '', '').includes('TESTx'));
 });
 
 test('Telegram token with a space or hidden mark inside is recovered', async () => {
@@ -187,8 +191,8 @@ test('Telegram token with a space or hidden mark inside is recovered', async () 
     res.end('{"ok":true,"result":{}}');
   });
   await new Promise((r) => tg.listen(0, '127.0.0.1', r));
-  const token = '1234567890:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw1';
-  Object.assign(process.env, { TELEGRAM_TOKEN: `1234567890:AAHdq TcvCH1vGWJx‏fSeofSAs0K5PALDsaw1`, TELEGRAM_CHAT_ID: '987654321', RADAR_TELEGRAM_TEST: '1' });
+  const token = `1234567890:${FAKE}`;
+  Object.assign(process.env, { TELEGRAM_TOKEN: `1234567890:${FAKE.slice(0, 5)} ${FAKE.slice(5, 16)}\u200f${FAKE.slice(16)}`, TELEGRAM_CHAT_ID: '987654321', RADAR_TELEGRAM_TEST: '1' });
   try {
     await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null, telegramApi: `http://127.0.0.1:${tg.address().port}` });
     assert.equal(urls.find((u) => u.endsWith('/sendMessage')), `/bot${token}/sendMessage`);
