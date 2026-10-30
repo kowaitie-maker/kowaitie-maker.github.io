@@ -19,8 +19,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793387902669,
-   "lastOkAt": 1793387903304,
+   "lastCheckAt": 1793388455637,
+   "lastOkAt": 1793388456196,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
@@ -30,7 +30,8 @@
    "meta": {
     "secUid": "MS4wLjABAAAAZLy5KOj6DGJAWCh2xtyjxKlm4OjOpbrA8uYY22ySiN7zCz8ZiWjSruWCw_GtsFxT",
     "userId": "7128666675117360134"
-   }
+   },
+   "stories": []
   },
   {
    "id": "38d4ad3689be",
@@ -46,17 +47,26 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793387907255,
-   "lastOkAt": 1793387932594,
+   "lastCheckAt": 1793388458780,
+   "lastOkAt": 1793388481471,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793307100000,
    "strategy": "browser",
-   "profileAt": 1793387932594,
-   "meta": {},
+   "profileAt": 1793388481471,
+   "meta": {
+    "userId": "33020898390"
+   },
    "hasStory": false,
-   "storySince": null
+   "storySince": null,
+   "fallbacks": [
+    "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
+    "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
+    "embed: blocked (no posts in embed page (507533 bytes, title \"Instagram\"))",
+    "feed: not_found (HTTP 404)"
+   ],
+   "stories": []
   },
   {
    "id": "18bfbd6745fc",
@@ -72,17 +82,27 @@
    "verified": false,
    "addedAt": 1793383987149,
    "paused": false,
-   "lastCheckAt": 1793387935677,
-   "lastOkAt": 1793387952781,
+   "lastCheckAt": 1793388484623,
+   "lastOkAt": 1793388501566,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793375323000,
    "strategy": "browser",
-   "profileAt": 1793387952782,
-   "meta": {},
+   "profileAt": 1793388501566,
+   "meta": {
+    "userId": "80168664853"
+   },
    "hasStory": true,
-   "storySince": 1793387952781
+   "storySince": 1793387952781,
+   "fallbacks": [
+    "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
+    "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
+    "embed: blocked (no posts in embed page (507526 bytes, title \"Instagram\"))",
+    "feed: not_found (HTTP 404)"
+   ],
+   "storyError": "[stories] blocked: HTML instead of JSON from www.instagram.com/api/v1/feed/reels_media/",
+   "stories": []
   },
   {
    "id": "1d514a49925d",
@@ -98,17 +118,27 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793387956620,
-   "lastOkAt": 1793387973597,
+   "lastCheckAt": 1793388504002,
+   "lastOkAt": 1793388521000,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793367777000,
    "strategy": "browser",
-   "profileAt": 1793387973600,
-   "meta": {},
+   "profileAt": 1793388521000,
+   "meta": {
+    "userId": "29741346551"
+   },
    "hasStory": true,
-   "storySince": 1793387973597
+   "storySince": 1793387973597,
+   "fallbacks": [
+    "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
+    "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
+    "embed: blocked (no posts in embed page (507526 bytes, title \"Instagram\"))",
+    "feed: not_found (HTTP 404)"
+   ],
+   "storyError": "[stories] blocked: HTML instead of JSON from www.instagram.com/api/v1/feed/reels_media/",
+   "stories": []
   },
   {
    "id": "b44f84f8c3f0",
@@ -124,17 +154,27 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793387975355,
-   "lastOkAt": 1793387992458,
+   "lastCheckAt": 1793388525165,
+   "lastOkAt": 1793388542300,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793362837000,
    "strategy": "browser",
-   "profileAt": 1793387992459,
-   "meta": {},
+   "profileAt": 1793388542300,
+   "meta": {
+    "userId": "47610700383"
+   },
    "hasStory": true,
-   "storySince": 1793387992458
+   "storySince": 1793387992458,
+   "fallbacks": [
+    "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
+    "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
+    "embed: blocked (no posts in embed page (507537 bytes, title \"Instagram\"))",
+    "feed: not_found (HTTP 404)"
+   ],
+   "storyError": "[stories] blocked: HTML instead of JSON from www.instagram.com/api/v1/feed/reels_media/",
+   "stories": []
   },
   {
    "id": "f383a0e9f40d",
@@ -150,17 +190,26 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793387995294,
-   "lastOkAt": 1793388012325,
+   "lastCheckAt": 1793388545966,
+   "lastOkAt": 1793388562882,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793130053000,
    "strategy": "browser",
-   "profileAt": 1793388012325,
-   "meta": {},
+   "profileAt": 1793388562882,
+   "meta": {
+    "userId": "77792093830"
+   },
    "hasStory": false,
-   "storySince": null
+   "storySince": null,
+   "fallbacks": [
+    "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
+    "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
+    "embed: blocked (no posts in embed page (507528 bytes, title \"Instagram\"))",
+    "feed: not_found (HTTP 404)"
+   ],
+   "stories": []
   }
  ],
  "posts": [
@@ -177,7 +226,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 96,
+    "likes": 97,
     "comments": 8,
     "shares": null
    },
@@ -221,7 +270,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 54,
+    "likes": 55,
     "comments": 3,
     "shares": null
    },
@@ -287,7 +336,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 171,
+    "likes": 174,
     "comments": 8,
     "shares": null
    },
@@ -308,10 +357,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 82200,
-    "likes": 718,
-    "comments": 146,
-    "shares": 1380
+    "views": 83300,
+    "likes": 727,
+    "comments": 149,
+    "shares": 1394
    },
    "cover": "tiktok-7702434277270621441.jpg",
    "coverRemote": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oYlPQvCVDAUgf3jYfI6leEmAJdCGyLbURoDFlI~tplv-tiktokx-dmt-logom:tos-alisg-i-0068/oMAA9Afi8wcy1X5KPIBWI8AnAgE9iDCABzDkik.image?dr=9634&x-expires=1793534400&x-signature=abj1vGAlord7Ef%2Bextfx4fyt5DQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
@@ -397,7 +446,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 727,
+    "likes": 735,
     "comments": 27,
     "shares": null
    },
@@ -408,14 +457,14 @@
   }
  ],
  "run": {
-  "lastRunAt": 1793387902669,
-  "lastFinishedAt": 1793388012325,
+  "lastRunAt": 1793388455637,
+  "lastFinishedAt": 1793388562883,
   "lastNewCount": 0
  },
  "telegramStatus": {
   "lastSentAt": 1793387992783,
   "lastError": null,
   "lastErrorAt": null,
-  "verifiedAt": 1793387902669
+  "verifiedAt": 1793388455636
  }
 }

@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": 1793388012424,
+ "generatedAt": 1793388562992,
  "since": 1793307600000,
  "intervalMin": 30,
  "repo": "kowaitie-maker/kowaitie-maker.github.io",
@@ -13,7 +13,7 @@
    "lastSentAt": 1793387992783,
    "lastError": null,
    "lastErrorAt": null,
-   "verifiedAt": 1793387902669
+   "verifiedAt": 1793388455636
   }
  },
  "accounts": [
@@ -30,14 +30,16 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793387902669,
-   "lastOkAt": 1793387903304,
+   "lastCheckAt": 1793388455637,
+   "lastOkAt": 1793388456196,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362740000,
    "strategy": "api",
    "hasStory": false,
-   "storySince": null
+   "storySince": null,
+   "stories": [],
+   "storyError": null
   },
   {
    "id": "38d4ad3689be",
@@ -52,14 +54,16 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793387907255,
-   "lastOkAt": 1793387932594,
+   "lastCheckAt": 1793388458780,
+   "lastOkAt": 1793388481471,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793307100000,
    "strategy": "browser",
    "hasStory": false,
-   "storySince": null
+   "storySince": null,
+   "stories": [],
+   "storyError": null
   },
   {
    "id": "18bfbd6745fc",
@@ -74,14 +78,16 @@
    "verified": false,
    "addedAt": 1793383987149,
    "paused": false,
-   "lastCheckAt": 1793387935677,
-   "lastOkAt": 1793387952781,
+   "lastCheckAt": 1793388484623,
+   "lastOkAt": 1793388501566,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793375323000,
    "strategy": "browser",
    "hasStory": true,
-   "storySince": 1793387952781
+   "storySince": 1793387952781,
+   "stories": [],
+   "storyError": "[stories] blocked: HTML instead of JSON from www.instagram.com/api/v1/feed/reels_media/"
   },
   {
    "id": "1d514a49925d",
@@ -96,14 +102,16 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793387956620,
-   "lastOkAt": 1793387973597,
+   "lastCheckAt": 1793388504002,
+   "lastOkAt": 1793388521000,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793367777000,
    "strategy": "browser",
    "hasStory": true,
-   "storySince": 1793387973597
+   "storySince": 1793387973597,
+   "stories": [],
+   "storyError": "[stories] blocked: HTML instead of JSON from www.instagram.com/api/v1/feed/reels_media/"
   },
   {
    "id": "b44f84f8c3f0",
@@ -118,14 +126,16 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793387975355,
-   "lastOkAt": 1793387992458,
+   "lastCheckAt": 1793388525165,
+   "lastOkAt": 1793388542300,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362837000,
    "strategy": "browser",
    "hasStory": true,
-   "storySince": 1793387992458
+   "storySince": 1793387992458,
+   "stories": [],
+   "storyError": "[stories] blocked: HTML instead of JSON from www.instagram.com/api/v1/feed/reels_media/"
   },
   {
    "id": "f383a0e9f40d",
@@ -140,14 +150,16 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793387995294,
-   "lastOkAt": 1793388012325,
+   "lastCheckAt": 1793388545966,
+   "lastOkAt": 1793388562882,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793130053000,
    "strategy": "browser",
    "hasStory": false,
-   "storySince": null
+   "storySince": null,
+   "stories": [],
+   "storyError": null
   }
  ],
  "posts": [
@@ -164,7 +176,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 96,
+    "likes": 97,
     "comments": 8,
     "shares": null
    },
@@ -202,7 +214,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 54,
+    "likes": 55,
     "comments": 3,
     "shares": null
    },
@@ -259,7 +271,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 171,
+    "likes": 174,
     "comments": 8,
     "shares": null
    },
@@ -277,10 +289,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 82200,
-    "likes": 718,
-    "comments": 146,
-    "shares": 1380
+    "views": 83300,
+    "likes": 727,
+    "comments": 149,
+    "shares": 1394
    },
    "cover": "media/tiktok-7702434277270621441.jpg"
   },
@@ -354,7 +366,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 727,
+    "likes": 735,
     "comments": 27,
     "shares": null
    },
