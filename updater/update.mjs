@@ -35,6 +35,25 @@ async function writeJson(file, data) {
   await fs.rename(`${file}.tmp`, file);
 }
 
+/** Explain what is wrong with the Telegram secrets without revealing their values. */
+export function describeTelegramProblem(rawToken, rawChat, token, chatId) {
+  const problems = [];
+  const t = rawToken.trim();
+  const c = rawChat.trim();
+  if (!t) problems.push('السرّ TELEGRAM_TOKEN فارغ أو غير موجود');
+  else if (!token) {
+    if (/^-?\d+$/.test(t)) problems.push('TELEGRAM_TOKEN يحتوي رقماً فقط — يبدو أنه رقمك (Id)، والرمز الصحيح من BotFather شكله 123456789:AA…؛ ربما بدّلت بين السرّين');
+    else if (!t.includes(':')) problems.push('TELEGRAM_TOKEN لا يحتوي النقطتين «:» — انسخ الرمز كاملاً من رسالة BotFather (شكله 123456789:AA…)');
+    else problems.push('TELEGRAM_TOKEN ليس بصيغة رمز البوت (123456789:AA… بطول 45 حرفاً تقريباً) — ربما نُسخ ناقصاً');
+  }
+  if (!c) problems.push('السرّ TELEGRAM_CHAT_ID فارغ أو غير موجود');
+  else if (!chatId) {
+    if (/\d{5,15}:/.test(c)) problems.push('TELEGRAM_CHAT_ID يحتوي رمز البوت — ربما بدّلت بين السرّين');
+    else problems.push('TELEGRAM_CHAT_ID لا يحتوي رقماً — ضع رقم Id من @userinfobot وليس اسم المستخدم');
+  }
+  return problems.join('. ') || 'إعداد تيليجرام غير مكتمل';
+}
+
 export function readConfig(raw) {
   const since = Date.parse(raw?.since);
   if (!Number.isFinite(since)) throw new Error('accounts.json: "since" must be a date like 2026-10-30T00:00:00+03:00');
@@ -107,8 +126,7 @@ export async function update({
   db.telegramStatus ||= { lastSentAt: null, lastError: null, lastErrorAt: null };
   const telegramSecretsSet = !!(rawToken.trim() || rawChat.trim());
   if (telegramSecretsSet && !telegramOn) {
-    const what = !token ? 'TELEGRAM_TOKEN لا يحتوي رمز بوت صحيحاً (شكله 123456789:AA…)' : 'TELEGRAM_CHAT_ID لا يحتوي رقماً صحيحاً';
-    Object.assign(db.telegramStatus, { lastError: what, lastErrorAt: Date.now() });
+    Object.assign(db.telegramStatus, { lastError: describeTelegramProblem(rawToken, rawChat, token, chatId), lastErrorAt: Date.now() });
   }
   // Remember whether the last send worked, so the page can show it.
   const track = (job) => {
@@ -148,8 +166,8 @@ export async function update({
   // Manual run with "test Telegram": send a confirmation plus the latest post.
   if (env.RADAR_TELEGRAM_TEST === '1') {
     if (!telegramOn) {
-      log('telegram test: TELEGRAM_TOKEN / TELEGRAM_CHAT_ID secrets are missing');
-      Object.assign(db.telegramStatus, { lastError: 'TELEGRAM_TOKEN أو TELEGRAM_CHAT_ID غير موجود في أسرار المستودع', lastErrorAt: Date.now() });
+      log(`telegram test skipped: ${db.telegramStatus.lastError || 'secrets missing'}`);
+      if (!telegramSecretsSet) Object.assign(db.telegramStatus, { lastError: 'السرّان TELEGRAM_TOKEN و TELEGRAM_CHAT_ID غير موجودين في أسرار المستودع', lastErrorAt: Date.now() });
     } else {
       await track(telegram.test()).catch(() => {});
       const latest = [...db.posts].sort((a, b) => b.createdAt - a.createdAt)[0];

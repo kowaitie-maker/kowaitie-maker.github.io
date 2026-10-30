@@ -165,3 +165,12 @@ test('Telegram secrets pasted with extra text still work; errors never contain t
     tg.close();
   }
 });
+
+test('Telegram secret problems are explained without revealing them', async () => {
+  const { describeTelegramProblem } = await import('../update.mjs');
+  assert.match(describeTelegramProblem('123456789', '123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw', '', ''), /بدّلت/);
+  assert.match(describeTelegramProblem('AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw', '42', '', '42'), /النقطتين/);
+  assert.match(describeTelegramProblem('123456789:AAHdq', '42', '', '42'), /ناقصاً/);
+  assert.match(describeTelegramProblem('123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw', '@someone', '123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw', ''), /اسم المستخدم/);
+  assert.ok(!describeTelegramProblem('123456789:AAHdq', 'x', '', '').includes('AAHdq'));
+});
