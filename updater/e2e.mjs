@@ -113,7 +113,7 @@ try {
     await page.keyboard.press('ArrowLeft');
     await page.keyboard.press('ArrowLeft');
     await page.waitForSelector('.sv .sv-media video');
-    assert.match(await page.locator('.sv video').getAttribute('src'), /media\/story-3500000000000000003-v\.mp4$/);
+    assert.match(await page.locator('.sv video').getAttribute('src'), /\/vid\/3500000000000000003\.mp4$/);
     await page.keyboard.press('ArrowLeft');
     await page.waitForSelector('.sv', { state: 'detached' });
     await page.waitForFunction(() => document.querySelector('.story.has-story')?.classList.contains('story-seen'));

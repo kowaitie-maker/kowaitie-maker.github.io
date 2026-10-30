@@ -220,11 +220,10 @@ test('stories: downloaded with the Instagram login, listed in order, removed whe
     assert.equal(ig.hasStory, true);
     assert.deepEqual(ig.stories.map((s) => s.kind), ['image', 'image', 'video']);
     assert.ok(ig.stories.every((s) => s.image && s.image.startsWith('media/story-')));
-    assert.match(ig.stories[2].video, /^media\/story-3500000000000000003-v\.mp4$/);
-    for (const s of ig.stories) {
-      await fs.access(path.join(root, s.image));
-      if (s.video) await fs.access(path.join(root, s.video));
-    }
+    // Videos stream from Instagram's CDN; only the covers are stored.
+    assert.equal(ig.stories[2].video, `${mock.base}/vid/3500000000000000003.mp4`);
+    for (const s of ig.stories) await fs.access(path.join(root, s.image));
+    assert.ok(!(await fs.readdir(path.join(root, 'media'))).some((f) => f.endsWith('.mp4')));
     assert.ok(!(await fs.readFile(path.join(root, 'feed.json'), 'utf8')).includes('TEST_SESSION'));
 
     // The account takes its stories down: files are removed too.

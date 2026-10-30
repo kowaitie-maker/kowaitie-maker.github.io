@@ -113,6 +113,7 @@ export function openStories(accounts, startId, { onClose } = {}) {
 
     if (s.video) {
       const v = h('video', { src: s.video, poster: s.image || null, playsinline: true, 'webkit-playsinline': true, preload: 'auto' });
+      // Streamed from Instagram's CDN: if the link has expired or fails, show the cover instead.
       v.muted = muted;
       v.addEventListener('ended', () => next());
       v.addEventListener('error', () => current === v && showImage());
@@ -134,7 +135,6 @@ export function openStories(accounts, startId, { onClose } = {}) {
       tick();
     } else if (s.image) {
       showImage();
-      if (s.tooBig) mediaBox.appendChild(h('div', { class: 'sv-note' }, 'هذا الفيديو كبير — شاهده في إنستغرام بالزر بالأسفل'));
     } else {
       next();
     }

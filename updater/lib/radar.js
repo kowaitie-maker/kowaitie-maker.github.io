@@ -175,17 +175,20 @@ export function createRadar({
     for (const it of items) {
       if (it.expiresAt && it.expiresAt <= now()) continue;
       const prev = known.get(it.storyId);
-      if (prev && (prev.image || prev.video)) {
+      if (prev && prev.image) {
+        // Signed video links change over time; keep the newest one. Older runs stored videos locally.
+        if (prev.video) await media.remove(prev.video);
+        prev.video = null;
+        prev.videoUrl = it.videoUrl || null;
         keep.push(prev);
         continue;
       }
-      const referer = REFERERS.instagram;
-      const image = it.imageUrl ? await media.cache(it.imageUrl, `story-${it.storyId}`, { referer }) : null;
-      // Videos over 8 MB are skipped (the cover is shown with a link to Instagram) to keep the site small.
-      const video = it.videoUrl ? await media.cache(it.videoUrl, `story-${it.storyId}-v`, { referer, video: true, maxBytes: 8 * 1024 * 1024 }) : null;
-      if (!image && !video) continue;
+      // Only the cover is stored. Instagram's CDN lets other sites play the video
+      // directly (CORP: cross-origin), so videos are streamed from there.
+      const image = it.imageUrl ? await media.cache(it.imageUrl, `story-${it.storyId}`, { referer: REFERERS.instagram }) : null;
+      if (!image && !it.videoUrl) continue;
       if (it.videoUrl && !db.cdnProbe) db.cdnProbe = await probeCdn(it.videoUrl, it.variants);
-      keep.push({ id: it.storyId, takenAt: it.takenAt, expiresAt: it.expiresAt, kind: video ? 'video' : 'image', image, video, duration: it.duration || null, tooBig: !!it.videoUrl && !video });
+      keep.push({ id: it.storyId, takenAt: it.takenAt, expiresAt: it.expiresAt, kind: it.videoUrl ? 'video' : 'image', image, video: null, videoUrl: it.videoUrl || null, duration: it.duration || null });
     }
     keep.sort((a, b) => (a.takenAt || 0) - (b.takenAt || 0));
     await dropMedia(before, keep);
@@ -353,9 +356,8 @@ export function createRadar({
           expiresAt: s.expiresAt,
           kind: s.kind,
           image: s.image ? `/media/${s.image}` : null,
-          video: s.video ? `/media/${s.video}` : null,
+          video: s.video ? `/media/${s.video}` : s.videoUrl || null,
           duration: s.duration,
-          tooBig: !!s.tooBig,
         })),
       storyError: a.storyError || null,
     };
