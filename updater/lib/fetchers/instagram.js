@@ -368,25 +368,66 @@ export function parseStoryItem(item) {
   return { storyId: id, takenAt, expiresAt, kind: videoUrl ? 'video' : 'image', imageUrl, videoUrl, duration: num(item.video_duration) };
 }
 
-/** The account's current stories. Needs the owner's Instagram login (IG_SESSIONID). */
+/** Read a reels_media answer (JSON text) into story items, or explain why it failed. */
+export function readStoriesAnswer(status, text, userId, S = 'stories') {
+  const body = String(text || '').trim();
+  if (body.startsWith('<')) {
+    const title = ((body.match(/<title[^>]*>([^<]*)</i) || [])[1] || '').trim().slice(0, 60);
+    throw new FetchError('login', `login not accepted (HTTP ${status}, web page "${title}")`, S);
+  }
+  let json;
+  try {
+    json = JSON.parse(body);
+  } catch {
+    throw new FetchError('parse', `invalid answer (HTTP ${status})`, S);
+  }
+  const msg = String(json.message || '');
+  if (/checkpoint/i.test(msg) || json.checkpoint_url) throw new FetchError('login', 'checkpoint_required: Instagram wants the owner to confirm this login', S);
+  if (json.require_login || /login_required/i.test(msg) || status === 401) throw new FetchError('login', 'login_required: the session is expired or logged out', S);
+  if (status === 429 || /wait a few minutes/i.test(msg)) throw new FetchError('rate_limited', `HTTP ${status} ${msg}`.trim(), S);
+  if (status >= 400) throw new FetchError('blocked', `HTTP ${status} ${msg}`.trim(), S);
+  const reel = json.reels?.[userId] || (Array.isArray(json.reels_media) ? json.reels_media[0] : null);
+  return (Array.isArray(reel?.items) ? reel.items : []).map(parseStoryItem).filter(Boolean);
+}
+
+/**
+ * The account's current stories. Needs the owner's Instagram login (IG_SESSIONID).
+ * Tries a plain request, then a real browser (Instagram often refuses logged-in
+ * requests that don't come from a browser).
+ */
 export async function fetchStories(account, ctx) {
   const S = 'stories';
   const userId = account.meta?.userId;
   if (!userId) throw new FetchError('parse', 'unknown Instagram user id', S);
+  try {
+    return await fetchStoriesDirect(account, userId, ctx);
+  } catch (err) {
+    if (!ctx.browser || !(err instanceof FetchError) || !['login', 'blocked'].includes(err.kind)) throw err;
+  }
+  const cookies = [{ name: 'sessionid', value: ctx.settings.igSessionId, domain: '.instagram.com', path: '/', secure: true, httpOnly: true }];
+  const answer = await ctx.browser.evaluate('https://www.instagram.com/', {
+    cookies,
+    arg: userId,
+    fn: async (id) => {
+      const r = await fetch(`/api/v1/feed/reels_media/?reel_ids=${encodeURIComponent(id)}`, {
+        headers: { 'X-IG-App-ID': '936619743392459', 'X-Requested-With': 'XMLHttpRequest', Accept: '*/*' },
+        credentials: 'include',
+      });
+      return { status: r.status, text: (await r.text()).slice(0, 3_000_000) };
+    },
+  });
+  return readStoriesAnswer(answer.status, answer.text, userId, 'stories-browser');
+}
+
+async function fetchStoriesDirect(account, userId, ctx) {
+  const S = 'stories';
   const res = await request(`${ctx.origins.instagram}/api/v1/feed/reels_media/?reel_ids=${encodeURIComponent(userId)}`, {
     headers: { ...webHeaders(account.username, ctx.settings), Origin: 'https://www.instagram.com' },
     redirect: 'manual',
     strategy: S,
   });
-  if ((res.text || '').trim().startsWith('<')) {
-    // Instagram answers with a web page when it doesn't accept the login.
-    const title = ((res.text.match(/<title[^>]*>([^<]*)</i) || [])[1] || '').trim().slice(0, 60);
-    const challenge = /checkpoint|challenge/i.test(res.text) ? ', security check' : '';
-    throw new FetchError('login', `login not accepted (HTTP ${res.status}, page "${title}"${challenge})`, S);
-  }
-  const json = checkIgResponse(res, S);
-  const reel = json.reels?.[userId] || (Array.isArray(json.reels_media) ? json.reels_media[0] : null);
-  return (Array.isArray(reel?.items) ? reel.items : []).map(parseStoryItem).filter(Boolean);
+  if (res.status >= 300 && res.status < 400) throw new FetchError('login', `redirect to ${(res.location || '').slice(0, 60)}`, S);
+  return readStoriesAnswer(res.status, res.text, userId, S);
 }
 
 /**

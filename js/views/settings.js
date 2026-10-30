@@ -32,10 +32,15 @@ function storiesRow(state) {
   const ig = state.accounts.filter((a) => a.platform === 'instagram');
   const failed = ig.find((a) => a.storyError);
   if (failed) {
-    const login = /login|401|redirect/i.test(failed.storyError);
-    return row('الستوري', login
-      ? 'إنستغرام رفض مفتاح الدخول (ربما انتهت صلاحيته أو سُجّل الخروج). انسخ sessionid جديداً وضعه مكان IG_SESSIONID.'
-      : h('span', null, 'تعذّر جلب الستوري في آخر تحديث: ', h('bdi', { dir: 'ltr' }, failed.storyError.slice(0, 120))), h('span', { class: 'err-pill' }, 'يحتاج تصحيح'));
+    const e = failed.storyError;
+    const text = /checkpoint/i.test(e)
+      ? 'إنستغرام يطلب تأكيد تسجيل الدخول. افتح تطبيق إنستغرام بحسابك (أو instagram.com) وأكّد «هذا أنا» إن ظهر لك تنبيه، وستعمل في التحديث التالي.'
+      : /login_required|expired/i.test(e)
+        ? 'انتهت صلاحية مفتاح الدخول (ربما سجّلت الخروج). سجّل الدخول من جديد وانسخ sessionid جديداً وضعه مكان IG_SESSIONID.'
+        : /login not accepted|login/i.test(e)
+          ? 'إنستغرام لم يقبل مفتاح الدخول من خوادم GitHub. جرّب نسخ sessionid جديد، أو استخدم الدائرة لفتح الستوري في تطبيق إنستغرام.'
+          : h('span', null, 'تعذّر جلب الستوري في آخر تحديث: ', h('bdi', { dir: 'ltr' }, e.slice(0, 120)));
+    return row('الستوري', text, h('span', { class: 'err-pill' }, 'يحتاج تصحيح'));
   }
   const n = ig.reduce((sum, a) => sum + (a.stories?.length || 0), 0);
   const who = ig.filter((a) => a.stories?.length).length;

@@ -187,3 +187,21 @@ test('Instagram: rendered profile embed (contextJSON with graphql_media)', async
   assert.equal(r.profile.displayName, 'Some One');
   assert.equal(r.profile.hasStory, true);
 });
+
+test('Instagram stories: falls back to a real browser and explains login problems', async () => {
+  const { fetchStories, readStoriesAnswer } = await import('../lib/fetchers/instagram.js');
+  const acc = { username: 'demo.travel', meta: { userId: '4100000001' } };
+  const answer = { reels: { 4100000001: { items: [{ pk: '35', taken_at: 1793318400, image_versions2: { candidates: [{ width: 1080, url: 'https://scontent.cdninstagram.com/s.jpg' }] } }] } }, status: 'ok' };
+  const browser = { evaluate: async (url, { arg, cookies }) => {
+    assert.equal(url, 'https://www.instagram.com/');
+    assert.equal(arg, '4100000001');
+    assert.equal(cookies[0].name, 'sessionid');
+    return { status: 200, text: JSON.stringify(answer) };
+  } };
+  // The plain request is refused (no cookie reaches the mock), the browser path succeeds.
+  const items = await fetchStories(acc, { ...ctx, settings: { igSessionId: '' }, browser });
+  assert.deepEqual(items.map((s) => s.storyId), ['35']);
+  assert.throws(() => readStoriesAnswer(400, '{"message":"checkpoint_required","status":"fail"}', '1'), /checkpoint_required/);
+  assert.throws(() => readStoriesAnswer(401, '{"message":"login_required","require_login":true}', '1'), /login_required/);
+  assert.throws(() => readStoriesAnswer(200, '<html><title>Instagram</title></html>', '1'), /login not accepted/);
+});

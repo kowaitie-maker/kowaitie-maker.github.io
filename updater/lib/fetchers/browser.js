@@ -19,6 +19,7 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
   let launching = null;
   let idleTimer = null;
   let queue = Promise.resolve();
+  const sessions = new Map(); // logged-in pages kept open for a run, keyed by cookies
 
   async function getBrowser() {
     if (browser?.isConnected()) return browser;
@@ -44,6 +45,7 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
   function scheduleClose() {
     clearTimeout(idleTimer);
     idleTimer = setTimeout(() => {
+      sessions.clear();
       browser?.close().catch(() => {});
       browser = null;
     }, 120_000);
@@ -93,7 +95,42 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
     }
   }
 
+  /** Run `fn(arg)` inside a page at `url` (same-origin fetches use the page's cookies). */
+  async function evaluateNow(url, { cookies = [], fn, arg }) {
+    let b;
+    try {
+      b = await getBrowser();
+    } catch (err) {
+      throw new FetchError('unavailable', `browser launch failed: ${err.message.split('\n')[0]}`, 'browser');
+    }
+    const key = `${url}|${JSON.stringify(cookies)}`;
+    let entry = sessions.get(key);
+    if (!entry || entry.page.isClosed()) {
+      const context = await b.newContext({ userAgent: CHROME_UA, locale: 'en-US', viewport: { width: 1280, height: 900 } });
+      if (cookies.length) await context.addCookies(cookies);
+      const page = await context.newPage();
+      try {
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+      } catch (err) {
+        await context.close().catch(() => {});
+        throw new FetchError('network', `browser: ${err.message.split('\n')[0]}`, 'browser');
+      }
+      entry = { context, page };
+      sessions.set(key, entry);
+    }
+    try {
+      return await entry.page.evaluate(fn, arg);
+    } finally {
+      scheduleClose();
+    }
+  }
+
   return {
+    evaluate(url, opts) {
+      const job = queue.then(() => evaluateNow(url, opts));
+      queue = job.catch(() => {});
+      return job;
+    },
     /** Runs one capture at a time to keep memory use low. */
     capture(url, opts) {
       const job = queue.then(() => captureNow(url, opts));
@@ -102,6 +139,7 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
     },
     async close() {
       clearTimeout(idleTimer);
+      sessions.clear();
       await browser?.close().catch(() => {});
       browser = null;
     },
