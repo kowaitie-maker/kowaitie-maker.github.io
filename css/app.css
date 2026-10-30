@@ -603,3 +603,4 @@ button.status-row.story-row { background: none; border: 0; padding: 0; text-alig
 .sv-open { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; background: rgba(255, 255, 255, 0.16); color: #fff; font-size: 13px; font-weight: 600; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .sv-open .ico { width: 15px; height: 15px; }
 .sv.paused .sv-top, .sv.paused .sv-foot { opacity: 0; transition: opacity 0.2s; }
+.sv-note { position: absolute; inset: auto 16px 90px; padding: 10px 14px; border-radius: 12px; background: rgba(0, 0, 0, 0.55); color: #fff; font-size: 13.5px; text-align: center; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }

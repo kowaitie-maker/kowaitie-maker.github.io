@@ -134,6 +134,7 @@ export function openStories(accounts, startId, { onClose } = {}) {
       tick();
     } else if (s.image) {
       showImage();
+      if (s.tooBig) mediaBox.appendChild(h('div', { class: 'sv-note' }, 'هذا الفيديو كبير — شاهده في إنستغرام بالزر بالأسفل'));
     } else {
       next();
     }

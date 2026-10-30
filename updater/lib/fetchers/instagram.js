@@ -362,10 +362,22 @@ export function parseStoryItem(item) {
   const near = (target) => (a, b) => Math.abs((a.width || target) - target) - Math.abs((b.width || target) - target);
   const videos = (Array.isArray(item.video_versions) ? item.video_versions : []).filter((v) => str(v?.url));
   const images = (item.image_versions2?.candidates || []).filter((c) => str(c?.url));
-  const videoUrl = videos.length ? [...videos].sort(near(720))[0].url : null;
+  // Lightest video that still looks fine on a phone: the narrowest version at least 480px wide.
+  const byWidth = [...videos].sort((a, b) => (a.width || 0) - (b.width || 0));
+  const video = byWidth.find((v) => (v.width || 0) >= 480) || byWidth.at(-1);
+  const videoUrl = video ? video.url : null;
   const imageUrl = images.length ? [...images].sort(near(1080))[0].url : null;
   if (!videoUrl && !imageUrl) return null;
-  return { storyId: id, takenAt, expiresAt, kind: videoUrl ? 'video' : 'image', imageUrl, videoUrl, duration: num(item.video_duration) };
+  return {
+    storyId: id,
+    takenAt,
+    expiresAt,
+    kind: videoUrl ? 'video' : 'image',
+    imageUrl,
+    videoUrl,
+    duration: num(item.video_duration),
+    variants: videos.map((v) => `${v.width || '?'}x${v.height || '?'}/${v.type ?? '?'}`),
+  };
 }
 
 /** Read a reels_media answer (JSON text) into story items, or explain why it failed. */

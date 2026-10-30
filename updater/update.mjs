@@ -235,7 +235,7 @@ export async function update({
     since: config.since,
     intervalMin: config.intervalMin,
     repo: env.GITHUB_REPOSITORY || null,
-    capabilities: { ...state.capabilities, instagramLogin: !!db.settings.igSessionId, instagramSession: describeSession(env.IG_SESSIONID), telegram: telegramOn || telegramSecretsSet, telegramStatus: db.telegramStatus },
+    capabilities: { ...state.capabilities, instagramLogin: !!db.settings.igSessionId, instagramSession: describeSession(env.IG_SESSIONID), cdnProbe: db.cdnProbe || null, telegram: telegramOn || telegramSecretsSet, telegramStatus: db.telegramStatus },
     accounts: state.accounts.map((a) => ({
       ...a,
       avatar: rel(a.avatar),

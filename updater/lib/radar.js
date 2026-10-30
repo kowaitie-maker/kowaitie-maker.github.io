@@ -123,6 +123,23 @@ export function createRadar({
     }
   }
 
+  /** Can the Instagram CDN serve story videos to the page directly? (headers only, for deciding storage) */
+  async function probeCdn(url, variants) {
+    try {
+      const res = await fetch(url, { method: 'HEAD', headers: { Referer: REFERERS.instagram }, signal: AbortSignal.timeout(15000) });
+      return {
+        at: now(),
+        status: res.status,
+        corp: res.headers.get('cross-origin-resource-policy'),
+        acao: res.headers.get('access-control-allow-origin'),
+        size: Number(res.headers.get('content-length')) || null,
+        variants: variants || [],
+      };
+    } catch (err) {
+      return { at: now(), error: String(err.message).slice(0, 100), variants: variants || [] };
+    }
+  }
+
   /** Keep downloaded copies of the account's live stories; drop expired ones. */
   async function syncStories(acc) {
     const before = acc.stories || [];
@@ -164,9 +181,11 @@ export function createRadar({
       }
       const referer = REFERERS.instagram;
       const image = it.imageUrl ? await media.cache(it.imageUrl, `story-${it.storyId}`, { referer }) : null;
-      const video = it.videoUrl ? await media.cache(it.videoUrl, `story-${it.storyId}-v`, { referer, video: true, maxBytes: 30 * 1024 * 1024 }) : null;
+      // Videos over 8 MB are skipped (the cover is shown with a link to Instagram) to keep the site small.
+      const video = it.videoUrl ? await media.cache(it.videoUrl, `story-${it.storyId}-v`, { referer, video: true, maxBytes: 8 * 1024 * 1024 }) : null;
       if (!image && !video) continue;
-      keep.push({ id: it.storyId, takenAt: it.takenAt, expiresAt: it.expiresAt, kind: video ? 'video' : 'image', image, video, duration: it.duration || null });
+      if (it.videoUrl && !db.cdnProbe) db.cdnProbe = await probeCdn(it.videoUrl, it.variants);
+      keep.push({ id: it.storyId, takenAt: it.takenAt, expiresAt: it.expiresAt, kind: video ? 'video' : 'image', image, video, duration: it.duration || null, tooBig: !!it.videoUrl && !video });
     }
     keep.sort((a, b) => (a.takenAt || 0) - (b.takenAt || 0));
     await dropMedia(before, keep);
@@ -336,6 +355,7 @@ export function createRadar({
           image: s.image ? `/media/${s.image}` : null,
           video: s.video ? `/media/${s.video}` : null,
           duration: s.duration,
+          tooBig: !!s.tooBig,
         })),
       storyError: a.storyError || null,
     };
