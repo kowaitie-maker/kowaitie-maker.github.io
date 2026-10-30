@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": 1793390245035,
+ "generatedAt": 1793390507167,
  "since": 1793307600000,
  "intervalMin": 30,
  "repo": "kowaitie-maker/kowaitie-maker.github.io",
@@ -19,7 +19,7 @@
    "lastSentAt": 1793390244941,
    "lastError": null,
    "lastErrorAt": null,
-   "verifiedAt": 1793390065116
+   "verifiedAt": 1793390336216
   }
  },
  "accounts": [
@@ -36,8 +36,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793390065116,
-   "lastOkAt": 1793390065543,
+   "lastCheckAt": 1793390336216,
+   "lastOkAt": 1793390336689,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362740000,
@@ -60,8 +60,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793390067700,
-   "lastOkAt": 1793390093162,
+   "lastCheckAt": 1793390338890,
+   "lastOkAt": 1793390357874,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793307100000,
@@ -84,8 +84,8 @@
    "verified": false,
    "addedAt": 1793383987149,
    "paused": false,
-   "lastCheckAt": 1793390095468,
-   "lastOkAt": 1793390112780,
+   "lastCheckAt": 1793390360901,
+   "lastOkAt": 1793390378407,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793375323000,
@@ -93,7 +93,7 @@
    "hasStory": true,
    "storySince": 1793387952781,
    "stories": [],
-   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again.; page: no story data on the stories page (3 answers: xdt_api__v1__feed__reels_tray,xdt_viewer,xdt_api__v1__feed__timeline__connection,xdt_api__v1__web__accounts__get_encrypted_credentials; pressed view: yes; blocked seen: 2) requests: POST /ajax/bulk-route-definitions/ 200 (skipped); GET /btmanifest/1052404410/instagram/main 200 (skipped); GET /rsrc.php/ye/r/COs9e0Kj0ic.wasm 200 (skipped); POST /api/v1/web/fxcal/ig_sso_users/ 200 (skipped); POST /api/graphql [PolarisStoriesV3TrayContainerQuery] 200; POST /graphql/query [PolarisFeedTimelineRootV2Query] 200; GET /o1/v/t2/f2/m367/AQPIWB7vFtF20v6EWb4seo8XtVioil5WnazIlR0iWzOCGUCLFP5GRlRpc6-ZclfwefJw0B0lwdezPlZXEGkg-0DIriuygaNOUHoz3pM.mp4 200 (skipped); GET /instagram/sync/ 200 (skipped); POST /api/graphql [PolarisAPIGetFrCookieQuery] 200; POST /instagram/login_sync/update/ 200 (skipped); POST /sync/instagram/ 200 (skipped); GET /o1/v/t2/f2/m367/AQMLkALTBBEfC6Nu6iK823Vny1lfYj792ReUCdni_7RfdAlB5aHaBCPuytsizze03UqYyHeZokcf__jJF8V1emKnW3XWquN9IcANDg3sOMAryw.mp4 200 (skipped); GET /o1/v/t2/f2/m367/AQN7-dqcERgrIW5vhWglK_XRuM1K0EvlkJ6DrU4cmbR2ZzTGEdVD071H6YgRdj9Mw2u7ov4csFxe-Fd1UBVHWC87FfMtLw0WVll3U4w5BV0iMw.mp4 200 (skipped); GET /o1/v/t2/f2/m367/AQO-RY8Z4gmo4fZfs6FY3vToagKTJ3TKNIviSjmtaozy6iS9QYHL7GJ1YgQ3KzKIrZvVnPRJuqJFDFbvw1JLrZ02wh7AMxVMsdBYZ1ZJQxJU1Q.mp4 200 (skipped) [browser logged in: yes, csrf: yes]"
+   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again.; page: no story data on the stories page (3 answers: xdt_api__v1__feed__reels_tray,xdt_viewer,xdt_api__v1__feed__timeline__connection,xdt_api__v1__web__accounts__get_encrypted_credentials; pressed view: yes; blocked seen: 2) requests: POST /api/v1/web/fxcal/ig_sso_users/ 200 (skipped); POST /api/graphql [PolarisStoriesV3TrayContainerQuery] 200; POST /graphql/query [PolarisFeedTimelineRootV2Query] 200; POST /api/graphql [PolarisAPIGetFrCookieQuery] 200 tray shape: {broadcasts:[],tray:[]} [browser logged in: yes, csrf: yes]"
   },
   {
    "id": "1d514a49925d",
@@ -108,8 +108,8 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793390137077,
-   "lastOkAt": 1793390154786,
+   "lastCheckAt": 1793390399786,
+   "lastOkAt": 1793390417316,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793367777000,
@@ -117,7 +117,7 @@
    "hasStory": true,
    "storySince": 1793387973597,
    "stories": [],
-   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again.; page: no story data on the stories page (3 answers: xdt_api__v1__feed__reels_tray,xdt_viewer,xdt_api__v1__feed__timeline__connection,xdt_api__v1__web__accounts__get_encrypted_credentials; pressed view: yes; blocked seen: 1) requests: POST /ajax/bulk-route-definitions/ 200 (skipped); POST /api/v1/web/fxcal/ig_sso_users/ 200 (skipped); GET /btmanifest/1052404410/instagram/main 200 (skipped); GET /rsrc.php/ye/r/COs9e0Kj0ic.wasm 200 (skipped); POST /api/graphql [PolarisStoriesV3TrayContainerQuery] 200; GET /o1/v/t2/f2/m78/AQNkYrSt1MqwYHkMurQBhn3jq1Ilav0E_b4hUCHXWOeyvnaIU8uz98i0gW4O2kJU9cM1tiU7VI-GyiVnqS_ECZuhfcFKWWwlp0O12E8.mp4 200 (skipped); GET /o1/v/t2/f2/m78/AQO6g-V_bUMgBsxzKQz6V3XvUb3TEGjatbSqveYNsfQ2ju7O3mC-mePlUYDXmSzfhwmK5gHgMkiy42Zcs7Da1X_T8Eb3OYT6Haa7RwM.mp4 200 (skipped); POST /video/unified_cvc/ 200 (skipped); POST /graphql/query [PolarisFeedTimelineRootV2Query] 200; GET /o1/v/t2/f2/m367/AQP-l5lIOBGhDU2wWKTz_xpo4-bPGY0OM8VNFNb6eyJ1Le6PbgF_FzyuWPPlFdWyEipyXZ2PO8BpwBckIzzjQRr5sx2Fy-YZDLUyVbE.mp4 200 (skipped); GET /o1/v/t2/f2/m367/AQNT2ue5uZFUG-qwS06oci2KGVsSQehjROz0WBceAhNpwp5H_Zw0-AyESyKXfqHs5P31sdaySxgpW7eDw9kEZilq7UnIK2WPvUtreO4.mp4 200 (skipped); GET /o1/v/t2/f2/m78/AQOF_xmJbfR-0lxdj2IYKM5oBfsAdtmEVsuEGWfW6iJTFWzw4AkVTDM6VgbH-KfDGC41fIMLfJMDJG6HswpTg9LBndq6LcLvEt5HZxU.mp4 200 (skipped); POST /api/graphql [PolarisAPIGetFrCookieQuery] 200; GET /instagram/sync/ 200 (skipped) "
+   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again.; page: no story data on the stories page (3 answers: xdt_api__v1__feed__reels_tray,xdt_viewer,xdt_api__v1__feed__timeline__connection,xdt_api__v1__web__accounts__get_encrypted_credentials; pressed view: yes; blocked seen: 1) requests: POST /api/v1/web/fxcal/ig_sso_users/ 200 (skipped); POST /api/graphql [PolarisStoriesV3TrayContainerQuery] 200; POST /graphql/query [PolarisFeedTimelineRootV2Query] 200; POST /api/graphql [PolarisAPIGetFrCookieQuery] 200 tray shape: {broadcasts:[],tray:[]} [browser logged in: yes, csrf: yes]"
   },
   {
    "id": "b44f84f8c3f0",
@@ -132,8 +132,8 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793390173187,
-   "lastOkAt": 1793390190639,
+   "lastCheckAt": 1793390437468,
+   "lastOkAt": 1793390455171,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362837000,
@@ -141,7 +141,7 @@
    "hasStory": true,
    "storySince": 1793387992458,
    "stories": [],
-   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again.; page: no story data on the stories page (3 answers: xdt_api__v1__feed__reels_tray,xdt_viewer,xdt_api__v1__feed__timeline__connection,xdt_api__v1__web__accounts__get_encrypted_credentials; pressed view: yes; blocked seen: 1) requests: POST /ajax/bulk-route-definitions/ 200 (skipped); GET /btmanifest/1052404410/instagram/main 200 (skipped); GET /rsrc.php/ye/r/COs9e0Kj0ic.wasm 200 (skipped); POST /api/v1/web/fxcal/ig_sso_users/ 200 (skipped); POST /api/graphql [PolarisStoriesV3TrayContainerQuery] 200; GET /o1/v/t2/f2/m367/AQO-6LTsSOmB2HcAs_n9nWknWz3zTxGHF8m3hCIx9paGCpfGeOo1dmmh6Q-XL0c5RoSviuJ_fPXO5nDDd6xyx9YP1ZQPcQuykLe4pEGQnAm31Q.mp4 200 (skipped); GET /o1/v/t2/f2/m367/AQPEGxubGWt79e0Ya_awzJGEa3HbTZESqsw7M1Q8DeYkeEL5Dpmz1OyUGxXpRCC8vPjPWLvwNjSVQk3FT6XimEv-fhS4wnB008WG1D8WUnR-Zw.mp4 200 (skipped); GET /o1/v/t2/f2/m367/AQNdldF9dXfteAGHJEgnbUFV8HU_kfJUBiAHF03XlBousJMGKz2eKNGCi7uMJU-uLDxtIsMwOa0BvN6nu3o_DhSM2nKHWCjTdjyQz1FLBU_DPg.mp4 200 (skipped); GET /o1/v/t2/f2/m78/AQP_njEhRD7H5BhXzhUckVUBfEI-eXDB56UFPu6kQaEICos9qDFSfb6pN7Bm12tYu9yldgyMLZoNEk8iA0Kwnfldq8vC5q3eqLYtosA.mp4 200 (skipped); GET /o1/v/t2/f2/m367/AQOn6TG-cw3EdB-sq9i600CKoCF1W49qJmsikTg20_7-Urph281kXHCod4GqV7hGTwDdXOCUEvEQtbiiHgxxj5URjCPu3Tej8xmDTLDD78Mqpw.mp4 200 (skipped); POST /video/unified_cvc/ 200 (skipped); POST /graphql/query [PolarisFeedTimelineRootV2Query] 200; GET /o1/v/t2/f2/m367/AQP-l5lIOBGhDU2wWKTz_xpo4-bPGY0OM8VN"
+   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again.; page: no story data on the stories page (3 answers: xdt_api__v1__feed__reels_tray,xdt_viewer,xdt_api__v1__feed__timeline__connection,xdt_api__v1__web__accounts__get_encrypted_credentials; pressed view: yes; blocked seen: 1) requests: POST /api/v1/web/fxcal/ig_sso_users/ 200 (skipped); POST /api/graphql [PolarisStoriesV3TrayContainerQuery] 200; POST /graphql/query [PolarisFeedTimelineRootV2Query] 200; POST /api/graphql [PolarisAPIGetFrCookieQuery] 200 tray shape: {broadcasts:[],tray:[]} [browser logged in: yes, csrf: yes]"
   },
   {
    "id": "f383a0e9f40d",
@@ -156,8 +156,8 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793390210136,
-   "lastOkAt": 1793390227686,
+   "lastCheckAt": 1793390473779,
+   "lastOkAt": 1793390491183,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793389959000,
@@ -165,7 +165,7 @@
    "hasStory": true,
    "storySince": 1793388767829,
    "stories": [],
-   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again.; page: no story data on the stories page (10 answers: xdt_api__v1__feed__reels_tray,xdt_viewer,xdt_api__v1__feed__timeline__connection,xdt_api__v1__web__accounts__get_encrypted_credentials,get_paginated_share_sheet_ranked_items,get_slide_mailbox_for_iris_subscription; pressed view: yes; blocked seen: 1) requests: POST /ajax/bulk-route-definitions/ 200 (skipped); POST /api/v1/web/fxcal/ig_sso_users/ 200 (skipped); GET /rsrc.php/ye/r/COs9e0Kj0ic.wasm 200 (skipped); GET /btmanifest/1052404410/instagram/main 200 (skipped); POST /api/graphql [PolarisStoriesV3TrayContainerQuery] 200; POST /graphql/query [PolarisFeedTimelineRootV2Query] 200; GET /o1/v/t2/f2/m367/AQPIWB7vFtF20v6EWb4seo8XtVioil5WnazIlR0iWzOCGUCLFP5GRlRpc6-ZclfwefJw0B0lwdezPlZXEGkg-0DIriuygaNOUHoz3pM.mp4 200 (skipped); GET /o1/v/t2/f2/m367/AQOeJHnAj8WjXipGD6uXqLBtr26Q9PtQA5rcPDooSQLbHLbUfMvWjhVsw8Y7PS5neC2KAKegJzXmBQEPX6rLaZsgRqUeZ8piodPInx4.mp4 200 (skipped); GET /o1/v/t2/f2/m78/AQOF_xmJbfR-0lxdj2IYKM5oBfsAdtmEVsuEGWfW6iJTFWzw4AkVTDM6VgbH-KfDGC41fIMLfJMDJG6HswpTg9LBndq6LcLvEt5HZxU.mp4 200 (skipped); POST /api/graphql [PolarisAPIGetFrCookieQuery] 200; GET /instagram/sync/ 200 (skipped); POST /instagram/login_sync/update/ 200 (skipped); POST /sync/instagram/ 200 (skipped); POST /ajax/navigation/ 200 (skipped) [browser logged in: yes, csrf: yes]"
+   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again.; page: no story data on the stories page (11 answers: xdt_api__v1__feed__reels_tray,xdt_viewer,xdt_api__v1__feed__timeline__connection,xdt_api__v1__web__accounts__get_encrypted_credentials,get_paginated_share_sheet_ranked_items,get_slide_mailbox_for_iris_subscription; pressed view: yes; blocked seen: 1) requests: POST /api/v1/web/fxcal/ig_sso_users/ 200 (skipped); POST /api/graphql [PolarisStoriesV3TrayContainerQuery] 200; POST /graphql/query [PolarisFeedTimelineRootV2Query] 200; POST /api/graphql [PolarisAPIGetFrCookieQuery] 200; POST /api/graphql [IGDOmniPickerNullStateListQuery] 200; POST /api/graphql [IGDChatTabsJewelOffMsysQuery] 200; POST /api/graphql [IGDBadgeCountOffMsysQuery] 200; POST /api/graphql [QuickPromotionSupportIGSchemaBatchFetchQuery] 200 tray shape: {broadcasts:[],tray:[]} [browser logged in: yes, csrf: yes]"
   }
  ],
  "posts": [
@@ -182,8 +182,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 9,
-    "comments": 1,
+    "likes": 20,
+    "comments": 2,
     "shares": null
    },
    "cover": "media/instagram-dfiyg6ztfte.jpg"
@@ -201,8 +201,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 29,
-    "comments": 15,
+    "likes": 35,
+    "comments": 16,
     "shares": null
    },
    "cover": "media/instagram-dfivn1wztxc.jpg"
@@ -220,8 +220,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 102,
-    "comments": 8,
+    "likes": 103,
+    "comments": 9,
     "shares": null
    },
    "cover": "media/instagram-dfh783ensgz.jpg"
@@ -315,7 +315,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 185,
+    "likes": 186,
     "comments": 8,
     "shares": null
    },
@@ -333,10 +333,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 86700,
-    "likes": 757,
+    "views": 87300,
+    "likes": 765,
     "comments": 152,
-    "shares": 1438
+    "shares": 1471
    },
    "cover": "media/tiktok-7702434277270621441.jpg"
   },
@@ -410,7 +410,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 756,
+    "likes": 759,
     "comments": 27,
     "shares": null
    },
