@@ -1,0 +1,61 @@
+{
+ "version": 1,
+ "generatedAt": 1793358077991,
+ "since": 1793307600000,
+ "intervalMin": 30,
+ "repo": "kowaitie-maker/kowaitie-maker.github.io",
+ "capabilities": {
+  "browser": true,
+  "ytdlp": "2026.10.26",
+  "instagramLogin": false,
+  "telegram": false
+ },
+ "accounts": [
+  {
+   "id": "0e63bb4ee950",
+   "platform": "tiktok",
+   "username": "yousefali82__",
+   "url": "https://www.tiktok.com/@yousefali82__",
+   "displayName": "يوسف الحسينان",
+   "avatar": "media/avatar-0e63bb4ee950-mvuv3cuk.jpg",
+   "followers": 54100,
+   "postsCount": 534,
+   "bio": "تصوير كل شي مفيد",
+   "verified": false,
+   "addedAt": 1793358071324,
+   "paused": false,
+   "lastCheckAt": 1793358071733,
+   "lastOkAt": 1793358072524,
+   "lastError": null,
+   "nextCheckAt": null,
+   "latestPostAt": 1793183824000,
+   "strategy": "api"
+  },
+  {
+   "id": "38d4ad3689be",
+   "platform": "instagram",
+   "username": "mohamed.ouf.xx",
+   "url": "https://www.instagram.com/mohamed.ouf.xx/",
+   "displayName": null,
+   "avatar": null,
+   "followers": null,
+   "postsCount": null,
+   "bio": "",
+   "verified": false,
+   "addedAt": 1793358071324,
+   "paused": false,
+   "lastCheckAt": 1793358076415,
+   "lastOkAt": null,
+   "lastError": {
+    "kind": "rate_limited",
+    "message": "طلبات كثيرة على المنصة — سنعيد المحاولة تلقائياً",
+    "detail": "rate_limited: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [browser] network: browser: page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.instagram.com/mohamed.ouf.xx/",
+    "at": 1793358077904
+   },
+   "nextCheckAt": null,
+   "latestPostAt": null,
+   "strategy": null
+  }
+ ],
+ "posts": []
+}

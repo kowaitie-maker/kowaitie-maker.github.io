@@ -1,0 +1,71 @@
+{
+ "version": 1,
+ "settings": {
+  "since": 1793307600000,
+  "intervalMin": 30
+ },
+ "accounts": [
+  {
+   "id": "0e63bb4ee950",
+   "platform": "tiktok",
+   "username": "yousefali82__",
+   "url": "https://www.tiktok.com/@yousefali82__",
+   "displayName": "يوسف الحسينان",
+   "avatar": "avatar-0e63bb4ee950-mvuv3cuk.jpg",
+   "avatarAt": 1793358072970,
+   "followers": 54100,
+   "postsCount": 534,
+   "bio": "تصوير كل شي مفيد",
+   "verified": false,
+   "addedAt": 1793358071324,
+   "paused": false,
+   "lastCheckAt": 1793358071733,
+   "lastOkAt": 1793358072524,
+   "lastError": null,
+   "errorCount": 0,
+   "nextCheckAt": 0,
+   "latestPostAt": 1793183824000,
+   "strategy": "api",
+   "profileAt": 1793358072524,
+   "meta": {
+    "secUid": "MS4wLjABAAAAZLy5KOj6DGJAWCh2xtyjxKlm4OjOpbrA8uYY22ySiN7zCz8ZiWjSruWCw_GtsFxT",
+    "userId": "7128666675117360134"
+   }
+  },
+  {
+   "id": "38d4ad3689be",
+   "platform": "instagram",
+   "username": "mohamed.ouf.xx",
+   "url": "https://www.instagram.com/mohamed.ouf.xx/",
+   "displayName": null,
+   "avatar": null,
+   "avatarAt": null,
+   "followers": null,
+   "postsCount": null,
+   "bio": "",
+   "verified": false,
+   "addedAt": 1793358071324,
+   "paused": false,
+   "lastCheckAt": 1793358076415,
+   "lastOkAt": null,
+   "lastError": {
+    "kind": "rate_limited",
+    "message": "طلبات كثيرة على المنصة — سنعيد المحاولة تلقائياً",
+    "detail": "rate_limited: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [browser] network: browser: page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.instagram.com/mohamed.ouf.xx/",
+    "at": 1793358077904
+   },
+   "errorCount": 1,
+   "nextCheckAt": 1793359907425,
+   "latestPostAt": null,
+   "strategy": null,
+   "profileAt": null,
+   "meta": {}
+  }
+ ],
+ "posts": [],
+ "run": {
+  "lastRunAt": 1793358071733,
+  "lastFinishedAt": 1793358077906,
+  "lastNewCount": 0
+ }
+}
