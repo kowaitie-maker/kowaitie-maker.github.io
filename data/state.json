@@ -19,8 +19,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793383988594,
-   "lastOkAt": 1793383989049,
+   "lastCheckAt": 1793385995868,
+   "lastOkAt": 1793385996267,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
@@ -46,14 +46,14 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793383992476,
-   "lastOkAt": 1793384011881,
+   "lastCheckAt": 1793385998671,
+   "lastOkAt": 1793386026748,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793307100000,
    "strategy": "browser",
-   "profileAt": 1793384011881,
+   "profileAt": 1793386026748,
    "meta": {}
   },
   {
@@ -70,14 +70,86 @@
    "verified": false,
    "addedAt": 1793383987149,
    "paused": false,
-   "lastCheckAt": 1793384014611,
-   "lastOkAt": 1793384032094,
+   "lastCheckAt": 1793386030119,
+   "lastOkAt": 1793386047134,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793375323000,
    "strategy": "browser",
-   "profileAt": 1793384032094,
+   "profileAt": 1793386047134,
+   "meta": {}
+  },
+  {
+   "id": "1d514a49925d",
+   "platform": "instagram",
+   "username": "doc.geno",
+   "url": "https://www.instagram.com/doc.geno/",
+   "displayName": "Hasna Maslouh",
+   "avatar": "avatar-1d514a49925d-mvvaopwf.jpg",
+   "avatarAt": 1793384263529,
+   "followers": 397,
+   "postsCount": 38,
+   "bio": "",
+   "verified": false,
+   "addedAt": 1793384193912,
+   "paused": false,
+   "lastCheckAt": 1793386050968,
+   "lastOkAt": 1793386068147,
+   "lastError": null,
+   "errorCount": 0,
+   "nextCheckAt": 0,
+   "latestPostAt": 1793367777000,
+   "strategy": "browser",
+   "profileAt": 1793386068147,
+   "meta": {}
+  },
+  {
+   "id": "b44f84f8c3f0",
+   "platform": "instagram",
+   "username": "explosivemediaa",
+   "url": "https://www.instagram.com/explosivemediaa/",
+   "displayName": "Explosive Media 💣😎",
+   "avatar": "avatar-b44f84f8c3f0-mvvap522.jpg",
+   "avatarAt": 1793384283149,
+   "followers": 100135,
+   "postsCount": 303,
+   "bio": "",
+   "verified": false,
+   "addedAt": 1793384193912,
+   "paused": false,
+   "lastCheckAt": 1793386070450,
+   "lastOkAt": 1793386087821,
+   "lastError": null,
+   "errorCount": 0,
+   "nextCheckAt": 0,
+   "latestPostAt": 1793362837000,
+   "strategy": "browser",
+   "profileAt": 1793386087821,
+   "meta": {}
+  },
+  {
+   "id": "f383a0e9f40d",
+   "platform": "instagram",
+   "username": "topmediakw",
+   "url": "https://www.instagram.com/topmediakw/",
+   "displayName": "Top | توب",
+   "avatar": "avatar-f383a0e9f40d-mvvapk78.jpg",
+   "avatarAt": 1793384302779,
+   "followers": 55400,
+   "postsCount": 399,
+   "bio": "",
+   "verified": false,
+   "addedAt": 1793384193912,
+   "paused": false,
+   "lastCheckAt": 1793386089822,
+   "lastOkAt": 1793386106986,
+   "lastError": null,
+   "errorCount": 0,
+   "nextCheckAt": 0,
+   "latestPostAt": 1793130053000,
+   "strategy": "browser",
+   "profileAt": 1793386106986,
    "meta": {}
   }
  ],
@@ -95,13 +167,35 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 75,
+    "likes": 91,
     "comments": 8,
     "shares": null
    },
    "cover": "instagram-dfh783ensgz.jpg",
    "coverRemote": "https://scontent-sjc6-1.cdninstagram.com/v/t15.5256-10/879748436_2106942113270844_6312681247200879334_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=107&ig_cache_key=NDAxOTQ0NDg1OTkyNjgxNjgxOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZmlyc3RfZnJhbWVfdGh1bWJuYWlsLkMzIn0%3D&_nc_ohc=QvfHqBPEYcsQ7kNvwEI2Uzx&_nc_oc=Ado1b-HKg1rTM9eJUv574TLL71g_0fwtbWTa6vfGym4oPCC1cEFNfBBTnDFGVJb7sYw&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&_nc_gid=UX7nDzJ7eE-YTPbeCZKCVA&_nc_ss=7b689&oh=00_AQRJyq_POMtGF19dewNu39ktnkvtxQWtBHmUYOlav_1Nrw&oe=6AEAC7BC",
    "discoveredAt": 1793384032154,
+   "seen": false
+  },
+  {
+   "id": "instagram:DfHtvHAtQbW",
+   "platform": "instagram",
+   "postId": "DfHtvHAtQbW",
+   "accountId": "1d514a49925d",
+   "url": "https://www.instagram.com/p/DfHtvHAtQbW/",
+   "embedUrl": "https://www.instagram.com/p/DfHtvHAtQbW/embed/",
+   "createdAt": 1793367777000,
+   "caption": "غزة أظهرت نقاط الضعف والأخلاق المتدنية لبعض الجهات. الدم طريق لا تعرف الكذب أو الخداع. نرى مشاهد من الشجاعة والعزيمة لن تُنسى. #غزة #الشجاعة #العدالة #الكفاح #الحق",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 12,
+    "comments": 2,
+    "shares": null
+   },
+   "cover": "instagram-dfhtvhatqbw.jpg",
+   "coverRemote": "https://scontent-ord5-2.cdninstagram.com/v/t15.5256-10/860138272_1946682529648807_3047477824720054483_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=102&ig_cache_key=NDAxOTM4MjM0MTg4NzkxOTgzMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZmlyc3RfZnJhbWVfdGh1bWJuYWlsLkMzIn0%3D&_nc_ohc=tz_ida3M4VQQ7kNvwG-p7d5&_nc_oc=AdpGfy39kU70vOgA9KyGylOKXai1FCG8i8c_SGNqRczx_z2Y2VIxXqcac_dDCS-hELY&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&_nc_gid=29FPEYsFzeVJ6mpYBWlyiw&_nc_ss=7b689&oh=00_AQQHUdrBlgDuWQVF11Jh7odSvaNiLYrDfPrz7FtkOVKc0A&oe=6AEA9691",
+   "discoveredAt": 1793384263529,
    "seen": false
   },
   {
@@ -117,7 +211,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 46,
+    "likes": 51,
     "comments": 3,
     "shares": null
    },
@@ -161,13 +255,35 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 20,
+    "likes": 22,
     "comments": 2,
     "shares": null
    },
    "cover": "instagram-dfhma2ptvci.jpg",
    "coverRemote": "https://scontent-sjc6-1.cdninstagram.com/v/t51.82787-15/874255702_17902591293672854_8454113955499757718_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_cat=101&ig_cache_key=NDAxOTM0ODM3NjQ2NDQ4MDAwOA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTMzMi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=Jpfc2TR9qjEQ7kNvwEaEAYE&_nc_oc=AdpIFkfy6mRqaUR1_EUbus_gHyaiN_3zurWVk4czVw36MYFFbMafhxpqbZan4gKPKf8&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&_nc_gid=UX7nDzJ7eE-YTPbeCZKCVA&_nc_ss=7b689&oh=00_AQQWYitjmSEhwvYiPYte0tzmv7yNl9NSH1_PhyswYqQVBw&oe=6AEABD38",
    "discoveredAt": 1793384032357,
+   "seen": false
+  },
+  {
+   "id": "instagram:DfHjFkFoPf7",
+   "platform": "instagram",
+   "postId": "DfHjFkFoPf7",
+   "accountId": "b44f84f8c3f0",
+   "url": "https://www.instagram.com/p/DfHjFkFoPf7/",
+   "embedUrl": "https://www.instagram.com/p/DfHjFkFoPf7/embed/",
+   "createdAt": 1793362837000,
+   "caption": "Trump’s $5,000 Happy Ending 🍔💦\n\n Trump get the vote. give a burger. Got a facial.\nMar-a-Lago: where the money trickles up and the sauce trickles down.\nAn EGG MEN political satire inspired by Mediaite’s report on Trump’s $5,000 “dividend” promise and his Mar-a-Lago lunch joke.\n\n#EggMen #Trump #MAGA  #PoliticalSatire",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 159,
+    "comments": 8,
+    "shares": null
+   },
+   "cover": "instagram-dfhjfkfopf7.jpg",
+   "coverRemote": "https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/875348049_1717763209962113_2555209100399285865_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=102&ig_cache_key=NDAxOTMzNTUwNjQyNTg3MDMzMTE3MTc3NjMyMDMyOTU0NDc%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjU0MC5zZHIudmlkZW9fdXNlcl91cGxvYWRlZF90aHVtYm5haWwuQzMifQ%3D%3D&_nc_ohc=cc0X6NWxIgoQ7kNvwGURAi3&_nc_oc=Adq4vvudY6jtFMzT-QRZeIPgs4aOvoz-jMN3wKZuAJJrtHJSK573-NH7SysndUo6Tk8&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&_nc_gid=0rse4ipc1ASQhS9hUoRafQ&_nc_ss=7b689&oh=00_AQQTPLgL9fFILdwK66dGEOTz0hZ1W1viMxZI5UGm4yJRlA&oe=6AEAB11E",
+   "discoveredAt": 1793384283149,
    "seen": false
   },
   {
@@ -182,10 +298,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 74800,
-    "likes": 653,
-    "comments": 137,
-    "shares": 1275
+    "views": 79700,
+    "likes": 696,
+    "comments": 144,
+    "shares": 1347
    },
    "cover": "tiktok-7702434277270621441.jpg",
    "coverRemote": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oYlPQvCVDAUgf3jYfI6leEmAJdCGyLbURoDFlI~tplv-tiktokx-dmt-logom:tos-alisg-i-0068/oMAA9Afi8wcy1X5KPIBWI8AnAgE9iDCABzDkik.image?dr=9634&x-expires=1793534400&x-signature=abj1vGAlord7Ef%2Bextfx4fyt5DQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
@@ -227,7 +343,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 30,
+    "likes": 31,
     "comments": 1,
     "shares": null
    },
@@ -235,17 +351,61 @@
    "coverRemote": "https://scontent-sjc6-1.cdninstagram.com/v/t51.82787-15/870481640_17902546365672854_6959845101156023348_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_cat=101&ig_cache_key=NDAxOTE2MzI5NjQzMzU5NDA4MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYxMi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=UEDFNNjqbp4Q7kNvwGxXHzi&_nc_oc=AdpMBRsAFcTuoeFnWk37Qz2ajln7I_n0Q_1gOCm2NxZ0OlBzteAmUPJyuMqT3UVHA9o&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&_nc_gid=UX7nDzJ7eE-YTPbeCZKCVA&_nc_ss=7b689&oh=00_AQRM_keZpk14sH-Tdpb2-zpz-3vREQn_ArQQfY8p-z4hkw&oe=6AEA9DC2",
    "discoveredAt": 1793384032405,
    "seen": false
+  },
+  {
+   "id": "instagram:DfG5UGCInk_",
+   "platform": "instagram",
+   "postId": "DfG5UGCInk_",
+   "accountId": "1d514a49925d",
+   "url": "https://www.instagram.com/p/DfG5UGCInk_/",
+   "embedUrl": "https://www.instagram.com/p/DfG5UGCInk_/embed/",
+   "createdAt": 1793340300000,
+   "caption": "في سياق الأعمال، الرؤية من الأعلى تعطي وضوحًا وشفافية في المعاملات اليومية، حيث تستند القرارات إلى بيانات دقيقة وتحليل عميق للسوق. لكن، يجب أن نكون واعين لما يجري في التفاصيل، حيث قد تكمن التحديات والمعوقات التي قد تؤثر على النتائج النهائية. التحليل الدقيق والدراسة المستمرة قد تفتح لنا أفقًا أفضل للإدارة الفعالة. #ريادة_أعمال #استراتيجية #تحليل_سوق #إدارة_مخاطر",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 26,
+    "comments": 10,
+    "shares": null
+   },
+   "cover": "instagram-dfg5ugcink_.jpg",
+   "coverRemote": "https://scontent-ord5-2.cdninstagram.com/v/t15.5256-10/881767623_1636704601195466_1355181344489095960_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=102&ig_cache_key=NDAxOTE1MTc4Njk5MzY3ODY1NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZmlyc3RfZnJhbWVfdGh1bWJuYWlsLkMzIn0%3D&_nc_ohc=gr05mBe1NHsQ7kNvwEuWwMP&_nc_oc=AdqQTDyqTjpFXvd2sdUA9rWjve5kRYJFZB3sPKjDMz_MoOOlepduftXYNuRNQoYG2yY&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&_nc_gid=29FPEYsFzeVJ6mpYBWlyiw&_nc_ss=7b689&oh=00_AQTNZ8Ot-pnwmGW-p4d1OM5ND8gL7AgVhsAGZVJEkoe-_Q&oe=6AEABE25",
+   "discoveredAt": 1793384263609,
+   "seen": false
+  },
+  {
+   "id": "instagram:DfGRl5Csfmu",
+   "platform": "instagram",
+   "postId": "DfGRl5Csfmu",
+   "accountId": "b44f84f8c3f0",
+   "url": "https://www.instagram.com/p/DfGRl5Csfmu/",
+   "embedUrl": "https://www.instagram.com/p/DfGRl5Csfmu/embed/",
+   "createdAt": 1793319779000,
+   "caption": "Five thousand dollars. Is that your price? 💰",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 700,
+    "comments": 27,
+    "shares": null
+   },
+   "cover": "instagram-dfgrl5csfmu.jpg",
+   "coverRemote": "https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/877290930_1117735634555723_6129520139940077224_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=102&ig_cache_key=NDAxODk3NzA4ODEzNDU3NjU1ODExMTc3MzU2Mjc4ODkwNTc%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjU0MC5zZHIudmlkZW9fdXNlcl91cGxvYWRlZF90aHVtYm5haWwuQzMifQ%3D%3D&_nc_ohc=ujIWQOHVIvkQ7kNvwE00MSQ&_nc_oc=AdrsZiX5Y90E6wmP9i7EZOn5Ocx5extR6FLx1c3p6LNuoJDjU4Oe3PQhslet7ZkbuG4&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&_nc_gid=0rse4ipc1ASQhS9hUoRafQ&_nc_ss=7b689&oh=00_AQQfu_CZ8w6MOMa3HQkh-gkgWn8paDoDMsgC5ROShr2b9A&oe=6AEAB493",
+   "discoveredAt": 1793384283195,
+   "seen": false
   }
  ],
  "run": {
-  "lastRunAt": 1793383988594,
-  "lastFinishedAt": 1793384032431,
-  "lastNewCount": 6
+  "lastRunAt": 1793385995867,
+  "lastFinishedAt": 1793386106986,
+  "lastNewCount": 0
  },
  "telegramStatus": {
-  "lastSentAt": 1793384050237,
+  "lastSentAt": 1793384284522,
   "lastError": null,
   "lastErrorAt": null,
-  "verifiedAt": 1793383988594
+  "verifiedAt": 1793385995867
  }
 }

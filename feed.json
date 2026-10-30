@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": 1793384050302,
+ "generatedAt": 1793386107097,
  "since": 1793307600000,
  "intervalMin": 30,
  "repo": "kowaitie-maker/kowaitie-maker.github.io",
@@ -10,10 +10,10 @@
   "instagramLogin": true,
   "telegram": true,
   "telegramStatus": {
-   "lastSentAt": 1793384050237,
+   "lastSentAt": 1793384284522,
    "lastError": null,
    "lastErrorAt": null,
-   "verifiedAt": 1793383988594
+   "verifiedAt": 1793385995867
   }
  },
  "accounts": [
@@ -30,8 +30,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793383988594,
-   "lastOkAt": 1793383989049,
+   "lastCheckAt": 1793385995868,
+   "lastOkAt": 1793385996267,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362740000,
@@ -50,8 +50,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793383992476,
-   "lastOkAt": 1793384011881,
+   "lastCheckAt": 1793385998671,
+   "lastOkAt": 1793386026748,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793307100000,
@@ -70,11 +70,71 @@
    "verified": false,
    "addedAt": 1793383987149,
    "paused": false,
-   "lastCheckAt": 1793384014611,
-   "lastOkAt": 1793384032094,
+   "lastCheckAt": 1793386030119,
+   "lastOkAt": 1793386047134,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793375323000,
+   "strategy": "browser"
+  },
+  {
+   "id": "1d514a49925d",
+   "platform": "instagram",
+   "username": "doc.geno",
+   "url": "https://www.instagram.com/doc.geno/",
+   "displayName": "Hasna Maslouh",
+   "avatar": "media/avatar-1d514a49925d-mvvaopwf.jpg",
+   "followers": 397,
+   "postsCount": 38,
+   "bio": "",
+   "verified": false,
+   "addedAt": 1793384193912,
+   "paused": false,
+   "lastCheckAt": 1793386050968,
+   "lastOkAt": 1793386068147,
+   "lastError": null,
+   "nextCheckAt": null,
+   "latestPostAt": 1793367777000,
+   "strategy": "browser"
+  },
+  {
+   "id": "b44f84f8c3f0",
+   "platform": "instagram",
+   "username": "explosivemediaa",
+   "url": "https://www.instagram.com/explosivemediaa/",
+   "displayName": "Explosive Media 💣😎",
+   "avatar": "media/avatar-b44f84f8c3f0-mvvap522.jpg",
+   "followers": 100135,
+   "postsCount": 303,
+   "bio": "",
+   "verified": false,
+   "addedAt": 1793384193912,
+   "paused": false,
+   "lastCheckAt": 1793386070450,
+   "lastOkAt": 1793386087821,
+   "lastError": null,
+   "nextCheckAt": null,
+   "latestPostAt": 1793362837000,
+   "strategy": "browser"
+  },
+  {
+   "id": "f383a0e9f40d",
+   "platform": "instagram",
+   "username": "topmediakw",
+   "url": "https://www.instagram.com/topmediakw/",
+   "displayName": "Top | توب",
+   "avatar": "media/avatar-f383a0e9f40d-mvvapk78.jpg",
+   "followers": 55400,
+   "postsCount": 399,
+   "bio": "",
+   "verified": false,
+   "addedAt": 1793384193912,
+   "paused": false,
+   "lastCheckAt": 1793386089822,
+   "lastOkAt": 1793386106986,
+   "lastError": null,
+   "nextCheckAt": null,
+   "latestPostAt": 1793130053000,
    "strategy": "browser"
   }
  ],
@@ -92,11 +152,30 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 75,
+    "likes": 91,
     "comments": 8,
     "shares": null
    },
    "cover": "media/instagram-dfh783ensgz.jpg"
+  },
+  {
+   "id": "instagram:DfHtvHAtQbW",
+   "platform": "instagram",
+   "postId": "DfHtvHAtQbW",
+   "accountId": "1d514a49925d",
+   "url": "https://www.instagram.com/p/DfHtvHAtQbW/",
+   "embedUrl": "https://www.instagram.com/p/DfHtvHAtQbW/embed/",
+   "createdAt": 1793367777000,
+   "caption": "غزة أظهرت نقاط الضعف والأخلاق المتدنية لبعض الجهات. الدم طريق لا تعرف الكذب أو الخداع. نرى مشاهد من الشجاعة والعزيمة لن تُنسى. #غزة #الشجاعة #العدالة #الكفاح #الحق",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 12,
+    "comments": 2,
+    "shares": null
+   },
+   "cover": "media/instagram-dfhtvhatqbw.jpg"
   },
   {
    "id": "instagram:DfHtTwZt9Be",
@@ -111,7 +190,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 46,
+    "likes": 51,
     "comments": 3,
     "shares": null
    },
@@ -149,11 +228,30 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 20,
+    "likes": 22,
     "comments": 2,
     "shares": null
    },
    "cover": "media/instagram-dfhma2ptvci.jpg"
+  },
+  {
+   "id": "instagram:DfHjFkFoPf7",
+   "platform": "instagram",
+   "postId": "DfHjFkFoPf7",
+   "accountId": "b44f84f8c3f0",
+   "url": "https://www.instagram.com/p/DfHjFkFoPf7/",
+   "embedUrl": "https://www.instagram.com/p/DfHjFkFoPf7/embed/",
+   "createdAt": 1793362837000,
+   "caption": "Trump’s $5,000 Happy Ending 🍔💦\n\n Trump get the vote. give a burger. Got a facial.\nMar-a-Lago: where the money trickles up and the sauce trickles down.\nAn EGG MEN political satire inspired by Mediaite’s report on Trump’s $5,000 “dividend” promise and his Mar-a-Lago lunch joke.\n\n#EggMen #Trump #MAGA  #PoliticalSatire",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 159,
+    "comments": 8,
+    "shares": null
+   },
+   "cover": "media/instagram-dfhjfkfopf7.jpg"
   },
   {
    "id": "tiktok:7702434277270621441",
@@ -167,10 +265,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 74800,
-    "likes": 653,
-    "comments": 137,
-    "shares": 1275
+    "views": 79700,
+    "likes": 696,
+    "comments": 144,
+    "shares": 1347
    },
    "cover": "media/tiktok-7702434277270621441.jpg"
   },
@@ -206,11 +304,49 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 30,
+    "likes": 31,
     "comments": 1,
     "shares": null
    },
    "cover": "media/instagram-dfg77lcnl7h.jpg"
+  },
+  {
+   "id": "instagram:DfG5UGCInk_",
+   "platform": "instagram",
+   "postId": "DfG5UGCInk_",
+   "accountId": "1d514a49925d",
+   "url": "https://www.instagram.com/p/DfG5UGCInk_/",
+   "embedUrl": "https://www.instagram.com/p/DfG5UGCInk_/embed/",
+   "createdAt": 1793340300000,
+   "caption": "في سياق الأعمال، الرؤية من الأعلى تعطي وضوحًا وشفافية في المعاملات اليومية، حيث تستند القرارات إلى بيانات دقيقة وتحليل عميق للسوق. لكن، يجب أن نكون واعين لما يجري في التفاصيل، حيث قد تكمن التحديات والمعوقات التي قد تؤثر على النتائج النهائية. التحليل الدقيق والدراسة المستمرة قد تفتح لنا أفقًا أفضل للإدارة الفعالة. #ريادة_أعمال #استراتيجية #تحليل_سوق #إدارة_مخاطر",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 26,
+    "comments": 10,
+    "shares": null
+   },
+   "cover": "media/instagram-dfg5ugcink_.jpg"
+  },
+  {
+   "id": "instagram:DfGRl5Csfmu",
+   "platform": "instagram",
+   "postId": "DfGRl5Csfmu",
+   "accountId": "b44f84f8c3f0",
+   "url": "https://www.instagram.com/p/DfGRl5Csfmu/",
+   "embedUrl": "https://www.instagram.com/p/DfGRl5Csfmu/embed/",
+   "createdAt": 1793319779000,
+   "caption": "Five thousand dollars. Is that your price? 💰",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 700,
+    "comments": 27,
+    "shares": null
+   },
+   "cover": "media/instagram-dfgrl5csfmu.jpg"
   }
  ]
 }
