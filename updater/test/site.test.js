@@ -124,7 +124,8 @@ test('Telegram test run sends a confirmation and the latest post, and records th
   Object.assign(process.env, { TELEGRAM_TOKEN: '123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw', TELEGRAM_CHAT_ID: '42', RADAR_TELEGRAM_TEST: '1' });
   try {
     await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null, telegramApi: api });
-    assert.deepEqual(calls, ['sendMessage', 'sendPhoto']);
+    assert.deepEqual(calls.filter((c) => c.startsWith('send')), ['sendMessage', 'sendPhoto']);
+    assert.deepEqual(calls.slice(0, 2), ['getMe', 'getChat']);
     let feed = await readJson('feed.json');
     assert.equal(feed.capabilities.telegram, true);
     assert.ok(feed.capabilities.telegramStatus.lastSentAt);
@@ -134,6 +135,7 @@ test('Telegram test run sends a confirmation and the latest post, and records th
     await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null, telegramApi: api });
     feed = await readJson('feed.json');
     assert.match(feed.capabilities.telegramStatus.lastError, /chat not found/);
+    assert.match(feed.capabilities.telegramStatus.lastError, /Start/);
   } finally {
     for (const k of ['TELEGRAM_TOKEN', 'TELEGRAM_CHAT_ID', 'RADAR_TELEGRAM_TEST']) delete process.env[k];
     tg.close();
@@ -154,11 +156,11 @@ test('Telegram secrets pasted with extra text still work; errors never contain t
   Object.assign(process.env, { TELEGRAM_TOKEN: `‏Use this token to access the HTTP API:\n${token}\nKeep it secure `, TELEGRAM_CHAT_ID: ' Id: 42‎', RADAR_TELEGRAM_TEST: '1' });
   try {
     await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null, telegramApi: `http://127.0.0.1:${tg.address().port}` });
-    assert.equal(urls[0], `/bot${token}/sendMessage`);
+    assert.equal(urls.find((u) => u.endsWith('/sendMessage')), `/bot${token}/sendMessage`);
     // Unreachable Telegram: the recorded error must not leak the token.
     await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null, telegramApi: 'http://127.0.0.1:9' });
     const feed = await readJson('feed.json');
-    assert.match(feed.capabilities.telegramStatus.lastError, /network error/);
+    assert.match(feed.capabilities.telegramStatus.lastError, /تعذّر الوصول لتيليجرام/);
     assert.ok(!JSON.stringify(feed).includes('AAHdq'));
   } finally {
     for (const k of ['TELEGRAM_TOKEN', 'TELEGRAM_CHAT_ID', 'RADAR_TELEGRAM_TEST']) delete process.env[k];
@@ -189,7 +191,7 @@ test('Telegram token with a space or hidden mark inside is recovered', async () 
   Object.assign(process.env, { TELEGRAM_TOKEN: `1234567890:AAHdq TcvCH1vGWJx‏fSeofSAs0K5PALDsaw1`, TELEGRAM_CHAT_ID: '987654321', RADAR_TELEGRAM_TEST: '1' });
   try {
     await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null, telegramApi: `http://127.0.0.1:${tg.address().port}` });
-    assert.equal(urls[0], `/bot${token}/sendMessage`);
+    assert.equal(urls.find((u) => u.endsWith('/sendMessage')), `/bot${token}/sendMessage`);
   } finally {
     for (const k of ['TELEGRAM_TOKEN', 'TELEGRAM_CHAT_ID', 'RADAR_TELEGRAM_TEST']) delete process.env[k];
     tg.close();

@@ -78,6 +78,13 @@ export function createTelegramNotifier({ getSettings, mediaDir, apiBase = API, l
         await call('sendMessage', { chat_id: cfg.chatId, text: `➕ و${more} منشورات أخرى جديدة من @${account.username} — افتح رادار لمشاهدتها.` }, cfg.token);
       }
     },
+    /** Check the token and that the bot can reach the chat, without sending anything. */
+    async verify() {
+      const cfg = config();
+      if (!cfg) throw new Error('missing token or chat id');
+      await call('getMe', {}, cfg.token);
+      await call('getChat', { chat_id: cfg.chatId }, cfg.token);
+    },
     async test() {
       const cfg = config();
       if (!cfg) throw new Error('أدخل رمز البوت ومعرّف المحادثة أولاً');

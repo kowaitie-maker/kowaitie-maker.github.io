@@ -35,6 +35,16 @@ async function writeJson(file, data) {
   await fs.rename(`${file}.tmp`, file);
 }
 
+/** Turn Telegram's API errors into advice. */
+export function friendlyTelegramError(message) {
+  const m = String(message || '');
+  if (/unauthorized/i.test(m)) return 'رمز البوت غير صحيح (Unauthorized). انسخه من جديد من BotFather وضعه في TELEGRAM_TOKEN';
+  if (/chat not found/i.test(m)) return 'البوت لا يجد محادثتك (chat not found). افتح بوتك واضغط Start، وتأكد أن TELEGRAM_CHAT_ID هو رقم Id من @userinfobot';
+  if (/blocked by the user/i.test(m)) return 'البوت محظور من حسابك. افتحه في تيليجرام واضغط Start أو Unblock';
+  if (/network error/i.test(m)) return `تعذّر الوصول لتيليجرام في هذه المرة (${m.replace(/^.*\(|\)$/g, '')})`;
+  return m.slice(0, 200);
+}
+
 /** Explain what is wrong with the Telegram secrets without revealing their values. */
 export function describeTelegramProblem(rawToken, rawChat, token, chatId) {
   const problems = [];
@@ -130,15 +140,13 @@ export async function update({
   if (telegramSecretsSet && !telegramOn) {
     Object.assign(db.telegramStatus, { lastError: describeTelegramProblem(rawToken, rawChat, token, chatId), lastErrorAt: Date.now() });
   }
+  const fail = (err) => {
+    log(`telegram: ${err.message}`);
+    Object.assign(db.telegramStatus, { lastError: friendlyTelegramError(err.message), lastErrorAt: Date.now() });
+  };
   // Remember whether the last send worked, so the page can show it.
   const track = (job) => {
-    const done = job.then(
-      () => Object.assign(db.telegramStatus, { lastSentAt: Date.now(), lastError: null, lastErrorAt: null }),
-      (err) => {
-        log(`telegram: ${err.message}`);
-        Object.assign(db.telegramStatus, { lastError: String(err.message).slice(0, 200), lastErrorAt: Date.now() });
-      },
-    );
+    const done = job.then(() => Object.assign(db.telegramStatus, { lastSentAt: Date.now(), lastError: null, lastErrorAt: null }), fail);
     pending.push(done);
     return job;
   };
@@ -162,6 +170,14 @@ export async function update({
     log,
     spacingMs,
   });
+
+  // Each run confirms the bot token and chat still work (no message is sent).
+  if (telegramOn) {
+    await telegram.verify().then(
+      () => Object.assign(db.telegramStatus, { verifiedAt: Date.now(), lastError: null, lastErrorAt: null }),
+      fail,
+    );
+  }
 
   const result = await radar.checkAll({ force: true });
 

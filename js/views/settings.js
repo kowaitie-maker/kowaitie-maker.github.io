@@ -34,11 +34,13 @@ function telegramRow(c) {
     return row('الحالة', 'ليصلك كل منشور جديد كإشعار على جوالك حتى والصفحة مغلقة. بعد إضافة السرّين تتغيّر الحالة مع التحديث التالي (خلال 30 دقيقة).', pill(false, '', 'غير مفعّل'));
   }
   if (st.lastError) {
-    return row('الحالة', h('span', null, `آخر محاولة إرسال فشلت ${ago(st.lastErrorAt)}: `, h('bdi', { dir: 'auto' }, st.lastError), '. تأكد من الرمز ورقمك، وأنك ضغطت Start في بوتك.'), h('span', { class: 'err-pill' }, 'خطأ'));
+    return row('الحالة', h('span', null, `آخر فحص ${ago(st.lastErrorAt)}: `, h('bdi', { dir: 'auto' }, st.lastError), '. بعد التصحيح تتغيّر الحالة مع التحديث التالي.'), h('span', { class: 'err-pill' }, 'يحتاج تصحيح'));
   }
   const hint = st.lastSentAt
     ? `آخر رسالة أُرسلت ${ago(st.lastSentAt)}. يصلك كل منشور جديد مع رابط مشاهدته، حتى والصفحة مغلقة.`
-    : 'سيرسل لك البوت كل منشور جديد مع رابط مشاهدته، حتى والصفحة مغلقة.';
+    : st.verifiedAt
+      ? 'البوت متصل بمحادثتك. ستصلك رسالة مع كل منشور جديد، حتى والصفحة مغلقة.'
+      : 'سيرسل لك البوت كل منشور جديد مع رابط مشاهدته، حتى والصفحة مغلقة.';
   return row('الحالة', hint, pill(true, 'مفعّل', ''));
 }
 const pill = (ok, onText, offText) => h('span', { class: ok ? 'ok-pill' : 'off-pill' }, ok ? icon('check') : null, ok ? onText : offText);
