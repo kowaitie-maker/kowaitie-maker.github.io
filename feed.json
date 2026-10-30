@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": 1793369011415,
+ "generatedAt": 1793369161626,
  "since": 1793307600000,
  "intervalMin": 30,
  "repo": "kowaitie-maker/kowaitie-maker.github.io",
@@ -11,8 +11,8 @@
   "telegram": true,
   "telegramStatus": {
    "lastSentAt": null,
-   "lastError": "fetch failed",
-   "lastErrorAt": 1793369011329
+   "lastError": "TELEGRAM_TOKEN أو TELEGRAM_CHAT_ID غير موجود في أسرار المستودع",
+   "lastErrorAt": 1793369161432
   }
  },
  "accounts": [
@@ -29,8 +29,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793368981931,
-   "lastOkAt": 1793368982287,
+   "lastCheckAt": 1793369132560,
+   "lastOkAt": 1793369132919,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362740000,
@@ -49,8 +49,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793368985593,
-   "lastOkAt": 1793369010684,
+   "lastCheckAt": 1793369135326,
+   "lastOkAt": 1793369161431,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793307100000,
@@ -70,10 +70,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 4792,
-    "likes": 49,
-    "comments": 7,
-    "shares": 85
+    "views": 5639,
+    "likes": 53,
+    "comments": 9,
+    "shares": 105
    },
    "cover": "media/tiktok-7702434277270621441.jpg"
   }
