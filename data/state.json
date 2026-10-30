@@ -19,8 +19,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793389148893,
-   "lastOkAt": 1793389149350,
+   "lastCheckAt": 1793389355100,
+   "lastOkAt": 1793389355522,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
@@ -47,14 +47,14 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793389151163,
-   "lastOkAt": 1793389169227,
+   "lastCheckAt": 1793389359401,
+   "lastOkAt": 1793389383911,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793307100000,
    "strategy": "browser",
-   "profileAt": 1793389169227,
+   "profileAt": 1793389383911,
    "meta": {
     "userId": "33020898390"
    },
@@ -63,7 +63,7 @@
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (507534 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (507650 bytes, title \"Instagram\"))",
     "feed: not_found (HTTP 404)"
    ],
    "stories": []
@@ -82,14 +82,14 @@
    "verified": false,
    "addedAt": 1793383987149,
    "paused": false,
-   "lastCheckAt": 1793389172091,
-   "lastOkAt": 1793389188946,
+   "lastCheckAt": 1793389386629,
+   "lastOkAt": 1793389403520,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793375323000,
    "strategy": "browser",
-   "profileAt": 1793389188946,
+   "profileAt": 1793389403520,
    "meta": {
     "userId": "80168664853"
    },
@@ -98,10 +98,10 @@
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (508018 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (507637 bytes, title \"Instagram\"))",
     "feed: not_found (HTTP 404)"
    ],
-   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again. [browser logged in: yes, csrf: yes]",
+   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again.; page: no story data on the stories page (3 answers: xdt_api__v1__feed__reels_tray,xdt_viewer,xdt_api__v1__feed__timeline__connection,xdt_api__v1__web__accounts__get_encrypted_credentials, asks to confirm vi",
    "stories": []
   },
   {
@@ -118,14 +118,14 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793389194256,
-   "lastOkAt": 1793389211205,
+   "lastCheckAt": 1793389424198,
+   "lastOkAt": 1793389441532,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793367777000,
    "strategy": "browser",
-   "profileAt": 1793389211205,
+   "profileAt": 1793389441532,
    "meta": {
     "userId": "29741346551"
    },
@@ -134,10 +134,10 @@
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (507521 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (507635 bytes, title \"Instagram\"))",
     "feed: not_found (HTTP 404)"
    ],
-   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again. [browser logged in: yes, csrf: yes]",
+   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again.; page: no story data on the stories page (3 answers: xdt_api__v1__feed__reels_tray,xdt_viewer,xdt_api__v1__feed__timeline__connection,xdt_api__v1__web__accounts__get_encrypted_credentials, asks to confirm vi",
    "stories": []
   },
   {
@@ -154,14 +154,14 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793389214694,
-   "lastOkAt": 1793389231740,
+   "lastCheckAt": 1793389459573,
+   "lastOkAt": 1793389476908,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793362837000,
    "strategy": "browser",
-   "profileAt": 1793389231740,
+   "profileAt": 1793389476908,
    "meta": {
     "userId": "47610700383"
    },
@@ -170,10 +170,10 @@
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (507524 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (507646 bytes, title \"Instagram\"))",
     "feed: not_found (HTTP 404)"
    ],
-   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again. [browser logged in: yes, csrf: yes]",
+   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again.; page: no story data on the stories page (3 answers: xdt_api__v1__feed__reels_tray,xdt_viewer,xdt_api__v1__feed__timeline__connection,xdt_api__v1__web__accounts__get_encrypted_credentials, asks to confirm vi",
    "stories": []
   },
   {
@@ -190,14 +190,14 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793389234399,
-   "lastOkAt": 1793389251280,
+   "lastCheckAt": 1793389494441,
+   "lastOkAt": 1793389511506,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793388657000,
    "strategy": "browser",
-   "profileAt": 1793389251280,
+   "profileAt": 1793389511506,
    "meta": {
     "userId": "77792093830"
    },
@@ -206,11 +206,11 @@
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (507528 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (507639 bytes, title \"Instagram\"))",
     "feed: not_found (HTTP 404)"
    ],
    "stories": [],
-   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again. [browser logged in: yes, csrf: yes]"
+   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again.; page: no story data on the stories page (3 answers: xdt_api__v1__feed__reels_tray,xdt_viewer,xdt_api__v1__feed__timeline__connection,xdt_api__v1__web__accounts__get_encrypted_credentials, asks to confirm vi"
   }
  ],
  "posts": [
@@ -227,8 +227,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 14,
-    "comments": 2,
+    "likes": 21,
+    "comments": 5,
     "shares": null
    },
    "cover": "instagram-dfivn1wztxc.jpg",
@@ -359,7 +359,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 179,
+    "likes": 181,
     "comments": 8,
     "shares": null
    },
@@ -380,10 +380,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 84800,
-    "likes": 740,
+    "views": 85200,
+    "likes": 743,
     "comments": 150,
-    "shares": 1415
+    "shares": 1417
    },
    "cover": "tiktok-7702434277270621441.jpg",
    "coverRemote": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oYlPQvCVDAUgf3jYfI6leEmAJdCGyLbURoDFlI~tplv-tiktokx-dmt-logom:tos-alisg-i-0068/oMAA9Afi8wcy1X5KPIBWI8AnAgE9iDCABzDkik.image?dr=9634&x-expires=1793534400&x-signature=abj1vGAlord7Ef%2Bextfx4fyt5DQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
@@ -480,14 +480,14 @@
   }
  ],
  "run": {
-  "lastRunAt": 1793389148893,
-  "lastFinishedAt": 1793389251623,
+  "lastRunAt": 1793389355100,
+  "lastFinishedAt": 1793389527114,
   "lastNewCount": 0
  },
  "telegramStatus": {
   "lastSentAt": 1793388778699,
   "lastError": null,
   "lastErrorAt": null,
-  "verifiedAt": 1793389148893
+  "verifiedAt": 1793389355100
  }
 }
