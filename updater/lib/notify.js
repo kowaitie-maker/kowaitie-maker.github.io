@@ -78,6 +78,20 @@ export function createTelegramNotifier({ getSettings, mediaDir, apiBase = API, l
         await call('sendMessage', { chat_id: cfg.chatId, text: `➕ و${more} منشورات أخرى جديدة من @${account.username} — افتح رادار لمشاهدتها.` }, cfg.token);
       }
     },
+    /** A followed account just put up a story (Instagram shows its content only in the app). */
+    async notifyStory(account) {
+      const cfg = config();
+      if (!cfg) return;
+      const who = account.displayName || `@${account.username}`;
+      const url = `https://www.instagram.com/stories/${account.username}/`;
+      await call('sendMessage', {
+        chat_id: cfg.chatId,
+        text: `📸 <b>${escapeHtml(who)}</b> نشر ستوري جديداً على إنستغرام`,
+        parse_mode: 'HTML',
+        reply_markup: { inline_keyboard: [[{ text: 'مشاهدة الستوري ▶️', url }]] },
+      }, cfg.token);
+    },
+
     /** Check the token and that the bot can reach the chat, without sending anything. */
     async verify() {
       const cfg = config();

@@ -19,7 +19,10 @@ function setup({ fetchers, since = Date.UTC(2026, 9, 30), now = Date.UTC(2026, 9
     fetchers,
     media: { cache: async (url, key) => (url ? `${key}.jpg` : null), remove: async (f) => removed.push(f) },
     events: { emit: (type, d) => events.push([type, d]) },
-    notifier: { notify: async (acc, posts) => notified.push([acc.username, posts.length]) },
+    notifier: {
+      notify: async (acc, posts) => notified.push([acc.username, posts.length]),
+      notifyStory: async (acc) => notified.push([acc.username, 'story']),
+    },
     spacingMs: null,
     now: () => clock,
   });
@@ -134,4 +137,29 @@ test('adding accounts validates input and rejects duplicates', () => {
   const r = radar.addAccount('https://www.instagram.com/new.one/');
   assert.equal(r.account.username, 'new.one');
   assert.equal(radar.state().accounts.length, 3);
+});
+
+test('stories: the ring follows Instagram and each new story alerts once', async () => {
+  let story = true;
+  const { radar, notified, tick } = setup({
+    fetchers: {
+      tiktok: async () => ({ posts: [], strategy: 'api' }),
+      instagram: async () => ({ profile: { displayName: 'B', hasStory: story }, posts: [], strategy: 'browser' }),
+    },
+  });
+  await radar.checkAll();
+  let b = radar.state().accounts.find((a) => a.platform === 'instagram');
+  assert.equal(b.hasStory, true);
+  assert.equal(b.storySince, Date.UTC(2026, 9, 30, 12));
+  tick(1800_000);
+  await radar.checkAll({ force: true });
+  assert.equal(notified.filter(([, k]) => k === 'story').length, 1, 'same story: no second alert');
+  assert.equal(radar.state().accounts.find((a) => a.platform === 'instagram').storySince, Date.UTC(2026, 9, 30, 12));
+  story = false;
+  await radar.checkAll({ force: true });
+  b = radar.state().accounts.find((a) => a.platform === 'instagram');
+  assert.deepEqual([b.hasStory, b.storySince], [false, null]);
+  story = true;
+  await radar.checkAll({ force: true });
+  assert.equal(notified.filter(([, k]) => k === 'story').length, 2, 'a later story alerts again');
 });

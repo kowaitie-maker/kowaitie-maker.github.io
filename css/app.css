@@ -559,3 +559,19 @@ select.input { width: auto; min-width: 120px; padding-inline-end: 8px; }
 .link-btn .ico { width: 16px; height: 16px; }
 .value-line { font-weight: 600; }
 .steps code, .row-hint code { direction: ltr; unicode-bidi: isolate; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; background: var(--surface-2); padding: 1px 6px; border-radius: 6px; }
+
+/* ——— Stories ——— */
+.story.has-story .ring { background: var(--ig); padding: 3px; }
+.story-pill {
+  position: absolute; bottom: -7px; left: 50%; transform: translateX(-50%);
+  padding: 1px 7px; border-radius: 999px; border: 2px solid var(--bg);
+  background: linear-gradient(90deg, #d6249f, #fd5949); color: #fff;
+  font-size: 10px; font-weight: 700; line-height: 1.5; white-space: nowrap;
+}
+.story.has-story .story-label { color: var(--text); font-weight: 600; }
+.ring.big.story-ring { background: var(--ig); }
+.btn.story-btn { background: var(--ig); color: #fff; flex-basis: 100%; }
+.btn.story-btn:hover:not(:disabled) { background: var(--ig); filter: brightness(1.06); }
+.status-row.story-row { color: #d6249f; font-weight: 600; }
+.status-row.story-row .ico { color: #d6249f; }
+.story.has-story .story-pf { display: none; }

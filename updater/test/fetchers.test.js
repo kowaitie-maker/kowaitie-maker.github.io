@@ -171,7 +171,7 @@ test('Instagram: rendered profile embed (contextJSON with graphql_media)', async
   const context = {
     context: {
       username: 'someone', full_name: 'Some One', is_verified: false, profile_pic_url: 'https://scontent.cdninstagram.com/p.jpg',
-      followers_count: 2399963, posts_count: 820, owner_id: '33020898390',
+      followers_count: 2399963, posts_count: 820, owner_id: '33020898390', has_public_story: true,
       graphql_media: [{ shortcode_media: {
         __typename: 'GraphVideo', id: '1', shortcode: 'DfF6AUUtWFk', is_video: true, display_url: 'https://scontent.cdninstagram.com/1.jpg',
         edge_media_to_caption: { edges: [{ node: { text: 'ليه ابويا بيظهر معايا؟' } }] }, edge_media_to_comment: { count: 426 },
@@ -185,4 +185,5 @@ test('Instagram: rendered profile embed (contextJSON with graphql_media)', async
   assert.deepEqual([r.posts[0].postId, r.posts[0].kind, r.posts[0].createdAt, r.posts[0].stats.likes], ['DfF6AUUtWFk', 'video', 1793307100000, 14244]);
   assert.equal(r.profile.followers, 2399963);
   assert.equal(r.profile.displayName, 'Some One');
+  assert.equal(r.profile.hasStory, true);
 });

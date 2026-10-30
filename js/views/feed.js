@@ -9,6 +9,8 @@ const FILTERS = [
   ['instagram', 'إنستغرام'],
 ];
 
+export const storyUrl = (a) => `https://www.instagram.com/stories/${encodeURIComponent(a.username)}/`;
+
 export function statNodes(stats = {}) {
   const out = [];
   const add = (name, value, label) => {
@@ -78,10 +80,22 @@ export function createFeedView(app) {
 
   function fillStory(s, { a, unseen }, state) {
     const checking = state.run.currentAccountId === a.id;
-    s.className = `story${unseen ? ' unseen' : ''}${checking ? ' checking' : ''}${a.lastError ? ' has-error' : ''}`;
-    s.setAttribute('aria-label', `${a.displayName || a.username}${unseen ? ` — ${unseen} جديد` : ''}`);
+    const story = !!a.hasStory && a.platform === 'instagram';
+    s.className = `story${unseen ? ' unseen' : ''}${story ? ' has-story' : ''}${checking ? ' checking' : ''}${a.lastError ? ' has-error' : ''}`;
+    // Like the apps: tapping a story ring opens the story (in the Instagram app on phones).
+    if (story) {
+      s.setAttribute('href', storyUrl(a));
+      s.setAttribute('target', '_blank');
+      s.setAttribute('rel', 'noopener noreferrer');
+    } else {
+      s.setAttribute('href', `#/a/${a.id}`);
+      s.removeAttribute('target');
+      s.removeAttribute('rel');
+    }
+    s.setAttribute('aria-label', `${a.displayName || a.username}${story ? ' — لديه ستوري' : ''}${unseen ? ` — ${unseen} جديد` : ''}`);
     s.replaceChildren(
-      h('span', { class: 'ring' }, avatar(a, 60), platformBadge(a.platform, 'story-pf'), a.lastError ? h('span', { class: 'err-dot' }) : null),
+      h('span', { class: 'ring' }, avatar(a, 60), platformBadge(a.platform, 'story-pf'), a.lastError ? h('span', { class: 'err-dot' }) : null,
+        story ? h('span', { class: 'story-pill' }, 'ستوري') : null),
       h('span', { class: 'story-label', dir: 'auto' }, a.displayName || a.username),
     );
   }

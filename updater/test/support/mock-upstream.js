@@ -67,6 +67,7 @@ export function createMockUpstream(config) {
       biography: acc.bio || '',
       is_private: !!acc.private,
       is_verified: !!acc.verified,
+      has_public_story: !!acc.hasStory,
       profile_pic_url: img(`av-${acc.username}`),
       profile_pic_url_hd: img(`av-${acc.username}`),
       edge_followed_by: { count: acc.followers },
@@ -245,6 +246,7 @@ export function demoConfig(now = Date.now()) {
       {
         username: 'demo.travel',
         fullName: 'رحلات نورة',
+        hasStory: true,
         userId: '4100000001',
         followers: 96300,
         bio: 'أجمل الأماكن حول العالم ✈️ (حساب تجريبي)',

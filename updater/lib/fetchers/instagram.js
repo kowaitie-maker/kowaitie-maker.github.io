@@ -87,6 +87,7 @@ function profileFromUser(user) {
     postsCount: num(user.edge_owner_to_timeline_media?.count) ?? num(user.media_count),
     bio: str(user.biography) || '',
     verified: !!user.is_verified,
+    hasStory: typeof user.has_public_story === 'boolean' ? user.has_public_story : null,
     meta: { userId: str(user.id) || (num(user.pk) ? String(user.pk) : str(user.pk)) },
   };
 }
@@ -186,6 +187,8 @@ export function postsFromAnyJson(json) {
       postsCount: num(embedCtx.posts_count),
       bio: '',
       verified: !!(embedCtx.is_verified || embedCtx.verified),
+      // Instagram tells logged-out visitors whether a story is up (not its content).
+      hasStory: typeof embedCtx.has_public_story === 'boolean' ? embedCtx.has_public_story : null,
       meta: { userId: str(embedCtx.owner_id) },
     };
   }

@@ -150,7 +150,10 @@ export async function update({
     pending.push(done);
     return job;
   };
-  const notifier = { notify: (acc, posts) => track(telegram.notify(acc, posts)) };
+  const notifier = {
+    notify: (acc, posts) => track(telegram.notify(acc, posts)),
+    notifyStory: (acc) => track(telegram.notifyStory(acc)),
+  };
 
   const [browser, ytdlp] = await Promise.all([
     enableBrowser ? createBrowserFetcher({ log }) : null,

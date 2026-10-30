@@ -73,6 +73,10 @@ export function createAccountsView(app) {
           ? h('div', { class: 'status-row muted' }, icon('clock'), h('span', null, a.nextCheckAt ? `المحاولة التالية ${ago(a.nextCheckAt)}` : 'سنعيد المحاولة في الفحص القادم'))
           : null,
         hint ? h('div', { class: 'status-hint' }, hint) : null,
+        a.hasStory && a.platform === 'instagram'
+          ? h('a', { class: 'status-row story-row', href: `https://www.instagram.com/stories/${encodeURIComponent(a.username)}/`, target: '_blank', rel: 'noopener noreferrer' },
+            icon('play'), h('span', null, `لديه ستوري الآن${a.storySince ? ` (${ago(a.storySince)})` : ''} — اضغط للمشاهدة`))
+          : null,
         h('div', { class: 'status-row muted' }, icon('bell'),
           h('span', null, `${newPostsText(newCount)} منذ بداية المتابعة`)),
         h('div', { class: 'status-row muted' }, icon('clock'),

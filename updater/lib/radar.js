@@ -101,6 +101,12 @@ export function createRadar({
     if (profile.postsCount != null) acc.postsCount = profile.postsCount;
     if (profile.bio) acc.bio = profile.bio;
     if (profile.verified) acc.verified = true;
+    if (typeof profile.hasStory === 'boolean') {
+      const started = profile.hasStory && !acc.hasStory;
+      acc.hasStory = profile.hasStory;
+      acc.storySince = profile.hasStory ? (started ? now() : acc.storySince || now()) : null;
+      if (started) notifier?.notifyStory?.(acc)?.catch?.((err) => log(`story notify failed: ${err.message}`));
+    }
     const meta = Object.fromEntries(Object.entries(profile.meta || {}).filter(([, v]) => v));
     acc.meta = { ...acc.meta, ...meta };
     if (refreshed) acc.profileAt = now();
@@ -260,6 +266,8 @@ export function createRadar({
       nextCheckAt: a.nextCheckAt || null,
       latestPostAt: a.latestPostAt,
       strategy: a.strategy,
+      hasStory: !!a.hasStory,
+      storySince: a.hasStory ? a.storySince || null : null,
     };
   }
 

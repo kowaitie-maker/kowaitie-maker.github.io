@@ -97,6 +97,13 @@ try {
   });
   await shot(page, 'feed');
 
+  await check('an account with a story gets a ring that opens the story', async () => {
+    const ring = page.locator('.story.has-story');
+    assert.equal(await ring.count(), 1);
+    assert.equal(await ring.getAttribute('href'), 'https://www.instagram.com/stories/demo.travel/');
+    assert.match(await ring.textContent(), /ستوري/);
+  });
+
   await check('viewer plays the official embed and marks the post seen on this device', async () => {
     await page.locator('.card').first().locator('.card-media').click();
     await page.waitForSelector('.viewer iframe');
