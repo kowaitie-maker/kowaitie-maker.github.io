@@ -19,8 +19,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793358071733,
-   "lastOkAt": 1793358072524,
+   "lastCheckAt": 1793358240748,
+   "lastOkAt": 1793358241191,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
@@ -46,16 +46,16 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793358076415,
+   "lastCheckAt": 1793358244385,
    "lastOkAt": null,
    "lastError": {
     "kind": "rate_limited",
     "message": "طلبات كثيرة على المنصة — سنعيد المحاولة تلقائياً",
-    "detail": "rate_limited: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [browser] network: browser: page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.instagram.com/mohamed.ouf.xx/",
-    "at": 1793358077904
+    "detail": "rate_limited: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [embed] blocked: no posts in embed page (512453 bytes, title \"Instagram\") | [browser] blocked: browser saw no posts (login wall?)",
+    "at": 1793358268341
    },
-   "errorCount": 1,
-   "nextCheckAt": 1793359907425,
+   "errorCount": 2,
+   "nextCheckAt": 1793362150085,
    "latestPostAt": null,
    "strategy": null,
    "profileAt": null,
@@ -64,8 +64,8 @@
  ],
  "posts": [],
  "run": {
-  "lastRunAt": 1793358071733,
-  "lastFinishedAt": 1793358077906,
+  "lastRunAt": 1793358240748,
+  "lastFinishedAt": 1793358268341,
   "lastNewCount": 0
  }
 }
