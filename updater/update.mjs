@@ -10,7 +10,7 @@ import { createRadar, newAccount, seedData } from './lib/radar.js';
 import { createMediaCache, MEDIA_FILE_RE } from './lib/media.js';
 import { createTelegramNotifier } from './lib/notify.js';
 import { fetchTikTok } from './lib/fetchers/tiktok.js';
-import { fetchInstagram } from './lib/fetchers/instagram.js';
+import { fetchInstagram, fetchStories } from './lib/fetchers/instagram.js';
 import { createBrowserFetcher } from './lib/fetchers/browser.js';
 import { createYtdlp } from './lib/fetchers/ytdlp.js';
 import { PLATFORMS } from './lib/accounts.js';
@@ -90,6 +90,7 @@ export async function update({
   enableYtdlp = env.RADAR_NO_YTDLP !== '1',
   telegramApi,
   spacingMs = [1500, 4000],
+  storiesFetcher,
 } = {}) {
   const config = readConfig(await readJson(path.join(root, 'accounts.json')));
   const db = (await readJson(path.join(root, 'data', 'state.json'), null)) || seedData({ since: config.since, accounts: [] });
@@ -170,6 +171,7 @@ export async function update({
     origins,
     browser,
     ytdlp,
+    fetchStories: storiesFetcher === undefined ? fetchStories : storiesFetcher,
     log,
     spacingMs,
   });
@@ -208,7 +210,12 @@ export async function update({
     intervalMin: config.intervalMin,
     repo: env.GITHUB_REPOSITORY || null,
     capabilities: { ...state.capabilities, instagramLogin: !!db.settings.igSessionId, telegram: telegramOn || telegramSecretsSet, telegramStatus: db.telegramStatus },
-    accounts: state.accounts.map((a) => ({ ...a, avatar: rel(a.avatar), nextCheckAt: null })),
+    accounts: state.accounts.map((a) => ({
+      ...a,
+      avatar: rel(a.avatar),
+      nextCheckAt: null,
+      stories: a.stories.map((s) => ({ ...s, image: rel(s.image), video: rel(s.video) })),
+    })),
     posts: state.posts.map(({ seen, ...p }) => ({ ...p, cover: rel(p.cover) })),
   };
   await writeJson(path.join(root, 'feed.json'), feed);
@@ -217,7 +224,11 @@ export async function update({
   await writeJson(path.join(root, 'data', 'state.json'), { ...db, settings: { since: config.since, intervalMin: config.intervalMin } });
 
   // Drop media nothing refers to any more.
-  const used = new Set([...db.accounts.map((a) => a.avatar), ...db.posts.map((p) => p.cover)].filter(Boolean));
+  const used = new Set([
+    ...db.accounts.map((a) => a.avatar),
+    ...db.accounts.flatMap((a) => (a.stories || []).flatMap((s) => [s.image, s.video])),
+    ...db.posts.map((p) => p.cover),
+  ].filter(Boolean));
   for (const f of await fs.readdir(mediaDir).catch(() => [])) {
     if ((MEDIA_FILE_RE.test(f) && !used.has(f)) || f.endsWith('.part')) await fs.unlink(path.join(mediaDir, f)).catch(() => {});
   }

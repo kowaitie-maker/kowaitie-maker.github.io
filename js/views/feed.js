@@ -1,4 +1,5 @@
 import { fill, h, icon, richText, syncList } from '../dom.js';
+import { hasUnseenStory } from './stories.js';
 import { avatar, emptyState, handle, nameLine, platformBadge, spinner } from '../components.js';
 import { PLATFORM_NAMES, accountsText, ago, compact, dayKey, dayLabel, duration, fullDate, kindWord, longDate, newPostsText } from '../format.js';
 
@@ -59,8 +60,9 @@ export function createFeedView(app) {
   function renderStories(state) {
     const unseenBy = new Map();
     for (const p of state.posts) if (!p.seen) unseenBy.set(p.accountId, (unseenBy.get(p.accountId) || 0) + 1);
-    const accounts = [...state.accounts].sort((a, b) =>
-      (unseenBy.get(b.id) ? 1 : 0) - (unseenBy.get(a.id) ? 1 : 0) || (b.latestPostAt || 0) - (a.latestPostAt || 0));
+    // Like the apps: unwatched stories first, then accounts with new posts.
+    const score = (a) => (hasUnseenStory(a) ? 4 : 0) + (a.hasStory ? 2 : 0) + (unseenBy.get(a.id) ? 1 : 0);
+    const accounts = [...state.accounts].sort((a, b) => score(b) - score(a) || (b.latestPostAt || 0) - (a.latestPostAt || 0));
     const items = [{ type: 'add' }, ...accounts.map((a) => ({ type: 'acc', a, unseen: unseenBy.get(a.id) || 0 }))];
     syncList(stories, items, {
       key: (i) => (i.type === 'add' ? 'add' : i.a.id),
@@ -71,6 +73,13 @@ export function createFeedView(app) {
             h('span', { class: 'story-label' }, 'إضافة'));
         }
         const s = h('a', { class: 'story', role: 'listitem', href: `#/a/${i.a.id}` });
+        // Saved stories play here; otherwise the link opens the story in Instagram.
+        s.addEventListener('click', (e) => {
+          if (s._acc?.stories?.length) {
+            e.preventDefault();
+            app.openStories(s._acc.id);
+          }
+        });
         fillStory(s, i, state);
         return s;
       },
@@ -80,8 +89,11 @@ export function createFeedView(app) {
 
   function fillStory(s, { a, unseen }, state) {
     const checking = state.run.currentAccountId === a.id;
-    const story = !!a.hasStory && a.platform === 'instagram';
-    s.className = `story${unseen ? ' unseen' : ''}${story ? ' has-story' : ''}${checking ? ' checking' : ''}${a.lastError ? ' has-error' : ''}`;
+    s._acc = a;
+    const saved = a.stories?.length > 0;
+    const story = (saved || !!a.hasStory) && a.platform === 'instagram';
+    const watched = saved && !hasUnseenStory(a);
+    s.className = `story${unseen ? ' unseen' : ''}${story ? ' has-story' : ''}${watched ? ' story-seen' : ''}${checking ? ' checking' : ''}${a.lastError ? ' has-error' : ''}`;
     // Like the apps: tapping a story ring opens the story (in the Instagram app on phones).
     if (story) {
       s.setAttribute('href', storyUrl(a));

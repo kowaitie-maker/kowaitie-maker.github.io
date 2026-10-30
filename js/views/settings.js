@@ -28,6 +28,20 @@ function ghLink(href, label) {
 
 const code = (t) => h('code', null, t);
 
+function storiesRow(state) {
+  const ig = state.accounts.filter((a) => a.platform === 'instagram');
+  const failed = ig.find((a) => a.storyError);
+  if (failed) {
+    const login = /login|401|redirect/i.test(failed.storyError);
+    return row('الستوري', login
+      ? 'إنستغرام رفض مفتاح الدخول (ربما انتهت صلاحيته أو سُجّل الخروج). انسخ sessionid جديداً وضعه مكان IG_SESSIONID.'
+      : h('span', null, 'تعذّر جلب الستوري في آخر تحديث: ', h('bdi', { dir: 'ltr' }, failed.storyError.slice(0, 120))), h('span', { class: 'err-pill' }, 'يحتاج تصحيح'));
+  }
+  const n = ig.reduce((sum, a) => sum + (a.stories?.length || 0), 0);
+  const who = ig.filter((a) => a.stories?.length).length;
+  return row('الستوري', n ? `${n} ستوري محفوظ الآن من ${who === 1 ? 'حساب واحد' : who === 2 ? 'حسابين' : `${who} حسابات`}، تُشاهَد داخل الصفحة.` : 'يعمل. لا يوجد ستوري حالياً لدى حساباتك.', pill(true, 'يعمل', ''));
+}
+
 function telegramRow(c) {
   const st = c.telegramStatus || {};
   if (!c.telegram) {
@@ -98,7 +112,8 @@ export function createSettingsView(app) {
           ghLink(links.newSecret(), 'إضافة سرّ في GitHub'))),
 
       group('إنستغرام (اختياري)',
-        row('مفتاح الدخول', c.instagramLogin ? 'مضاف — يُستخدم لجلب إنستغرام بثبات أكبر.' : 'إنستغرام يقيّد الزوار غير المسجّلين. إن ظهرت أخطاء متكررة لحساب إنستغرام أضف هذا المفتاح.', pill(c.instagramLogin, 'مضاف', 'غير مضاف')),
+        row('مفتاح الدخول', c.instagramLogin ? 'مضاف — يُستخدم لعرض الستوري داخل الصفحة ولجلب إنستغرام بثبات أكبر.' : 'يلزم لعرض الستوري داخل الصفحة. إنستغرام لا يعرض الستوري إلا لمن سجّل دخوله.', pill(c.instagramLogin, 'مضاف', 'غير مضاف')),
+        c.instagramLogin ? storiesRow(state) : null,
         c.instagramLogin ? null : h('div', { class: 'row row-col' },
           h('ol', { class: 'steps' },
             h('li', null, 'سجّل دخولك إلى instagram.com من متصفح الكمبيوتر (يُفضّل حساب ثانوي).'),

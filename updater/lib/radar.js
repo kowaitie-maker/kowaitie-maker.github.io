@@ -75,6 +75,7 @@ export function createRadar({
   origins,
   browser = null,
   ytdlp = null,
+  fetchStories = null,
   log = () => {},
   now = () => Date.now(),
   spacingMs = [1500, 4000],
@@ -119,6 +120,61 @@ export function createRadar({
         acc.avatar = file;
         acc.avatarAt = now();
       }
+    }
+  }
+
+  /** Keep downloaded copies of the account's live stories; drop expired ones. */
+  async function syncStories(acc) {
+    const before = acc.stories || [];
+    const dropMedia = async (list, keep) => {
+      for (const s of list) {
+        if (keep.includes(s)) continue;
+        await media.remove(s.image);
+        await media.remove(s.video);
+      }
+    };
+    const canFetch = fetchStories && acc.platform === 'instagram' && db.settings.igSessionId;
+    // No login, or Instagram says there is no story: nothing to show.
+    if (!canFetch || acc.hasStory === false) {
+      await dropMedia(before, []);
+      acc.stories = [];
+      return;
+    }
+    let items;
+    try {
+      items = await fetchStories(acc, ctx());
+      acc.storyError = null;
+    } catch (err) {
+      const e = asFetchError(err, 'stories');
+      acc.storyError = String(e.message).slice(0, 300);
+      log(`stories ${acc.username}: ${e.message}`);
+      const keep = before.filter((s) => !s.expiresAt || s.expiresAt > now());
+      await dropMedia(before, keep);
+      acc.stories = keep;
+      return;
+    }
+    const known = new Map(before.map((s) => [s.id, s]));
+    const keep = [];
+    for (const it of items) {
+      if (it.expiresAt && it.expiresAt <= now()) continue;
+      const prev = known.get(it.storyId);
+      if (prev && (prev.image || prev.video)) {
+        keep.push(prev);
+        continue;
+      }
+      const referer = REFERERS.instagram;
+      const image = it.imageUrl ? await media.cache(it.imageUrl, `story-${it.storyId}`, { referer }) : null;
+      const video = it.videoUrl ? await media.cache(it.videoUrl, `story-${it.storyId}-v`, { referer, video: true, maxBytes: 30 * 1024 * 1024 }) : null;
+      if (!image && !video) continue;
+      keep.push({ id: it.storyId, takenAt: it.takenAt, expiresAt: it.expiresAt, kind: video ? 'video' : 'image', image, video, duration: it.duration || null });
+    }
+    keep.sort((a, b) => (a.takenAt || 0) - (b.takenAt || 0));
+    await dropMedia(before, keep);
+    acc.stories = keep;
+    if (keep.length && !acc.hasStory) {
+      acc.hasStory = true;
+      acc.storySince = now();
+      notifier?.notifyStory?.(acc)?.catch?.((err) => log(`story notify failed: ${err.message}`));
     }
   }
 
@@ -203,8 +259,10 @@ export function createRadar({
     acc.lastOkAt = now();
     acc.nextCheckAt = 0;
     acc.strategy = result.strategy;
+    acc.fallbacks = result.fallbacks?.length ? result.fallbacks : undefined;
     await applyProfile(acc, result.profile, result.profileRefreshed);
     const fresh = await applyPosts(acc, result.posts || []);
+    await syncStories(acc);
     log(`✓ ${acc.platform}/@${acc.username} via ${result.strategy}: ${result.posts?.length || 0} recent, ${fresh.length} new`);
     store.save();
     emit('accounts');
@@ -268,6 +326,18 @@ export function createRadar({
       strategy: a.strategy,
       hasStory: !!a.hasStory,
       storySince: a.hasStory ? a.storySince || null : null,
+      stories: (a.stories || [])
+        .filter((s) => !s.expiresAt || s.expiresAt > now())
+        .map((s) => ({
+          id: s.id,
+          takenAt: s.takenAt,
+          expiresAt: s.expiresAt,
+          kind: s.kind,
+          image: s.image ? `/media/${s.image}` : null,
+          video: s.video ? `/media/${s.video}` : null,
+          duration: s.duration,
+        })),
+      storyError: a.storyError || null,
     };
   }
 

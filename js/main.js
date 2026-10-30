@@ -10,6 +10,7 @@ import { createAccountsView } from './views/accounts.js';
 import { createSettingsView } from './views/settings.js';
 import { openViewer } from './views/viewer.js';
 import { openAddSheet } from './views/add-sheet.js';
+import { openStories } from './views/stories.js';
 
 applyTheme();
 matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', applyTheme);
@@ -24,6 +25,11 @@ const app = {
   api,
   refresh,
   openAddSheet: () => openAddSheet(app),
+  /** Play stories saved by the updater, starting with this account (others follow). */
+  openStories(accountId) {
+    const accounts = app.state?.accounts || [];
+    openStories(accounts, accountId, { onClose: () => render() });
+  },
   openViewer(postId, list) {
     const posts = list || (current?.currentList ? current.currentList() : app.state?.posts || []);
     if (!posts.length) return;

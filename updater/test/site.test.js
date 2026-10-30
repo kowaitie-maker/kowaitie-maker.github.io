@@ -201,3 +201,45 @@ test('Telegram token with a space or hidden mark inside is recovered', async () 
     tg.close();
   }
 });
+
+test('stories: downloaded with the Instagram login, listed in order, removed when gone', async () => {
+  process.env.IG_SESSIONID = 'TEST_SESSION_abcdefghijklmnop';
+  try {
+    await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null });
+    let feed = await readJson('feed.json');
+    let ig = feed.accounts.find((a) => a.platform === 'instagram');
+    if (!ig) {
+      // An earlier test unfollowed it; follow again.
+      const cfg = await readJson('accounts.json');
+      cfg.accounts.push({ platform: 'instagram', username: 'demo.travel' });
+      await fs.writeFile(path.join(root, 'accounts.json'), JSON.stringify(cfg));
+      await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null });
+      feed = await readJson('feed.json');
+      ig = feed.accounts.find((a) => a.platform === 'instagram');
+    }
+    assert.equal(ig.hasStory, true);
+    assert.deepEqual(ig.stories.map((s) => s.kind), ['image', 'image', 'video']);
+    assert.ok(ig.stories.every((s) => s.image && s.image.startsWith('media/story-')));
+    assert.match(ig.stories[2].video, /^media\/story-3500000000000000003-v\.mp4$/);
+    for (const s of ig.stories) {
+      await fs.access(path.join(root, s.image));
+      if (s.video) await fs.access(path.join(root, s.video));
+    }
+    assert.ok(!(await fs.readFile(path.join(root, 'feed.json'), 'utf8')).includes('TEST_SESSION'));
+
+    // The account takes its stories down: files are removed too.
+    const acc = mock.state.instagram.find((a) => a.username === 'demo.travel');
+    const saved = { stories: acc.stories, hasStory: acc.hasStory };
+    acc.stories = [];
+    acc.hasStory = false;
+    await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null });
+    feed = await readJson('feed.json');
+    ig = feed.accounts.find((a) => a.platform === 'instagram');
+    assert.deepEqual([ig.hasStory, ig.stories.length], [false, 0]);
+    const files = await fs.readdir(path.join(root, 'media'));
+    assert.ok(!files.some((f) => f.startsWith('story-')), files.join());
+    Object.assign(acc, saved);
+  } finally {
+    delete process.env.IG_SESSIONID;
+  }
+});

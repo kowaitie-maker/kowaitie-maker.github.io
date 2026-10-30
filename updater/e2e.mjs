@@ -30,6 +30,7 @@ await fs.writeFile(path.join(root, 'accounts.json'), JSON.stringify({
 const mock = createMockUpstream(demoConfig());
 const up = await mock.listen();
 process.env.GITHUB_REPOSITORY = 'kowaitie-maker/kowaitie-maker.github.io';
+process.env.IG_SESSIONID = 'TEST_SESSION_for_e2e_only';
 const build = () => update({ root, origins: { tiktok: up, instagram: up, instagramApi: up }, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null });
 
 // Static file server, like GitHub Pages.
@@ -97,11 +98,25 @@ try {
   });
   await shot(page, 'feed');
 
-  await check('an account with a story gets a ring that opens the story', async () => {
+  await check('an account with stories gets a ring that plays them in the page', async () => {
     const ring = page.locator('.story.has-story');
     assert.equal(await ring.count(), 1);
-    assert.equal(await ring.getAttribute('href'), 'https://www.instagram.com/stories/demo.travel/');
     assert.match(await ring.textContent(), /ستوري/);
+    assert.equal(await page.locator('.story').nth(1).evaluate((el) => el.classList.contains('has-story')), true, 'story accounts come first');
+    await ring.click();
+    await page.waitForSelector('.sv .sv-media img');
+    assert.equal(await page.locator('.sv-bar').count(), 3);
+    await page.waitForFunction(() => document.querySelector('.sv-media img')?.naturalWidth > 0);
+  });
+  await shot(page, 'story');
+  await check('story player moves on and closes after the last story', async () => {
+    await page.keyboard.press('ArrowLeft');
+    await page.keyboard.press('ArrowLeft');
+    await page.waitForSelector('.sv .sv-media video');
+    assert.match(await page.locator('.sv video').getAttribute('src'), /media\/story-3500000000000000003-v\.mp4$/);
+    await page.keyboard.press('ArrowLeft');
+    await page.waitForSelector('.sv', { state: 'detached' });
+    await page.waitForFunction(() => document.querySelector('.story.has-story')?.classList.contains('story-seen'));
   });
 
   await check('viewer plays the official embed and marks the post seen on this device', async () => {
@@ -153,7 +168,8 @@ try {
     await page.waitForSelector('.view-settings .group');
     const text = await page.locator('main').textContent();
     assert.match(text, /TELEGRAM_TOKEN/);
-    assert.match(text, /IG_SESSIONID/);
+    assert.match(text, /الستوري/);
+    assert.match(text, /3 ستوري محفوظ/);
     assert.ok(!/\bnull\b|undefined/.test(text));
   });
   await shot(page, 'settings');

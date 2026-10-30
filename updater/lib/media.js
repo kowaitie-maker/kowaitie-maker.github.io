@@ -16,10 +16,12 @@ const TYPES = {
   'image/webp': 'webp',
   'image/gif': 'gif',
   'image/avif': 'avif',
+  'video/mp4': 'mp4',
 };
-const EXT_TYPES = { jpg: 'image/jpeg', png: 'image/png', webp: 'image/webp', gif: 'image/gif', avif: 'image/avif' };
+const VIDEO_TYPES = new Set(['video/mp4']);
+const EXT_TYPES = { jpg: 'image/jpeg', png: 'image/png', webp: 'image/webp', gif: 'image/gif', avif: 'image/avif', mp4: 'video/mp4' };
 const MAX_BYTES = 10 * 1024 * 1024;
-export const MEDIA_FILE_RE = /^[a-z0-9][a-z0-9_.-]{0,120}\.(jpg|png|webp|gif|avif)$/;
+export const MEDIA_FILE_RE = /^[a-z0-9][a-z0-9_.-]{0,120}\.(jpg|png|webp|gif|avif|mp4)$/;
 
 export function mediaContentType(file) {
   return EXT_TYPES[file.split('.').pop()] || 'application/octet-stream';
@@ -60,7 +62,7 @@ export function createMediaCache({ dir, extraHosts = [] }) {
    * @param {string} url
    * @param {string} key  [a-z0-9_-] only
    */
-  async function cache(url, key, { referer } = {}) {
+  async function cache(url, key, { referer, video = false, maxBytes = MAX_BYTES } = {}) {
     if (!url || !allowed(url)) return null;
     const safeKey = String(key).toLowerCase().replace(/[^a-z0-9_-]/g, '_').slice(0, 100);
     for (const ext of Object.values(EXT_TYPES).map((t) => TYPES[t])) {
@@ -79,12 +81,12 @@ export function createMediaCache({ dir, extraHosts = [] }) {
     if (!res.ok || !allowed(res.url || url)) return null;
     const type = (res.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
     const ext = TYPES[type];
-    if (!ext) {
+    if (!ext || VIDEO_TYPES.has(type) !== video) {
       await res.body?.cancel().catch(() => {});
       return null;
     }
     const declared = Number(res.headers.get('content-length') || 0);
-    if (declared > MAX_BYTES) {
+    if (declared > maxBytes) {
       await res.body?.cancel().catch(() => {});
       return null;
     }
@@ -93,7 +95,7 @@ export function createMediaCache({ dir, extraHosts = [] }) {
     try {
       for await (const chunk of res.body) {
         size += chunk.length;
-        if (size > MAX_BYTES) return null;
+        if (size > maxBytes) return null;
         chunks.push(chunk);
       }
     } catch {

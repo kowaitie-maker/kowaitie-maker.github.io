@@ -129,6 +129,25 @@ export function createMockUpstream(config) {
       return json(res, 200, modes);
     }
 
+    if (p.startsWith('/vid/')) {
+      res.writeHead(200, { 'Content-Type': 'video/mp4' });
+      return res.end(Buffer.alloc(4096));
+    }
+    if (p === '/api/v1/feed/reels_media/') {
+      if (!/sessionid=/.test(req.headers.cookie || '')) return json(res, 401, { message: 'login_required', require_login: true, status: 'fail' });
+      const id = url.searchParams.get('reel_ids');
+      const acc = state.instagram.find((a) => a.userId === id);
+      const items = (acc?.stories || []).map((st) => ({
+        pk: st.id,
+        id: `${st.id}_${id}`,
+        taken_at: st.taken_at,
+        expiring_at: st.taken_at + 86400,
+        media_type: st.video ? 2 : 1,
+        image_versions2: { candidates: [{ width: 1080, height: 1920, url: img(`story-${st.id}`) }, { width: 320, height: 568, url: img(`story-${st.id}-small`) }] },
+        ...(st.video ? { video_versions: [{ width: 720, height: 1280, type: 101, url: `${base}/vid/${st.id}.mp4` }], video_duration: 8.5 } : {}),
+      }));
+      return json(res, 200, { reels: items.length ? { [id]: { id, items, user: { pk: id, username: acc.username } } } : {}, status: 'ok' });
+    }
     if (p.startsWith('/img/')) {
       const name = p.slice(5).replace(/\.png$/, '');
       let h = 0;
@@ -247,6 +266,11 @@ export function demoConfig(now = Date.now()) {
         username: 'demo.travel',
         fullName: 'رحلات نورة',
         hasStory: true,
+        stories: [
+          { id: '3500000000000000001', taken_at: s(95) },
+          { id: '3500000000000000002', taken_at: s(40) },
+          { id: '3500000000000000003', taken_at: s(12), video: true },
+        ],
         userId: '4100000001',
         followers: 96300,
         bio: 'أجمل الأماكن حول العالم ✈️ (حساب تجريبي)',

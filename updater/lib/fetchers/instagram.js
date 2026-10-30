@@ -189,7 +189,10 @@ export function postsFromAnyJson(json) {
       verified: !!(embedCtx.is_verified || embedCtx.verified),
       // Instagram tells logged-out visitors whether a story is up (not its content).
       hasStory: typeof embedCtx.has_public_story === 'boolean' ? embedCtx.has_public_story : null,
-      meta: { userId: str(embedCtx.owner_id) },
+      meta: {
+        userId: str(embedCtx.owner_id) || (num(embedCtx.owner_id) ? String(embedCtx.owner_id) : null)
+          || str(embedCtx.graphql_media?.[0]?.shortcode_media?.owner?.id),
+      },
     };
   }
   const conn = findKey(json, 'xdt_api__v1__feed__user_timeline_graphql_connection', (c) => c && Array.isArray(c.edges));
@@ -350,6 +353,36 @@ export async function fetchProfileEmbed(username, ctx) {
   return r;
 }
 
+/** One story item from feed/reels_media. Picks mid-size renditions to keep files small. */
+export function parseStoryItem(item) {
+  const id = str(item?.pk) || (num(item?.pk) ? String(item.pk) : null) || str(item?.id)?.split('_')[0];
+  if (!id) return null;
+  const takenAt = num(item.taken_at) ? item.taken_at * 1000 : null;
+  const expiresAt = num(item.expiring_at) ? item.expiring_at * 1000 : takenAt ? takenAt + 86_400_000 : null;
+  const near = (target) => (a, b) => Math.abs((a.width || target) - target) - Math.abs((b.width || target) - target);
+  const videos = (Array.isArray(item.video_versions) ? item.video_versions : []).filter((v) => str(v?.url));
+  const images = (item.image_versions2?.candidates || []).filter((c) => str(c?.url));
+  const videoUrl = videos.length ? [...videos].sort(near(720))[0].url : null;
+  const imageUrl = images.length ? [...images].sort(near(1080))[0].url : null;
+  if (!videoUrl && !imageUrl) return null;
+  return { storyId: id, takenAt, expiresAt, kind: videoUrl ? 'video' : 'image', imageUrl, videoUrl, duration: num(item.video_duration) };
+}
+
+/** The account's current stories. Needs the owner's Instagram login (IG_SESSIONID). */
+export async function fetchStories(account, ctx) {
+  const S = 'stories';
+  const userId = account.meta?.userId;
+  if (!userId) throw new FetchError('parse', 'unknown Instagram user id', S);
+  const res = await request(`${ctx.origins.instagram}/api/v1/feed/reels_media/?reel_ids=${encodeURIComponent(userId)}`, {
+    headers: { ...webHeaders(account.username, ctx.settings), Origin: 'https://www.instagram.com' },
+    redirect: 'manual',
+    strategy: S,
+  });
+  const json = checkIgResponse(res, S);
+  const reel = json.reels?.[userId] || (Array.isArray(json.reels_media) ? json.reels_media[0] : null);
+  return (Array.isArray(reel?.items) ? reel.items : []).map(parseStoryItem).filter(Boolean);
+}
+
 /**
  * Fetch an account's recent Instagram posts, trying several strategies in turn.
  * @returns {Promise<{profile, posts, strategy, profileRefreshed:boolean}>}
@@ -368,7 +401,9 @@ export async function fetchInstagram(account, ctx) {
   for (const [name, run] of attempts) {
     try {
       const r = await run();
-      return { profile: r.profile, posts: r.posts, strategy: name, profileRefreshed: true };
+      // Which earlier routes failed, kept for troubleshooting (no secrets in these).
+      const fallbacks = errors.map((e) => `${e.strategy}: ${e.kind} (${String(e.detail).slice(0, 80)})`);
+      return { profile: r.profile, posts: r.posts, strategy: name, profileRefreshed: true, fallbacks };
     } catch (err) {
       const e = asFetchError(err, name);
       errors.push(e);
