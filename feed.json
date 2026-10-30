@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": 1793358407770,
+ "generatedAt": 1793358576608,
  "since": 1793307600000,
  "intervalMin": 30,
  "repo": "kowaitie-maker/kowaitie-maker.github.io",
@@ -24,8 +24,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793358363398,
-   "lastOkAt": 1793358363826,
+   "lastCheckAt": 1793358546604,
+   "lastOkAt": 1793358547017,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793183824000,
@@ -36,25 +36,20 @@
    "platform": "instagram",
    "username": "mohamed.ouf.xx",
    "url": "https://www.instagram.com/mohamed.ouf.xx/",
-   "displayName": null,
-   "avatar": null,
-   "followers": null,
-   "postsCount": null,
+   "displayName": "Mohamed Ouf99",
+   "avatar": "media/avatar-38d4ad3689be-mvuve5lf.jpg",
+   "followers": 2399963,
+   "postsCount": 820,
    "bio": "",
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793358366140,
-   "lastOkAt": null,
-   "lastError": {
-    "kind": "rate_limited",
-    "message": "طلبات كثيرة على المنصة — سنعيد المحاولة تلقائياً",
-    "detail": "rate_limited: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [embed] blocked: no posts in embed page (512384 bytes, title \"Instagram\") | [browser] blocked: browser saw no posts (login wall?)",
-    "at": 1793358407681
-   },
+   "lastCheckAt": 1793358550220,
+   "lastOkAt": 1793358576339,
+   "lastError": null,
    "nextCheckAt": null,
-   "latestPostAt": null,
-   "strategy": null
+   "latestPostAt": 1793307100000,
+   "strategy": "browser"
   }
  ],
  "posts": []
