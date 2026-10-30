@@ -67,11 +67,17 @@ export async function update({
   db.run ||= { lastRunAt: null, lastFinishedAt: null, lastNewCount: 0 };
   db.posts ||= [];
   db.accounts ||= [];
+  // Secrets are often pasted with extra text or invisible characters: keep only the real value.
+  const rawToken = String(env.TELEGRAM_TOKEN || '');
+  const rawChat = String(env.TELEGRAM_CHAT_ID || '');
+  const token = (rawToken.match(/\d{5,15}:[A-Za-z0-9_-]{30,}/) || [''])[0];
+  const chatId = (rawChat.match(/-?\d{1,20}|@[A-Za-z0-9_]{4,40}/) || [''])[0];
+  if (token) console.log(`::add-mask::${token}`);
   db.settings = {
     since: config.since,
     intervalMin: config.intervalMin,
-    igSessionId: env.IG_SESSIONID || '',
-    telegram: { token: env.TELEGRAM_TOKEN || '', chatId: env.TELEGRAM_CHAT_ID || '' },
+    igSessionId: String(env.IG_SESSIONID || '').trim().replace(/^sessionid=/, ''),
+    telegram: { token, chatId },
   };
 
   const mediaDir = path.join(root, 'media');
@@ -97,8 +103,13 @@ export async function update({
   // Telegram sends are awaited before the job ends.
   const pending = [];
   const telegram = createTelegramNotifier({ getSettings: () => db.settings, mediaDir, apiBase: telegramApi, log });
-  const telegramOn = !!(db.settings.telegram.token && db.settings.telegram.chatId);
+  const telegramOn = !!(token && chatId);
   db.telegramStatus ||= { lastSentAt: null, lastError: null, lastErrorAt: null };
+  const telegramSecretsSet = !!(rawToken.trim() || rawChat.trim());
+  if (telegramSecretsSet && !telegramOn) {
+    const what = !token ? 'TELEGRAM_TOKEN لا يحتوي رمز بوت صحيحاً (شكله 123456789:AA…)' : 'TELEGRAM_CHAT_ID لا يحتوي رقماً صحيحاً';
+    Object.assign(db.telegramStatus, { lastError: what, lastErrorAt: Date.now() });
+  }
   // Remember whether the last send worked, so the page can show it.
   const track = (job) => {
     const done = job.then(
@@ -157,7 +168,7 @@ export async function update({
     since: config.since,
     intervalMin: config.intervalMin,
     repo: env.GITHUB_REPOSITORY || null,
-    capabilities: { ...state.capabilities, instagramLogin: !!db.settings.igSessionId, telegram: telegramOn, telegramStatus: db.telegramStatus },
+    capabilities: { ...state.capabilities, instagramLogin: !!db.settings.igSessionId, telegram: telegramOn || telegramSecretsSet, telegramStatus: db.telegramStatus },
     accounts: state.accounts.map((a) => ({ ...a, avatar: rel(a.avatar), nextCheckAt: null })),
     posts: state.posts.map(({ seen, ...p }) => ({ ...p, cover: rel(p.cover) })),
   };

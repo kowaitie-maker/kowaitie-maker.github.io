@@ -14,16 +14,29 @@ function escapeHtml(s) {
  * real phone notification even when the app isn't open.
  */
 export function createTelegramNotifier({ getSettings, mediaDir, apiBase = API, log = () => {} }) {
-  async function call(method, body, token) {
+  // Never let the bot token appear in an error message (they end up in public logs/files).
+  const redact = (msg, token) => String(msg).split(token).join('***');
+
+  async function call(method, body, token, attempt = 1) {
     const isForm = body instanceof FormData;
-    const res = await fetch(`${apiBase}/bot${token}/${method}`, {
-      method: 'POST',
-      headers: isForm ? undefined : { 'Content-Type': 'application/json' },
-      body: isForm ? body : JSON.stringify(body),
-      signal: AbortSignal.timeout(20000),
-    });
+    let res;
+    try {
+      res = await fetch(`${apiBase}/bot${token}/${method}`, {
+        method: 'POST',
+        headers: isForm ? undefined : { 'Content-Type': 'application/json' },
+        body: isForm ? body : JSON.stringify(body),
+        signal: AbortSignal.timeout(20000),
+      });
+    } catch (err) {
+      const cause = err?.cause?.code || err?.cause?.message || err?.message || String(err);
+      if (attempt < 2) {
+        await new Promise((r) => setTimeout(r, 2000));
+        return call(method, body, token, attempt + 1);
+      }
+      throw new Error(redact(`network error reaching Telegram (${cause})`, token));
+    }
     const json = await res.json().catch(() => ({}));
-    if (!json.ok) throw new Error(json.description || `Telegram HTTP ${res.status}`);
+    if (!json.ok) throw new Error(redact(json.description || `Telegram HTTP ${res.status}`, token));
     return json.result;
   }
 
