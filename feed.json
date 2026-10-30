@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": 1793386107097,
+ "generatedAt": 1793388012424,
  "since": 1793307600000,
  "intervalMin": 30,
  "repo": "kowaitie-maker/kowaitie-maker.github.io",
@@ -10,10 +10,10 @@
   "instagramLogin": true,
   "telegram": true,
   "telegramStatus": {
-   "lastSentAt": 1793384284522,
+   "lastSentAt": 1793387992783,
    "lastError": null,
    "lastErrorAt": null,
-   "verifiedAt": 1793385995867
+   "verifiedAt": 1793387902669
   }
  },
  "accounts": [
@@ -30,12 +30,14 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793385995868,
-   "lastOkAt": 1793385996267,
+   "lastCheckAt": 1793387902669,
+   "lastOkAt": 1793387903304,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362740000,
-   "strategy": "api"
+   "strategy": "api",
+   "hasStory": false,
+   "storySince": null
   },
   {
    "id": "38d4ad3689be",
@@ -50,12 +52,14 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793385998671,
-   "lastOkAt": 1793386026748,
+   "lastCheckAt": 1793387907255,
+   "lastOkAt": 1793387932594,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793307100000,
-   "strategy": "browser"
+   "strategy": "browser",
+   "hasStory": false,
+   "storySince": null
   },
   {
    "id": "18bfbd6745fc",
@@ -70,12 +74,14 @@
    "verified": false,
    "addedAt": 1793383987149,
    "paused": false,
-   "lastCheckAt": 1793386030119,
-   "lastOkAt": 1793386047134,
+   "lastCheckAt": 1793387935677,
+   "lastOkAt": 1793387952781,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793375323000,
-   "strategy": "browser"
+   "strategy": "browser",
+   "hasStory": true,
+   "storySince": 1793387952781
   },
   {
    "id": "1d514a49925d",
@@ -90,12 +96,14 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793386050968,
-   "lastOkAt": 1793386068147,
+   "lastCheckAt": 1793387956620,
+   "lastOkAt": 1793387973597,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793367777000,
-   "strategy": "browser"
+   "strategy": "browser",
+   "hasStory": true,
+   "storySince": 1793387973597
   },
   {
    "id": "b44f84f8c3f0",
@@ -110,12 +118,14 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793386070450,
-   "lastOkAt": 1793386087821,
+   "lastCheckAt": 1793387975355,
+   "lastOkAt": 1793387992458,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362837000,
-   "strategy": "browser"
+   "strategy": "browser",
+   "hasStory": true,
+   "storySince": 1793387992458
   },
   {
    "id": "f383a0e9f40d",
@@ -130,12 +140,14 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793386089822,
-   "lastOkAt": 1793386106986,
+   "lastCheckAt": 1793387995294,
+   "lastOkAt": 1793388012325,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793130053000,
-   "strategy": "browser"
+   "strategy": "browser",
+   "hasStory": false,
+   "storySince": null
   }
  ],
  "posts": [
@@ -152,7 +164,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 91,
+    "likes": 96,
     "comments": 8,
     "shares": null
    },
@@ -190,7 +202,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 51,
+    "likes": 54,
     "comments": 3,
     "shares": null
    },
@@ -247,7 +259,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 159,
+    "likes": 171,
     "comments": 8,
     "shares": null
    },
@@ -265,10 +277,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 79700,
-    "likes": 696,
-    "comments": 144,
-    "shares": 1347
+    "views": 82200,
+    "likes": 718,
+    "comments": 146,
+    "shares": 1380
    },
    "cover": "media/tiktok-7702434277270621441.jpg"
   },
@@ -286,7 +298,7 @@
    "stats": {
     "views": null,
     "likes": 70,
-    "comments": 2,
+    "comments": 3,
     "shares": null
    },
    "cover": "media/instagram-dfg9y5atpg1.jpg"
@@ -323,7 +335,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 26,
+    "likes": 27,
     "comments": 10,
     "shares": null
    },
@@ -342,7 +354,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 700,
+    "likes": 727,
     "comments": 27,
     "shares": null
    },
