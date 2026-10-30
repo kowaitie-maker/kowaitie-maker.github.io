@@ -146,7 +146,7 @@ export function createRadar({
       acc.storyError = null;
     } catch (err) {
       const e = asFetchError(err, 'stories');
-      acc.storyError = String(e.message).slice(0, 1500);
+      acc.storyError = String(e.message).slice(0, 2500);
       log(`stories ${acc.username}: ${e.message}`);
       const keep = before.filter((s) => !s.expiresAt || s.expiresAt > now());
       await dropMedia(before, keep);

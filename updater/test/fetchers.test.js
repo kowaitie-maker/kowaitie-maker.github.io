@@ -213,3 +213,15 @@ test('Instagram stories: items are found in GraphQL answers and other users are 
   assert.deepEqual(storyItemsFromJson(json, '42').map((s) => s.storyId), ['1', '2']);
   assert.deepEqual(storyItemsFromJson({ data: { other: { image_versions2: {}, taken_at: 1 } } }, '42'), []);
 });
+
+test('Instagram stories: tray reels (expiry on the reel) are understood', async () => {
+  const { storyItemsFromJson, jsonShape } = await import('../lib/fetchers/instagram.js');
+  const media = (pk) => ({ pk, taken_at: 1793318400, media_type: 2, video_versions: [{ width: 720, url: `https://x.cdninstagram.com/${pk}.mp4` }], image_versions2: { candidates: [{ width: 1080, url: `https://x.cdninstagram.com/${pk}.jpg` }] } });
+  const json = { data: { xdt_api__v1__feed__reels_tray: { tray: [
+    { id: '42', expiring_at: 1793404800, user: { pk: '42', username: 'a' }, items: [media('1'), media('2')] },
+    { id: '7', user: { pk: '7' }, items: [media('3')] },
+  ] } } };
+  const items = storyItemsFromJson(json, '42');
+  assert.deepEqual(items.map((s) => [s.storyId, s.kind, s.expiresAt]), [['1', 'video', 1793404800000], ['2', 'video', 1793404800000]]);
+  assert.match(jsonShape(json), /tray:\[2×\{id:s,expiring_at:n/);
+});

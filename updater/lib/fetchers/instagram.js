@@ -445,15 +445,26 @@ export async function fetchStories(account, ctx) {
   }
 }
 
-/** Story items found anywhere in a JSON answer (REST or GraphQL "xdt" shapes). */
+/** Story items found anywhere in a JSON answer (REST, tray or GraphQL "xdt" shapes). */
 export function storyItemsFromJson(json, userId) {
+  const uid = String(userId);
   const found = [];
+  const isMedia = (o) => o && typeof o === 'object' && o.taken_at && (o.image_versions2 || o.video_versions);
+  const ownerOf = (o) => String(o?.user?.pk ?? o?.user?.id ?? o?.owner?.pk ?? o?.owner?.id ?? '');
   const walk = (o, depth) => {
-    if (!o || typeof o !== 'object' || depth > 14) return;
+    if (!o || typeof o !== 'object' || depth > 16) return;
     if (Array.isArray(o)) return o.forEach((x) => walk(x, depth + 1));
-    if (o.image_versions2 && o.taken_at && ('expiring_at' in o || 'story_cta' in o || o.product_type === 'story' || 'reel_mentions' in o || 'story_feed_media' in o || 'viewers' in o)) {
-      const owner = String(o.user?.pk ?? o.user?.id ?? o.owner?.pk ?? o.owner?.id ?? '');
-      if (!owner || owner === String(userId)) found.push(o);
+    // A reel: { id | user, items: [...] } — the items belong to that account.
+    if (Array.isArray(o.items) && o.items.some(isMedia)) {
+      const reelOwner = String(o.user?.pk ?? o.user?.id ?? o.id ?? '');
+      if (reelOwner === uid || reelOwner.endsWith(`:${uid}`)) {
+        for (const it of o.items.filter(isMedia)) found.push({ ...it, expiring_at: it.expiring_at ?? o.expiring_at });
+      }
+      return;
+    }
+    if (isMedia(o) && ('expiring_at' in o || 'story_cta' in o || o.product_type === 'story' || 'reel_mentions' in o)) {
+      const owner = ownerOf(o);
+      if (owner === uid) found.push(o);
       return;
     }
     for (const v of Object.values(o)) walk(v, depth + 1);
@@ -462,6 +473,14 @@ export function storyItemsFromJson(json, userId) {
   const items = new Map();
   for (const it of found.map(parseStoryItem).filter(Boolean)) items.set(it.storyId, it);
   return [...items.values()];
+}
+
+/** Field names and list sizes of a JSON answer, for troubleshooting (no values). */
+export function jsonShape(o, depth = 0) {
+  if (depth > 5) return '…';
+  if (Array.isArray(o)) return o.length ? `[${o.length}×${jsonShape(o[0], depth + 1)}]` : '[]';
+  if (o && typeof o === 'object') return `{${Object.keys(o).slice(0, 12).map((k) => `${k}:${jsonShape(o[k], depth + 1)}`).join(',')}}`;
+  return typeof o === 'number' ? 'n' : typeof o === 'string' ? 's' : typeof o === 'boolean' ? 'b' : '·';
 }
 
 async function fetchStoriesViaPage(account, userId, ctx, cookies) {
@@ -485,8 +504,10 @@ async function fetchStoriesViaPage(account, userId, ctx, cookies) {
   // Explain what the page did, without copying any of its content.
   const keys = [...new Set(jsons.flatMap((j) => Object.keys(j?.data || j || {})))].slice(0, 6).join(',');
   const gate = /view story|view as/i.test(html || '') ? ', still asks to confirm viewing' : '';
-  const steps = [...new Set(trace)].filter((t) => !/logging|falco|bz|ajax\/bootloader/i.test(t)).slice(0, 14).join('; ');
-  throw new FetchError('blocked', `no story data on the stories page (${jsons.length} answers${keys ? `: ${keys}` : ''}; pressed view: ${clicked ? 'yes' : 'no'}; blocked seen: ${blocked}${gate}) requests: ${steps}`, S);
+  const steps = [...new Set(trace)].filter((t) => /graphql|\/api\//.test(t)).slice(0, 8).join('; ');
+  const tray = jsons.find((j) => j?.data?.xdt_api__v1__feed__reels_tray);
+  const shape = tray ? ` tray shape: ${jsonShape(tray.data.xdt_api__v1__feed__reels_tray).slice(0, 900)}` : '';
+  throw new FetchError('blocked', `no story data on the stories page (${jsons.length} answers${keys ? `: ${keys}` : ''}; pressed view: ${clicked ? 'yes' : 'no'}; blocked seen: ${blocked}${gate}) requests: ${steps}${shape}`, S);
 }
 
 async function fetchStoriesDirect(account, userId, ctx) {
