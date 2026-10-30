@@ -405,6 +405,13 @@ export async function fetchStories(account, ctx) {
     if (!ctx.browser || !(err instanceof FetchError) || !['login', 'blocked'].includes(err.kind)) throw err;
   }
   const cookies = [{ name: 'sessionid', value: ctx.settings.igSessionId, domain: '.instagram.com', path: '/', secure: true, httpOnly: true }];
+  // Instagram's own stories page loads the story data by itself (we never press "view").
+  let pageError;
+  try {
+    return await fetchStoriesViaPage(account, userId, ctx, cookies);
+  } catch (err) {
+    pageError = err;
+  }
   const answer = await ctx.browser.evaluate('https://www.instagram.com/', {
     cookies,
     arg: userId,
@@ -427,6 +434,7 @@ export async function fetchStories(account, ctx) {
   try {
     return readStoriesAnswer(answer.status, answer.text, userId, 'stories-browser');
   } catch (err) {
+    if (err instanceof FetchError && pageError) err.detail = `${err.detail}; page: ${pageError.detail || pageError.message}`;
     // Say whether Instagram treated the browser as logged in (no secret values involved).
     if (err instanceof FetchError) {
       if (!answer.loggedIn && err.kind !== 'login') throw new FetchError('login', `login_required: session not accepted in the browser (${err.detail})`, 'stories-browser');
@@ -435,6 +443,39 @@ export async function fetchStories(account, ctx) {
     }
     throw err;
   }
+}
+
+/** Story items found anywhere in a JSON answer (REST or GraphQL "xdt" shapes). */
+export function storyItemsFromJson(json, userId) {
+  const found = [];
+  const walk = (o, depth) => {
+    if (!o || typeof o !== 'object' || depth > 14) return;
+    if (Array.isArray(o)) return o.forEach((x) => walk(x, depth + 1));
+    if (o.image_versions2 && o.taken_at && ('expiring_at' in o || 'story_cta' in o || o.product_type === 'story' || 'reel_mentions' in o || 'story_feed_media' in o || 'viewers' in o)) {
+      const owner = String(o.user?.pk ?? o.user?.id ?? o.owner?.pk ?? o.owner?.id ?? '');
+      if (!owner || owner === String(userId)) found.push(o);
+      return;
+    }
+    for (const v of Object.values(o)) walk(v, depth + 1);
+  };
+  walk(json, 0);
+  const items = new Map();
+  for (const it of found.map(parseStoryItem).filter(Boolean)) items.set(it.storyId, it);
+  return [...items.values()];
+}
+
+async function fetchStoriesViaPage(account, userId, ctx, cookies) {
+  const S = 'stories-page';
+  const match = (u) => /\/graphql\/query|\/api\/graphql|\/api\/v1\/feed\/(reels_media|user\/\d+\/story|reels_tray)/.test(u);
+  const until = (jsons) => jsons.some((j) => storyItemsFromJson(j, userId).length);
+  const { jsons, html } = await ctx.browser.capture(`https://www.instagram.com/stories/${encodeURIComponent(account.username)}/`, { match, cookies, until, waitMs: 14000 });
+  const items = new Map();
+  for (const j of jsons) for (const it of storyItemsFromJson(j, userId)) items.set(it.storyId, it);
+  if (items.size) return [...items.values()];
+  // Explain what the page did, without copying any of its content.
+  const keys = [...new Set(jsons.flatMap((j) => Object.keys(j?.data || j || {})))].slice(0, 6).join(',');
+  const gate = /view story|view as/i.test(html || '') ? ', asks to confirm viewing' : '';
+  throw new FetchError('blocked', `no story data on the stories page (${jsons.length} answers${keys ? `: ${keys}` : ''}${gate})`, S);
 }
 
 async function fetchStoriesDirect(account, userId, ctx) {

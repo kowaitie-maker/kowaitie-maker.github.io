@@ -205,3 +205,11 @@ test('Instagram stories: falls back to a real browser and explains login problem
   assert.throws(() => readStoriesAnswer(401, '{"message":"login_required","require_login":true}', '1'), /login_required/);
   assert.throws(() => readStoriesAnswer(200, '<html><title>Instagram</title></html>', '1'), /login not accepted/);
 });
+
+test('Instagram stories: items are found in GraphQL answers and other users are ignored', async () => {
+  const { storyItemsFromJson } = await import('../lib/fetchers/instagram.js');
+  const item = (pk, owner) => ({ pk, taken_at: 1793318400, expiring_at: 1793404800, user: { pk: owner }, image_versions2: { candidates: [{ width: 1080, url: `https://scontent.cdninstagram.com/${pk}.jpg` }] } });
+  const json = { data: { xdt_api__v1__feed__reels_media: { reels_media: [{ id: '42', items: [item('1', '42'), item('2', '42')] }, { id: '7', items: [item('3', '7')] }] } } };
+  assert.deepEqual(storyItemsFromJson(json, '42').map((s) => s.storyId), ['1', '2']);
+  assert.deepEqual(storyItemsFromJson({ data: { other: { image_versions2: {}, taken_at: 1 } } }, '42'), []);
+});
