@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": 1793388778752,
+ "generatedAt": 1793389055033,
  "since": 1793307600000,
  "intervalMin": 30,
  "repo": "kowaitie-maker/kowaitie-maker.github.io",
@@ -19,7 +19,7 @@
    "lastSentAt": 1793388778699,
    "lastError": null,
    "lastErrorAt": null,
-   "verifiedAt": 1793388661233
+   "verifiedAt": 1793388921563
   }
  },
  "accounts": [
@@ -36,8 +36,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793388661234,
-   "lastOkAt": 1793388661637,
+   "lastCheckAt": 1793388921564,
+   "lastOkAt": 1793388921990,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362740000,
@@ -60,8 +60,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793388663545,
-   "lastOkAt": 1793388682385,
+   "lastCheckAt": 1793388924775,
+   "lastOkAt": 1793388960013,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793307100000,
@@ -84,8 +84,8 @@
    "verified": false,
    "addedAt": 1793383987149,
    "paused": false,
-   "lastCheckAt": 1793388685681,
-   "lastOkAt": 1793388703585,
+   "lastCheckAt": 1793388963451,
+   "lastOkAt": 1793388981490,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793375323000,
@@ -93,7 +93,7 @@
    "hasStory": true,
    "storySince": 1793387952781,
    "stories": [],
-   "storyError": "[stories] login: login not accepted (HTTP 200, page \"Instagram\", security check)"
+   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again."
   },
   {
    "id": "1d514a49925d",
@@ -108,8 +108,8 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793388707764,
-   "lastOkAt": 1793388725502,
+   "lastCheckAt": 1793388990073,
+   "lastOkAt": 1793389008469,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793367777000,
@@ -117,7 +117,7 @@
    "hasStory": true,
    "storySince": 1793387973597,
    "stories": [],
-   "storyError": "[stories] login: login not accepted (HTTP 200, page \"Instagram\", security check)"
+   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again."
   },
   {
    "id": "b44f84f8c3f0",
@@ -132,8 +132,8 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793388727805,
-   "lastOkAt": 1793388745633,
+   "lastCheckAt": 1793389012963,
+   "lastOkAt": 1793389030993,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362837000,
@@ -141,7 +141,7 @@
    "hasStory": true,
    "storySince": 1793387992458,
    "stories": [],
-   "storyError": "[stories] login: login not accepted (HTTP 200, page \"Instagram\", security check)"
+   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again."
   },
   {
    "id": "f383a0e9f40d",
@@ -156,8 +156,8 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793388749874,
-   "lastOkAt": 1793388767829,
+   "lastCheckAt": 1793389035786,
+   "lastOkAt": 1793389054113,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793388657000,
@@ -165,7 +165,7 @@
    "hasStory": true,
    "storySince": 1793388767829,
    "stories": [],
-   "storyError": "[stories] login: login not accepted (HTTP 200, page \"Instagram\", security check)"
+   "storyError": "[stories-browser] blocked: HTTP 500 We're sorry, but something went wrong. Please try again."
   }
  ],
  "posts": [
@@ -182,8 +182,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 2,
-    "comments": 0,
+    "likes": 9,
+    "comments": 2,
     "shares": null
    },
    "cover": "media/instagram-dfivn1wztxc.jpg"
@@ -201,7 +201,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 97,
+    "likes": 99,
     "comments": 8,
     "shares": null
    },
@@ -296,7 +296,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 174,
+    "likes": 176,
     "comments": 8,
     "shares": null
    },
@@ -314,10 +314,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 83700,
-    "likes": 729,
-    "comments": 149,
-    "shares": 1396
+    "views": 84300,
+    "likes": 732,
+    "comments": 147,
+    "shares": 1410
    },
    "cover": "media/tiktok-7702434277270621441.jpg"
   },
@@ -391,7 +391,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 737,
+    "likes": 744,
     "comments": 27,
     "shares": null
    },
