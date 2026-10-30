@@ -1,0 +1,68 @@
+# Checks the followed accounts every 30 minutes and publishes new posts to the page.
+name: تحديث رادار
+
+on:
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [accounts.json]
+
+concurrency:
+  group: radar-update
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install optional fetch tools
+        run: |
+          pip install --quiet --upgrade yt-dlp || echo "yt-dlp not installed"
+          (cd updater && npm install --no-save --no-audit --no-fund --loglevel=error playwright@1.49.1) || echo "playwright not installed"
+
+      - name: Fetch new posts
+        env:
+          IG_SESSIONID: ${{ secrets.IG_SESSIONID }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          RADAR_BROWSER_CHANNEL: chrome
+        run: node updater/update.mjs
+
+      - name: Publish to the page
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "radar-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A feed.json data media
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          base=$(git rev-parse HEAD)
+          # Keep history small: replace the previous automatic update instead of stacking a new one.
+          if [ "$(git log -1 --format=%s)" = "radar: update feed" ] && git rev-parse -q --verify HEAD~1 >/dev/null; then
+            git commit --amend --quiet -m "radar: update feed"
+            git push --quiet --force-with-lease=main:"$base" origin HEAD:main
+          else
+            git commit --quiet -m "radar: update feed"
+            git push --quiet origin HEAD:main
+          fi
+          # Pushes made with the workflow token don't always start a Pages build, so ask for one.
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/pages/builds" --silent \
+            || echo "::warning::Could not start a Pages build. Check Settings → Pages (source: Deploy from a branch, main, / root)."

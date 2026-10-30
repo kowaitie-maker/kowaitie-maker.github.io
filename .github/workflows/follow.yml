@@ -1,0 +1,55 @@
+# Follow or unfollow an account by opening an issue titled
+#   follow https://www.tiktok.com/@name     or     unfollow https://www.instagram.com/name/
+# Only issues opened by the repository owner are applied.
+name: متابعة حساب
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+jobs:
+  apply:
+    if: >-
+      github.event.issue.user.login == github.repository_owner &&
+      (startsWith(github.event.issue.title, 'follow ') || startsWith(github.event.issue.title, 'unfollow '))
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Update accounts.json
+        id: apply
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: node updater/follow.mjs
+
+      - name: Save and refresh the page
+        if: steps.apply.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "radar-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --quiet -am "radar: update followed accounts"
+          git pull --quiet --rebase origin main
+          git push --quiet origin HEAD:main
+          gh workflow run update.yml --ref main
+        # (The push above is made with the workflow token, which doesn't trigger other workflows, so the update is started explicitly.)
+
+      - name: Reply and close
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MESSAGE: ${{ steps.apply.outputs.message }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$NUMBER" --repo "$GITHUB_REPOSITORY" --body "$MESSAGE"
+          gh issue close "$NUMBER" --repo "$GITHUB_REPOSITORY"

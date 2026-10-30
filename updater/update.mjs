@@ -1,0 +1,174 @@
+#!/usr/bin/env node
+// Runs in GitHub Actions every 30 minutes: checks every followed account and
+// rewrites feed.json (read by the page), data/state.json (memory between runs)
+// and media/ (covers and avatars). Secrets come from environment variables
+// and are never written to disk.
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { createRadar, newAccount, seedData } from './lib/radar.js';
+import { createMediaCache, MEDIA_FILE_RE } from './lib/media.js';
+import { createTelegramNotifier } from './lib/notify.js';
+import { fetchTikTok } from './lib/fetchers/tiktok.js';
+import { fetchInstagram } from './lib/fetchers/instagram.js';
+import { createBrowserFetcher } from './lib/fetchers/browser.js';
+import { createYtdlp } from './lib/fetchers/ytdlp.js';
+import { PLATFORMS } from './lib/accounts.js';
+import { STRATEGY_NAMES } from './strategies.js';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const env = process.env;
+const log = (m) => console.log(`[${new Date().toISOString().slice(11, 19)}] ${m}`);
+
+async function readJson(file, fallback) {
+  try {
+    return JSON.parse(await fs.readFile(file, 'utf8'));
+  } catch (err) {
+    if (err.code === 'ENOENT') return fallback;
+    throw new Error(`${path.basename(file)}: ${err.message}`);
+  }
+}
+
+async function writeJson(file, data) {
+  await fs.mkdir(path.dirname(file), { recursive: true });
+  await fs.writeFile(`${file}.tmp`, `${JSON.stringify(data, null, 1)}\n`);
+  await fs.rename(`${file}.tmp`, file);
+}
+
+export function readConfig(raw) {
+  const since = Date.parse(raw?.since);
+  if (!Number.isFinite(since)) throw new Error('accounts.json: "since" must be a date like 2026-10-30T00:00:00+03:00');
+  if (!Array.isArray(raw.accounts)) throw new Error('accounts.json: "accounts" must be a list');
+  const accounts = [];
+  for (const a of raw.accounts) {
+    const platform = String(a?.platform || '').toLowerCase();
+    const username = String(a?.username || '').trim().replace(/^@/, '').toLowerCase();
+    if (!PLATFORMS[platform] || !/^[a-z0-9_.]{1,30}$/.test(username)) {
+      console.warn(`skipping invalid account entry: ${JSON.stringify(a)}`);
+      continue;
+    }
+    if (!accounts.some((x) => x.platform === platform && x.username === username)) accounts.push({ platform, username });
+  }
+  const intervalMin = Number(raw.intervalMin) || 30;
+  return { since, accounts, intervalMin };
+}
+
+export async function update({
+  root = path.resolve(env.RADAR_SITE_DIR || path.join(here, '..')),
+  origins = { tiktok: 'https://www.tiktok.com', instagram: 'https://www.instagram.com', instagramApi: 'https://i.instagram.com' },
+  extraMediaHosts = [],
+  enableBrowser = env.RADAR_NO_BROWSER !== '1',
+  enableYtdlp = env.RADAR_NO_YTDLP !== '1',
+  telegramApi,
+  spacingMs = [1500, 4000],
+} = {}) {
+  const config = readConfig(await readJson(path.join(root, 'accounts.json')));
+  const db = (await readJson(path.join(root, 'data', 'state.json'), null)) || seedData({ since: config.since, accounts: [] });
+  db.run ||= { lastRunAt: null, lastFinishedAt: null, lastNewCount: 0 };
+  db.posts ||= [];
+  db.accounts ||= [];
+  db.settings = {
+    since: config.since,
+    intervalMin: config.intervalMin,
+    igSessionId: env.IG_SESSIONID || '',
+    telegram: { token: env.TELEGRAM_TOKEN || '', chatId: env.TELEGRAM_CHAT_ID || '' },
+  };
+
+  const mediaDir = path.join(root, 'media');
+  const media = createMediaCache({ dir: mediaDir, extraHosts: extraMediaHosts });
+
+  // Bring the followed accounts in line with accounts.json.
+  const keyOf = (a) => `${a.platform}:${a.username}`;
+  const wanted = new Map(config.accounts.map((a, i) => [keyOf(a), i]));
+  for (const acc of [...db.accounts]) {
+    if (wanted.has(keyOf(acc))) continue;
+    log(`unfollowing ${keyOf(acc)}`);
+    db.accounts.splice(db.accounts.indexOf(acc), 1);
+    db.posts = db.posts.filter((p) => p.accountId !== acc.id);
+  }
+  for (const a of config.accounts) {
+    if (!db.accounts.some((x) => keyOf(x) === keyOf(a))) {
+      log(`now following ${keyOf(a)}`);
+      db.accounts.push(newAccount(a.platform, a.username));
+    }
+  }
+  db.accounts.sort((a, b) => wanted.get(keyOf(a)) - wanted.get(keyOf(b)));
+
+  // Telegram sends are awaited before the job ends.
+  const pending = [];
+  const telegram = createTelegramNotifier({ getSettings: () => db.settings, mediaDir, apiBase: telegramApi, log });
+  const notifier = {
+    notify(acc, posts) {
+      const job = telegram.notify(acc, posts);
+      pending.push(job.catch((err) => log(`telegram: ${err.message}`)));
+      return job;
+    },
+  };
+
+  const [browser, ytdlp] = await Promise.all([
+    enableBrowser ? createBrowserFetcher({ log }) : null,
+    enableYtdlp ? createYtdlp() : null,
+  ]);
+  log(`tools: yt-dlp ${ytdlp ? ytdlp.version : 'not installed'}, browser ${browser ? 'available' : 'not installed'}`);
+
+  const radar = createRadar({
+    store: { data: db, save() {} },
+    fetchers: { tiktok: fetchTikTok, instagram: fetchInstagram },
+    media,
+    events: { emit() {} },
+    notifier,
+    origins,
+    browser,
+    ytdlp,
+    log,
+    spacingMs,
+  });
+
+  const result = await radar.checkAll({ force: true });
+  await Promise.all(pending);
+  await browser?.close();
+
+  const state = radar.state();
+  const rel = (u) => (typeof u === 'string' && u.startsWith('/media/') ? u.slice(1) : u);
+  const feed = {
+    version: 1,
+    generatedAt: Date.now(),
+    since: config.since,
+    intervalMin: config.intervalMin,
+    repo: env.GITHUB_REPOSITORY || null,
+    capabilities: { ...state.capabilities, instagramLogin: !!db.settings.igSessionId, telegram: !!(db.settings.telegram.token && db.settings.telegram.chatId) },
+    accounts: state.accounts.map((a) => ({ ...a, avatar: rel(a.avatar), nextCheckAt: null })),
+    posts: state.posts.map(({ seen, ...p }) => ({ ...p, cover: rel(p.cover) })),
+  };
+  await writeJson(path.join(root, 'feed.json'), feed);
+
+  // Memory for the next run, without secrets.
+  await writeJson(path.join(root, 'data', 'state.json'), { ...db, settings: { since: config.since, intervalMin: config.intervalMin } });
+
+  // Drop media nothing refers to any more.
+  const used = new Set([...db.accounts.map((a) => a.avatar), ...db.posts.map((p) => p.cover)].filter(Boolean));
+  for (const f of await fs.readdir(mediaDir).catch(() => [])) {
+    if ((MEDIA_FILE_RE.test(f) && !used.has(f)) || f.endsWith('.part')) await fs.unlink(path.join(mediaDir, f)).catch(() => {});
+  }
+
+  // Human-readable summary (shown on the GitHub Actions run page).
+  const lines = ['| الحساب | الحالة | جديد منذ البداية | آخر نشر |', '|---|---|---|---|'];
+  for (const a of db.accounts) {
+    const count = db.posts.filter((p) => p.accountId === a.id && p.createdAt >= config.since).length;
+    const status = a.lastError ? `❌ ${a.lastError.message}` : `✅ ${STRATEGY_NAMES[a.strategy] || a.strategy}`;
+    const latest = a.latestPostAt ? new Date(a.latestPostAt).toISOString().replace('T', ' ').slice(0, 16) + ' UTC' : '—';
+    lines.push(`| ${PLATFORMS[a.platform].name} @${a.username} | ${status} | ${count} | ${latest} |`);
+    if (a.lastError) log(`  ${a.platform}/@${a.username} failed: ${a.lastError.detail}`);
+  }
+  const summary = `### رادار — ${result.newPosts} منشور جديد في هذا الفحص\n\n${lines.join('\n')}\n`;
+  console.log(`\n${summary}`);
+  if (env.GITHUB_STEP_SUMMARY) await fs.appendFile(env.GITHUB_STEP_SUMMARY, summary).catch(() => {});
+  return { feed, result };
+}
+
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  update().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
