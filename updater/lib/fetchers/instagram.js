@@ -468,13 +468,23 @@ async function fetchStoriesViaPage(account, userId, ctx, cookies) {
   const S = 'stories-page';
   const match = (u) => /\/graphql\/query|\/api\/graphql|\/api\/v1\/feed\/(reels_media|user\/\d+\/story|reels_tray)/.test(u);
   const until = (jsons) => jsons.some((j) => storyItemsFromJson(j, userId).length);
-  const { jsons, html } = await ctx.browser.capture(`https://www.instagram.com/stories/${encodeURIComponent(account.username)}/`, { match, cookies, until, waitMs: 14000 });
+  // Never tell Instagram the story was watched: drop the "seen" requests the page sends.
+  const block = (req) => {
+    if (req.method() !== 'POST') return false;
+    const name = req.headers()['x-fb-friendly-name'] || '';
+    const body = req.postData() || '';
+    return /seen/i.test(req.url()) || /seen/i.test(name) || /fb_api_req_friendly_name=[^&]*seen/i.test(body);
+  };
+  const { jsons, html, blocked, clicked } = await ctx.browser.capture(`https://www.instagram.com/stories/${encodeURIComponent(account.username)}/`, {
+    match, cookies, until, block, clickButton: /^view story$/i, waitMs: 14000,
+  });
+  if (blocked) ctx.log?.(`stories ${account.username}: blocked ${blocked} "seen" request(s)`);
   const items = new Map();
   for (const j of jsons) for (const it of storyItemsFromJson(j, userId)) items.set(it.storyId, it);
   if (items.size) return [...items.values()];
   // Explain what the page did, without copying any of its content.
   const keys = [...new Set(jsons.flatMap((j) => Object.keys(j?.data || j || {})))].slice(0, 6).join(',');
-  const gate = /view story|view as/i.test(html || '') ? ', asks to confirm viewing' : '';
+  const gate = /view story|view as/i.test(html || '') ? `, asks to confirm viewing, pressed: ${clicked ? 'yes' : 'no'}` : '';
   throw new FetchError('blocked', `no story data on the stories page (${jsons.length} answers${keys ? `: ${keys}` : ''}${gate})`, S);
 }
 

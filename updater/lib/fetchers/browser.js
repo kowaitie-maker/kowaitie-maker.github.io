@@ -52,7 +52,7 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
     idleTimer.unref?.();
   }
 
-  async function captureNow(url, { match, cookies = [], waitMs = 15000, waitFor = null, until = null }) {
+  async function captureNow(url, { match, cookies = [], waitMs = 15000, waitFor = null, until = null, block = null, clickButton = null }) {
     let b;
     try {
       b = await getBrowser();
@@ -61,6 +61,16 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
     }
     const context = await b.newContext({ userAgent: CHROME_UA, locale: 'en-US', viewport: { width: 1280, height: 900 } });
     if (cookies.length) await context.addCookies(cookies);
+    let blocked = 0;
+    if (block) {
+      await context.route('**/*', (route) => {
+        if (block(route.request())) {
+          blocked++;
+          return route.abort();
+        }
+        return route.continue();
+      });
+    }
     const page = await context.newPage();
     const jsons = [];
     const pending = [];
@@ -70,6 +80,15 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
     });
     try {
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+      let clicked = false;
+      if (clickButton) {
+        try {
+          await page.getByRole('button', { name: clickButton }).first().click({ timeout: 8000 });
+          clicked = true;
+        } catch {
+          /* no such button */
+        }
+      }
       const start = Date.now();
       let scrolled = false;
       while (Date.now() - start < waitMs) {
@@ -86,7 +105,7 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
       await Promise.all(pending);
       const html = await page.content();
       log(`browser captured ${jsons.length} responses from ${url}`);
-      return { jsons, html };
+      return { jsons, html, blocked, clicked };
     } catch (err) {
       throw new FetchError('network', `browser: ${err.message.split('\n')[0]}`, 'browser');
     } finally {
