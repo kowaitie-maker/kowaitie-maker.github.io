@@ -13,14 +13,14 @@
    "displayName": "يوسف الحسينان",
    "avatar": "avatar-0e63bb4ee950-mvuv3cuk.jpg",
    "avatarAt": 1793358072970,
-   "followers": 54100,
+   "followers": 54200,
    "postsCount": 535,
    "bio": "تصوير كل شي مفيد",
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793369132560,
-   "lastOkAt": 1793369132919,
+   "lastCheckAt": 1793369241265,
+   "lastOkAt": 1793369241930,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
@@ -40,20 +40,20 @@
    "displayName": "Mohamed Ouf99",
    "avatar": "avatar-38d4ad3689be-mvuve5lf.jpg",
    "avatarAt": 1793358576523,
-   "followers": 2399963,
+   "followers": 2401848,
    "postsCount": 820,
    "bio": "",
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793369135326,
-   "lastOkAt": 1793369161431,
+   "lastCheckAt": 1793369244183,
+   "lastOkAt": 1793369269084,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793307100000,
    "strategy": "browser",
-   "profileAt": 1793369161431,
+   "profileAt": 1793369269084,
    "meta": {}
   }
  ],
@@ -70,10 +70,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 5639,
-    "likes": 53,
-    "comments": 9,
-    "shares": 105
+    "views": 6517,
+    "likes": 57,
+    "comments": 10,
+    "shares": 125
    },
    "cover": "tiktok-7702434277270621441.jpg",
    "coverRemote": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oYlPQvCVDAUgf3jYfI6leEmAJdCGyLbURoDFlI~tplv-tiktokx-dmt-logom:tos-alisg-i-0068/oMAA9Afi8wcy1X5KPIBWI8AnAgE9iDCABzDkik.image?dr=9634&x-expires=1793534400&x-signature=abj1vGAlord7Ef%2Bextfx4fyt5DQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
@@ -82,13 +82,13 @@
   }
  ],
  "run": {
-  "lastRunAt": 1793369132560,
-  "lastFinishedAt": 1793369161431,
+  "lastRunAt": 1793369241265,
+  "lastFinishedAt": 1793369269085,
   "lastNewCount": 0
  },
  "telegramStatus": {
   "lastSentAt": null,
-  "lastError": "TELEGRAM_TOKEN أو TELEGRAM_CHAT_ID غير موجود في أسرار المستودع",
-  "lastErrorAt": 1793369161432
+  "lastError": "TELEGRAM_TOKEN ليس بصيغة رمز البوت (123456789:AA… بطول 45 حرفاً تقريباً) — ربما نُسخ ناقصاً",
+  "lastErrorAt": 1793369240901
  }
 }

@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": 1793369161626,
+ "generatedAt": 1793369269375,
  "since": 1793307600000,
  "intervalMin": 30,
  "repo": "kowaitie-maker/kowaitie-maker.github.io",
@@ -11,8 +11,8 @@
   "telegram": true,
   "telegramStatus": {
    "lastSentAt": null,
-   "lastError": "TELEGRAM_TOKEN أو TELEGRAM_CHAT_ID غير موجود في أسرار المستودع",
-   "lastErrorAt": 1793369161432
+   "lastError": "TELEGRAM_TOKEN ليس بصيغة رمز البوت (123456789:AA… بطول 45 حرفاً تقريباً) — ربما نُسخ ناقصاً",
+   "lastErrorAt": 1793369240901
   }
  },
  "accounts": [
@@ -23,14 +23,14 @@
    "url": "https://www.tiktok.com/@yousefali82__",
    "displayName": "يوسف الحسينان",
    "avatar": "media/avatar-0e63bb4ee950-mvuv3cuk.jpg",
-   "followers": 54100,
+   "followers": 54200,
    "postsCount": 535,
    "bio": "تصوير كل شي مفيد",
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793369132560,
-   "lastOkAt": 1793369132919,
+   "lastCheckAt": 1793369241265,
+   "lastOkAt": 1793369241930,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362740000,
@@ -43,14 +43,14 @@
    "url": "https://www.instagram.com/mohamed.ouf.xx/",
    "displayName": "Mohamed Ouf99",
    "avatar": "media/avatar-38d4ad3689be-mvuve5lf.jpg",
-   "followers": 2399963,
+   "followers": 2401848,
    "postsCount": 820,
    "bio": "",
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793369135326,
-   "lastOkAt": 1793369161431,
+   "lastCheckAt": 1793369244183,
+   "lastOkAt": 1793369269084,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793307100000,
@@ -70,10 +70,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 5639,
-    "likes": 53,
-    "comments": 9,
-    "shares": 105
+    "views": 6517,
+    "likes": 57,
+    "comments": 10,
+    "shares": 125
    },
    "cover": "media/tiktok-7702434277270621441.jpg"
   }
