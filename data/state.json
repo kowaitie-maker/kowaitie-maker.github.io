@@ -14,17 +14,17 @@
    "avatar": "avatar-0e63bb4ee950-mvuv3cuk.jpg",
    "avatarAt": 1793358072970,
    "followers": 54100,
-   "postsCount": 534,
+   "postsCount": 535,
    "bio": "تصوير كل شي مفيد",
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793358546604,
-   "lastOkAt": 1793358547017,
+   "lastCheckAt": 1793368798173,
+   "lastOkAt": 1793368798809,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
-   "latestPostAt": 1793183824000,
+   "latestPostAt": 1793362740000,
    "strategy": "api",
    "profileAt": 1793358072524,
    "meta": {
@@ -46,21 +46,44 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793358550220,
-   "lastOkAt": 1793358576339,
+   "lastCheckAt": 1793368801036,
+   "lastOkAt": 1793368827550,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793307100000,
    "strategy": "browser",
-   "profileAt": 1793358576339,
+   "profileAt": 1793368827550,
    "meta": {}
   }
  ],
- "posts": [],
+ "posts": [
+  {
+   "id": "tiktok:7702434277270621441",
+   "platform": "tiktok",
+   "postId": "7702434277270621441",
+   "accountId": "0e63bb4ee950",
+   "url": "https://www.tiktok.com/@yousefali82__/video/7702434277270621441",
+   "embedUrl": "https://www.tiktok.com/player/v1/7702434277270621441?autoplay=1&loop=1&music_info=1&description=1&rel=0&native_context_menu=1",
+   "createdAt": 1793362740000,
+   "caption": "#شعب_الصيني_ماله_حل😂😂 #الكويت #شرق_الرياض #pepsi #",
+   "kind": "video",
+   "duration": 64,
+   "stats": {
+    "views": 4105,
+    "likes": 43,
+    "comments": 7,
+    "shares": 78
+   },
+   "cover": "tiktok-7702434277270621441.jpg",
+   "coverRemote": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oYlPQvCVDAUgf3jYfI6leEmAJdCGyLbURoDFlI~tplv-tiktokx-dmt-logom:tos-alisg-i-0068/oMAA9Afi8wcy1X5KPIBWI8AnAgE9iDCABzDkik.image?dr=9634&x-expires=1793534400&x-signature=abj1vGAlord7Ef%2Bextfx4fyt5DQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
+   "discoveredAt": 1793364884010,
+   "seen": false
+  }
+ ],
  "run": {
-  "lastRunAt": 1793358546604,
-  "lastFinishedAt": 1793358576523,
+  "lastRunAt": 1793368798173,
+  "lastFinishedAt": 1793368827551,
   "lastNewCount": 0
  }
 }
