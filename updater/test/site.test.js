@@ -174,3 +174,24 @@ test('Telegram secret problems are explained without revealing them', async () =
   assert.match(describeTelegramProblem('123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw', '@someone', '123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw', ''), /اسم المستخدم/);
   assert.ok(!describeTelegramProblem('123456789:AAHdq', 'x', '', '').includes('AAHdq'));
 });
+
+test('Telegram token with a space or hidden mark inside is recovered', async () => {
+  const http = await import('node:http');
+  const urls = [];
+  const tg = http.createServer((req, res) => {
+    urls.push(req.url);
+    req.resume();
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end('{"ok":true,"result":{}}');
+  });
+  await new Promise((r) => tg.listen(0, '127.0.0.1', r));
+  const token = '1234567890:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw1';
+  Object.assign(process.env, { TELEGRAM_TOKEN: `1234567890:AAHdq TcvCH1vGWJx‏fSeofSAs0K5PALDsaw1`, TELEGRAM_CHAT_ID: '987654321', RADAR_TELEGRAM_TEST: '1' });
+  try {
+    await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null, telegramApi: `http://127.0.0.1:${tg.address().port}` });
+    assert.equal(urls[0], `/bot${token}/sendMessage`);
+  } finally {
+    for (const k of ['TELEGRAM_TOKEN', 'TELEGRAM_CHAT_ID', 'RADAR_TELEGRAM_TEST']) delete process.env[k];
+    tg.close();
+  }
+});

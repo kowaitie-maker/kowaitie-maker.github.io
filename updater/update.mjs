@@ -89,7 +89,9 @@ export async function update({
   // Secrets are often pasted with extra text or invisible characters: keep only the real value.
   const rawToken = String(env.TELEGRAM_TOKEN || '');
   const rawChat = String(env.TELEGRAM_CHAT_ID || '');
-  const token = (rawToken.match(/\d{5,15}:[A-Za-z0-9_-]{30,}/) || [''])[0];
+  // Exact match first; then allow spaces / invisible marks inside the token (bot tokens end with 35 characters).
+  const squeezed = rawToken.replace(/[\s\u00AD\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g, '');
+  const token = (rawToken.match(/\d{5,15}:[A-Za-z0-9_-]{30,}/) || squeezed.match(/\d{5,15}:[A-Za-z0-9_-]{35}/) || [''])[0];
   const chatId = (rawChat.match(/-?\d{1,20}|@[A-Za-z0-9_]{4,40}/) || [''])[0];
   if (token) console.log(`::add-mask::${token}`);
   db.settings = {
