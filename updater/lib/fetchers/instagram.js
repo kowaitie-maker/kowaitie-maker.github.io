@@ -408,15 +408,33 @@ export async function fetchStories(account, ctx) {
   const answer = await ctx.browser.evaluate('https://www.instagram.com/', {
     cookies,
     arg: userId,
+    // Same headers Instagram's own web app sends.
     fn: async (id) => {
+      const csrf = (document.cookie.match(/(?:^|; )csrftoken=([^;]+)/) || [])[1] || '';
+      let claim = '0';
+      try {
+        claim = sessionStorage.getItem('www-claim-v2') || '0';
+      } catch {
+        /* ignore */
+      }
       const r = await fetch(`/api/v1/feed/reels_media/?reel_ids=${encodeURIComponent(id)}`, {
-        headers: { 'X-IG-App-ID': '936619743392459', 'X-Requested-With': 'XMLHttpRequest', Accept: '*/*' },
+        headers: { 'X-IG-App-ID': '936619743392459', 'X-ASBD-ID': '359341', 'X-IG-WWW-Claim': claim, 'X-CSRFToken': csrf, 'X-Requested-With': 'XMLHttpRequest', Accept: '*/*' },
         credentials: 'include',
       });
-      return { status: r.status, text: (await r.text()).slice(0, 3_000_000) };
+      return { status: r.status, text: (await r.text()).slice(0, 3_000_000), loggedIn: /(?:^|; )ds_user_id=/.test(document.cookie), hasCsrf: !!csrf };
     },
   });
-  return readStoriesAnswer(answer.status, answer.text, userId, 'stories-browser');
+  try {
+    return readStoriesAnswer(answer.status, answer.text, userId, 'stories-browser');
+  } catch (err) {
+    // Say whether Instagram treated the browser as logged in (no secret values involved).
+    if (err instanceof FetchError) {
+      if (!answer.loggedIn && err.kind !== 'login') throw new FetchError('login', `login_required: session not accepted in the browser (${err.detail})`, 'stories-browser');
+      err.detail = `${err.detail} [browser logged in: ${answer.loggedIn ? 'yes' : 'no'}, csrf: ${answer.hasCsrf ? 'yes' : 'no'}]`;
+      err.message = `[${err.strategy}] ${err.kind}: ${err.detail}`;
+    }
+    throw err;
+  }
 }
 
 async function fetchStoriesDirect(account, userId, ctx) {
