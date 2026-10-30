@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": 1793391149263,
+ "generatedAt": 1793569164112,
  "since": 1793307600000,
  "intervalMin": 30,
  "repo": "kowaitie-maker/kowaitie-maker.github.io",
@@ -28,10 +28,10 @@
   },
   "telegram": true,
   "telegramStatus": {
-   "lastSentAt": 1793390244941,
+   "lastSentAt": 1793453135051,
    "lastError": null,
    "lastErrorAt": null,
-   "verifiedAt": 1793390962770
+   "verifiedAt": 1793569075479
   }
  },
  "accounts": [
@@ -41,18 +41,18 @@
    "username": "yousefali82__",
    "url": "https://www.tiktok.com/@yousefali82__",
    "displayName": "يوسف الحسينان",
-   "avatar": "media/avatar-0e63bb4ee950-mvuv3cuk.jpg",
-   "followers": 54200,
-   "postsCount": 535,
+   "avatar": "media/avatar-0e63bb4ee950-mvxsd9cj.jpg",
+   "followers": 54300,
+   "postsCount": 536,
    "bio": "تصوير كل شي مفيد",
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793390962770,
-   "lastOkAt": 1793390963363,
+   "lastCheckAt": 1793569075480,
+   "lastOkAt": 1793569075934,
    "lastError": null,
    "nextCheckAt": null,
-   "latestPostAt": 1793362740000,
+   "latestPostAt": 1793451585000,
    "strategy": "api",
    "hasStory": false,
    "storySince": null,
@@ -72,9 +72,14 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793390965248,
-   "lastOkAt": 1793390991862,
-   "lastError": null,
+   "lastCheckAt": 1793569079545,
+   "lastOkAt": 1793392863377,
+   "lastError": {
+    "kind": "not_found",
+    "message": "الحساب غير موجود — تأكد من اسم المستخدم",
+    "detail": "not_found: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [embed] blocked: no posts in embed page (508598 bytes, title \"Instagram\") | [feed] not_found: HTTP 404 | [browser] blocked: browser saw no posts (login wall?)",
+    "at": 1793569095172
+   },
    "nextCheckAt": null,
    "latestPostAt": 1793307100000,
    "strategy": "browser",
@@ -96,206 +101,20 @@
    "verified": false,
    "addedAt": 1793383987149,
    "paused": false,
-   "lastCheckAt": 1793390993834,
-   "lastOkAt": 1793391011257,
-   "lastError": null,
+   "lastCheckAt": 1793569098336,
+   "lastOkAt": 1793392883911,
+   "lastError": {
+    "kind": "not_found",
+    "message": "الحساب غير موجود — تأكد من اسم المستخدم",
+    "detail": "not_found: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [embed] blocked: no posts in embed page (508567 bytes, title \"Instagram\") | [feed] not_found: HTTP 404 | [browser] blocked: browser saw no posts (login wall?)",
+    "at": 1793569112566
+   },
    "nextCheckAt": null,
    "latestPostAt": 1793375323000,
    "strategy": "browser",
    "hasStory": true,
    "storySince": 1793387952781,
-   "stories": [
-    {
-     "id": "4019143872913633085",
-     "takenAt": 1793339307000,
-     "expiresAt": 1793425707000,
-     "kind": "image",
-     "image": "media/story-4019143872913633085.jpg",
-     "video": null,
-     "duration": null,
-     "tooBig": false
-    },
-    {
-     "id": "4019144341926573301",
-     "takenAt": 1793339362000,
-     "expiresAt": 1793425762000,
-     "kind": "image",
-     "image": "media/story-4019144341926573301.jpg",
-     "video": null,
-     "duration": 58.2,
-     "tooBig": true
-    },
-    {
-     "id": "4019155307741443204",
-     "takenAt": 1793340670000,
-     "expiresAt": 1793427070000,
-     "kind": "image",
-     "image": "media/story-4019155307741443204.jpg",
-     "video": null,
-     "duration": 60,
-     "tooBig": true
-    },
-    {
-     "id": "4019155866280129475",
-     "takenAt": 1793340731000,
-     "expiresAt": 1793427131000,
-     "kind": "video",
-     "image": "media/story-4019155866280129475.jpg",
-     "video": "media/story-4019155866280129475-v.mp4",
-     "duration": 24.009,
-     "tooBig": false
-    },
-    {
-     "id": "4019161302830589662",
-     "takenAt": 1793341384000,
-     "expiresAt": 1793427784000,
-     "kind": "image",
-     "image": "media/story-4019161302830589662.jpg",
-     "video": null,
-     "duration": null,
-     "tooBig": false
-    },
-    {
-     "id": "4019162246806354665",
-     "takenAt": 1793341497000,
-     "expiresAt": 1793427897000,
-     "kind": "video",
-     "image": "media/story-4019162246806354665.jpg",
-     "video": "media/story-4019162246806354665-v.mp4",
-     "duration": 60.01,
-     "tooBig": false
-    },
-    {
-     "id": "4019163857589531639",
-     "takenAt": 1793341689000,
-     "expiresAt": 1793428089000,
-     "kind": "image",
-     "image": "media/story-4019163857589531639.jpg",
-     "video": null,
-     "duration": null,
-     "tooBig": false
-    },
-    {
-     "id": "4019170940158353903",
-     "takenAt": 1793342533000,
-     "expiresAt": 1793428933000,
-     "kind": "image",
-     "image": "media/story-4019170940158353903.jpg",
-     "video": null,
-     "duration": null,
-     "tooBig": false
-    },
-    {
-     "id": "4019171348876392136",
-     "takenAt": 1793342582000,
-     "expiresAt": 1793428982000,
-     "kind": "image",
-     "image": "media/story-4019171348876392136.jpg",
-     "video": null,
-     "duration": null,
-     "tooBig": false
-    },
-    {
-     "id": "4019184056627715146",
-     "takenAt": 1793344097000,
-     "expiresAt": 1793430497000,
-     "kind": "image",
-     "image": "media/story-4019184056627715146.jpg",
-     "video": null,
-     "duration": null,
-     "tooBig": false
-    },
-    {
-     "id": "4019184526227775843",
-     "takenAt": 1793344153000,
-     "expiresAt": 1793430553000,
-     "kind": "video",
-     "image": "media/story-4019184526227775843.jpg",
-     "video": "media/story-4019184526227775843-v.mp4",
-     "duration": 15,
-     "tooBig": false
-    },
-    {
-     "id": "4019184666158143670",
-     "takenAt": 1793344169000,
-     "expiresAt": 1793430569000,
-     "kind": "video",
-     "image": "media/story-4019184666158143670.jpg",
-     "video": "media/story-4019184666158143670-v.mp4",
-     "duration": 12.074,
-     "tooBig": false
-    },
-    {
-     "id": "4019216742827813479",
-     "takenAt": 1793347993000,
-     "expiresAt": 1793434393000,
-     "kind": "video",
-     "image": "media/story-4019216742827813479.jpg",
-     "video": "media/story-4019216742827813479-v.mp4",
-     "duration": 4.806,
-     "tooBig": false
-    },
-    {
-     "id": "4019331516251538799",
-     "takenAt": 1793361676000,
-     "expiresAt": 1793448076000,
-     "kind": "image",
-     "image": "media/story-4019331516251538799.jpg",
-     "video": null,
-     "duration": null,
-     "tooBig": false
-    },
-    {
-     "id": "4019348020678534136",
-     "takenAt": 1793363643000,
-     "expiresAt": 1793450043000,
-     "kind": "image",
-     "image": "media/story-4019348020678534136.jpg",
-     "video": null,
-     "duration": null,
-     "tooBig": false
-    },
-    {
-     "id": "4019355915860288352",
-     "takenAt": 1793364584000,
-     "expiresAt": 1793450984000,
-     "kind": "image",
-     "image": "media/story-4019355915860288352.jpg",
-     "video": null,
-     "duration": null,
-     "tooBig": false
-    },
-    {
-     "id": "4019449466805122290",
-     "takenAt": 1793375721000,
-     "expiresAt": 1793462121000,
-     "kind": "video",
-     "image": "media/story-4019449466805122290.jpg",
-     "video": "media/story-4019449466805122290-v.mp4",
-     "duration": 60.022,
-     "tooBig": false
-    },
-    {
-     "id": "4019500167244141881",
-     "takenAt": 1793381780000,
-     "expiresAt": 1793468180000,
-     "kind": "image",
-     "image": "media/story-4019500167244141881.jpg",
-     "video": null,
-     "duration": null,
-     "tooBig": false
-    },
-    {
-     "id": "4019504566554702660",
-     "takenAt": 1793382304000,
-     "expiresAt": 1793468704000,
-     "kind": "video",
-     "image": "media/story-4019504566554702660.jpg",
-     "video": "media/story-4019504566554702660-v.mp4",
-     "duration": 43.136,
-     "tooBig": false
-    }
-   ],
+   "stories": [],
    "storyError": null
   },
   {
@@ -311,136 +130,20 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793391034654,
-   "lastOkAt": 1793391052474,
-   "lastError": null,
+   "lastCheckAt": 1793569115274,
+   "lastOkAt": 1793391658710,
+   "lastError": {
+    "kind": "not_found",
+    "message": "الحساب غير موجود — تأكد من اسم المستخدم",
+    "detail": "not_found: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [embed] blocked: no posts in embed page (508572 bytes, title \"Instagram\") | [feed] not_found: HTTP 404 | [browser] blocked: browser saw no posts (login wall?)",
+    "at": 1793569129668
+   },
    "nextCheckAt": null,
    "latestPostAt": 1793367777000,
    "strategy": "browser",
    "hasStory": true,
    "storySince": 1793387973597,
-   "stories": [
-    {
-     "id": "4019153296329362935",
-     "takenAt": 1793340414000,
-     "expiresAt": 1793426814000,
-     "kind": "image",
-     "image": "media/story-4019153296329362935.jpg",
-     "video": null,
-     "duration": 60.022,
-     "tooBig": true
-    },
-    {
-     "id": "4019164441929146671",
-     "takenAt": 1793341758000,
-     "expiresAt": 1793428158000,
-     "kind": "video",
-     "image": "media/story-4019164441929146671.jpg",
-     "video": "media/story-4019164441929146671-v.mp4",
-     "duration": 23.733,
-     "tooBig": false
-    },
-    {
-     "id": "4019164608275244473",
-     "takenAt": 1793341778000,
-     "expiresAt": 1793428178000,
-     "kind": "video",
-     "image": "media/story-4019164608275244473.jpg",
-     "video": "media/story-4019164608275244473-v.mp4",
-     "duration": 15,
-     "tooBig": false
-    },
-    {
-     "id": "4019164846117439114",
-     "takenAt": 1793341807000,
-     "expiresAt": 1793428207000,
-     "kind": "video",
-     "image": "media/story-4019164846117439114.jpg",
-     "video": "media/story-4019164846117439114-v.mp4",
-     "duration": 55.733,
-     "tooBig": false
-    },
-    {
-     "id": "4019165057669772927",
-     "takenAt": 1793341832000,
-     "expiresAt": 1793428232000,
-     "kind": "video",
-     "image": "media/story-4019165057669772927.jpg",
-     "video": "media/story-4019165057669772927-v.mp4",
-     "duration": 15,
-     "tooBig": false
-    },
-    {
-     "id": "4019217233603569698",
-     "takenAt": 1793348052000,
-     "expiresAt": 1793434452000,
-     "kind": "video",
-     "image": "media/story-4019217233603569698.jpg",
-     "video": "media/story-4019217233603569698-v.mp4",
-     "duration": 60.01,
-     "tooBig": false
-    },
-    {
-     "id": "4019314346941289298",
-     "takenAt": 1793359628000,
-     "expiresAt": 1793446028000,
-     "kind": "video",
-     "image": "media/story-4019314346941289298.jpg",
-     "video": "media/story-4019314346941289298-v.mp4",
-     "duration": 23.933,
-     "tooBig": false
-    },
-    {
-     "id": "4019345679163675388",
-     "takenAt": 1793363364000,
-     "expiresAt": 1793449764000,
-     "kind": "image",
-     "image": "media/story-4019345679163675388.jpg",
-     "video": null,
-     "duration": 60,
-     "tooBig": true
-    },
-    {
-     "id": "4019383969334026038",
-     "takenAt": 1793367928000,
-     "expiresAt": 1793454328000,
-     "kind": "video",
-     "image": "media/story-4019383969334026038.jpg",
-     "video": "media/story-4019383969334026038-v.mp4",
-     "duration": 15,
-     "tooBig": false
-    },
-    {
-     "id": "4019425711710119132",
-     "takenAt": 1793372904000,
-     "expiresAt": 1793459304000,
-     "kind": "video",
-     "image": "media/story-4019425711710119132.jpg",
-     "video": "media/story-4019425711710119132-v.mp4",
-     "duration": 14,
-     "tooBig": false
-    },
-    {
-     "id": "4019437641753527385",
-     "takenAt": 1793374326000,
-     "expiresAt": 1793460726000,
-     "kind": "video",
-     "image": "media/story-4019437641753527385.jpg",
-     "video": "media/story-4019437641753527385-v.mp4",
-     "duration": 42.41,
-     "tooBig": false
-    },
-    {
-     "id": "4019450337022529723",
-     "takenAt": 1793375840000,
-     "expiresAt": 1793462240000,
-     "kind": "video",
-     "image": "media/story-4019450337022529723.jpg",
-     "video": "media/story-4019450337022529723-v.mp4",
-     "duration": 60.01,
-     "tooBig": false
-    }
-   ],
+   "stories": [],
    "storyError": null
   },
   {
@@ -456,36 +159,20 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793391077087,
-   "lastOkAt": 1793391094483,
-   "lastError": null,
+   "lastCheckAt": 1793569131964,
+   "lastOkAt": 1793391695137,
+   "lastError": {
+    "kind": "not_found",
+    "message": "الحساب غير موجود — تأكد من اسم المستخدم",
+    "detail": "not_found: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [embed] blocked: no posts in embed page (508581 bytes, title \"Instagram\") | [feed] not_found: HTTP 404 | [browser] blocked: browser saw no posts (login wall?)",
+    "at": 1793569146069
+   },
    "nextCheckAt": null,
    "latestPostAt": 1793362837000,
    "strategy": "browser",
    "hasStory": true,
    "storySince": 1793387992458,
-   "stories": [
-    {
-     "id": "4018897930425351219",
-     "takenAt": 1793309985000,
-     "expiresAt": 1793396385000,
-     "kind": "video",
-     "image": "media/story-4018897930425351219.jpg",
-     "video": "media/story-4018897930425351219-v.mp4",
-     "duration": 60.01,
-     "tooBig": false
-    },
-    {
-     "id": "4019272131271582405",
-     "takenAt": 1793352231000,
-     "expiresAt": 1793438631000,
-     "kind": "video",
-     "image": "media/story-4019272131271582405.jpg",
-     "video": "media/story-4019272131271582405-v.mp4",
-     "duration": 60.04,
-     "tooBig": false
-    }
-   ],
+   "stories": [],
    "storyError": null
   },
   {
@@ -501,30 +188,43 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793391115192,
-   "lastOkAt": 1793391132586,
-   "lastError": null,
+   "lastCheckAt": 1793569149750,
+   "lastOkAt": 1793391730738,
+   "lastError": {
+    "kind": "not_found",
+    "message": "الحساب غير موجود — تأكد من اسم المستخدم",
+    "detail": "not_found: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [embed] blocked: no posts in embed page (508586 bytes, title \"Instagram\") | [feed] not_found: HTTP 404 | [browser] blocked: browser saw no posts (login wall?)",
+    "at": 1793569164040
+   },
    "nextCheckAt": null,
    "latestPostAt": 1793389959000,
    "strategy": "browser",
    "hasStory": true,
    "storySince": 1793388767829,
-   "stories": [
-    {
-     "id": "4019558013308086135",
-     "takenAt": 1793388676000,
-     "expiresAt": 1793475076000,
-     "kind": "image",
-     "image": "media/story-4019558013308086135.jpg",
-     "video": null,
-     "duration": null,
-     "tooBig": false
-    }
-   ],
+   "stories": [],
    "storyError": null
   }
  ],
  "posts": [
+  {
+   "id": "tiktok:7702815883525098760",
+   "platform": "tiktok",
+   "postId": "7702815883525098760",
+   "accountId": "0e63bb4ee950",
+   "url": "https://www.tiktok.com/@yousefali82__/video/7702815883525098760",
+   "embedUrl": "https://www.tiktok.com/player/v1/7702815883525098760?autoplay=1&loop=1&music_info=1&description=1&rel=0&native_context_menu=1",
+   "createdAt": 1793451585000,
+   "caption": "#شعب_الصيني_ماله_حل😂😂 #الكويت #شرق_الرياض #صحي ",
+   "kind": "video",
+   "duration": 209,
+   "stats": {
+    "views": 8847,
+    "likes": 105,
+    "comments": 16,
+    "shares": 69
+   },
+   "cover": "media/tiktok-7702815883525098760.jpg"
+  },
   {
    "id": "instagram:DfIYG6zTFte",
    "platform": "instagram",
@@ -538,8 +238,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 33,
-    "comments": 8,
+    "likes": 41,
+    "comments": 22,
     "shares": null
    },
    "cover": "media/instagram-dfiyg6ztfte.jpg"
@@ -557,8 +257,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 45,
-    "comments": 21,
+    "likes": 51,
+    "comments": 28,
     "shares": null
    },
    "cover": "media/instagram-dfivn1wztxc.jpg"
@@ -576,7 +276,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 105,
+    "likes": 110,
     "comments": 9,
     "shares": null
    },
@@ -671,7 +371,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 189,
+    "likes": 191,
     "comments": 8,
     "shares": null
    },
@@ -689,10 +389,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 88500,
-    "likes": 777,
-    "comments": 151,
-    "shares": 1494
+    "views": 156200,
+    "likes": 1344,
+    "comments": 240,
+    "shares": 2578
    },
    "cover": "media/tiktok-7702434277270621441.jpg"
   },
@@ -766,7 +466,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 767,
+    "likes": 773,
     "comments": 27,
     "shares": null
    },
