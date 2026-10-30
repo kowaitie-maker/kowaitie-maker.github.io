@@ -19,8 +19,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793369241265,
-   "lastOkAt": 1793369241930,
+   "lastCheckAt": 1793369340405,
+   "lastOkAt": 1793369341034,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
@@ -46,14 +46,14 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793369244183,
-   "lastOkAt": 1793369269084,
+   "lastCheckAt": 1793369343261,
+   "lastOkAt": 1793369368285,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793307100000,
    "strategy": "browser",
-   "profileAt": 1793369269084,
+   "profileAt": 1793369368285,
    "meta": {}
   }
  ],
@@ -70,10 +70,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 6517,
-    "likes": 57,
-    "comments": 10,
-    "shares": 125
+    "views": 7445,
+    "likes": 64,
+    "comments": 11,
+    "shares": 141
    },
    "cover": "tiktok-7702434277270621441.jpg",
    "coverRemote": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oYlPQvCVDAUgf3jYfI6leEmAJdCGyLbURoDFlI~tplv-tiktokx-dmt-logom:tos-alisg-i-0068/oMAA9Afi8wcy1X5KPIBWI8AnAgE9iDCABzDkik.image?dr=9634&x-expires=1793534400&x-signature=abj1vGAlord7Ef%2Bextfx4fyt5DQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
@@ -82,13 +82,13 @@
   }
  ],
  "run": {
-  "lastRunAt": 1793369241265,
-  "lastFinishedAt": 1793369269085,
+  "lastRunAt": 1793369340405,
+  "lastFinishedAt": 1793369368285,
   "lastNewCount": 0
  },
  "telegramStatus": {
   "lastSentAt": null,
-  "lastError": "TELEGRAM_TOKEN ليس بصيغة رمز البوت (123456789:AA… بطول 45 حرفاً تقريباً) — ربما نُسخ ناقصاً",
-  "lastErrorAt": 1793369240901
+  "lastError": "Unauthorized",
+  "lastErrorAt": 1793369374473
  }
 }
