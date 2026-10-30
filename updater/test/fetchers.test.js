@@ -130,3 +130,38 @@ test('Instagram: rate limited everywhere', async () => {
 test('Instagram: unknown user', async () => {
   await assert.rejects(fetchInstagram(newAccount('instagram', 'nobody.here'), ctx), (e) => e.kind === 'not_found');
 });
+
+test('Instagram: shortcodes carry their creation time', async () => {
+  const { shortcodeToMs } = await import('../lib/fetchers/instagram.js');
+  const A = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+  const encode = (ms) => {
+    let id = (BigInt(ms - 1314220021721) << 23n) | 1234n;
+    let s = '';
+    while (id > 0n) {
+      s = A[Number(id % 64n)] + s;
+      id /= 64n;
+    }
+    return s;
+  };
+  const ms = Date.UTC(2026, 9, 30, 9, 15);
+  assert.equal(shortcodeToMs(encode(ms)), ms);
+  assert.equal(shortcodeToMs('!!'), null);
+});
+
+test('Instagram: profile embed page markup is understood', async () => {
+  const { parseProfileEmbed, shortcodeToMs } = await import('../lib/fetchers/instagram.js');
+  const html = `<html><head><title>Instagram</title></head><body>
+    <div class="Header"><img class="Avatar" src="https://scontent.cdninstagram.com/av.jpg?a=1&amp;b=2" alt=""><span class="FullName">محمد عوف</span></div>
+    <a href="https://www.instagram.com/p/DQabcdefghi/?utm_source=ig_embed&amp;ig_rid=x"><img src="https://scontent.cdninstagram.com/1.jpg?x=1&amp;y=2" alt="Photo by محمد on October 30, 2026."></a>
+    <a href="https://www.instagram.com/reel/DQbbcdefghi/"><img src="https://scontent.cdninstagram.com/2.jpg" alt="رحلة جميلة"></a>
+    <a href="https://www.instagram.com/p/DQabcdefghi/">dup</a></body></html>`;
+  const r = parseProfileEmbed(html, 'mohamed.ouf.xx');
+  assert.equal(r.posts.length, 2);
+  assert.equal(r.posts[0].coverUrl, 'https://scontent.cdninstagram.com/1.jpg?x=1&y=2');
+  assert.equal(r.posts[0].caption, '');
+  assert.equal(r.posts[1].kind, 'reel');
+  assert.equal(r.posts[1].caption, 'رحلة جميلة');
+  assert.equal(r.posts[0].createdAt, shortcodeToMs('DQabcdefghi'));
+  assert.equal(r.profile.displayName, 'محمد عوف');
+  assert.equal(r.profile.avatarUrl, 'https://scontent.cdninstagram.com/av.jpg?a=1&b=2');
+});

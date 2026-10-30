@@ -201,6 +201,115 @@ async function viaBrowser(username, ctx) {
   return { profile, posts: [...posts.values()] };
 }
 
+const SHORTCODE_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+const IG_EPOCH_MS = 1314220021721;
+
+/** Instagram media ids carry their creation time (ms since Instagram's epoch) in the upper bits. */
+export function shortcodeToMs(code) {
+  let id = 0n;
+  for (const ch of String(code).slice(0, 11)) {
+    const i = SHORTCODE_ALPHABET.indexOf(ch);
+    if (i < 0) return null;
+    id = id * 64n + BigInt(i);
+  }
+  const ms = Number(id >> 23n) + IG_EPOCH_MS;
+  return ms > 1_300_000_000_000 && ms < 4_000_000_000_000 ? ms : null;
+}
+
+const decodeEntities = (s) => s
+  .replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+  .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+  .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
+  .replace(/&amp;/g, '&');
+
+/** Parse the public profile embed page (instagram.com/<user>/embed/), made for other websites. */
+export function parseProfileEmbed(html, username) {
+  // Embedded JSON first: it may carry the full timeline.
+  let fromJson = { profile: null, posts: [] };
+  const blobs = [];
+  for (const m of html.matchAll(/<script[^>]*type=["']application\/json["'][^>]*>([\s\S]*?)<\/script>/g)) blobs.push(m[1]);
+  for (const m of html.matchAll(/"contextJSON"\s*:\s*("(?:[^"\\]|\\.)*")/g)) {
+    try {
+      blobs.push(JSON.parse(m[1]));
+    } catch {
+      /* ignore */
+    }
+  }
+  for (const b of blobs) {
+    try {
+      const r = postsFromAnyJson(JSON.parse(b));
+      fromJson = { profile: fromJson.profile || r.profile, posts: [...fromJson.posts, ...r.posts] };
+    } catch {
+      /* not JSON */
+    }
+  }
+  if (fromJson.posts.length) return fromJson;
+
+  // Otherwise read the post links and their thumbnails from the markup.
+  const posts = new Map();
+  const re = /href=["'](?:https?:\/\/(?:www\.)?instagram\.com)?\/(?:[\w.]+\/)?(p|reel|tv)\/([A-Za-z0-9_-]{6,})\/?[^"']*["']/g;
+  for (const m of html.matchAll(re)) {
+    const code = m[2];
+    if (posts.has(code)) continue;
+    const after = html.slice(m.index, m.index + 2500);
+    const img = after.match(/<img[^>]+src=["']([^"']+)["']/);
+    const alt = after.match(/<img[^>]+alt=["']([^"']*)["']/);
+    const caption = alt && !/^(photo|video|image) (by|shared by|of)\b/i.test(decodeEntities(alt[1])) ? decodeEntities(alt[1]) : '';
+    const kind = m[1] === 'reel' ? 'reel' : 'post';
+    posts.set(code, {
+      postId: code,
+      url: postUrl(code, kind),
+      createdAt: shortcodeToMs(code),
+      caption,
+      kind,
+      coverUrl: img ? decodeEntities(img[1]) : null,
+      duration: null,
+      stats: { views: null, likes: null, comments: null, shares: null },
+      pinned: false,
+    });
+  }
+  let avatarUrl = null;
+  for (const m of html.matchAll(/<img\b[^>]*>/gi)) {
+    if (!/Avatar|ProfilePic|profile picture/i.test(m[0])) continue;
+    const src = m[0].match(/\bsrc=["']([^"']+)["']/);
+    if (src) {
+      avatarUrl = decodeEntities(src[1]);
+      break;
+    }
+  }
+  const fullName = html.match(/class=["'][^"']*FullName[^"']*["'][^>]*>([^<]+)</i);
+  const profile = {
+    displayName: fullName ? decodeEntities(fullName[1]).trim() : null,
+    avatarUrl,
+    followers: null,
+    postsCount: null,
+    bio: '',
+    verified: false,
+    meta: {},
+  };
+  return { profile: profile.displayName || profile.avatarUrl ? profile : null, posts: [...posts.values()].filter((p) => p.createdAt) };
+}
+
+export async function fetchProfileEmbed(username, ctx) {
+  const S = 'embed';
+  const res = await request(`${ctx.origins.instagram}/${encodeURIComponent(username)}/embed/`, {
+    headers: { 'User-Agent': CHROME_UA, Accept: 'text/html,application/xhtml+xml,*/*;q=0.8', Referer: 'https://www.google.com/' },
+    redirect: 'manual',
+    strategy: S,
+  });
+  if (res.status >= 300 && res.status < 400) throw new FetchError('login', `redirect to ${(res.location || '').slice(0, 60)}`, S);
+  // A 404 here can mean "profile embeds unavailable", so it never decides that the account doesn't exist.
+  if (res.status === 404) throw new FetchError('blocked', 'HTTP 404 from profile embed', S);
+  if (res.status === 429) throw new FetchError('rate_limited', 'HTTP 429', S);
+  ensureOk(res, S);
+  const r = parseProfileEmbed(res.text, username);
+  if (!r.posts.length) {
+    const title = (res.text.match(/<title[^>]*>([^<]*)</i) || [])[1] || '';
+    throw new FetchError('blocked', `no posts in embed page (${res.text.length} bytes, title "${title.trim().slice(0, 60)}")`, S);
+  }
+  return r;
+}
+
 /**
  * Fetch an account's recent Instagram posts, trying several strategies in turn.
  * @returns {Promise<{profile, posts, strategy, profileRefreshed:boolean}>}
@@ -211,6 +320,7 @@ export async function fetchInstagram(account, ctx) {
   const attempts = [
     ['web', () => fetchWebProfileInfo(username, ctx, 'www')],
     ['mobile', () => fetchWebProfileInfo(username, ctx, 'mobile')],
+    ['embed', () => fetchProfileEmbed(username, ctx)],
   ];
   if (ctx.settings?.igSessionId) attempts.push(['feed', () => fetchUserFeed(username, ctx)]);
   if (ctx.browser) attempts.push(['browser', () => viaBrowser(username, ctx)]);
