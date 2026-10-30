@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { CHROME_UA, ensureOk, parseJson, request } from '../net.js';
 import { FetchError, asFetchError, combineErrors } from '../errors.js';
 import { findKey, firstStr, num, str } from '../util.js';
@@ -186,19 +188,39 @@ async function viaBrowser(username, ctx) {
   const cookies = ctx.settings?.igSessionId
     ? [{ name: 'sessionid', value: ctx.settings.igSessionId, domain: '.instagram.com', path: '/', secure: true, httpOnly: true }]
     : [];
-  const { jsons } = await ctx.browser.capture(`https://www.instagram.com/${username}/`, {
-    match: (u) => /web_profile_info|\/graphql\/query|\/api\/graphql/.test(u),
-    cookies,
-  });
+  const match = (u) => /web_profile_info|\/graphql\/query|\/api\/graphql|\/api\/v1\/feed\//.test(u);
+  const waitFor = 'a[href*="/p/"], a[href*="/reel/"]';
   let profile = null;
   const posts = new Map();
-  for (const j of jsons) {
-    const r = postsFromAnyJson(j);
+  const absorb = (r) => {
     profile = mergeProfile(profile, r.profile);
-    for (const p of r.posts) posts.set(p.postId, p);
+    for (const p of r.posts) if (p.createdAt) posts.set(p.postId, p);
+  };
+  // The embed page is made for other websites and renders its grid without a login.
+  const embed = await ctx.browser.capture(`https://www.instagram.com/${username}/embed/`, { match, cookies, waitFor });
+  debugDump(`instagram-embed-rendered-${username}.html`, embed.html);
+  for (const j of embed.jsons) absorb(postsFromAnyJson(j));
+  absorb(parseProfileEmbed(embed.html, username));
+  if (!posts.size) {
+    const page = await ctx.browser.capture(`https://www.instagram.com/${username}/`, { match, cookies, waitFor });
+    debugDump(`instagram-profile-rendered-${username}.html`, page.html);
+    for (const j of page.jsons) absorb(postsFromAnyJson(j));
+    absorb(parseProfileEmbed(page.html, username));
   }
-  if (!posts.size && !profile) throw new FetchError('blocked', 'browser saw no posts (login wall?)', S);
+  if (!posts.size) throw new FetchError('blocked', 'browser saw no posts (login wall?)', S);
   return { profile, posts: [...posts.values()] };
+}
+
+/** Saves raw pages for troubleshooting when RADAR_DEBUG_DIR is set. */
+function debugDump(name, text) {
+  const dir = process.env.RADAR_DEBUG_DIR;
+  if (!dir) return;
+  try {
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, name), String(text || '').slice(0, 3_000_000));
+  } catch {
+    /* debugging only */
+  }
 }
 
 const SHORTCODE_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
@@ -302,6 +324,7 @@ export async function fetchProfileEmbed(username, ctx) {
   if (res.status === 404) throw new FetchError('blocked', 'HTTP 404 from profile embed', S);
   if (res.status === 429) throw new FetchError('rate_limited', 'HTTP 429', S);
   ensureOk(res, S);
+  debugDump(`instagram-embed-${username}.html`, res.text);
   const r = parseProfileEmbed(res.text, username);
   if (!r.posts.length) {
     const title = (res.text.match(/<title[^>]*>([^<]*)</i) || [])[1] || '';

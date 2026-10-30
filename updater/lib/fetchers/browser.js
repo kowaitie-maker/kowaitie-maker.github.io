@@ -50,7 +50,7 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
     idleTimer.unref?.();
   }
 
-  async function captureNow(url, { match, cookies = [], waitMs = 15000 }) {
+  async function captureNow(url, { match, cookies = [], waitMs = 15000, waitFor = null }) {
     let b;
     try {
       b = await getBrowser();
@@ -74,6 +74,7 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
         await page.waitForTimeout(700);
         await Promise.all(pending);
         if (jsons.length) break;
+        if (waitFor && (await page.$(waitFor).catch(() => null))) break;
         if (!scrolled && Date.now() - start > 4000) {
           scrolled = true;
           await page.mouse.wheel(0, 1500).catch(() => {});
