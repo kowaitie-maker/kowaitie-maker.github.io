@@ -76,7 +76,7 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
     idleTimer.unref?.();
   }
 
-  async function captureNow(url, { match, cookies = [], waitMs = 15000, waitFor = null, until = null, block = null, clickButton = null }) {
+  async function captureNow(url, { match, cookies = [], waitMs = 15000, waitFor = null, until = null, block = null, clickButton = null, keepDocument = false }) {
     let b;
     try {
       b = await getBrowser();
@@ -99,9 +99,13 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
     const jsons = [];
     const pending = [];
     const trace = [];
+    let documentText = '';
     page.on('response', (res) => {
       const req = res.request();
       const type = req.resourceType();
+      if (keepDocument && type === 'document' && !documentText && res.url().startsWith(url.split('?')[0])) {
+        pending.push(res.text().then((t) => (documentText = t)).catch(() => {}));
+      }
       const matched = match(res.url());
       if (type === 'xhr' || type === 'fetch') {
         let path = '';
@@ -142,7 +146,7 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
       await Promise.all(pending);
       const html = await page.content();
       log(`browser captured ${jsons.length} responses from ${url}`);
-      return { jsons, html, blocked, clicked, trace };
+      return { jsons, html, blocked, clicked, trace, documentText };
     } catch (err) {
       throw new FetchError('network', `browser: ${err.message.split('\n')[0]}`, 'browser');
     } finally {

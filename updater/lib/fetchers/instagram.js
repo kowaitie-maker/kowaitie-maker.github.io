@@ -494,9 +494,20 @@ async function fetchStoriesViaPage(account, userId, ctx, cookies) {
     const body = req.postData() || '';
     return /seen/i.test(req.url()) || /seen/i.test(name) || /fb_api_req_friendly_name=[^&]*seen/i.test(body);
   };
-  const { jsons, html, blocked, clicked, trace = [] } = await ctx.browser.capture(`https://www.instagram.com/stories/${encodeURIComponent(account.username)}/`, {
-    match, cookies, until, block, clickButton: /^view story$/i, waitMs: 14000,
+  const { jsons, html, blocked, clicked, trace = [], documentText = '' } = await ctx.browser.capture(`https://www.instagram.com/stories/${encodeURIComponent(account.username)}/`, {
+    match, cookies, until, block, clickButton: /^view story$/i, waitMs: 14000, keepDocument: true,
   });
+  // Instagram often ships the story data inside the page itself (preloaded JSON).
+  for (const src of [documentText, html]) {
+    for (const m of String(src || '').matchAll(/<script[^>]*type=["']application\/json["'][^>]*>([\s\S]*?)<\/script>/g)) {
+      if (!/taken_at/.test(m[1])) continue;
+      try {
+        jsons.push(JSON.parse(m[1]));
+      } catch {
+        /* not JSON */
+      }
+    }
+  }
   if (blocked) ctx.log?.(`stories ${account.username}: blocked ${blocked} "seen" request(s)`);
   const items = new Map();
   for (const j of jsons) for (const it of storyItemsFromJson(j, userId)) items.set(it.storyId, it);
@@ -505,9 +516,10 @@ async function fetchStoriesViaPage(account, userId, ctx, cookies) {
   const keys = [...new Set(jsons.flatMap((j) => Object.keys(j?.data || j || {})))].slice(0, 6).join(',');
   const gate = /view story|view as/i.test(html || '') ? ', still asks to confirm viewing' : '';
   const steps = [...new Set(trace)].filter((t) => /graphql|\/api\//.test(t)).slice(0, 8).join('; ');
+  const docInfo = ` page html: ${documentText.length} bytes, mentions reels_media: ${/reels_media/.test(documentText) ? 'yes' : 'no'}, taken_at: ${(documentText.match(/taken_at/g) || []).length};`;
   const tray = jsons.find((j) => j?.data?.xdt_api__v1__feed__reels_tray);
   const shape = tray ? ` tray shape: ${jsonShape(tray.data.xdt_api__v1__feed__reels_tray).slice(0, 900)}` : '';
-  throw new FetchError('blocked', `no story data on the stories page (${jsons.length} answers${keys ? `: ${keys}` : ''}; pressed view: ${clicked ? 'yes' : 'no'}; blocked seen: ${blocked}${gate}) requests: ${steps}${shape}`, S);
+  throw new FetchError('blocked', `no story data on the stories page (${jsons.length} answers${keys ? `: ${keys}` : ''}; pressed view: ${clicked ? 'yes' : 'no'}; blocked seen: ${blocked}${gate})${docInfo} requests: ${steps}${shape}`, S);
 }
 
 async function fetchStoriesDirect(account, userId, ctx) {
