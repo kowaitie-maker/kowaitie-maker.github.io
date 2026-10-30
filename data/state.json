@@ -19,8 +19,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793388455637,
-   "lastOkAt": 1793388456196,
+   "lastCheckAt": 1793388661234,
+   "lastOkAt": 1793388661637,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
@@ -47,14 +47,14 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793388458780,
-   "lastOkAt": 1793388481471,
+   "lastCheckAt": 1793388663545,
+   "lastOkAt": 1793388682385,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793307100000,
    "strategy": "browser",
-   "profileAt": 1793388481471,
+   "profileAt": 1793388682385,
    "meta": {
     "userId": "33020898390"
    },
@@ -63,7 +63,7 @@
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (507533 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (507685 bytes, title \"Instagram\"))",
     "feed: not_found (HTTP 404)"
    ],
    "stories": []
@@ -82,14 +82,14 @@
    "verified": false,
    "addedAt": 1793383987149,
    "paused": false,
-   "lastCheckAt": 1793388484623,
-   "lastOkAt": 1793388501566,
+   "lastCheckAt": 1793388685681,
+   "lastOkAt": 1793388703585,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793375323000,
    "strategy": "browser",
-   "profileAt": 1793388501566,
+   "profileAt": 1793388703585,
    "meta": {
     "userId": "80168664853"
    },
@@ -98,10 +98,10 @@
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (507526 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (507669 bytes, title \"Instagram\"))",
     "feed: not_found (HTTP 404)"
    ],
-   "storyError": "[stories] blocked: HTML instead of JSON from www.instagram.com/api/v1/feed/reels_media/",
+   "storyError": "[stories] login: login not accepted (HTTP 200, page \"Instagram\", security check)",
    "stories": []
   },
   {
@@ -118,14 +118,14 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793388504002,
-   "lastOkAt": 1793388521000,
+   "lastCheckAt": 1793388707764,
+   "lastOkAt": 1793388725502,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793367777000,
    "strategy": "browser",
-   "profileAt": 1793388521000,
+   "profileAt": 1793388725502,
    "meta": {
     "userId": "29741346551"
    },
@@ -134,10 +134,10 @@
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (507526 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (507672 bytes, title \"Instagram\"))",
     "feed: not_found (HTTP 404)"
    ],
-   "storyError": "[stories] blocked: HTML instead of JSON from www.instagram.com/api/v1/feed/reels_media/",
+   "storyError": "[stories] login: login not accepted (HTTP 200, page \"Instagram\", security check)",
    "stories": []
   },
   {
@@ -154,14 +154,14 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793388525165,
-   "lastOkAt": 1793388542300,
+   "lastCheckAt": 1793388727805,
+   "lastOkAt": 1793388745633,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793362837000,
    "strategy": "browser",
-   "profileAt": 1793388542300,
+   "profileAt": 1793388745633,
    "meta": {
     "userId": "47610700383"
    },
@@ -170,10 +170,10 @@
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (507537 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (507683 bytes, title \"Instagram\"))",
     "feed: not_found (HTTP 404)"
    ],
-   "storyError": "[stories] blocked: HTML instead of JSON from www.instagram.com/api/v1/feed/reels_media/",
+   "storyError": "[stories] login: login not accepted (HTTP 200, page \"Instagram\", security check)",
    "stories": []
   },
   {
@@ -185,34 +185,57 @@
    "avatar": "avatar-f383a0e9f40d-mvvapk78.jpg",
    "avatarAt": 1793384302779,
    "followers": 55400,
-   "postsCount": 399,
+   "postsCount": 400,
    "bio": "",
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793388545966,
-   "lastOkAt": 1793388562882,
+   "lastCheckAt": 1793388749874,
+   "lastOkAt": 1793388767829,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
-   "latestPostAt": 1793130053000,
+   "latestPostAt": 1793388657000,
    "strategy": "browser",
-   "profileAt": 1793388562882,
+   "profileAt": 1793388767830,
    "meta": {
     "userId": "77792093830"
    },
-   "hasStory": false,
-   "storySince": null,
+   "hasStory": true,
+   "storySince": 1793388767829,
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (507528 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (507674 bytes, title \"Instagram\"))",
     "feed: not_found (HTTP 404)"
    ],
-   "stories": []
+   "stories": [],
+   "storyError": "[stories] login: login not accepted (HTTP 200, page \"Instagram\", security check)"
   }
  ],
  "posts": [
+  {
+   "id": "instagram:DfIVn1WztXc",
+   "platform": "instagram",
+   "postId": "DfIVn1WztXc",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfIVn1WztXc/",
+   "embedUrl": "https://www.instagram.com/p/DfIVn1WztXc/embed/",
+   "createdAt": 1793388657000,
+   "caption": "توفيقي: عط الإعانة لطالب التخصص النادر فقط.. أما تعطي للكل هذي هدر لميزانية الدولة\n‫#الكويت‬",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 2,
+    "comments": 0,
+    "shares": null
+   },
+   "cover": "instagram-dfivn1wztxc.jpg",
+   "coverRemote": "https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/868722579_17907497604597831_3515715696958836332_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_cat=111&ig_cache_key=NDAxOTU1Nzc2Mzc1NTQ2NDE1Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzMi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=ye3Vx35KXRMQ7kNvwFamRGN&_nc_oc=Adq0tM5Ii5UOv6CvV66FL0C_mVjRfZLc2b_GjRzQKk0o_02E2V_49UuLgNRdFN_soKw&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_gid=D-ulu2wRCRGVvIVSztUtgg&_nc_ss=7b689&oh=00_AQRqmvasOv4EaBBWehDYB37D0WpLU0cJs0hQR03W9mMVtg&oe=6AEAC675",
+   "discoveredAt": 1793388767831,
+   "seen": false
+  },
   {
    "id": "instagram:DfH783eNSgz",
    "platform": "instagram",
@@ -248,7 +271,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 12,
+    "likes": 13,
     "comments": 2,
     "shares": null
    },
@@ -357,10 +380,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 83300,
-    "likes": 727,
+    "views": 83700,
+    "likes": 729,
     "comments": 149,
-    "shares": 1394
+    "shares": 1396
    },
    "cover": "tiktok-7702434277270621441.jpg",
    "coverRemote": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oYlPQvCVDAUgf3jYfI6leEmAJdCGyLbURoDFlI~tplv-tiktokx-dmt-logom:tos-alisg-i-0068/oMAA9Afi8wcy1X5KPIBWI8AnAgE9iDCABzDkik.image?dr=9634&x-expires=1793534400&x-signature=abj1vGAlord7Ef%2Bextfx4fyt5DQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
@@ -446,7 +469,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 735,
+    "likes": 737,
     "comments": 27,
     "shares": null
    },
@@ -457,14 +480,14 @@
   }
  ],
  "run": {
-  "lastRunAt": 1793388455637,
-  "lastFinishedAt": 1793388562883,
-  "lastNewCount": 0
+  "lastRunAt": 1793388661234,
+  "lastFinishedAt": 1793388768695,
+  "lastNewCount": 1
  },
  "telegramStatus": {
-  "lastSentAt": 1793387992783,
+  "lastSentAt": 1793388778699,
   "lastError": null,
   "lastErrorAt": null,
-  "verifiedAt": 1793388455636
+  "verifiedAt": 1793388661233
  }
 }

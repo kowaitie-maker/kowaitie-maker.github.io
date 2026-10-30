@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": 1793388562992,
+ "generatedAt": 1793388778752,
  "since": 1793307600000,
  "intervalMin": 30,
  "repo": "kowaitie-maker/kowaitie-maker.github.io",
@@ -8,12 +8,18 @@
   "browser": true,
   "ytdlp": "2026.10.26",
   "instagramLogin": true,
+  "instagramSession": {
+   "length": 78,
+   "segments": 4,
+   "startsWithUserId": true,
+   "notes": []
+  },
   "telegram": true,
   "telegramStatus": {
-   "lastSentAt": 1793387992783,
+   "lastSentAt": 1793388778699,
    "lastError": null,
    "lastErrorAt": null,
-   "verifiedAt": 1793388455636
+   "verifiedAt": 1793388661233
   }
  },
  "accounts": [
@@ -30,8 +36,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793388455637,
-   "lastOkAt": 1793388456196,
+   "lastCheckAt": 1793388661234,
+   "lastOkAt": 1793388661637,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362740000,
@@ -54,8 +60,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793388458780,
-   "lastOkAt": 1793388481471,
+   "lastCheckAt": 1793388663545,
+   "lastOkAt": 1793388682385,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793307100000,
@@ -78,8 +84,8 @@
    "verified": false,
    "addedAt": 1793383987149,
    "paused": false,
-   "lastCheckAt": 1793388484623,
-   "lastOkAt": 1793388501566,
+   "lastCheckAt": 1793388685681,
+   "lastOkAt": 1793388703585,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793375323000,
@@ -87,7 +93,7 @@
    "hasStory": true,
    "storySince": 1793387952781,
    "stories": [],
-   "storyError": "[stories] blocked: HTML instead of JSON from www.instagram.com/api/v1/feed/reels_media/"
+   "storyError": "[stories] login: login not accepted (HTTP 200, page \"Instagram\", security check)"
   },
   {
    "id": "1d514a49925d",
@@ -102,8 +108,8 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793388504002,
-   "lastOkAt": 1793388521000,
+   "lastCheckAt": 1793388707764,
+   "lastOkAt": 1793388725502,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793367777000,
@@ -111,7 +117,7 @@
    "hasStory": true,
    "storySince": 1793387973597,
    "stories": [],
-   "storyError": "[stories] blocked: HTML instead of JSON from www.instagram.com/api/v1/feed/reels_media/"
+   "storyError": "[stories] login: login not accepted (HTTP 200, page \"Instagram\", security check)"
   },
   {
    "id": "b44f84f8c3f0",
@@ -126,8 +132,8 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793388525165,
-   "lastOkAt": 1793388542300,
+   "lastCheckAt": 1793388727805,
+   "lastOkAt": 1793388745633,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362837000,
@@ -135,7 +141,7 @@
    "hasStory": true,
    "storySince": 1793387992458,
    "stories": [],
-   "storyError": "[stories] blocked: HTML instead of JSON from www.instagram.com/api/v1/feed/reels_media/"
+   "storyError": "[stories] login: login not accepted (HTTP 200, page \"Instagram\", security check)"
   },
   {
    "id": "f383a0e9f40d",
@@ -145,24 +151,43 @@
    "displayName": "Top | توب",
    "avatar": "media/avatar-f383a0e9f40d-mvvapk78.jpg",
    "followers": 55400,
-   "postsCount": 399,
+   "postsCount": 400,
    "bio": "",
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793388545966,
-   "lastOkAt": 1793388562882,
+   "lastCheckAt": 1793388749874,
+   "lastOkAt": 1793388767829,
    "lastError": null,
    "nextCheckAt": null,
-   "latestPostAt": 1793130053000,
+   "latestPostAt": 1793388657000,
    "strategy": "browser",
-   "hasStory": false,
-   "storySince": null,
+   "hasStory": true,
+   "storySince": 1793388767829,
    "stories": [],
-   "storyError": null
+   "storyError": "[stories] login: login not accepted (HTTP 200, page \"Instagram\", security check)"
   }
  ],
  "posts": [
+  {
+   "id": "instagram:DfIVn1WztXc",
+   "platform": "instagram",
+   "postId": "DfIVn1WztXc",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfIVn1WztXc/",
+   "embedUrl": "https://www.instagram.com/p/DfIVn1WztXc/embed/",
+   "createdAt": 1793388657000,
+   "caption": "توفيقي: عط الإعانة لطالب التخصص النادر فقط.. أما تعطي للكل هذي هدر لميزانية الدولة\n‫#الكويت‬",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 2,
+    "comments": 0,
+    "shares": null
+   },
+   "cover": "media/instagram-dfivn1wztxc.jpg"
+  },
   {
    "id": "instagram:DfH783eNSgz",
    "platform": "instagram",
@@ -195,7 +220,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 12,
+    "likes": 13,
     "comments": 2,
     "shares": null
    },
@@ -289,10 +314,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 83300,
-    "likes": 727,
+    "views": 83700,
+    "likes": 729,
     "comments": 149,
-    "shares": 1394
+    "shares": 1396
    },
    "cover": "media/tiktok-7702434277270621441.jpg"
   },
@@ -366,7 +391,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 735,
+    "likes": 737,
     "comments": 27,
     "shares": null
    },
