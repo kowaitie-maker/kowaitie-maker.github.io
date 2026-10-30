@@ -3,6 +3,30 @@ import { CHROME_UA } from '../net.js';
 import { FetchError } from '../errors.js';
 
 /**
+ * Parse an answer that may be plain JSON, JSON behind a "for (;;);" guard, or
+ * several JSON documents on separate lines (streamed GraphQL).
+ */
+export function parseJsonish(text) {
+  const body = String(text || '').replace(/^\s*for\s*\(;;\);\s*/, '').trim();
+  if (!body) return [];
+  try {
+    return [JSON.parse(body)];
+  } catch {
+    const out = [];
+    for (const line of body.split(/\r?\n/)) {
+      const l = line.trim();
+      if (!l.startsWith('{')) continue;
+      try {
+        out.push(JSON.parse(l));
+      } catch {
+        /* skip */
+      }
+    }
+    return out;
+  }
+}
+
+/**
  * Optional headless-browser fetcher built on Playwright. It opens the real
  * profile page and keeps the JSON the site itself loads. Returns null when
  * Playwright (and its Chromium) is not installed.
@@ -74,9 +98,22 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
     const page = await context.newPage();
     const jsons = [];
     const pending = [];
+    const trace = [];
     page.on('response', (res) => {
-      if (!match(res.url())) return;
-      pending.push(res.json().then((j) => jsons.push(j)).catch(() => {}));
+      const req = res.request();
+      const type = req.resourceType();
+      const matched = match(res.url());
+      if (type === 'xhr' || type === 'fetch') {
+        let path = '';
+        try {
+          path = new URL(res.url()).pathname;
+        } catch {
+          /* ignore */
+        }
+        trace.push(`${req.method()} ${path}${req.headers()['x-fb-friendly-name'] ? ` [${req.headers()['x-fb-friendly-name']}]` : ''} ${res.status()}${matched ? '' : ' (skipped)'}`);
+      }
+      if (!matched) return;
+      pending.push(res.text().then((t) => jsons.push(...parseJsonish(t))).catch(() => {}));
     });
     try {
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
@@ -105,7 +142,7 @@ export async function createBrowserFetcher({ log = () => {} } = {}) {
       await Promise.all(pending);
       const html = await page.content();
       log(`browser captured ${jsons.length} responses from ${url}`);
-      return { jsons, html, blocked, clicked };
+      return { jsons, html, blocked, clicked, trace };
     } catch (err) {
       throw new FetchError('network', `browser: ${err.message.split('\n')[0]}`, 'browser');
     } finally {

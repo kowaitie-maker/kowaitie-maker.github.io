@@ -475,7 +475,7 @@ async function fetchStoriesViaPage(account, userId, ctx, cookies) {
     const body = req.postData() || '';
     return /seen/i.test(req.url()) || /seen/i.test(name) || /fb_api_req_friendly_name=[^&]*seen/i.test(body);
   };
-  const { jsons, html, blocked, clicked } = await ctx.browser.capture(`https://www.instagram.com/stories/${encodeURIComponent(account.username)}/`, {
+  const { jsons, html, blocked, clicked, trace = [] } = await ctx.browser.capture(`https://www.instagram.com/stories/${encodeURIComponent(account.username)}/`, {
     match, cookies, until, block, clickButton: /^view story$/i, waitMs: 14000,
   });
   if (blocked) ctx.log?.(`stories ${account.username}: blocked ${blocked} "seen" request(s)`);
@@ -484,8 +484,9 @@ async function fetchStoriesViaPage(account, userId, ctx, cookies) {
   if (items.size) return [...items.values()];
   // Explain what the page did, without copying any of its content.
   const keys = [...new Set(jsons.flatMap((j) => Object.keys(j?.data || j || {})))].slice(0, 6).join(',');
-  const gate = /view story|view as/i.test(html || '') ? `, asks to confirm viewing, pressed: ${clicked ? 'yes' : 'no'}` : '';
-  throw new FetchError('blocked', `no story data on the stories page (${jsons.length} answers${keys ? `: ${keys}` : ''}${gate})`, S);
+  const gate = /view story|view as/i.test(html || '') ? ', still asks to confirm viewing' : '';
+  const steps = [...new Set(trace)].filter((t) => !/logging|falco|bz|ajax\/bootloader/i.test(t)).slice(0, 14).join('; ');
+  throw new FetchError('blocked', `no story data on the stories page (${jsons.length} answers${keys ? `: ${keys}` : ''}; pressed view: ${clicked ? 'yes' : 'no'}; blocked seen: ${blocked}${gate}) requests: ${steps}`, S);
 }
 
 async function fetchStoriesDirect(account, userId, ctx) {
