@@ -1,5 +1,5 @@
 import { confirmDialog, h, icon, toast } from '../dom.js';
-import { longDate } from '../format.js';
+import { ago, longDate } from '../format.js';
 import { links } from '../api.js';
 import { prefs, setPref } from '../prefs.js';
 import { notificationsSupported, requestNotifications } from '../alerts.js';
@@ -27,6 +27,20 @@ function ghLink(href, label) {
 }
 
 const code = (t) => h('code', null, t);
+
+function telegramRow(c) {
+  const st = c.telegramStatus || {};
+  if (!c.telegram) {
+    return row('الحالة', 'ليصلك كل منشور جديد كإشعار على جوالك حتى والصفحة مغلقة. بعد إضافة السرّين تتغيّر الحالة مع التحديث التالي (خلال 30 دقيقة).', pill(false, '', 'غير مفعّل'));
+  }
+  if (st.lastError) {
+    return row('الحالة', h('span', null, `آخر محاولة إرسال فشلت ${ago(st.lastErrorAt)}: `, h('bdi', { dir: 'auto' }, st.lastError), '. تأكد من الرمز ورقمك، وأنك ضغطت Start في بوتك.'), h('span', { class: 'err-pill' }, 'خطأ'));
+  }
+  const hint = st.lastSentAt
+    ? `آخر رسالة أُرسلت ${ago(st.lastSentAt)}. يصلك كل منشور جديد مع رابط مشاهدته، حتى والصفحة مغلقة.`
+    : 'سيرسل لك البوت كل منشور جديد مع رابط مشاهدته، حتى والصفحة مغلقة.';
+  return row('الحالة', hint, pill(true, 'مفعّل', ''));
+}
 const pill = (ok, onText, offText) => h('span', { class: ok ? 'ok-pill' : 'off-pill' }, ok ? icon('check') : null, ok ? onText : offText);
 
 export function createSettingsView(app) {
@@ -72,7 +86,7 @@ export function createSettingsView(app) {
           : 'غير متاحة في هذا المتصفح. للإشعارات على الجوال استخدم تيليجرام بالأسفل.', notifToggle)),
 
       group('إشعارات تيليجرام (اختياري)',
-        row('الحالة', c.telegram ? 'سيرسل لك البوت كل منشور جديد مع رابط مشاهدته، حتى والصفحة مغلقة.' : 'ليصلك كل منشور جديد كإشعار على جوالك حتى والصفحة مغلقة.', pill(c.telegram, 'مفعّل', 'غير مفعّل')),
+        telegramRow(c),
         c.telegram ? null : h('div', { class: 'row row-col' },
           h('ol', { class: 'steps' },
             h('li', null, 'في تيليجرام افتح ', code('@BotFather'), ' وأرسل ', code('/newbot'), ' ثم اتبع الخطوات وانسخ الرمز (token).'),
@@ -104,12 +118,16 @@ export function createSettingsView(app) {
     );
   }
 
+  let shown = '';
   return {
     el,
+    // The page has no text inputs, so it's safe to rebuild when the published status changes.
     update(state) {
-      if (!built) {
+      const key = JSON.stringify([state.capabilities, state.settings]);
+      if (!built || key !== shown) {
         build(state);
         built = true;
+        shown = key;
       }
     },
   };

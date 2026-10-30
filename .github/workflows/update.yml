@@ -6,6 +6,10 @@ on:
     - cron: '7,37 * * * *'
   workflow_dispatch:
     inputs:
+      telegram_test:
+        description: Send a Telegram test message (and the latest post)
+        type: boolean
+        default: false
       debug:
         description: Save raw pages to debug/ for troubleshooting
         type: boolean
@@ -47,6 +51,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           RADAR_BROWSER_CHANNEL: chrome
           RADAR_DEBUG_DIR: ${{ inputs.debug && 'debug' || '' }}
+          RADAR_TELEGRAM_TEST: ${{ inputs.telegram_test && '1' || '' }}
         run: node updater/update.mjs
 
       - name: Publish to the page

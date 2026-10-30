@@ -97,13 +97,21 @@ export async function update({
   // Telegram sends are awaited before the job ends.
   const pending = [];
   const telegram = createTelegramNotifier({ getSettings: () => db.settings, mediaDir, apiBase: telegramApi, log });
-  const notifier = {
-    notify(acc, posts) {
-      const job = telegram.notify(acc, posts);
-      pending.push(job.catch((err) => log(`telegram: ${err.message}`)));
-      return job;
-    },
+  const telegramOn = !!(db.settings.telegram.token && db.settings.telegram.chatId);
+  db.telegramStatus ||= { lastSentAt: null, lastError: null, lastErrorAt: null };
+  // Remember whether the last send worked, so the page can show it.
+  const track = (job) => {
+    const done = job.then(
+      () => Object.assign(db.telegramStatus, { lastSentAt: Date.now(), lastError: null, lastErrorAt: null }),
+      (err) => {
+        log(`telegram: ${err.message}`);
+        Object.assign(db.telegramStatus, { lastError: String(err.message).slice(0, 200), lastErrorAt: Date.now() });
+      },
+    );
+    pending.push(done);
+    return job;
   };
+  const notifier = { notify: (acc, posts) => track(telegram.notify(acc, posts)) };
 
   const [browser, ytdlp] = await Promise.all([
     enableBrowser ? createBrowserFetcher({ log }) : null,
@@ -125,6 +133,19 @@ export async function update({
   });
 
   const result = await radar.checkAll({ force: true });
+
+  // Manual run with "test Telegram": send a confirmation plus the latest post.
+  if (env.RADAR_TELEGRAM_TEST === '1') {
+    if (!telegramOn) {
+      log('telegram test: TELEGRAM_TOKEN / TELEGRAM_CHAT_ID secrets are missing');
+      Object.assign(db.telegramStatus, { lastError: 'TELEGRAM_TOKEN أو TELEGRAM_CHAT_ID غير موجود في أسرار المستودع', lastErrorAt: Date.now() });
+    } else {
+      await track(telegram.test()).catch(() => {});
+      const latest = [...db.posts].sort((a, b) => b.createdAt - a.createdAt)[0];
+      const acc = latest && db.accounts.find((a) => a.id === latest.accountId);
+      if (latest && acc) await track(telegram.notify(acc, [latest])).catch(() => {});
+    }
+  }
   await Promise.all(pending);
   await browser?.close();
 
@@ -136,7 +157,7 @@ export async function update({
     since: config.since,
     intervalMin: config.intervalMin,
     repo: env.GITHUB_REPOSITORY || null,
-    capabilities: { ...state.capabilities, instagramLogin: !!db.settings.igSessionId, telegram: !!(db.settings.telegram.token && db.settings.telegram.chatId) },
+    capabilities: { ...state.capabilities, instagramLogin: !!db.settings.igSessionId, telegram: telegramOn, telegramStatus: db.telegramStatus },
     accounts: state.accounts.map((a) => ({ ...a, avatar: rel(a.avatar), nextCheckAt: null })),
     posts: state.posts.map(({ seen, ...p }) => ({ ...p, cover: rel(p.cover) })),
   };

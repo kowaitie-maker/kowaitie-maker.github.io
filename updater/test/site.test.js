@@ -108,3 +108,34 @@ test('follow / unfollow requests from issue titles', async () => {
   assert.equal((await applyRequest('please add someone', file)).changed, false);
   assert.equal((await applyRequest('follow https://youtube.com/@x', file)).changed, false);
 });
+
+test('Telegram test run sends a confirmation and the latest post, and records the result', async () => {
+  const http = await import('node:http');
+  const calls = [];
+  let fail = false;
+  const tg = http.createServer((req, res) => {
+    calls.push(req.url.split('/').pop());
+    req.resume();
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(fail ? { ok: false, description: 'Bad Request: chat not found' } : { ok: true, result: {} }));
+  });
+  await new Promise((r) => tg.listen(0, '127.0.0.1', r));
+  const api = `http://127.0.0.1:${tg.address().port}`;
+  Object.assign(process.env, { TELEGRAM_TOKEN: '123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw', TELEGRAM_CHAT_ID: '42', RADAR_TELEGRAM_TEST: '1' });
+  try {
+    await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null, telegramApi: api });
+    assert.deepEqual(calls, ['sendMessage', 'sendPhoto']);
+    let feed = await readJson('feed.json');
+    assert.equal(feed.capabilities.telegram, true);
+    assert.ok(feed.capabilities.telegramStatus.lastSentAt);
+    assert.equal(feed.capabilities.telegramStatus.lastError, null);
+
+    fail = true;
+    await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null, telegramApi: api });
+    feed = await readJson('feed.json');
+    assert.match(feed.capabilities.telegramStatus.lastError, /chat not found/);
+  } finally {
+    for (const k of ['TELEGRAM_TOKEN', 'TELEGRAM_CHAT_ID', 'RADAR_TELEGRAM_TEST']) delete process.env[k];
+    tg.close();
+  }
+});
