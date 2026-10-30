@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": 1793358268479,
+ "generatedAt": 1793358407770,
  "since": 1793307600000,
  "intervalMin": 30,
  "repo": "kowaitie-maker/kowaitie-maker.github.io",
@@ -24,8 +24,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793358240748,
-   "lastOkAt": 1793358241191,
+   "lastCheckAt": 1793358363398,
+   "lastOkAt": 1793358363826,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793183824000,
@@ -44,13 +44,13 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793358244385,
+   "lastCheckAt": 1793358366140,
    "lastOkAt": null,
    "lastError": {
     "kind": "rate_limited",
     "message": "طلبات كثيرة على المنصة — سنعيد المحاولة تلقائياً",
-    "detail": "rate_limited: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [embed] blocked: no posts in embed page (512453 bytes, title \"Instagram\") | [browser] blocked: browser saw no posts (login wall?)",
-    "at": 1793358268341
+    "detail": "rate_limited: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [embed] blocked: no posts in embed page (512384 bytes, title \"Instagram\") | [browser] blocked: browser saw no posts (login wall?)",
+    "at": 1793358407681
    },
    "nextCheckAt": null,
    "latestPostAt": null,
