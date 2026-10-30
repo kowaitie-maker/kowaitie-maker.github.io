@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": 1793382229058,
+ "generatedAt": 1793384050302,
  "since": 1793307600000,
  "intervalMin": 30,
  "repo": "kowaitie-maker/kowaitie-maker.github.io",
@@ -10,10 +10,10 @@
   "instagramLogin": true,
   "telegram": true,
   "telegramStatus": {
-   "lastSentAt": 1793372073381,
+   "lastSentAt": 1793384050237,
    "lastError": null,
    "lastErrorAt": null,
-   "verifiedAt": 1793382197251
+   "verifiedAt": 1793383988594
   }
  },
  "accounts": [
@@ -30,8 +30,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793382197251,
-   "lastOkAt": 1793382197700,
+   "lastCheckAt": 1793383988594,
+   "lastOkAt": 1793383989049,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793362740000,
@@ -50,15 +50,111 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793382201309,
-   "lastOkAt": 1793382228930,
+   "lastCheckAt": 1793383992476,
+   "lastOkAt": 1793384011881,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793307100000,
    "strategy": "browser"
+  },
+  {
+   "id": "18bfbd6745fc",
+   "platform": "instagram",
+   "username": "has.shiaa",
+   "url": "https://www.instagram.com/has.shiaa/",
+   "displayName": "Hasna Maslouh",
+   "avatar": "media/avatar-18bfbd6745fc-mvvajrdq.jpg",
+   "followers": 36985,
+   "postsCount": 2660,
+   "bio": "",
+   "verified": false,
+   "addedAt": 1793383987149,
+   "paused": false,
+   "lastCheckAt": 1793384014611,
+   "lastOkAt": 1793384032094,
+   "lastError": null,
+   "nextCheckAt": null,
+   "latestPostAt": 1793375323000,
+   "strategy": "browser"
   }
  ],
  "posts": [
+  {
+   "id": "instagram:DfH783eNSgz",
+   "platform": "instagram",
+   "postId": "DfH783eNSgz",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfH783eNSgz/",
+   "embedUrl": "https://www.instagram.com/p/DfH783eNSgz/embed/",
+   "createdAt": 1793375323000,
+   "caption": "اسرار باب المنذب",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 75,
+    "comments": 8,
+    "shares": null
+   },
+   "cover": "media/instagram-dfh783ensgz.jpg"
+  },
+  {
+   "id": "instagram:DfHtTwZt9Be",
+   "platform": "instagram",
+   "postId": "DfHtTwZt9Be",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfHtTwZt9Be/",
+   "embedUrl": "https://www.instagram.com/p/DfHtTwZt9Be/embed/",
+   "createdAt": 1793367584000,
+   "caption": "⁨\tغزة كشفت عوارتهم ودياثتهم وانحطاطهم ..\n\nالطريق التي عمدت بالدم لا تكذب وتخادع .\nغزة أظهرت نقاط الضعف والأخلاق المتدنية لبعض الجهات. الدم طريق لا تعرف الكذب أو الخداع. نرى مشاهد من الشجاعة والعزيمة لن تُنسى. #غزة #الشجاعة #العدالة #الكفاح #الحق⁩",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 46,
+    "comments": 3,
+    "shares": null
+   },
+   "cover": "media/instagram-dfhttwzt9be.jpg"
+  },
+  {
+   "id": "instagram:DfHn5zEtklM",
+   "platform": "instagram",
+   "postId": "DfHn5zEtklM",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfHn5zEtklM/",
+   "embedUrl": "https://www.instagram.com/p/DfHn5zEtklM/embed/",
+   "createdAt": 1793364685000,
+   "caption": "عصر العبودية",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 41,
+    "comments": 3,
+    "shares": null
+   },
+   "cover": "media/instagram-dfhn5zetklm.jpg"
+  },
+  {
+   "id": "instagram:DfHmA2PtVcI",
+   "platform": "instagram",
+   "postId": "DfHmA2PtVcI",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfHmA2PtVcI/",
+   "embedUrl": "https://www.instagram.com/p/DfHmA2PtVcI/embed/",
+   "createdAt": 1793363753000,
+   "caption": "اعتذر لا يمكن ان اختصر عظمة الخالق في سنن الانسان 🤫🤡 و هو الذي خلق الكون و المجرات 🤷‍♀️",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 20,
+    "comments": 2,
+    "shares": null
+   },
+   "cover": "media/instagram-dfhma2ptvci.jpg"
+  },
   {
    "id": "tiktok:7702434277270621441",
    "platform": "tiktok",
@@ -71,12 +167,50 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 71000,
-    "likes": 631,
-    "comments": 136,
-    "shares": 1209
+    "views": 74800,
+    "likes": 653,
+    "comments": 137,
+    "shares": 1275
    },
    "cover": "media/tiktok-7702434277270621441.jpg"
+  },
+  {
+   "id": "instagram:DfG9y5AtPG1",
+   "platform": "instagram",
+   "postId": "DfG9y5AtPG1",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfG9y5AtPG1/",
+   "embedUrl": "https://www.instagram.com/p/DfG9y5AtPG1/embed/",
+   "createdAt": 1793342625000,
+   "caption": "الحرب العالمية الثالثة السيبرانية 🤫🤡🤷‍♀️",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 70,
+    "comments": 2,
+    "shares": null
+   },
+   "cover": "media/instagram-dfg9y5atpg1.jpg"
+  },
+  {
+   "id": "instagram:DfG77lCNl7h",
+   "platform": "instagram",
+   "postId": "DfG77lCNl7h",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfG77lCNl7h/",
+   "embedUrl": "https://www.instagram.com/p/DfG77lCNl7h/embed/",
+   "createdAt": 1793341632000,
+   "caption": "هل يحسم ترامب مصير نتنياهو من بوابة إيران؟\nدعا ترامب الإسرائيليين إلى إعادة انتخاب نتنياهو كي “ينهيا المهمة” ضد إيران (Times of Israel). لم يحسم الصندوق النتيجة، فقال ترامب إنه “سينظر” في مساعدة نتنياهو على تشكيل حكومة وحدة (المونيتور). والآن تدرس واشنطن ضرب إيران بعد 3 نوفمبر (The Atlantic).\nهل هي مصادفة في التوقيت أم ورقة سياسية؟ القرار لم يُتخذ بعد.",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 30,
+    "comments": 1,
+    "shares": null
+   },
+   "cover": "media/instagram-dfg77lcnl7h.jpg"
   }
  ]
 }

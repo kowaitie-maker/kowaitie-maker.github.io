@@ -19,8 +19,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793382197251,
-   "lastOkAt": 1793382197700,
+   "lastCheckAt": 1793383988594,
+   "lastOkAt": 1793383989049,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
@@ -46,18 +46,130 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793382201309,
-   "lastOkAt": 1793382228930,
+   "lastCheckAt": 1793383992476,
+   "lastOkAt": 1793384011881,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793307100000,
    "strategy": "browser",
-   "profileAt": 1793382228930,
+   "profileAt": 1793384011881,
+   "meta": {}
+  },
+  {
+   "id": "18bfbd6745fc",
+   "platform": "instagram",
+   "username": "has.shiaa",
+   "url": "https://www.instagram.com/has.shiaa/",
+   "displayName": "Hasna Maslouh",
+   "avatar": "avatar-18bfbd6745fc-mvvajrdq.jpg",
+   "avatarAt": 1793384032154,
+   "followers": 36985,
+   "postsCount": 2660,
+   "bio": "",
+   "verified": false,
+   "addedAt": 1793383987149,
+   "paused": false,
+   "lastCheckAt": 1793384014611,
+   "lastOkAt": 1793384032094,
+   "lastError": null,
+   "errorCount": 0,
+   "nextCheckAt": 0,
+   "latestPostAt": 1793375323000,
+   "strategy": "browser",
+   "profileAt": 1793384032094,
    "meta": {}
   }
  ],
  "posts": [
+  {
+   "id": "instagram:DfH783eNSgz",
+   "platform": "instagram",
+   "postId": "DfH783eNSgz",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfH783eNSgz/",
+   "embedUrl": "https://www.instagram.com/p/DfH783eNSgz/embed/",
+   "createdAt": 1793375323000,
+   "caption": "اسرار باب المنذب",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 75,
+    "comments": 8,
+    "shares": null
+   },
+   "cover": "instagram-dfh783ensgz.jpg",
+   "coverRemote": "https://scontent-sjc6-1.cdninstagram.com/v/t15.5256-10/879748436_2106942113270844_6312681247200879334_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=107&ig_cache_key=NDAxOTQ0NDg1OTkyNjgxNjgxOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZmlyc3RfZnJhbWVfdGh1bWJuYWlsLkMzIn0%3D&_nc_ohc=QvfHqBPEYcsQ7kNvwEI2Uzx&_nc_oc=Ado1b-HKg1rTM9eJUv574TLL71g_0fwtbWTa6vfGym4oPCC1cEFNfBBTnDFGVJb7sYw&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&_nc_gid=UX7nDzJ7eE-YTPbeCZKCVA&_nc_ss=7b689&oh=00_AQRJyq_POMtGF19dewNu39ktnkvtxQWtBHmUYOlav_1Nrw&oe=6AEAC7BC",
+   "discoveredAt": 1793384032154,
+   "seen": false
+  },
+  {
+   "id": "instagram:DfHtTwZt9Be",
+   "platform": "instagram",
+   "postId": "DfHtTwZt9Be",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfHtTwZt9Be/",
+   "embedUrl": "https://www.instagram.com/p/DfHtTwZt9Be/embed/",
+   "createdAt": 1793367584000,
+   "caption": "⁨\tغزة كشفت عوارتهم ودياثتهم وانحطاطهم ..\n\nالطريق التي عمدت بالدم لا تكذب وتخادع .\nغزة أظهرت نقاط الضعف والأخلاق المتدنية لبعض الجهات. الدم طريق لا تعرف الكذب أو الخداع. نرى مشاهد من الشجاعة والعزيمة لن تُنسى. #غزة #الشجاعة #العدالة #الكفاح #الحق⁩",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 46,
+    "comments": 3,
+    "shares": null
+   },
+   "cover": "instagram-dfhttwzt9be.jpg",
+   "coverRemote": "https://scontent-sjc6-1.cdninstagram.com/v/t15.5256-10/879934976_4050305811944542_7329429435887587226_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=108&ig_cache_key=NDAxOTM4MDQ2MjE4NTU5OTA3MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZmlyc3RfZnJhbWVfdGh1bWJuYWlsLkMzIn0%3D&_nc_ohc=jRfDunHOAi8Q7kNvwGzrjEh&_nc_oc=AdowYcK1NBImbXDPT38OOUsdiBgsR_PuUE1Y7PZnYm619mdf6vh64bw9zOtcIkO5xLI&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&_nc_gid=UX7nDzJ7eE-YTPbeCZKCVA&_nc_ss=7b689&oh=00_AQT3-1M2sMspugoe8WvdENy0S2cSA5eXIK1ZiwNL0TCBEw&oe=6AEAA171",
+   "discoveredAt": 1793384032203,
+   "seen": false
+  },
+  {
+   "id": "instagram:DfHn5zEtklM",
+   "platform": "instagram",
+   "postId": "DfHn5zEtklM",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfHn5zEtklM/",
+   "embedUrl": "https://www.instagram.com/p/DfHn5zEtklM/embed/",
+   "createdAt": 1793364685000,
+   "caption": "عصر العبودية",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 41,
+    "comments": 3,
+    "shares": null
+   },
+   "cover": "instagram-dfhn5zetklm.jpg",
+   "coverRemote": "https://scontent-sjc3-1.cdninstagram.com/v/t51.82787-15/865366421_17902597143672854_468512318869581925_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_cat=105&ig_cache_key=NDAxOTM1NjY4ODExNTQ1MjIzNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYxMi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=AC7lPMuYPgAQ7kNvwGHBTHL&_nc_oc=AdoJm8VFZRjuakx1xwDjUmvcbvwBENQwxNeiZ0uiLwWLLyHSwwZZLZWnu4JEDQtx19A&_nc_zt=23&_nc_ht=scontent-sjc3-1.cdninstagram.com&_nc_gid=UX7nDzJ7eE-YTPbeCZKCVA&_nc_ss=7b689&oh=00_AQRtkfNVwCs845w5xGfm_xldqEt0lF8btug3dluJTqEA-A&oe=6AEA9E08",
+   "discoveredAt": 1793384032245,
+   "seen": false
+  },
+  {
+   "id": "instagram:DfHmA2PtVcI",
+   "platform": "instagram",
+   "postId": "DfHmA2PtVcI",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfHmA2PtVcI/",
+   "embedUrl": "https://www.instagram.com/p/DfHmA2PtVcI/embed/",
+   "createdAt": 1793363753000,
+   "caption": "اعتذر لا يمكن ان اختصر عظمة الخالق في سنن الانسان 🤫🤡 و هو الذي خلق الكون و المجرات 🤷‍♀️",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 20,
+    "comments": 2,
+    "shares": null
+   },
+   "cover": "instagram-dfhma2ptvci.jpg",
+   "coverRemote": "https://scontent-sjc6-1.cdninstagram.com/v/t51.82787-15/874255702_17902591293672854_8454113955499757718_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_cat=101&ig_cache_key=NDAxOTM0ODM3NjQ2NDQ4MDAwOA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTMzMi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=Jpfc2TR9qjEQ7kNvwEaEAYE&_nc_oc=AdpIFkfy6mRqaUR1_EUbus_gHyaiN_3zurWVk4czVw36MYFFbMafhxpqbZan4gKPKf8&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&_nc_gid=UX7nDzJ7eE-YTPbeCZKCVA&_nc_ss=7b689&oh=00_AQQWYitjmSEhwvYiPYte0tzmv7yNl9NSH1_PhyswYqQVBw&oe=6AEABD38",
+   "discoveredAt": 1793384032357,
+   "seen": false
+  },
   {
    "id": "tiktok:7702434277270621441",
    "platform": "tiktok",
@@ -70,26 +182,70 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 71000,
-    "likes": 631,
-    "comments": 136,
-    "shares": 1209
+    "views": 74800,
+    "likes": 653,
+    "comments": 137,
+    "shares": 1275
    },
    "cover": "tiktok-7702434277270621441.jpg",
    "coverRemote": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oYlPQvCVDAUgf3jYfI6leEmAJdCGyLbURoDFlI~tplv-tiktokx-dmt-logom:tos-alisg-i-0068/oMAA9Afi8wcy1X5KPIBWI8AnAgE9iDCABzDkik.image?dr=9634&x-expires=1793534400&x-signature=abj1vGAlord7Ef%2Bextfx4fyt5DQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
    "discoveredAt": 1793364884010,
    "seen": false
+  },
+  {
+   "id": "instagram:DfG9y5AtPG1",
+   "platform": "instagram",
+   "postId": "DfG9y5AtPG1",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfG9y5AtPG1/",
+   "embedUrl": "https://www.instagram.com/p/DfG9y5AtPG1/embed/",
+   "createdAt": 1793342625000,
+   "caption": "الحرب العالمية الثالثة السيبرانية 🤫🤡🤷‍♀️",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 70,
+    "comments": 2,
+    "shares": null
+   },
+   "cover": "instagram-dfg9y5atpg1.jpg",
+   "coverRemote": "https://scontent-sjc6-1.cdninstagram.com/v/t51.82787-15/871215726_17902548798672854_1723554238413007959_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_cat=108&ig_cache_key=NDAxOTE3MTQ5NTUwMDkwMjgzNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYxMi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=W_MR4hm_fHIQ7kNvwG8tpf5&_nc_oc=AdrUGhBTSfnWH41yKzzdPegrAjf_RdnUMRp4bzw_KpEdscK7hJoRnZSWEccCIUOU9U8&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&_nc_gid=UX7nDzJ7eE-YTPbeCZKCVA&_nc_ss=7b689&oh=00_AQQYLKTXonP-WTg3G7EW0AV14ve6LciiOQF9ZHTrQkPKYA&oe=6AEA971C",
+   "discoveredAt": 1793384032381,
+   "seen": false
+  },
+  {
+   "id": "instagram:DfG77lCNl7h",
+   "platform": "instagram",
+   "postId": "DfG77lCNl7h",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfG77lCNl7h/",
+   "embedUrl": "https://www.instagram.com/p/DfG77lCNl7h/embed/",
+   "createdAt": 1793341632000,
+   "caption": "هل يحسم ترامب مصير نتنياهو من بوابة إيران؟\nدعا ترامب الإسرائيليين إلى إعادة انتخاب نتنياهو كي “ينهيا المهمة” ضد إيران (Times of Israel). لم يحسم الصندوق النتيجة، فقال ترامب إنه “سينظر” في مساعدة نتنياهو على تشكيل حكومة وحدة (المونيتور). والآن تدرس واشنطن ضرب إيران بعد 3 نوفمبر (The Atlantic).\nهل هي مصادفة في التوقيت أم ورقة سياسية؟ القرار لم يُتخذ بعد.",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 30,
+    "comments": 1,
+    "shares": null
+   },
+   "cover": "instagram-dfg77lcnl7h.jpg",
+   "coverRemote": "https://scontent-sjc6-1.cdninstagram.com/v/t51.82787-15/870481640_17902546365672854_6959845101156023348_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_cat=101&ig_cache_key=NDAxOTE2MzI5NjQzMzU5NDA4MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYxMi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=UEDFNNjqbp4Q7kNvwGxXHzi&_nc_oc=AdpMBRsAFcTuoeFnWk37Qz2ajln7I_n0Q_1gOCm2NxZ0OlBzteAmUPJyuMqT3UVHA9o&_nc_zt=23&_nc_ht=scontent-sjc6-1.cdninstagram.com&_nc_gid=UX7nDzJ7eE-YTPbeCZKCVA&_nc_ss=7b689&oh=00_AQRM_keZpk14sH-Tdpb2-zpz-3vREQn_ArQQfY8p-z4hkw&oe=6AEA9DC2",
+   "discoveredAt": 1793384032405,
+   "seen": false
   }
  ],
  "run": {
-  "lastRunAt": 1793382197251,
-  "lastFinishedAt": 1793382228930,
-  "lastNewCount": 0
+  "lastRunAt": 1793383988594,
+  "lastFinishedAt": 1793384032431,
+  "lastNewCount": 6
  },
  "telegramStatus": {
-  "lastSentAt": 1793372073381,
+  "lastSentAt": 1793384050237,
   "lastError": null,
   "lastErrorAt": null,
-  "verifiedAt": 1793382197251
+  "verifiedAt": 1793383988594
  }
 }
