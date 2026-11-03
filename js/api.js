@@ -119,3 +119,80 @@ export const api = {
     return links.issue(`unfollow ${PLATFORMS[account.platform].profileUrl(account.username)}`);
   },
 };
+
+// ——— Instant check from the refresh button ———
+// A GitHub key (fine-grained token limited to this repository's Actions) lets the
+// button start the update job right away. It is kept only in this browser.
+const TOKEN_KEY = 'radar.ghToken';
+export const ghToken = {
+  get() {
+    try {
+      return localStorage.getItem(TOKEN_KEY) || '';
+    } catch {
+      return '';
+    }
+  },
+  set(v) {
+    try {
+      localStorage.setItem(TOKEN_KEY, v);
+    } catch {
+      /* storage blocked */
+    }
+  },
+  clear() {
+    try {
+      localStorage.removeItem(TOKEN_KEY);
+    } catch {
+      /* storage blocked */
+    }
+  },
+};
+
+async function ghApi(path, { method = 'GET', body, token = ghToken.get() } = {}) {
+  const res = await fetch(`https://api.github.com${path}`, {
+    method,
+    headers: {
+      Accept: 'application/vnd.github+json',
+      Authorization: `Bearer ${token}`,
+      'X-GitHub-Api-Version': '2022-11-28',
+      ...(body ? { 'Content-Type': 'application/json' } : {}),
+    },
+    body: body ? JSON.stringify(body) : undefined,
+    cache: 'no-store',
+  });
+  if (res.status === 401) throw new Error('مفتاح GitHub غير صالح أو انتهت مدته — أنشئ مفتاحاً جديداً من الإعدادات');
+  if (res.status === 403 || res.status === 404) throw new Error('مفتاح GitHub لا يملك صلاحية Actions على مستودع الصفحة — راجع خطوات الإعدادات');
+  if (!res.ok) throw new Error(`GitHub: خطأ ${res.status}`);
+  return res.status === 204 ? null : res.json();
+}
+
+const WORKFLOW = '/actions/workflows/update.yml';
+
+/** Check a pasted key before saving it. */
+export async function verifyToken(token) {
+  const slug = repoSlug();
+  if (!slug) throw new Error('افتح الصفحة من رابطها على github.io');
+  if (!/^(github_pat_|ghp_)[A-Za-z0-9_]{20,}$/.test(token)) throw new Error('هذا لا يبدو مفتاح GitHub (يبدأ بـ github_pat_)');
+  await ghApi(`/repos/${slug}${WORKFLOW}`, { token });
+}
+
+/** Start the update job (or join one already running). Returns its run id. */
+export async function startCheck() {
+  const slug = repoSlug();
+  const runs = async () => (await ghApi(`/repos/${slug}${WORKFLOW}/runs?per_page=5`)).workflow_runs || [];
+  const active = (await runs()).find((r) => r.status !== 'completed');
+  if (active) return active.id;
+  const clicked = Date.now();
+  await ghApi(`/repos/${slug}${WORKFLOW}/dispatches`, { method: 'POST', body: { ref: 'main' } });
+  for (let i = 0; i < 15; i++) {
+    await new Promise((r) => setTimeout(r, 2000));
+    const run = (await runs()).find((r) => Date.parse(r.created_at) >= clicked - 15000);
+    if (run) return run.id;
+  }
+  throw new Error('لم يبدأ الفحص — حاول مرة أخرى بعد قليل');
+}
+
+export async function runStatus(id) {
+  const r = await ghApi(`/repos/${repoSlug()}/actions/runs/${id}`);
+  return { status: r.status, conclusion: r.conclusion };
+}

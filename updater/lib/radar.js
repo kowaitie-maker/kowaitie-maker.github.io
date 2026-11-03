@@ -177,6 +177,8 @@ export function createRadar({
       const e = asFetchError(err, 'stories');
       acc.storyError = String(e.message).slice(0, 2500);
       log(`stories ${acc.username}: ${e.message}`);
+      // A refused login is retried only every 12 hours so Instagram isn't pushed further.
+      if (e.kind === 'login') acc.storiesCheckedAt = now() + 12 * 3600_000 - STORY_REFRESH;
       const keep = before.filter((s) => !s.expiresAt || s.expiresAt > now());
       await dropMedia(before, keep);
       acc.stories = keep;

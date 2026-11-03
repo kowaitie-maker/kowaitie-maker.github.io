@@ -1,5 +1,5 @@
 import { h, icon, toast } from './dom.js';
-import { api, links } from './api.js';
+import { api, ghToken, links, runStatus, startCheck } from './api.js';
 import { applyTheme } from './prefs.js';
 import { ago, now, setServerTime } from './format.js';
 import { spinner } from './components.js';
@@ -37,6 +37,8 @@ const app = {
   },
   /** The page itself can't run a check; it reloads the latest results (updated every 30 min on GitHub). */
   async checkNow() {
+    if (manualBusy) return;
+    if (ghToken.get()) return liveCheck();
     const before = app.state?.run.lastFinishedAt;
     manualBusy = true;
     renderChrome();
@@ -45,7 +47,7 @@ const app = {
     renderChrome();
     if (!app.connected) toast('تعذّر التحميل — تحقق من الإنترنت', 'error');
     else if (app.state?.run.lastFinishedAt && app.state.run.lastFinishedAt !== before) toast('وصلت آخر التحديثات', 'ok', 2000);
-    else toast(`أنت على آخر تحديث. يتم الفحص تلقائياً كل ${app.state?.settings.intervalMin || 30} دقيقة.`, 'info', 3000);
+    else toast('هذا آخر تحديث تلقائي. لفحص فوري بهذا الزر فعّل «التحديث الفوري» من الإعدادات.', 'info', 4500);
   },
   async markSeen(body) {
     // Optimistic update so the UI reacts instantly.
@@ -74,6 +76,44 @@ const app = {
 const statusText = h('span', { class: 'status-text' });
 const statusDot = h('span', { class: 'status-dot' });
 let manualBusy = false;
+let livePhase = ''; // text shown while an instant check runs
+
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** Start the update job on GitHub, wait for it, then wait for the new results to be published. */
+async function liveCheck() {
+  const clicked = Date.now();
+  manualBusy = true;
+  const phase = (t) => {
+    livePhase = t;
+    renderChrome();
+  };
+  try {
+    phase('يبدأ الفحص…');
+    const id = await startCheck();
+    phase('يفحص الحسابات الآن…');
+    let st = { status: 'queued' };
+    for (let i = 0; i < 60 && st.status !== 'completed'; i++) {
+      await wait(8000);
+      st = await runStatus(id);
+    }
+    if (st.status !== 'completed') throw new Error('الفحص يأخذ وقتاً أطول من المعتاد — ستظهر النتائج تلقائياً عند انتهائه');
+    if (st.conclusion !== 'success') throw new Error('تعذّر إكمال الفحص هذه المرة — حاول لاحقاً');
+    phase('ينشر النتائج…');
+    for (let i = 0; i < 30; i++) {
+      await refresh();
+      if ((app.state?.run.lastFinishedAt || 0) >= clicked - 60_000) break;
+      await wait(8000);
+    }
+    toast('تم الفحص ✓ — هذه أحدث المنشورات', 'ok', 3000);
+  } catch (err) {
+    toast(err.message, 'error', 6000);
+  } finally {
+    manualBusy = false;
+    livePhase = '';
+    renderChrome();
+  }
+}
 const refreshBtn = h('button', { class: 'icon-btn refresh-btn', 'aria-label': 'تحديث', onclick: () => app.checkNow() }, icon('refresh'));
 const topbar = h('header', { class: 'topbar' },
   h('a', { class: 'brand', href: '#/' }, h('span', { class: 'brand-mark' }, icon('radar')), h('span', { class: 'brand-name' }, 'رادار')),
@@ -146,7 +186,10 @@ function renderChrome() {
   }
   if (!s) return;
   const late = s.run.lastFinishedAt && now() - s.run.lastFinishedAt > (s.settings.intervalMin * 2 + 20) * 60_000;
-  if (s.pending) {
+  if (livePhase) {
+    statusDot.className = 'status-dot busy';
+    statusText.textContent = livePhase;
+  } else if (s.pending) {
     statusDot.className = 'status-dot busy';
     statusText.textContent = 'يُجهَّز أول تحديث…';
   } else if (late) {

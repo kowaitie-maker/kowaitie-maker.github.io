@@ -174,6 +174,36 @@ try {
   });
   await shot(page, 'settings');
 
+  await check('instant check: save a GitHub key, press refresh, results arrive', async () => {
+    let dispatched = 0;
+    const calls = [];
+    await page.context().route('https://api.github.com/**', async (route) => {
+      const req = route.request();
+      const u = new URL(req.url());
+      calls.push(`${req.method()} ${u.pathname}`);
+      assert.match(req.headers().authorization || '', /^Bearer github_pat_/);
+      const json = (body, status = 200) => route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(body) });
+      if (req.method() === 'POST' && u.pathname.endsWith('/dispatches')) {
+        dispatched = Date.now();
+        await fetch(`${up}/__add`, { method: 'POST', body: JSON.stringify({ platform: 'tiktok', username: 'demo.kitchen', desc: 'فحص فوري من الزر' }) });
+        await build();
+        return route.fulfill({ status: 204, body: '' });
+      }
+      if (u.pathname.endsWith('/runs')) return json({ workflow_runs: dispatched ? [{ id: 77, status: 'completed', conclusion: 'success', created_at: new Date(dispatched).toISOString() }] : [] });
+      if (u.pathname.endsWith('/runs/77')) return json({ status: 'completed', conclusion: 'success' });
+      return json({ id: 1, path: '.github/workflows/update.yml' });
+    });
+    await page.locator('#gh-token').fill(`github_pat_${'A'.repeat(40)}`);
+    await page.locator('#gh-token').locator('xpath=following-sibling::button').click();
+    await page.waitForFunction(() => /مفعّل على هذا الجهاز/.test(document.querySelector('main').textContent));
+    await page.goto(base);
+    await page.waitForSelector('.card');
+    await page.locator('.refresh-btn').click();
+    await page.waitForSelector('.toast-ok', { timeout: 30000 });
+    await page.waitForFunction(() => /فحص فوري من الزر/.test(document.querySelector('.card')?.textContent || ''), null, { timeout: 15000 });
+    assert.ok(calls.some((c) => c.startsWith('POST') && c.endsWith('/dispatches')), calls.join(', '));
+  });
+
   const light = await newPage('light');
   await light.goto(base);
   await light.waitForSelector('.card');
