@@ -161,6 +161,8 @@ export async function fetchUserFeed(username, ctx) {
     redirect: 'manual',
     strategy: S,
   });
+  // This endpoint answers 404 when the login isn't accepted; that says nothing about the account.
+  if (res.status === 404) throw new FetchError('login', 'HTTP 404 from the logged-in feed (login not accepted?)', S);
   const json = checkIgResponse(res, S);
   if (!Array.isArray(json.items)) throw new FetchError('parse', 'no items in feed response', S);
   const posts = json.items.map(parseV1Item).filter(Boolean);
@@ -205,9 +207,9 @@ export function postsFromAnyJson(json) {
 
 async function viaBrowser(username, ctx) {
   const S = 'browser';
-  const cookies = ctx.settings?.igSessionId
-    ? [{ name: 'sessionid', value: ctx.settings.igSessionId, domain: '.instagram.com', path: '/', secure: true, httpOnly: true }]
-    : [];
+  // Posts are read as a logged-out visitor (the public embed works without a login),
+  // so a problem with the Instagram login never stops posts from arriving.
+  const cookies = [];
   const match = (u) => /web_profile_info|\/graphql\/query|\/api\/graphql|\/api\/v1\/feed\//.test(u);
   const waitFor = 'a[href*="/p/"], a[href*="/reel/"]';
   let profile = null;

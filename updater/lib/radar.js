@@ -14,6 +14,7 @@ export const MIN_INTERVAL_MIN = 5;
 const MAX_POSTS = 3000;
 const MAX_BACKOFF = 3 * 3600_000;
 const AVATAR_TTL = 24 * 3600_000;
+const STORY_REFRESH = 90 * 60_000;
 const REFERERS = { tiktok: 'https://www.tiktok.com/', instagram: 'https://www.instagram.com/' };
 
 export function newAccount(platform, username, now = Date.now()) {
@@ -157,6 +158,17 @@ export function createRadar({
       acc.stories = [];
       return;
     }
+    // Using the login too often from servers makes Instagram lock it, so stories are
+    // refreshed at most every 90 minutes, or right away when a new story appears.
+    const recent = acc.storiesCheckedAt && now() - acc.storiesCheckedAt < STORY_REFRESH;
+    const newStory = acc.storySince && acc.storiesCheckedAt && acc.storySince > acc.storiesCheckedAt;
+    if (recent && !newStory) {
+      const keep = before.filter((s) => !s.expiresAt || s.expiresAt > now());
+      await dropMedia(before, keep);
+      acc.stories = keep;
+      return;
+    }
+    acc.storiesCheckedAt = now();
     let items;
     try {
       items = await fetchStories(acc, ctx());
@@ -271,6 +283,8 @@ export function createRadar({
       };
       acc.nextCheckAt = now() + jitter(Math.min(intervalMs() * 2 ** (acc.errorCount - 1), MAX_BACKOFF));
       log(`✗ ${acc.platform}/@${acc.username}: ${e.message}`);
+      // Stories use a separate (logged-in) route; still try them.
+      await syncStories(acc).catch((err) => log(`stories ${acc.username}: ${err.message}`));
       store.save();
       emit('accounts');
       return [];

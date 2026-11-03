@@ -163,3 +163,35 @@ test('stories: the ring follows Instagram and each new story alerts once', async
   await radar.checkAll({ force: true });
   assert.equal(notified.filter(([, k]) => k === 'story').length, 2, 'a later story alerts again');
 });
+
+test('stories are refreshed at most every 90 minutes unless a new story appears', async () => {
+  let story = true;
+  let calls = 0;
+  const data = seedData({ since: 0, accounts: [{ platform: 'instagram', username: 'b' }] });
+  data.settings.igSessionId = 'x';
+  let clock = Date.UTC(2026, 10, 1, 9);
+  const radar = createRadar({
+    store: { data, save() {} },
+    fetchers: { instagram: async () => ({ profile: { hasStory: story }, posts: [], strategy: 'browser' }) },
+    fetchStories: async () => {
+      calls++;
+      return [{ storyId: `s${calls}`, takenAt: clock, expiresAt: clock + 86400_000, kind: 'image', imageUrl: 'https://x/a.jpg' }];
+    },
+    media: { cache: async (u, key) => `${key}.jpg`, remove: async () => {} },
+    events: { emit() {} },
+    spacingMs: null,
+    now: () => clock,
+  });
+  await radar.checkAll({ force: true });
+  clock += 30 * 60_000;
+  await radar.checkAll({ force: true });
+  assert.equal(calls, 1, 'second check within 90 min reuses the saved stories');
+  assert.equal(radar.state().accounts[0].stories.length, 1);
+  story = false;
+  clock += 30 * 60_000;
+  await radar.checkAll({ force: true });
+  story = true;
+  clock += 10 * 60_000;
+  await radar.checkAll({ force: true });
+  assert.equal(calls, 2, 'a new story is fetched right away');
+});
