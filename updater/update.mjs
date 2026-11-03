@@ -105,7 +105,9 @@ export function readConfig(raw) {
     if (!accounts.some((x) => x.platform === platform && x.username === username)) accounts.push({ platform, username });
   }
   const intervalMin = Number(raw.intervalMin) || 30;
-  return { since, accounts, intervalMin };
+  // "manual": the page's refresh button starts each check (no timed schedule).
+  const schedule = raw.schedule === 'manual' ? 'manual' : 'auto';
+  return { since, accounts, intervalMin, schedule };
 }
 
 export async function update({
@@ -234,6 +236,7 @@ export async function update({
     generatedAt: Date.now(),
     since: config.since,
     intervalMin: config.intervalMin,
+    schedule: config.schedule,
     repo: env.GITHUB_REPOSITORY || null,
     capabilities: { ...state.capabilities, instagramLogin: !!db.settings.igSessionId, instagramSession: describeSession(env.IG_SESSIONID), cdnProbe: db.cdnProbe || null, telegram: telegramOn || telegramSecretsSet, telegramStatus: db.telegramStatus },
     accounts: state.accounts.map((a) => ({

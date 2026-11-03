@@ -274,7 +274,9 @@ export function createFeedView(app) {
     }
     return emptyState({
       title: 'لا جديد حتى الآن',
-      body: `نراقب ${accountsText(n)} منذ ${longDate(state.settings.since)}، ونفحصها كل ${state.settings.intervalMin} دقيقة. أي فيديو أو منشور جديد سيظهر هنا تلقائياً.`,
+      body: state.settings.manual
+        ? `نراقب ${accountsText(n)} منذ ${longDate(state.settings.since)}. اضغط زر التحديث ⟳ ليفحصها الآن، وأي فيديو أو منشور جديد سيظهر هنا.`
+        : `نراقب ${accountsText(n)} منذ ${longDate(state.settings.since)}، ونفحصها كل ${state.settings.intervalMin} دقيقة. أي فيديو أو منشور جديد سيظهر هنا تلقائياً.`,
       action: h('button', { class: 'btn primary', onclick: () => app.checkNow() }, icon('refresh'), 'تحديث'),
     });
   }

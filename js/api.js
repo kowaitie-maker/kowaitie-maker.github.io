@@ -54,7 +54,7 @@ async function pendingState() {
   return {
     serverTime: Date.now(),
     pending: true,
-    settings: { since, intervalMin: config.intervalMin || 30 },
+    settings: { since, intervalMin: config.intervalMin || 30, manual: config.schedule === 'manual' },
     run: { running: true, currentAccountId: null, lastRunAt: null, lastFinishedAt: null, lastNewCount: 0, nextRunAt: null },
     capabilities: {},
     accounts: (config.accounts || []).map((a, i) => ({
@@ -84,7 +84,7 @@ export const api = {
     const interval = (feed.intervalMin || 30) * 60_000;
     return {
       serverTime: Date.now(),
-      settings: { since: feed.since, intervalMin: feed.intervalMin || 30 },
+      settings: { since: feed.since, intervalMin: feed.intervalMin || 30, manual: feed.schedule === 'manual' },
       run: { running: false, currentAccountId: null, lastRunAt: feed.generatedAt, lastFinishedAt: feed.generatedAt, lastNewCount: 0, nextRunAt: feed.generatedAt + interval },
       capabilities: feed.capabilities || {},
       accounts: feed.accounts,

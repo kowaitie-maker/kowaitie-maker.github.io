@@ -5,7 +5,7 @@ import { prefs, setPref } from '../prefs.js';
 import { notificationsSupported, requestNotifications } from '../alerts.js';
 
 function group(title, ...rows) {
-  return h('div', { class: 'group-wrap' },
+  return h('div', { class: 'group-wrap', id: /زر التحديث|التحديث الفوري/.test(title || '') ? 'instant' : null },
     title ? h('h2', { class: 'group-title' }, title) : null,
     h('div', { class: 'group' }, ...rows));
 }
@@ -29,10 +29,10 @@ function ghLink(href, label) {
 const code = (t) => h('code', null, t);
 
 /** The refresh button can start a real check when a GitHub key is saved on this device. */
-function instantGroup(app) {
+function instantGroup(app, manual) {
   const has = !!ghToken.get();
   if (has) {
-    return group('التحديث الفوري من الزر',
+    return group('زر التحديث',
       row('مفعّل على هذا الجهاز', 'زر التحديث ⟳ يفحص الحسابات فوراً، وتظهر النتائج خلال دقيقتين تقريباً.', h('span', { class: 'ok-pill' }, icon('check'), 'مفعّل')),
       h('div', { class: 'row row-actions' },
         h('button', { class: 'btn small', onclick: () => app.checkNow() }, icon('refresh'), 'افحص الآن'),
@@ -58,10 +58,12 @@ function instantGroup(app) {
     }
   } }, 'حفظ');
   const createUrl = 'https://github.com/settings/personal-access-tokens/new?name=Radar%20refresh&description=Start%20the%20Radar%20update%20from%20the%20page&target_name=kowaitie-maker&expires_in=365&actions=write';
-  return group('التحديث الفوري من الزر (اختياري)',
+  return group(manual ? 'تفعيل زر التحديث (مطلوب مرة واحدة)' : 'التحديث الفوري من الزر (اختياري)',
     h('div', { class: 'row row-col' },
-      h('div', { class: 'row-label' }, 'اجعل زر ⟳ يفحص الحسابات فوراً'),
-      h('div', { class: 'row-hint' }, 'بدونه يعرض الزر آخر تحديث تلقائي فقط. يلزم مفتاح من GitHub مرة واحدة، يُحفظ على هذا الجهاز فقط.'),
+      h('div', { class: 'row-label' }, 'اجعل زر ⟳ يفحص الحسابات'),
+      h('div', { class: 'row-hint' }, manual
+        ? 'الفحص يتم بهذا الزر فقط، وهو يحتاج مفتاحاً من GitHub مرة واحدة. يُحفظ على هذا الجهاز فقط ولا يظهر في الموقع.'
+        : 'بدونه يعرض الزر آخر تحديث تلقائي فقط. يلزم مفتاح من GitHub مرة واحدة، يُحفظ على هذا الجهاز فقط.'),
       h('ol', { class: 'steps' },
         h('li', null, 'اضغط «إنشاء مفتاح» بالأسفل (سجّل دخولك في GitHub إن طُلب).'),
         h('li', null, 'Repository access: اختر ', code('Only select repositories'), ' ثم ', code('kowaitie-maker.github.io'), '.'),
@@ -95,16 +97,16 @@ function storiesRow(state) {
 function telegramRow(c) {
   const st = c.telegramStatus || {};
   if (!c.telegram) {
-    return row('الحالة', 'ليصلك كل منشور جديد كإشعار على جوالك حتى والصفحة مغلقة. بعد إضافة السرّين تتغيّر الحالة مع التحديث التالي (خلال 30 دقيقة).', pill(false, '', 'غير مفعّل'));
+    return row('الحالة', 'ليصلك كل منشور جديد كإشعار على جوالك. بعد إضافة السرّين تتغيّر الحالة مع الفحص التالي.', pill(false, '', 'غير مفعّل'));
   }
   if (st.lastError) {
     return row('الحالة', h('span', null, `آخر فحص ${ago(st.lastErrorAt)}: `, h('bdi', { dir: 'auto' }, st.lastError), '. بعد التصحيح تتغيّر الحالة مع التحديث التالي.'), h('span', { class: 'err-pill' }, 'يحتاج تصحيح'));
   }
   const hint = st.lastSentAt
-    ? `آخر رسالة أُرسلت ${ago(st.lastSentAt)}. يصلك كل منشور جديد مع رابط مشاهدته، حتى والصفحة مغلقة.`
+    ? `آخر رسالة أُرسلت ${ago(st.lastSentAt)}. يصلك كل منشور جديد يجده الفحص مع رابط مشاهدته.`
     : st.verifiedAt
-      ? 'البوت متصل بمحادثتك. ستصلك رسالة مع كل منشور جديد، حتى والصفحة مغلقة.'
-      : 'سيرسل لك البوت كل منشور جديد مع رابط مشاهدته، حتى والصفحة مغلقة.';
+      ? 'البوت متصل بمحادثتك. ستصلك رسالة مع كل منشور جديد يجده الفحص.'
+      : 'سيرسل لك البوت كل منشور جديد يجده الفحص مع رابط مشاهدته.';
   return row('الحالة', hint, pill(true, 'مفعّل', ''));
 }
 const pill = (ok, onText, offText) => h('span', { class: ok ? 'ok-pill' : 'off-pill' }, ok ? icon('check') : null, ok ? onText : offText);
@@ -143,9 +145,11 @@ export function createSettingsView(app) {
     body.replaceChildren(
       group('المتابعة',
         row('بداية المتابعة', h('span', null, `تظهر المنشورات التي نُشرت من ${longDate(s.since)} فصاعداً. لتغييره عدّل قيمة `, code('since'), ' في ملف القائمة.'), ghLink(links.editAccounts(), 'تعديل')),
-        row('التحديث التلقائي', 'تقريباً كل ساعة على خوادم GitHub، حتى والصفحة مغلقة (GitHub يؤخّر المواعيد أحياناً).', null)),
+        s.manual
+          ? row('التحديث', 'بالزر فقط: اضغط ⟳ أعلى الصفحة ليفحص الحسابات الآن. لا يوجد تحديث تلقائي.', null)
+          : row('التحديث التلقائي', 'تقريباً كل ساعة على خوادم GitHub، حتى والصفحة مغلقة (GitHub يؤخّر المواعيد أحياناً).', null)),
 
-      instantGroup(app),
+      instantGroup(app, s.manual),
 
       group('التنبيهات على هذا الجهاز',
         row('صوت عند وصول جديد', 'يعمل والصفحة مفتوحة.', toggle('pref-sound', prefs.sound, (on) => setPref('sound', on), 'صوت')),

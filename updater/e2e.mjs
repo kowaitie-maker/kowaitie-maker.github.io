@@ -112,8 +112,12 @@ try {
   await check('story player moves on and closes after the last story', async () => {
     await page.keyboard.press('ArrowLeft');
     await page.keyboard.press('ArrowLeft');
-    await page.waitForSelector('.sv .sv-media video');
-    assert.match(await page.locator('.sv video').getAttribute('src'), /\/vid\/3500000000000000003\.mp4$/);
+    // The mock video is empty bytes, so the player may already have fallen back to the cover.
+    await page.waitForFunction(() => {
+      const v = document.querySelector('.sv .sv-media video');
+      const img = document.querySelector('.sv .sv-media img');
+      return (v && /\/vid\/3500000000000000003\.mp4$/.test(v.getAttribute('src') || '')) || (img && /story-3500000000000000003/.test(img.getAttribute('src') || ''));
+    }, null, { timeout: 10000 });
     await page.keyboard.press('ArrowLeft');
     await page.waitForSelector('.sv', { state: 'detached' });
     await page.waitForFunction(() => document.querySelector('.story.has-story')?.classList.contains('story-seen'));
@@ -202,6 +206,21 @@ try {
     await page.waitForSelector('.toast-ok', { timeout: 30000 });
     await page.waitForFunction(() => /فحص فوري من الزر/.test(document.querySelector('.card')?.textContent || ''), null, { timeout: 15000 });
     assert.ok(calls.some((c) => c.startsWith('POST') && c.endsWith('/dispatches')), calls.join(', '));
+  });
+
+  await check('button-only mode: pressing refresh without a key opens the setup', async () => {
+    const cfg = JSON.parse(await fs.readFile(path.join(root, 'accounts.json'), 'utf8'));
+    await fs.writeFile(path.join(root, 'accounts.json'), JSON.stringify({ ...cfg, schedule: 'manual' }));
+    await build();
+    const fresh = await newPage('dark');
+    await fresh.goto(base);
+    await fresh.waitForSelector('.card');
+    await fresh.locator('.refresh-btn').click();
+    await fresh.waitForSelector('#instant', { timeout: 5000 });
+    assert.equal(new URL(fresh.url()).hash, '#/settings');
+    assert.match(await fresh.locator('#instant').textContent(), /مطلوب مرة واحدة/);
+    assert.match(await fresh.locator('main').textContent(), /بالزر فقط/);
+    await fresh.context().close();
   });
 
   const light = await newPage('light');

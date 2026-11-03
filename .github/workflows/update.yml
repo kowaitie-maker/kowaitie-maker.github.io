@@ -1,9 +1,9 @@
-# Checks the followed accounts every 30 minutes and publishes new posts to the page.
+# Checks the followed accounts and publishes new posts to the page.
+# Runs when the page's refresh button asks for it (no timed schedule, by the owner's choice),
+# when run by hand from the Actions tab, and when the list of accounts changes.
 name: تحديث رادار
 
 on:
-  schedule:
-    - cron: '7,37 * * * *'
   workflow_dispatch:
     inputs:
       telegram_test:

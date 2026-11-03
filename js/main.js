@@ -47,7 +47,12 @@ const app = {
     renderChrome();
     if (!app.connected) toast('تعذّر التحميل — تحقق من الإنترنت', 'error');
     else if (app.state?.run.lastFinishedAt && app.state.run.lastFinishedAt !== before) toast('وصلت آخر التحديثات', 'ok', 2000);
-    else toast('هذا آخر تحديث تلقائي. لفحص فوري بهذا الزر فعّل «التحديث الفوري» من الإعدادات.', 'info', 4500);
+    else if (app.state?.settings.manual) {
+      // Checks only happen from this button, which needs the one-time GitHub key.
+      toast('لتفعيل الفحص بهذا الزر أضف مفتاح GitHub مرة واحدة — افتحت لك الإعدادات', 'info', 5000);
+      location.hash = '#/settings';
+      setTimeout(() => document.getElementById('instant')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 400);
+    } else toast('هذا آخر تحديث تلقائي. لفحص فوري بهذا الزر فعّل «التحديث الفوري» من الإعدادات.', 'info', 4500);
   },
   async markSeen(body) {
     // Optimistic update so the UI reacts instantly.
@@ -185,7 +190,7 @@ function renderChrome() {
     return;
   }
   if (!s) return;
-  const late = s.run.lastFinishedAt && now() - s.run.lastFinishedAt > (s.settings.intervalMin * 2 + 20) * 60_000;
+  const late = !s.settings.manual && s.run.lastFinishedAt && now() - s.run.lastFinishedAt > (s.settings.intervalMin * 2 + 20) * 60_000;
   if (livePhase) {
     statusDot.className = 'status-dot busy';
     statusText.textContent = livePhase;

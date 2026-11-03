@@ -26,5 +26,6 @@
       "username": "topmediakw"
     }
   ],
-  "intervalMin": 60
+  "intervalMin": 60,
+  "schedule": "manual"
 }
