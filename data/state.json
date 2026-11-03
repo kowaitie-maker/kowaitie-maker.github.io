@@ -19,8 +19,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793689750603,
-   "lastOkAt": 1793689751036,
+   "lastCheckAt": 1793693662474,
+   "lastOkAt": 1793693662856,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
@@ -47,14 +47,14 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793689754145,
-   "lastOkAt": 1793689789195,
+   "lastCheckAt": 1793693665019,
+   "lastOkAt": 1793693692013,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793553116000,
    "strategy": "browser",
-   "profileAt": 1793689789195,
+   "profileAt": 1793693692013,
    "meta": {
     "userId": "33020898390"
    },
@@ -63,7 +63,7 @@
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (501398 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (501552 bytes, title \"Instagram\"))",
     "feed: login (HTTP 404 from the logged-in feed (login not accepted?))"
    ],
    "stories": [],
@@ -84,14 +84,14 @@
    "verified": false,
    "addedAt": 1793383987149,
    "paused": false,
-   "lastCheckAt": 1793689792855,
-   "lastOkAt": 1793689810062,
+   "lastCheckAt": 1793693694082,
+   "lastOkAt": 1793693711058,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793689116000,
    "strategy": "browser",
-   "profileAt": 1793689810062,
+   "profileAt": 1793693711058,
    "meta": {
     "userId": "80168664853"
    },
@@ -100,7 +100,7 @@
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (501420 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (501539 bytes, title \"Instagram\"))",
     "feed: login (HTTP 404 from the logged-in feed (login not accepted?))"
    ],
    "storyError": "[stories-browser] login: login not accepted (HTTP 200, web page \"Instagram\"); page: no story data on the stories page (3 answers: viewer,init_conversational_support_attempt_for_ig_ufac,__ar,error,errorSummary,errorDescription; pressed view: no; blocked seen: 0) page html: 0 bytes, mentions reels_media: no, taken_at: 0; requests: POST /api/graphql [IGUFACAISupportChatExperienceQuery] 200; POST /api/graphql [PolarisAPIGetFrCookieQuery] 200 [browser logged in: no, csrf: yes]",
@@ -121,14 +121,14 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793689812298,
-   "lastOkAt": 1793689829691,
+   "lastCheckAt": 1793693714223,
+   "lastOkAt": 1793693731176,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793652202000,
    "strategy": "browser",
-   "profileAt": 1793689829691,
+   "profileAt": 1793693731176,
    "meta": {
     "userId": "29741346551"
    },
@@ -137,7 +137,7 @@
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (501408 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (501540 bytes, title \"Instagram\"))",
     "feed: login (HTTP 404 from the logged-in feed (login not accepted?))"
    ],
    "storyError": "[stories-browser] login: login not accepted (HTTP 200, web page \"Instagram\"); page: no story data on the stories page (3 answers: __ar,error,errorSummary,errorDescription,isNotCritical,rid; pressed view: no; blocked seen: 0) page html: 0 bytes, mentions reels_media: no, taken_at: 0; requests: POST /api/graphql [PolarisAPIGetFrCookieQuery] 200; POST /api/graphql [IGUFACAISupportChatExperienceQuery] 200 [browser logged in: no, csrf: yes]",
@@ -158,14 +158,14 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793689833448,
-   "lastOkAt": 1793689850640,
+   "lastCheckAt": 1793693734672,
+   "lastOkAt": 1793693751929,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793667831000,
    "strategy": "browser",
-   "profileAt": 1793689850640,
+   "profileAt": 1793693751929,
    "meta": {
     "userId": "47610700383"
    },
@@ -174,7 +174,7 @@
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (501409 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (501550 bytes, title \"Instagram\"))",
     "feed: login (HTTP 404 from the logged-in feed (login not accepted?))"
    ],
    "storyError": "[stories-browser] login: login not accepted (HTTP 200, web page \"Instagram\"); page: no story data on the stories page (3 answers: __ar,error,errorSummary,errorDescription,isNotCritical,rid; pressed view: no; blocked seen: 0) page html: 0 bytes, mentions reels_media: no, taken_at: 0; requests: POST /api/graphql [PolarisAPIGetFrCookieQuery] 200; POST /api/graphql [IGUFACAISupportChatExperienceQuery] 200 [browser logged in: no, csrf: yes]",
@@ -195,14 +195,14 @@
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793689853063,
-   "lastOkAt": 1793689870222,
+   "lastCheckAt": 1793693755542,
+   "lastOkAt": 1793693772494,
    "lastError": null,
    "errorCount": 0,
    "nextCheckAt": 0,
    "latestPostAt": 1793648156000,
    "strategy": "browser",
-   "profileAt": 1793689870222,
+   "profileAt": 1793693772494,
    "meta": {
     "userId": "77792093830"
    },
@@ -211,7 +211,7 @@
    "fallbacks": [
     "web: rate_limited (HTTP 429 www.instagram.com/api/v1/users/web_profile_info/)",
     "mobile: rate_limited (HTTP 429 i.instagram.com/api/v1/users/web_profile_info/)",
-    "embed: blocked (no posts in embed page (501399 bytes, title \"Instagram\"))",
+    "embed: blocked (no posts in embed page (502037 bytes, title \"Instagram\"))",
     "feed: login (HTTP 404 from the logged-in feed (login not accepted?))"
    ],
    "stories": [],
@@ -233,7 +233,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 4,
+    "likes": 8,
     "comments": 1,
     "shares": null
    },
@@ -255,8 +255,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 1623,
-    "comments": 62,
+    "likes": 1810,
+    "comments": 74,
     "shares": null
    },
    "cover": "instagram-dfqpukdspcd.jpg",
@@ -277,7 +277,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 17,
+    "likes": 20,
     "comments": 0,
     "shares": null
    },
@@ -321,7 +321,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 83,
+    "likes": 84,
     "comments": 7,
     "shares": null
    },
@@ -343,7 +343,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 118,
+    "likes": 119,
     "comments": 12,
     "shares": null
    },
@@ -365,8 +365,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 190,
-    "comments": 97,
+    "likes": 198,
+    "comments": 102,
     "shares": null
    },
    "cover": "instagram-dfqd9bds6dl.jpg",
@@ -386,10 +386,10 @@
    "kind": "video",
    "duration": 169,
    "stats": {
-    "views": 3662,
+    "views": 3785,
     "likes": 59,
     "comments": 1,
-    "shares": 11
+    "shares": 12
    },
    "cover": "tiktok-7703633151762959623.jpg",
    "coverRemote": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/o0R3eBRYA4bQaEzq2MUFErs6QBZfAyORcgDmEF~tplv-tiktokx-dmt-logom:tos-alisg-i-0068/ogPQKYFa7BzjyoZBAnENEol9lzjD7uAiAIAAi.image?dr=9634&x-expires=1793815200&x-signature=UmaaSjsFBk%2FTb7%2FKB47CeTGdG1M%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
@@ -430,10 +430,10 @@
    "kind": "video",
    "duration": 119,
    "stats": {
-    "views": 43800,
-    "likes": 681,
-    "comments": 21,
-    "shares": 744
+    "views": 45100,
+    "likes": 699,
+    "comments": 22,
+    "shares": 771
    },
    "cover": "tiktok-7703602742433942791.jpg",
    "coverRemote": "https://p19-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/okagxdYNAoGELyUqRQuBBZlEeEQtICFROvI6fD~tplv-tiktokx-dmt-logom:tos-alisg-i-0068/oAHiwAf3U6QASYRHEkgEISFEDTAuAqReD7BLCu.image?dr=9634&x-expires=1793808000&x-signature=6BequKR73IU5xF84BO%2BOspIqJuU%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
@@ -453,8 +453,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 78,
-    "comments": 0,
+    "likes": 80,
+    "comments": 1,
     "shares": null
    },
    "cover": "instagram-dfpjsqzngmk.jpg",
@@ -475,8 +475,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 2340,
-    "comments": 626,
+    "likes": 2354,
+    "comments": 634,
     "shares": null
    },
    "cover": "instagram-dfoik_dtdlj.jpg",
@@ -497,7 +497,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 1211,
+    "likes": 1218,
     "comments": 39,
     "shares": null
    },
@@ -519,8 +519,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 728,
-    "comments": 393,
+    "likes": 732,
+    "comments": 395,
     "shares": null
    },
    "cover": "instagram-dfns8a1mvh6.jpg",
@@ -563,8 +563,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 49003,
-    "comments": 640,
+    "likes": 49155,
+    "comments": 642,
     "shares": null
    },
    "cover": "instagram-dfnpnugnyi9.jpg",
@@ -585,7 +585,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 359,
+    "likes": 360,
     "comments": 198,
     "shares": null
    },
@@ -607,8 +607,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 1533,
-    "comments": 341,
+    "likes": 1536,
+    "comments": 340,
     "shares": null
    },
    "cover": "instagram-dflpylpzog_.jpg",
@@ -629,7 +629,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 2434,
+    "likes": 2442,
     "comments": 136,
     "shares": null
    },
@@ -651,7 +651,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 24568,
+    "likes": 24647,
     "comments": 505,
     "shares": null
    },
@@ -673,7 +673,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 3006,
+    "likes": 3017,
     "comments": 76,
     "shares": null
    },
@@ -694,7 +694,7 @@
    "kind": "video",
    "duration": 209,
    "stats": {
-    "views": 9806,
+    "views": 9829,
     "likes": 115,
     "comments": 16,
     "shares": 81
@@ -805,7 +805,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 34,
+    "likes": 35,
     "comments": 2,
     "shares": null
    },
@@ -914,9 +914,9 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 158200,
+    "views": 158300,
     "likes": 1356,
-    "comments": 235,
+    "comments": 237,
     "shares": 2606
    },
    "cover": "tiktok-7702434277270621441.jpg",
@@ -1014,15 +1014,15 @@
   }
  ],
  "run": {
-  "lastRunAt": 1793689750603,
-  "lastFinishedAt": 1793689870223,
+  "lastRunAt": 1793693662474,
+  "lastFinishedAt": 1793693772494,
   "lastNewCount": 0
  },
  "telegramStatus": {
   "lastSentAt": 1793689468810,
   "lastError": null,
   "lastErrorAt": null,
-  "verifiedAt": 1793689750602
+  "verifiedAt": 1793693662474
  },
  "cdnProbe": {
   "at": 1793391028525,
