@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": 1793689172512,
+ "generatedAt": 1793689468885,
  "since": 1793307600000,
  "intervalMin": 30,
  "repo": "kowaitie-maker/kowaitie-maker.github.io",
@@ -28,10 +28,10 @@
   },
   "telegram": true,
   "telegramStatus": {
-   "lastSentAt": 1793644030292,
+   "lastSentAt": 1793689468810,
    "lastError": null,
    "lastErrorAt": null,
-   "verifiedAt": 1793689118694
+   "verifiedAt": 1793689230237
   }
  },
  "accounts": [
@@ -48,8 +48,8 @@
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793689118694,
-   "lastOkAt": 1793689119084,
+   "lastCheckAt": 1793689230238,
+   "lastOkAt": 1793689230743,
    "lastError": null,
    "nextCheckAt": null,
    "latestPostAt": 1793641879000,
@@ -65,28 +65,23 @@
    "username": "mohamed.ouf.xx",
    "url": "https://www.instagram.com/mohamed.ouf.xx/",
    "displayName": "Mohamed Ouf99",
-   "avatar": "media/avatar-38d4ad3689be-mvuve5lf.jpg",
-   "followers": 2401848,
-   "postsCount": 820,
+   "avatar": "media/avatar-38d4ad3689be-mw0c9trz.jpg",
+   "followers": 2409554,
+   "postsCount": 822,
    "bio": "",
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793689122396,
-   "lastOkAt": 1793392863377,
-   "lastError": {
-    "kind": "not_found",
-    "message": "الحساب غير موجود — تأكد من اسم المستخدم",
-    "detail": "not_found: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [embed] blocked: no posts in embed page (501401 bytes, title \"Instagram\") | [feed] not_found: HTTP 404 | [browser] blocked: browser saw no posts (login wall?)",
-    "at": 1793689131392
-   },
+   "lastCheckAt": 1793689233184,
+   "lastOkAt": 1793689258750,
+   "lastError": null,
    "nextCheckAt": null,
-   "latestPostAt": 1793307100000,
+   "latestPostAt": 1793553116000,
    "strategy": "browser",
-   "hasStory": false,
-   "storySince": null,
+   "hasStory": true,
+   "storySince": 1793689258750,
    "stories": [],
-   "storyError": null
+   "storyError": "[stories-browser] login: login not accepted (HTTP 200, web page \"Instagram\"); page: no story data on the stories page (3 answers: __ar,error,errorSummary,errorDescription,isNotCritical,rid; pressed view: no; blocked seen: 0) page html: 0 bytes, mentions reels_media: no, taken_at: 0; requests: POST /api/graphql [PolarisAPIGetFrCookieQuery] 200; POST /api/graphql [IGUFACAISupportChatExperienceQuery] 200 [browser logged in: no, csrf: no]"
   },
   {
    "id": "18bfbd6745fc",
@@ -94,28 +89,23 @@
    "username": "has.shiaa",
    "url": "https://www.instagram.com/has.shiaa/",
    "displayName": "Hasna Maslouh",
-   "avatar": "media/avatar-18bfbd6745fc-mvvajrdq.jpg",
-   "followers": 36985,
-   "postsCount": 2660,
+   "avatar": "media/avatar-18bfbd6745fc-mw0caszg.jpg",
+   "followers": 36935,
+   "postsCount": 2678,
    "bio": "",
    "verified": false,
    "addedAt": 1793383987149,
    "paused": false,
-   "lastCheckAt": 1793689133590,
-   "lastOkAt": 1793392883911,
-   "lastError": {
-    "kind": "not_found",
-    "message": "الحساب غير موجود — تأكد من اسم المستخدم",
-    "detail": "not_found: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [embed] blocked: no posts in embed page (501390 bytes, title \"Instagram\") | [feed] not_found: HTTP 404 | [browser] blocked: browser saw no posts (login wall?)",
-    "at": 1793689142489
-   },
+   "lastCheckAt": 1793689287347,
+   "lastOkAt": 1793689304380,
+   "lastError": null,
    "nextCheckAt": null,
-   "latestPostAt": 1793375323000,
+   "latestPostAt": 1793689116000,
    "strategy": "browser",
    "hasStory": true,
    "storySince": 1793387952781,
    "stories": [],
-   "storyError": null
+   "storyError": "[stories-browser] login: login not accepted (HTTP 200, web page \"Instagram\"); page: no story data on the stories page (3 answers: viewer,init_conversational_support_attempt_for_ig_ufac,__ar,error,errorSummary,errorDescription; pressed view: no; blocked seen: 0) page html: 0 bytes, mentions reels_media: no, taken_at: 0; requests: POST /api/graphql [IGUFACAISupportChatExperienceQuery] 200; POST /api/graphql [PolarisAPIGetFrCookieQuery] 200 [browser logged in: no, csrf: yes]"
   },
   {
    "id": "1d514a49925d",
@@ -123,28 +113,23 @@
    "username": "doc.geno",
    "url": "https://www.instagram.com/doc.geno/",
    "displayName": "Hasna Maslouh",
-   "avatar": "media/avatar-1d514a49925d-mvvaopwf.jpg",
-   "followers": 397,
-   "postsCount": 38,
+   "avatar": "media/avatar-1d514a49925d-mw0cbqma.jpg",
+   "followers": 403,
+   "postsCount": 41,
    "bio": "",
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793689145171,
-   "lastOkAt": 1793391658710,
-   "lastError": {
-    "kind": "not_found",
-    "message": "الحساب غير موجود — تأكد من اسم المستخدم",
-    "detail": "not_found: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [embed] blocked: no posts in embed page (501392 bytes, title \"Instagram\") | [feed] not_found: HTTP 404 | [browser] blocked: browser saw no posts (login wall?)",
-    "at": 1793689151322
-   },
+   "lastCheckAt": 1793689330825,
+   "lastOkAt": 1793689347969,
+   "lastError": null,
    "nextCheckAt": null,
-   "latestPostAt": 1793367777000,
+   "latestPostAt": 1793652202000,
    "strategy": "browser",
    "hasStory": true,
    "storySince": 1793387973597,
    "stories": [],
-   "storyError": null
+   "storyError": "[stories-browser] login: login not accepted (HTTP 200, web page \"Instagram\"); page: no story data on the stories page (3 answers: __ar,error,errorSummary,errorDescription,isNotCritical,rid; pressed view: no; blocked seen: 0) page html: 0 bytes, mentions reels_media: no, taken_at: 0; requests: POST /api/graphql [PolarisAPIGetFrCookieQuery] 200; POST /api/graphql [IGUFACAISupportChatExperienceQuery] 200 [browser logged in: no, csrf: yes]"
   },
   {
    "id": "b44f84f8c3f0",
@@ -152,28 +137,23 @@
    "username": "explosivemediaa",
    "url": "https://www.instagram.com/explosivemediaa/",
    "displayName": "Explosive Media 💣😎",
-   "avatar": "media/avatar-b44f84f8c3f0-mvvap522.jpg",
-   "followers": 100135,
-   "postsCount": 303,
+   "avatar": "media/avatar-b44f84f8c3f0-mw0cco11.jpg",
+   "followers": 100417,
+   "postsCount": 302,
    "bio": "",
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793689154741,
-   "lastOkAt": 1793391695137,
-   "lastError": {
-    "kind": "not_found",
-    "message": "الحساب غير موجود — تأكد من اسم المستخدم",
-    "detail": "not_found: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [embed] blocked: no posts in embed page (501399 bytes, title \"Instagram\") | [feed] not_found: HTTP 404 | [browser] blocked: browser saw no posts (login wall?)",
-    "at": 1793689162998
-   },
+   "lastCheckAt": 1793689373921,
+   "lastOkAt": 1793689391269,
+   "lastError": null,
    "nextCheckAt": null,
-   "latestPostAt": 1793362837000,
+   "latestPostAt": 1793667831000,
    "strategy": "browser",
    "hasStory": true,
    "storySince": 1793387992458,
    "stories": [],
-   "storyError": null
+   "storyError": "[stories-browser] login: login not accepted (HTTP 200, web page \"Instagram\"); page: no story data on the stories page (3 answers: __ar,error,errorSummary,errorDescription,isNotCritical,rid; pressed view: no; blocked seen: 0) page html: 0 bytes, mentions reels_media: no, taken_at: 0; requests: POST /api/graphql [PolarisAPIGetFrCookieQuery] 200; POST /api/graphql [IGUFACAISupportChatExperienceQuery] 200 [browser logged in: no, csrf: yes]"
   },
   {
    "id": "f383a0e9f40d",
@@ -181,31 +161,159 @@
    "username": "topmediakw",
    "url": "https://www.instagram.com/topmediakw/",
    "displayName": "Top | توب",
-   "avatar": "media/avatar-f383a0e9f40d-mvvapk78.jpg",
-   "followers": 55400,
-   "postsCount": 401,
+   "avatar": "media/avatar-f383a0e9f40d-mw0cdlkv.jpg",
+   "followers": 55675,
+   "postsCount": 409,
    "bio": "",
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793689165633,
-   "lastOkAt": 1793391730738,
-   "lastError": {
-    "kind": "not_found",
-    "message": "الحساب غير موجود — تأكد من اسم المستخدم",
-    "detail": "not_found: [web] rate_limited: HTTP 429 www.instagram.com/api/v1/users/web_profile_info/ | [mobile] rate_limited: HTTP 429 i.instagram.com/api/v1/users/web_profile_info/ | [embed] blocked: no posts in embed page (501398 bytes, title \"Instagram\") | [feed] not_found: HTTP 404 | [browser] blocked: browser saw no posts (login wall?)",
-    "at": 1793689172413
-   },
+   "lastCheckAt": 1793689417609,
+   "lastOkAt": 1793689434751,
+   "lastError": null,
    "nextCheckAt": null,
-   "latestPostAt": 1793389959000,
+   "latestPostAt": 1793648156000,
    "strategy": "browser",
    "hasStory": true,
    "storySince": 1793388767829,
    "stories": [],
-   "storyError": null
+   "storyError": "[stories-browser] login: login not accepted (HTTP 200, web page \"Instagram\"); page: no story data on the stories page (3 answers: __ar,error,errorSummary,errorDescription,isNotCritical,rid; pressed view: no; blocked seen: 0) page html: 0 bytes, mentions reels_media: no, taken_at: 0; requests: POST /api/graphql [PolarisAPIGetFrCookieQuery] 200; POST /api/graphql [IGUFACAISupportChatExperienceQuery] 200 [browser logged in: no, csrf: yes]"
   }
  ],
  "posts": [
+  {
+   "id": "instagram:DfRSkGutNGl",
+   "platform": "instagram",
+   "postId": "DfRSkGutNGl",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfRSkGutNGl/",
+   "embedUrl": "https://www.instagram.com/p/DfRSkGutNGl/embed/",
+   "createdAt": 1793689116000,
+   "caption": "لو أن التصويت في الانتخابات يأتي بالتغيير لما سمحوا لنا به”؛ #سياسة مقطع مولد بالذكاء الاصطناعي 🤡",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 1,
+    "comments": 0,
+    "shares": null
+   },
+   "cover": "media/instagram-dfrskgutngl.jpg"
+  },
+  {
+   "id": "instagram:DfQpuKdspcD",
+   "platform": "instagram",
+   "postId": "DfQpuKdspcD",
+   "accountId": "b44f84f8c3f0",
+   "url": "https://www.instagram.com/p/DfQpuKdspcD/",
+   "embedUrl": "https://www.instagram.com/p/DfQpuKdspcD/embed/",
+   "createdAt": 1793667831000,
+   "caption": "𝗟.𝗢.𝗦.𝗘.𝗥 !!! 🔥☠️\n\nNo donkeys.\nNo elephants.\nNo ravens! \nThe time has come to decide the fate of this...\n\nThis is the last chance.\nIt's time for people to chant:\n\n𝗟.𝗢.𝗦.𝗘.𝗥 !!! 🔥☠️",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 1592,
+    "comments": 61,
+    "shares": null
+   },
+   "cover": "media/instagram-dfqpukdspcd.jpg"
+  },
+  {
+   "id": "instagram:DfQVokXtkpW",
+   "platform": "instagram",
+   "postId": "DfQVokXtkpW",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfQVokXtkpW/",
+   "embedUrl": "https://www.instagram.com/p/DfQVokXtkpW/embed/",
+   "createdAt": 1793657291000,
+   "caption": "📊 عشية الانتخابات النصفية الأمريكية (الثلاثاء 3 نوفمبر 2026)، ماذا تقول آخر الاستطلاعات؟\n\n▪️ مجلس الشيوخ: آخر استطلاعات نيويورك تايمز/سيينا تضع المرشحين الديمقراطيين في المقدمة في السباقات السبعة الحاسمة، والفارق في ألاسكا وآيوا ضمن هامش الخطأ.\n▪️ يملك الجمهوريون 53 مقعداً مقابل 47، ويحتاج الديمقراطيون إلى انتزاع 4 مقاعد للسيطرة على المجلس.\n▪️ شعبية ترامب: متوسط 9 مجمّعات للاستطلاعات يمنحه 36.8% تأييداً مقابل 60.5% رفضاً.\n\n⚠️ هذه استطلاعات رأي وليست نتائج، وقد تخطئ ببضع نقاط.\nاسحب لرؤية الصورة الثانية.\nالمصادر: نيويورك تايمز/سيينا، ومتوسطات 9 مجمّعات للاستطلاعات.\n\n———\n\n📊 On the eve of the US midterms (Tuesday, Nov 3, 2026), what do the final polls say?\n\n▪️ Senate: the final New York Times/Siena polls show Democratic candidates ahead in all seven key races; Alaska and Iowa are within the margin of error.\n▪️ Republicans hold 53 seats to 47; Democrats need to flip 4 to take control.\n▪️ Trump's approval: an average of 9 polling aggregators puts him at 36.8% approve vs 60.5% disapprove.\n\n⚠️ These are polls, not results, and they can miss by a few points.\nSwipe for the second chart.\nSources: New York Times/Siena; 9 polling aggregators.\n\n#الانتخابات_الأمريكية #الانتخابات_النصفية #ترامب #Midterms2026 #USElections",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 17,
+    "comments": 0,
+    "shares": null
+   },
+   "cover": "media/instagram-dfqvokxtkpw.jpg"
+  },
+  {
+   "id": "instagram:DfQML7tu4La",
+   "platform": "instagram",
+   "postId": "DfQML7tu4La",
+   "accountId": "1d514a49925d",
+   "url": "https://www.instagram.com/p/DfQML7tu4La/",
+   "embedUrl": "https://www.instagram.com/p/DfQML7tu4La/embed/",
+   "createdAt": 1793652202000,
+   "caption": "أولادي أكلتهم الكلاب»… قالها أبٌ من غزة واقفاً على ركام بيته.\nوفي مقطعٍ آخر من غزة، جنود الاحتلال يصوّرون الكلاب وهي تنهش جثة… ويضحكون.\nلا تدعوا العالم يعتاد على هذا.\n⚠️ مشاهد مؤلمة\n🎥 مقطع الأب: @hassanemad01\n\n“My children were eaten by dogs.” A father in Gaza, standing on the ruins of his home.\nIn another video from Gaza, Israeli soldiers film dogs tearing at a body… and laugh.\nDon’t let the world get used to this.\n\n#غزة #Gaza #فلسطين #Palestine",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 21,
+    "comments": 2,
+    "shares": null
+   },
+   "cover": "media/instagram-dfqml7tu4la.jpg"
+  },
+  {
+   "id": "instagram:DfQJTEmNHe6",
+   "platform": "instagram",
+   "postId": "DfQJTEmNHe6",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfQJTEmNHe6/",
+   "embedUrl": "https://www.instagram.com/p/DfQJTEmNHe6/embed/",
+   "createdAt": 1793650653000,
+   "caption": "عقلي الشمالي 🤫🫪🤡",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 83,
+    "comments": 7,
+    "shares": null
+   },
+   "cover": "media/instagram-dfqjtemnhe6.jpg"
+  },
+  {
+   "id": "instagram:DfQFpu5tTdN",
+   "platform": "instagram",
+   "postId": "DfQFpu5tTdN",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfQFpu5tTdN/",
+   "embedUrl": "https://www.instagram.com/p/DfQFpu5tTdN/embed/",
+   "createdAt": 1793648721000,
+   "caption": "النووي بالنووي 🤷‍♀️🤡",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 118,
+    "comments": 12,
+    "shares": null
+   },
+   "cover": "media/instagram-dfqfpu5ttdn.jpg"
+  },
+  {
+   "id": "instagram:DfQD9bDS6Dl",
+   "platform": "instagram",
+   "postId": "DfQD9bDS6Dl",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfQD9bDS6Dl/",
+   "embedUrl": "https://www.instagram.com/p/DfQD9bDS6Dl/embed/",
+   "createdAt": 1793648156000,
+   "caption": "دولة الكويت تدعو دول العالم للالتزام بحقوق الإنسان وصون حقوق المدنيين\n#الكويت",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 189,
+    "comments": 97,
+    "shares": null
+   },
+   "cover": "media/instagram-dfqd9bds6dl.jpg"
+  },
   {
    "id": "tiktok:7703633151762959623",
    "platform": "tiktok",
@@ -218,12 +326,31 @@
    "kind": "video",
    "duration": 169,
    "stats": {
-    "views": 3651,
+    "views": 3653,
     "likes": 59,
     "comments": 1,
     "shares": 11
    },
    "cover": "media/tiktok-7703633151762959623.jpg"
+  },
+  {
+   "id": "instagram:DfPxFG_tIky",
+   "platform": "instagram",
+   "postId": "DfPxFG_tIky",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfPxFG_tIky/",
+   "embedUrl": "https://www.instagram.com/p/DfPxFG_tIky/embed/",
+   "createdAt": 1793638143000,
+   "caption": "هل تريدون حقاً الاعتماد على هؤلاء؟»\nيرى أستاذ العلوم السياسية جون ميرشايمر أن المنظومة الأمنية الأمريكية في الخليج «انهارت عملياً»، وأن المشكلة ليست فقط أن واشنطن عاجزة عن حماية حلفائها… بل إنها «تورّطهم في مشاكل خطيرة».\nنصيحته لدول الخليج: التوصل إلى صيغة تعايش مع إيران.\nهل توافقونه؟ 👇\n\n—\n\n\"Do you really want to depend on these people?\"\nPolitical scientist John Mearsheimer argues that the American security architecture in the Gulf \"has basically been wrecked\". And it's not only that Washington can't protect its allies: \"they get you into serious trouble.\"\nHis advice to the Gulf states: work out a modus vivendi with Iran.\nDo you agree? 👇\n\nالمصدر: مقابلة مع جون ميرشايمر | الترجمة العربية: chastri.A.313 (تيك توك)\nSource: John Mearsheimer interview | Arabic subtitles: chastri.A.313 (TikTok)\n\n#ميرشايمر #Mearsheimer #الخليج #إيران",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 23,
+    "comments": 1,
+    "shares": null
+   },
+   "cover": "media/instagram-dfpxfg_tiky.jpg"
   },
   {
    "id": "tiktok:7703602742433942791",
@@ -237,12 +364,221 @@
    "kind": "video",
    "duration": 119,
    "stats": {
-    "views": 43600,
-    "likes": 679,
-    "comments": 22,
+    "views": 43700,
+    "likes": 680,
+    "comments": 21,
     "shares": 735
    },
    "cover": "media/tiktok-7703602742433942791.jpg"
+  },
+  {
+   "id": "instagram:DfPjsQzNGMk",
+   "platform": "instagram",
+   "postId": "DfPjsQzNGMk",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfPjsQzNGMk/",
+   "embedUrl": "https://www.instagram.com/p/DfPjsQzNGMk/embed/",
+   "createdAt": 1793630924000,
+   "caption": "🚨 تخيّل أن تدخل السوبرماركت… فتجد الثلاجات توقّفت عن حفظ الطعام بسبب اختراق إلكتروني!\nهذا ما شهدته متاجر أوروبية، بعد حوادث استهدفت أنظمة التبريد في بلجيكا ولوكسمبورغ، مع تسجيل حالات مماثلة في السويد، ما اضطر متاجر متضررة إلى التخلص من أغذية. 🛒❄️[bbc +1]\nالجهة المسؤولة لم تُحدَّد علنًا، والتحقيقات لم تحسم بعد إن كانت الحوادث مرتبطة ببعضها. 🔎[nbcnews +1]\n💬 برأيك، ما الأكثر إثارة للقلق: سرقة بياناتك أم اختراق الأنظمة التي تحفظ طعامك؟ ولماذا؟\n🎨 الصورة توضيحية.\n#الأمن_السيبراني #هجمات_إلكترونية #سلامة_الغذاء #بلجيكا #لوكسمبورغ السويد CyberSecurity CyberAttac",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 78,
+    "comments": 0,
+    "shares": null
+   },
+   "cover": "media/instagram-dfpjsqzngmk.jpg"
+  },
+  {
+   "id": "instagram:DfOiK_dTdLJ",
+   "platform": "instagram",
+   "postId": "DfOiK_dTdLJ",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfOiK_dTdLJ/",
+   "embedUrl": "https://www.instagram.com/p/DfOiK_dTdLJ/embed/",
+   "createdAt": 1793596911000,
+   "caption": "الصحفي الأمريكي تاكر كارلسون يفجر قنبلة:\nأمريكا ستقصف إيران بقنبلة نووية\n\n- الهدف هو جبل بيكاكس في وسط إيران، حيث تزعم المخابرات ال(….) أن الحكومة الإيرانية استأنفت برنامجها لتخصيب اليورانيوم.\n- لا يوجد سلاح تقليدي في الترسانة الأمريكية قادر على اختراق 90 مترًا من الجرانيت الصلب لتدمير الأنفاق التي يُفترض أن التخصيب يجري فيها. الخيار العسكري الوحيد هو الضربة النووية.\n\nبعد ثمانية أشهر من الصراع، تعاني اقتصادات الخليج من أزمة حادة، وكذلك أسواق الطاقة والأسمدة العالمية، ولن تتعافى قريبًا. يوجد في العالم حوالي 850 ناقلة نفط عملاقة تُستخدم لنقل النفط من المنتجين إلى بقية أنحاء العالم. في أكتوبر/تشرين الأول وحده، تضررت 11 منها بشدة في مضيق هرمز. وبهذا المعدل، بات الكساد العالمي وشيكًا. من شأن ضربة نووية أن تُسرّع الدمار بشكل كبير. كما أن التداعيات النووية لانفجار أرضي في جبل بيكاكس ستلوث الخليج العربي، مُسمّمةً إمدادات المياه لـ 100 مليون شخص.\n\nيقول مراقبون مقربون إن ترامب سيرجح على الأرجح قراره بحلول نهاية الأسبوع المقبل بشأن استخدام الأسلحة النووية من عدمه، أي في السابع من نوفمبر/تشرين الثاني، بعد ستة أيام من الآن. ويُحسب له تردده. في الوقت الراهن، يستمع ترامب إلى نائبه، جيه دي فانس، ومبعوثه وصديقه ستيف ويتكوف، وكلاهما يؤكد إمكانية التوصل إلى اتفاق مع إيران.\n#أمريكا #إيران",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 2339,
+    "comments": 625,
+    "shares": null
+   },
+   "cover": "media/instagram-dfoik_dtdlj.jpg"
+  },
+  {
+   "id": "instagram:DfNumfAu4Rl",
+   "platform": "instagram",
+   "postId": "DfNumfAu4Rl",
+   "accountId": "b44f84f8c3f0",
+   "url": "https://www.instagram.com/p/DfNumfAu4Rl/",
+   "embedUrl": "https://www.instagram.com/p/DfNumfAu4Rl/embed/",
+   "createdAt": 1793569740000,
+   "caption": "Ken Paxton wouldn’t even pass up a free pen. Imagine how many favors he signed off on for his buddies with that thing. 😂✍️",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 1209,
+    "comments": 39,
+    "shares": null
+   },
+   "cover": "media/instagram-dfnumfau4rl.jpg"
+  },
+  {
+   "id": "instagram:DfNs8a1mVh6",
+   "platform": "instagram",
+   "postId": "DfNs8a1mVh6",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfNs8a1mVh6/",
+   "embedUrl": "https://www.instagram.com/p/DfNs8a1mVh6/embed/",
+   "createdAt": 1793568646000,
+   "caption": "ولاء شيعة الكويت لآل الصباح.. أكثر من ولائهم لأئمتهم الاثني عشر\n\n● مقال ونصيحة للأسرة الحاكمة «آل الصباح»:\nلن تجدوا في العالم كله مثل شيعة الكويت مستعدين لأن يبيعوا أئمتهم ويتنازلون عن مقدساتهم لأجل حكّامهم.\nشيعة الكويت أنزلوا الأعلام العزائية المقدسة عندهم المكتوب عليها «ياحسين» من على أسطح بيوتهم بأيديهما الاثنتين دون أدنى مقاومة أو شجب أو استنكار أو اعتراض بشفا كلمة.\nإن شيعة الكويت شاركوا حتى في هدم قبور أئمتهم الأربعة في البقيع تلبيةً وطاعةً لأمر مبارك الكبير في \"الفزعة\" للملك عبدالعزيز آل سعود لتثبيت حكمه في المملكة العربية السعودية ودعموه بالمال والسلاح، نقلنا لكم جزءاً يسيراً من المكتوب في كتاب \"آل معرفي - سيرة عائلة كويتية ساهمت في بناء الوطن عبر التاريخ\"، وعليكم بقراءة المزيد في هذا الكتاب لمشاهدة التفاصيل التي تثبت باليقين القاطع أن لولا ذخائر وأموال شيعة الكويت لما تمت عملية هدم قبور أئمتهم في المملكة العربية السعودية.\nكما عليكم عدم نسيان أن أول فزعة لآل الصباح انطلقت في منطقة الرميثية \"ذات أغلبية شيعية\" سنة 1990 حين غزا صدام الكويت.. ونادت الحشود لآل الصباح حكاماً للبلاد، ولم ينادوا باسم الخميني أو إيران أو مراجعهم مثلاً وكان بامكانهم فعل ذلك!\n\nفهل جزاء الإحسان إلا الإحسان؟!\nإن هؤلاء القوم «شيعة الكويت» أحبوكم حباً جماً تكاد قلوبهم أن تتفطر لحبكم والولاء لكم والتسبيح بحمدكم، فلا تفرّطوا فيهم.. فإنكم لن تجدوا مثلهم!\n\nتم تدوين هذا للتاريخ\nكتب: محرر صحيفة Top\n#الكويت",
+   "kind": "carousel",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 726,
+    "comments": 392,
+    "shares": null
+   },
+   "cover": "media/instagram-dfns8a1mvh6.jpg"
+  },
+  {
+   "id": "instagram:DfNYdCrTCvv",
+   "platform": "instagram",
+   "postId": "DfNYdCrTCvv",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfNYdCrTCvv/",
+   "embedUrl": "https://www.instagram.com/p/DfNYdCrTCvv/embed/",
+   "createdAt": 1793557932000,
+   "caption": "وكالة كونا أثبتت أن أنصار مشعل الأحمد شاذّون وأقلية.. حيث أبقت ردود الذباب الإلكتروني فقط تحت تغريدة كاذبة تدعي أن الكويت تلتزم بحقوق الإنسان\n\n- وكالة كونا الحكومية لم تتحمل الردود والسخط الشعبي على سياسة مشعل الأحمد الصباح وقامت بإخفاء الردود وحظر مئات الحسابات\n\n- الردود وصلت لخارج الكويت مما كشف السمعة الحقيقية الداخلية لسياسة ‫#الكويت‬ وهتكها لحقوق الإنسان عبر سحب الجناسي وتكميم الأفواه وغيرها",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 91,
+    "comments": 24,
+    "shares": null
+   },
+   "cover": "media/instagram-dfnydcrtcvv.jpg"
+  },
+  {
+   "id": "instagram:DfNPNUGNYI9",
+   "platform": "instagram",
+   "postId": "DfNPNUGNYI9",
+   "accountId": "38d4ad3689be",
+   "url": "https://www.instagram.com/p/DfNPNUGNYI9/",
+   "embedUrl": "https://www.instagram.com/p/DfNPNUGNYI9/embed/",
+   "createdAt": 1793553116000,
+   "caption": "فلتر هخطب مين مع ابويا..",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 48987,
+    "comments": 640,
+    "shares": null
+   },
+   "cover": "media/instagram-dfnpnugnyi9.jpg"
+  },
+  {
+   "id": "instagram:DfNL05jT6NT",
+   "platform": "instagram",
+   "postId": "DfNL05jT6NT",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfNL05jT6NT/",
+   "embedUrl": "https://www.instagram.com/p/DfNL05jT6NT/embed/",
+   "createdAt": 1793551298000,
+   "caption": "وكالة كونا الحكومية الكويتية تحرج ممثلة دولة الكويت وفيقة الملا «بصورة مزيّفة ومعدلة بالذكاء الاصطناعي»\n‫#الكويت‬",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 359,
+    "comments": 198,
+    "shares": null
+   },
+   "cover": "media/instagram-dfnl05jt6nt.jpg"
+  },
+  {
+   "id": "instagram:DfLPyLpzOg_",
+   "platform": "instagram",
+   "postId": "DfLPyLpzOg_",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfLPyLpzOg_/",
+   "embedUrl": "https://www.instagram.com/p/DfLPyLpzOg_/embed/",
+   "createdAt": 1793486360000,
+   "caption": "أسوةً بالبدون.. جوازات «مادة 17» للمسحوبة جناسيهم وتنحصر للعلاج والدراسة\n- إيقاف العمل بالجوازات الكويتية القديمة وعدم السماح للسفر بها\n#الكويت",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 1533,
+    "comments": 340,
+    "shares": null
+   },
+   "cover": "media/instagram-dflpylpzog_.jpg"
+  },
+  {
+   "id": "instagram:DfLAqq8Pcia",
+   "platform": "instagram",
+   "postId": "DfLAqq8Pcia",
+   "accountId": "b44f84f8c3f0",
+   "url": "https://www.instagram.com/p/DfLAqq8Pcia/",
+   "embedUrl": "https://www.instagram.com/p/DfLAqq8Pcia/embed/",
+   "createdAt": 1793478305000,
+   "caption": "Definitely, that’s even scarier for kids... We all know why.",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 2434,
+    "comments": 136,
+    "shares": null
+   },
+   "cover": "media/instagram-dflaqq8pcia.jpg"
+  },
+  {
+   "id": "instagram:DfK_Pq9te1b",
+   "platform": "instagram",
+   "postId": "DfK_Pq9te1b",
+   "accountId": "38d4ad3689be",
+   "url": "https://www.instagram.com/p/DfK_Pq9te1b/",
+   "embedUrl": "https://www.instagram.com/p/DfK_Pq9te1b/embed/",
+   "createdAt": 1793477710000,
+   "caption": "تريند كل واعترف مع ابويا وامي..",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 24561,
+    "comments": 505,
+    "shares": null
+   },
+   "cover": "media/instagram-dfk_pq9te1b.jpg"
+  },
+  {
+   "id": "instagram:DfKyF8XuKxm",
+   "platform": "instagram",
+   "postId": "DfKyF8XuKxm",
+   "accountId": "b44f84f8c3f0",
+   "url": "https://www.instagram.com/p/DfKyF8XuKxm/",
+   "embedUrl": "https://www.instagram.com/p/DfKyF8XuKxm/embed/",
+   "createdAt": 1793470743000,
+   "caption": "Besides the Iran Army, the Lego Resistance Front is ready too.\nAnd we also have unknown tactics😉\n\nThe countdown is on... ⏳",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 3004,
+    "comments": 76,
+    "shares": null
+   },
+   "cover": "media/instagram-dfkyf8xukxm.jpg"
   },
   {
    "id": "tiktok:7702815883525098760",
@@ -262,6 +598,25 @@
     "shares": 81
    },
    "cover": "media/tiktok-7702815883525098760.jpg"
+  },
+  {
+   "id": "instagram:DfJsZgkR5Kc",
+   "platform": "instagram",
+   "postId": "DfJsZgkR5Kc",
+   "accountId": "1d514a49925d",
+   "url": "https://www.instagram.com/p/DfJsZgkR5Kc/",
+   "embedUrl": "https://www.instagram.com/p/DfJsZgkR5Kc/embed/",
+   "createdAt": 1793434205000,
+   "caption": "ابادة #humanrights #غزة #palestine #gaza #فلسطين",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 21,
+    "comments": 1,
+    "shares": null
+   },
+   "cover": "media/instagram-dfjszgkr5kc.jpg"
   },
   {
    "id": "instagram:DfIYG6zTFte",
@@ -333,7 +688,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 15,
+    "likes": 34,
     "comments": 2,
     "shares": null
    },
@@ -429,7 +784,7 @@
    "stats": {
     "views": 158200,
     "likes": 1356,
-    "comments": 237,
+    "comments": 235,
     "shares": 2606
    },
    "cover": "media/tiktok-7702434277270621441.jpg"
@@ -485,7 +840,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 27,
+    "likes": 34,
     "comments": 10,
     "shares": null
    },
