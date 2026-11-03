@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": 1793693772591,
+ "generatedAt": 1793890629004,
  "since": 1793307600000,
  "intervalMin": 60,
  "schedule": "manual",
@@ -29,10 +29,10 @@
   },
   "telegram": true,
   "telegramStatus": {
-   "lastSentAt": 1793689468810,
+   "lastSentAt": 1793890628917,
    "lastError": null,
    "lastErrorAt": null,
-   "verifiedAt": 1793693662474
+   "verifiedAt": 1793890404531
   }
  },
  "accounts": [
@@ -42,18 +42,18 @@
    "username": "yousefali82__",
    "url": "https://www.tiktok.com/@yousefali82__",
    "displayName": "يوسف الحسينان",
-   "avatar": "media/avatar-0e63bb4ee950-mvz9u4mp.jpg",
-   "followers": 54400,
-   "postsCount": 538,
+   "avatar": "media/avatar-0e63bb4ee950-mw3o13io.jpg",
+   "followers": 54500,
+   "postsCount": 540,
    "bio": "تصوير كل شي مفيد",
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793693662474,
-   "lastOkAt": 1793693662856,
+   "lastCheckAt": 1793890404531,
+   "lastOkAt": 1793890405392,
    "lastError": null,
    "nextCheckAt": null,
-   "latestPostAt": 1793641879000,
+   "latestPostAt": 1793870108000,
    "strategy": "api",
    "hasStory": false,
    "storySince": null,
@@ -66,23 +66,23 @@
    "username": "mohamed.ouf.xx",
    "url": "https://www.instagram.com/mohamed.ouf.xx/",
    "displayName": "Mohamed Ouf99",
-   "avatar": "media/avatar-38d4ad3689be-mw0c9trz.jpg",
-   "followers": 2409554,
-   "postsCount": 822,
+   "avatar": "media/avatar-38d4ad3689be-mw3o1jo4.jpg",
+   "followers": 2415786,
+   "postsCount": 824,
    "bio": "",
    "verified": false,
    "addedAt": 1793358071324,
    "paused": false,
-   "lastCheckAt": 1793693665019,
-   "lastOkAt": 1793693692013,
+   "lastCheckAt": 1793890408210,
+   "lastOkAt": 1793890426323,
    "lastError": null,
    "nextCheckAt": null,
-   "latestPostAt": 1793553116000,
+   "latestPostAt": 1793815465000,
    "strategy": "browser",
    "hasStory": true,
-   "storySince": 1793689258750,
+   "storySince": 1793890426323,
    "stories": [],
-   "storyError": "[stories-browser] login: login not accepted (HTTP 200, web page \"Instagram\"); page: no story data on the stories page (3 answers: __ar,error,errorSummary,errorDescription,isNotCritical,rid; pressed view: no; blocked seen: 0) page html: 0 bytes, mentions reels_media: no, taken_at: 0; requests: POST /api/graphql [PolarisAPIGetFrCookieQuery] 200; POST /api/graphql [IGUFACAISupportChatExperienceQuery] 200 [browser logged in: no, csrf: no]"
+   "storyError": null
   },
   {
    "id": "18bfbd6745fc",
@@ -90,23 +90,23 @@
    "username": "has.shiaa",
    "url": "https://www.instagram.com/has.shiaa/",
    "displayName": "Hasna Maslouh",
-   "avatar": "media/avatar-18bfbd6745fc-mw0caszg.jpg",
-   "followers": 36935,
-   "postsCount": 2678,
+   "avatar": "media/avatar-18bfbd6745fc-mw3o2hxp.jpg",
+   "followers": 36899,
+   "postsCount": 2694,
    "bio": "",
    "verified": false,
    "addedAt": 1793383987149,
    "paused": false,
-   "lastCheckAt": 1793693694082,
-   "lastOkAt": 1793693711058,
+   "lastCheckAt": 1793890453533,
+   "lastOkAt": 1793890470733,
    "lastError": null,
    "nextCheckAt": null,
-   "latestPostAt": 1793689116000,
+   "latestPostAt": 1793826808000,
    "strategy": "browser",
    "hasStory": true,
    "storySince": 1793387952781,
    "stories": [],
-   "storyError": "[stories-browser] login: login not accepted (HTTP 200, web page \"Instagram\"); page: no story data on the stories page (3 answers: viewer,init_conversational_support_attempt_for_ig_ufac,__ar,error,errorSummary,errorDescription; pressed view: no; blocked seen: 0) page html: 0 bytes, mentions reels_media: no, taken_at: 0; requests: POST /api/graphql [IGUFACAISupportChatExperienceQuery] 200; POST /api/graphql [PolarisAPIGetFrCookieQuery] 200 [browser logged in: no, csrf: yes]"
+   "storyError": null
   },
   {
    "id": "1d514a49925d",
@@ -114,23 +114,23 @@
    "username": "doc.geno",
    "url": "https://www.instagram.com/doc.geno/",
    "displayName": "Hasna Maslouh",
-   "avatar": "media/avatar-1d514a49925d-mw0cbqma.jpg",
-   "followers": 403,
-   "postsCount": 41,
+   "avatar": "media/avatar-1d514a49925d-mw3o3ggr.jpg",
+   "followers": 434,
+   "postsCount": 45,
    "bio": "",
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793693714223,
-   "lastOkAt": 1793693731176,
+   "lastCheckAt": 1793890497906,
+   "lastOkAt": 1793890515483,
    "lastError": null,
    "nextCheckAt": null,
-   "latestPostAt": 1793652202000,
+   "latestPostAt": 1793824277000,
    "strategy": "browser",
    "hasStory": true,
    "storySince": 1793387973597,
    "stories": [],
-   "storyError": "[stories-browser] login: login not accepted (HTTP 200, web page \"Instagram\"); page: no story data on the stories page (3 answers: __ar,error,errorSummary,errorDescription,isNotCritical,rid; pressed view: no; blocked seen: 0) page html: 0 bytes, mentions reels_media: no, taken_at: 0; requests: POST /api/graphql [PolarisAPIGetFrCookieQuery] 200; POST /api/graphql [IGUFACAISupportChatExperienceQuery] 200 [browser logged in: no, csrf: yes]"
+   "storyError": null
   },
   {
    "id": "b44f84f8c3f0",
@@ -138,23 +138,23 @@
    "username": "explosivemediaa",
    "url": "https://www.instagram.com/explosivemediaa/",
    "displayName": "Explosive Media 💣😎",
-   "avatar": "media/avatar-b44f84f8c3f0-mw0cco11.jpg",
-   "followers": 100417,
-   "postsCount": 302,
+   "avatar": "media/avatar-b44f84f8c3f0-mw3o4dpp.jpg",
+   "followers": 101017,
+   "postsCount": 304,
    "bio": "",
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793693734672,
-   "lastOkAt": 1793693751929,
+   "lastCheckAt": 1793890541346,
+   "lastOkAt": 1793890558573,
    "lastError": null,
    "nextCheckAt": null,
-   "latestPostAt": 1793667831000,
+   "latestPostAt": 1793831414000,
    "strategy": "browser",
    "hasStory": true,
    "storySince": 1793387992458,
    "stories": [],
-   "storyError": "[stories-browser] login: login not accepted (HTTP 200, web page \"Instagram\"); page: no story data on the stories page (3 answers: __ar,error,errorSummary,errorDescription,isNotCritical,rid; pressed view: no; blocked seen: 0) page html: 0 bytes, mentions reels_media: no, taken_at: 0; requests: POST /api/graphql [PolarisAPIGetFrCookieQuery] 200; POST /api/graphql [IGUFACAISupportChatExperienceQuery] 200 [browser logged in: no, csrf: yes]"
+   "storyError": null
   },
   {
    "id": "f383a0e9f40d",
@@ -162,26 +162,634 @@
    "username": "topmediakw",
    "url": "https://www.instagram.com/topmediakw/",
    "displayName": "Top | توب",
-   "avatar": "media/avatar-f383a0e9f40d-mw0cdlkv.jpg",
-   "followers": 55675,
-   "postsCount": 409,
+   "avatar": "media/avatar-f383a0e9f40d-mw3o5bwf.jpg",
+   "followers": 56237,
+   "postsCount": 417,
    "bio": "",
    "verified": false,
    "addedAt": 1793384193912,
    "paused": false,
-   "lastCheckAt": 1793693755542,
-   "lastOkAt": 1793693772494,
+   "lastCheckAt": 1793890585776,
+   "lastOkAt": 1793890602879,
    "lastError": null,
    "nextCheckAt": null,
-   "latestPostAt": 1793648156000,
+   "latestPostAt": 1793819186000,
    "strategy": "browser",
    "hasStory": true,
    "storySince": 1793388767829,
    "stories": [],
-   "storyError": "[stories-browser] login: login not accepted (HTTP 200, web page \"Instagram\"); page: no story data on the stories page (3 answers: __ar,error,errorSummary,errorDescription,isNotCritical,rid; pressed view: no; blocked seen: 0) page html: 0 bytes, mentions reels_media: no, taken_at: 0; requests: POST /api/graphql [PolarisAPIGetFrCookieQuery] 200; POST /api/graphql [IGUFACAISupportChatExperienceQuery] 200 [browser logged in: no, csrf: yes]"
+   "storyError": null
   }
  ],
  "posts": [
+  {
+   "id": "tiktok:7704613410490682642",
+   "platform": "tiktok",
+   "postId": "7704613410490682642",
+   "accountId": "0e63bb4ee950",
+   "url": "https://www.tiktok.com/@yousefali82__/video/7704613410490682642",
+   "embedUrl": "https://www.tiktok.com/player/v1/7704613410490682642?autoplay=1&loop=1&music_info=1&description=1&rel=0&native_context_menu=1",
+   "createdAt": 1793870108000,
+   "caption": "#شعب_الصيني_ماله_حل😂😂 #الكويت #شويخ #مرسيدس ",
+   "kind": "video",
+   "duration": 155,
+   "stats": {
+    "views": 1291,
+    "likes": 28,
+    "comments": 5,
+    "shares": 20
+   },
+   "cover": "media/tiktok-7704613410490682642.jpg"
+  },
+  {
+   "id": "instagram:DfVhPsruDIw",
+   "platform": "instagram",
+   "postId": "DfVhPsruDIw",
+   "accountId": "b44f84f8c3f0",
+   "url": "https://www.instagram.com/p/DfVhPsruDIw/",
+   "embedUrl": "https://www.instagram.com/p/DfVhPsruDIw/embed/",
+   "createdAt": 1793831414000,
+   "caption": "Today will go down in history as the day of Trump’s great defeat.\n\n🚨 𝘽𝙪𝙩 𝙩𝙝𝙚 𝙟𝙤𝙗 𝙞𝙨𝙣’𝙩 𝙛𝙞𝙣𝙞𝙨𝙝𝙚𝙙 𝙮𝙚𝙩...\n\nStay vigilant!\nDon’t let the parasites infiltrate their way back in.\n\n🎬💥 New Lego video on Midterm elections",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 11692,
+    "comments": 312,
+    "shares": null
+   },
+   "cover": "media/instagram-dfvhpsrudiw.jpg"
+  },
+  {
+   "id": "instagram:DfVZEsnNjD-",
+   "platform": "instagram",
+   "postId": "DfVZEsnNjD-",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfVZEsnNjD-/",
+   "embedUrl": "https://www.instagram.com/p/DfVZEsnNjD-/embed/",
+   "createdAt": 1793826808000,
+   "caption": "و كأن ارواحهم عادت من جديد لاسترجاع الارض 💚💚💚💚💚💚💚\n#liberty",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 209,
+    "comments": 16,
+    "shares": null
+   },
+   "cover": "media/instagram-dfvzesnnjd-.jpg"
+  },
+  {
+   "id": "instagram:DfVV1nxtraw",
+   "platform": "instagram",
+   "postId": "DfVV1nxtraw",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfVV1nxtraw/",
+   "embedUrl": "https://www.instagram.com/p/DfVV1nxtraw/embed/",
+   "createdAt": 1793824997000,
+   "caption": "ما اشبه روما بالبيت الأسود 🤡",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 42,
+    "comments": 1,
+    "shares": null
+   },
+   "cover": "media/instagram-dfvv1nxtraw.jpg"
+  },
+  {
+   "id": "instagram:DfVUZi_uM9d",
+   "platform": "instagram",
+   "postId": "DfVUZi_uM9d",
+   "accountId": "1d514a49925d",
+   "url": "https://www.instagram.com/p/DfVUZi_uM9d/",
+   "embedUrl": "https://www.instagram.com/p/DfVUZi_uM9d/embed/",
+   "createdAt": 1793824277000,
+   "caption": "Is he guarding the crown… or waiting for it?\n\nOver two thousand years ago, Julius Caesar was named dictator for life. The danger didn’t come from his enemies… it came from those closest to him.\n\nToday in Washington, Trump keeps teasing a third term, and right behind him stands his VP, JD Vance, first in the line of succession. The midterms are over, and Vance has said he’d sit down with Trump afterwards to talk about running in 2028.\n\nHistory doesn’t repeat itself… but it loves a reminder.\n\n🎬 Satire · AI-generatedهل يحرس التاج… أم ينتظره؟\n\nقبل أكثر من ألفي عام، نُصِّب يوليوس قيصر دكتاتوراً مدى الحياة، فلم يأتِه الخطر من أعدائه… بل من أقرب الناس إليه.\n\nواليوم في واشنطن، يلمّح ترامب إلى ولاية ثالثة، ويقف خلفه نائبه فانس، الأول في خط الخلافة. انتهت انتخابات التجديد النصفي، وكان فانس قد قال إنه سيجلس مع ترامب بعدها للحديث عن ترشّحه في 2028.\n\nالتاريخ لا يعيد نفسه… لكنه يحب أن يذكّرنا.\n\n🎬 مقطع ساخر مُنشأ بالذكاء الاصطناعي\n\nهاشتاغات\n#ترامب #فانس #Trump #Vance #JuliusCaesar",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 8,
+    "comments": 0,
+    "shares": null
+   },
+   "cover": "media/instagram-dfvuzi_um9d.jpg"
+  },
+  {
+   "id": "instagram:DfVUIEguoIL",
+   "platform": "instagram",
+   "postId": "DfVUIEguoIL",
+   "accountId": "b44f84f8c3f0",
+   "url": "https://www.instagram.com/p/DfVUIEguoIL/",
+   "embedUrl": "https://www.instagram.com/p/DfVUIEguoIL/embed/",
+   "createdAt": 1793824164000,
+   "caption": "Live Trump meme\n\nWe promised to bring enemy to it's knees. And we did it.\nWait for even more...",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 2396,
+    "comments": 68,
+    "shares": null
+   },
+   "cover": "media/instagram-dfvuieguoil.jpg"
+  },
+  {
+   "id": "instagram:DfVTfjhNgxi",
+   "platform": "instagram",
+   "postId": "DfVTfjhNgxi",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfVTfjhNgxi/",
+   "embedUrl": "https://www.instagram.com/p/DfVTfjhNgxi/embed/",
+   "createdAt": 1793823822000,
+   "caption": "👑 هل يحرس التاج… أم ينتظره؟\n\nقبل أكثر من ألفي عام، نُصِّب يوليوس قيصر دكتاتوراً مدى الحياة، فلم يأتِه الخطر من أعدائه… بل من أقرب الناس إليه.\n\nواليوم في واشنطن، يلمّح ترامب إلى ولاية ثالثة، ويقف خلفه نائبه فانس، الأول في خط الخلافة. انتهت انتخابات التجديد النصفي، وكان فانس قد قال إنه سيجلس مع ترامب بعدها للحديث عن ترشّحه في 2028.\n\nالتاريخ لا يعيد نفسه… لكنه يحب أن يذكّرنا.\n\n🎬 مقطع ساخر مُنشأ بالذكاء الاصطناعي\n\nEnglish caption\n\n👑 Is he guarding the crown… or waiting for it?\n\nOver two thousand years ago, Julius Caesar was named dictator for life. The danger didn’t come from his enemies… it came from those closest to him.\n\nToday in Washington, Trump keeps teasing a third term, and right behind him stands his VP, JD Vance, first in the line of succession. The midterms are over, and Vance has said he’d sit down with Trump afterwards to talk about running in 2028.\n\nHistory doesn’t repeat itself… but it loves a reminder.\n\n🎬 Satire · AI-generated\n\nهاشتاغات\n#ترامب #فانس #Trump #Vance",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 19,
+    "comments": 1,
+    "shares": null
+   },
+   "cover": "media/instagram-dfvtfjhngxi.jpg"
+  },
+  {
+   "id": "instagram:DfVKEaSzpDw",
+   "platform": "instagram",
+   "postId": "DfVKEaSzpDw",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfVKEaSzpDw/",
+   "embedUrl": "https://www.instagram.com/p/DfVKEaSzpDw/embed/",
+   "createdAt": 1793819186000,
+   "caption": "السيدة بدرية الغانم: أحنا الكويتيين غير عن ديار العالم.. الكويتي على راسه ريشة\n#الكويت",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 319,
+    "comments": 209,
+    "shares": null
+   },
+   "cover": "media/instagram-dfvkeaszpdw.jpg"
+  },
+  {
+   "id": "instagram:DfVDZ8VtsvR",
+   "platform": "instagram",
+   "postId": "DfVDZ8VtsvR",
+   "accountId": "38d4ad3689be",
+   "url": "https://www.instagram.com/p/DfVDZ8VtsvR/",
+   "embedUrl": "https://www.instagram.com/p/DfVDZ8VtsvR/embed/",
+   "createdAt": 1793815465000,
+   "caption": "رايح اخطب لأبويا..",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 13973,
+    "comments": 492,
+    "shares": null
+   },
+   "cover": "media/instagram-dfvdz8vtsvr.jpg"
+  },
+  {
+   "id": "instagram:DfVDUvkTc6_",
+   "platform": "instagram",
+   "postId": "DfVDUvkTc6_",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfVDUvkTc6_/",
+   "embedUrl": "https://www.instagram.com/p/DfVDUvkTc6_/embed/",
+   "createdAt": 1793815299000,
+   "caption": "«إمّا كويتيين أو غير كويتيين!»\nتستعد صحيفة Top لخوض أول معركة قانونية مع حكومة دولة الكويت لمحاكمتها دولياً حول وقوفها وراء جريمة \"التزوير\" حيث لا ضبابية في تورّطها بذلك.\n\nتأتي المحاكمة على خلفية إتاحتها جواز سفر مكتوب فيه بخانة الجنسية «كويتي» وهو صالح للاستخدام، بينما قامت قبلها بسحب الجنسية الكويتية من حامل الجواز، وهذا اعتراف صريح من الدولة أنه «كويتي» طالما الجواز ساري المفعول بعد سحب الجنسية، فكيف أن يكون لغير كويتي يحمل هوية رسمية باسم \"كويتي\" وتكون صالحة للاستخدام في الآن ذاته، ويستخدمها لصالح الهجرة وأن تكون عابرةً للحدود مما يجعل \"المحاكمة الدولية\" قانونية ومقنعة.\n\nويعد جواز السفر في الأصل \"جنسية\" إذ معظم الدول حين تمنح الجنسية لأحد فتكون عن طريق جواز السفر وليست بهوية أخرى منفصلة.\n\nكما نؤكد بأننا كصحيفة إخبارية يجب أن نمارس عملنا بنزاهة وإنسانية، فكما ننقل الأخبار التي تساهم في إعانة الإنسان المظلوم على الظالم وهذا دورنا في الواقع، فعلينا كذلك أن نعمل في الجهة القانونية ولا يمكن أن نتسامح مع حكومة مارست أبشع أنواع الظلم والاستبداد العنصري ضد مواطنيها.\n\nفليسقط اعتبار هذا الجواز، ولتسقط سمعة الحكومة، إن كان هنالك إنساناً واحداً يئن.. فكيف بمئات الآلاف!\n\n-متوقع أن يتم البت في طلب المحاكمة في فبراير القادم 2027\n#الكويت",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 442,
+    "comments": 130,
+    "shares": null
+   },
+   "cover": "media/instagram-dfvduvktc6_.jpg"
+  },
+  {
+   "id": "instagram:DfVAJ7FNyNn",
+   "platform": "instagram",
+   "postId": "DfVAJ7FNyNn",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfVAJ7FNyNn/",
+   "embedUrl": "https://www.instagram.com/p/DfVAJ7FNyNn/embed/",
+   "createdAt": 1793813617000,
+   "caption": "قوة الشعوب",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 149,
+    "comments": 6,
+    "shares": null
+   },
+   "cover": "media/instagram-dfvaj7fnynn.jpg"
+  },
+  {
+   "id": "instagram:DfU9AEHN8Uc",
+   "platform": "instagram",
+   "postId": "DfU9AEHN8Uc",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfU9AEHN8Uc/",
+   "embedUrl": "https://www.instagram.com/p/DfU9AEHN8Uc/embed/",
+   "createdAt": 1793811969000,
+   "caption": "⚠️ «في اللحظة التي تستخدم فيها إسرائيل رأسًا نوويًا… ستكون تلك نهاية إسرائيل كبلدٍ وكدولة»\n\nهذا ما قاله فيكتور غاو، نائب رئيس «مركز الصين والعولمة» في بكين والمترجم السابق للزعيم الصيني دنغ شياو بينغ، في رسالة وجّهها إلى الحكومة الإسرائيلية وقادتها خلال مقابلة مع موقع The Cradle.\n\n📌 للتوضيح: هذا رأي خبير صيني بارز، وليس موقفًا رسميًا للحكومة الصينية. والتصريح منتشر منذ مارس 2026، خلال الحرب الأمريكية الإسرائيلية على إيران.\n\nهل ترونه تحذيرًا جديًا أم مجرد رسالة إعلامية؟ شاركونا رأيكم 👇\n\n———\n\n⚠️ “The moment Israel uses a nuclear warhead against any country…”\n\nChinese expert Victor Gao, vice president of the Beijing-based Center for China and Globalization and former interpreter for Deng Xiaoping, told Israel’s government and leaders that if Israel ever uses a nuclear warhead against any country, including Iran, it would mean the end of Israel as a country and as a state. He said this in an interview with The Cradle.\n\n📌 Note: this is the view of a prominent Chinese expert, not an official position of the Chinese government. The remarks have been circulating since March 2026, during the US-Israeli war with Iran.\n\nA serious warning or just a media message? Tell us in the comments 👇\n\n🎥 المصدر / Source: The Cradle\n\n#الصين #إيران #إسرائيل #Geopolitics #NuclearWeapons",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 255,
+    "comments": 15,
+    "shares": null
+   },
+   "cover": "media/instagram-dfu9aehn8uc.jpg"
+  },
+  {
+   "id": "instagram:DfU1IxiOzy4",
+   "platform": "instagram",
+   "postId": "DfU1IxiOzy4",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfU1IxiOzy4/",
+   "embedUrl": "https://www.instagram.com/p/DfU1IxiOzy4/embed/",
+   "createdAt": 1793807934000,
+   "caption": "«بو علي» الحاضر دائماً.. صاحب المواجيب لمناسبات أهل #الكويت",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 623,
+    "comments": 78,
+    "shares": null
+   },
+   "cover": "media/instagram-dfu1ixiozy4.jpg"
+  },
+  {
+   "id": "instagram:DfUx6SUz-In",
+   "platform": "instagram",
+   "postId": "DfUx6SUz-In",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfUx6SUz-In/",
+   "embedUrl": "https://www.instagram.com/p/DfUx6SUz-In/embed/",
+   "createdAt": 1793806247000,
+   "caption": "اللاجئة الكويتية في المنفى لولوة الحسينان: تم منع الطعام عن النائب «شعيب شعبان» كما تعرض للضرب والتعذيب بشكل مباشر من فهد يوسف الصباح في مبنى أمن الدولة\n#الكويت",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 188,
+    "comments": 111,
+    "shares": null
+   },
+   "cover": "media/instagram-dfux6suz-in.jpg"
+  },
+  {
+   "id": "instagram:DfUsmwjtwMY",
+   "platform": "instagram",
+   "postId": "DfUsmwjtwMY",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfUsmwjtwMY/",
+   "embedUrl": "https://www.instagram.com/p/DfUsmwjtwMY/embed/",
+   "createdAt": 1793803362000,
+   "caption": "نظام عالمي جديد 🆕",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 67,
+    "comments": 3,
+    "shares": null
+   },
+   "cover": "media/instagram-dfusmwjtwmy.jpg"
+  },
+  {
+   "id": "instagram:DfUn3wrTwRv",
+   "platform": "instagram",
+   "postId": "DfUn3wrTwRv",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfUn3wrTwRv/",
+   "embedUrl": "https://www.instagram.com/p/DfUn3wrTwRv/embed/",
+   "createdAt": 1793801198000,
+   "caption": "اسم «محمد» يتصدر قائمة المواليد الجدد في المملكة المتحدة منذ عام 2023\n#بريطانيا",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 233,
+    "comments": 5,
+    "shares": null
+   },
+   "cover": "media/instagram-dfun3wrtwrv.jpg"
+  },
+  {
+   "id": "instagram:DfUndnyRqGn",
+   "platform": "instagram",
+   "postId": "DfUndnyRqGn",
+   "accountId": "1d514a49925d",
+   "url": "https://www.instagram.com/p/DfUndnyRqGn/",
+   "embedUrl": "https://www.instagram.com/p/DfUndnyRqGn/embed/",
+   "createdAt": 1793800719000,
+   "caption": "Ciao Bella \n#gaza",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 166,
+    "comments": 23,
+    "shares": null
+   },
+   "cover": "media/instagram-dfundnyrqgn.jpg"
+  },
+  {
+   "id": "instagram:DfUTBHgT0O6",
+   "platform": "instagram",
+   "postId": "DfUTBHgT0O6",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfUTBHgT0O6/",
+   "embedUrl": "https://www.instagram.com/p/DfUTBHgT0O6/embed/",
+   "createdAt": 1793789960000,
+   "caption": "مقارنة بين إنجازات الشيخ أحمد خضر الطرابلسي\nوالفارس المغوار «العلّامة الفهّامة» فهد يوسف الصباح\n\n‫#الكويت‬ لم تعد تعترف بالطرابلسي صاحب «أعمال جليلة» وسحبت الجنسية الكويتية منه ومن أبنائه بالتبعية",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 1178,
+    "comments": 266,
+    "shares": null
+   },
+   "cover": "media/instagram-dfutbhgt0o6.jpg"
+  },
+  {
+   "id": "instagram:DfUDQJYN7s3",
+   "platform": "instagram",
+   "postId": "DfUDQJYN7s3",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfUDQJYN7s3/",
+   "embedUrl": "https://www.instagram.com/p/DfUDQJYN7s3/embed/",
+   "createdAt": 1793781690000,
+   "caption": "شكرا ايران 💚💚🇮🇷",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 95,
+    "comments": 9,
+    "shares": null
+   },
+   "cover": "media/instagram-dfudqjyn7s3.jpg"
+  },
+  {
+   "id": "instagram:DfT2TRYNAgr",
+   "platform": "instagram",
+   "postId": "DfT2TRYNAgr",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfT2TRYNAgr/",
+   "embedUrl": "https://www.instagram.com/p/DfT2TRYNAgr/embed/",
+   "createdAt": 1793774896000,
+   "caption": "هل سيتم عزل ترامب ؟",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 33,
+    "comments": 1,
+    "shares": null
+   },
+   "cover": "media/instagram-dft2trynagr.jpg"
+  },
+  {
+   "id": "instagram:DfT1I0sNV9e",
+   "platform": "instagram",
+   "postId": "DfT1I0sNV9e",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfT1I0sNV9e/",
+   "embedUrl": "https://www.instagram.com/p/DfT1I0sNV9e/embed/",
+   "createdAt": 1793774291000,
+   "caption": "لا تنسون تعزون حكام العرب 🤫🤡😁",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 67,
+    "comments": 10,
+    "shares": null
+   },
+   "cover": "media/instagram-dft1i0snv9e.jpg"
+  },
+  {
+   "id": "instagram:DfT0cu0Ns91",
+   "platform": "instagram",
+   "postId": "DfT0cu0Ns91",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfT0cu0Ns91/",
+   "embedUrl": "https://www.instagram.com/p/DfT0cu0Ns91/embed/",
+   "createdAt": 1793773927000,
+   "caption": "صباحكم طرب يا حكام العرب 🤡😁🤫🤧",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 69,
+    "comments": 9,
+    "shares": null
+   },
+   "cover": "media/instagram-dft0cu0ns91.jpg"
+  },
+  {
+   "id": "instagram:DfSz0MONh6D",
+   "platform": "instagram",
+   "postId": "DfSz0MONh6D",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfSz0MONh6D/",
+   "embedUrl": "https://www.instagram.com/p/DfSz0MONh6D/embed/",
+   "createdAt": 1793740056000,
+   "caption": "هل سيفعلها ترامب 🤷‍♀️🤡!!!",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 139,
+    "comments": 8,
+    "shares": null
+   },
+   "cover": "media/instagram-dfsz0monh6d.jpg"
+  },
+  {
+   "id": "instagram:DfSpd32tFC5",
+   "platform": "instagram",
+   "postId": "DfSpd32tFC5",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfSpd32tFC5/",
+   "embedUrl": "https://www.instagram.com/p/DfSpd32tFC5/embed/",
+   "createdAt": 1793734627000,
+   "caption": "هل تُضعف الهزيمة ترامب… أم تجعله أكثر خطورة؟ 🔥\nخسارة الجمهوريين في الانتخابات النصفية قد تعرقل مشاريعه، لكنها قد تدفعه أيضًا إلى مزيد من التصعيد واستخدام صلاحياته الرئاسية. فهل تكبحه المؤسسات، أم تبدأ مواجهة أشد داخل أميركا وخارجها؟[afp +1]\nالكابشن\nترامب تحت الضغط: تراجع أم تصعيد؟ 🤔\nبرأيكم، هل خسارة الكونغرس ستحدّ من اندفاعه أم تزيده؟\nالهاشتاقات\n#ترامب #الانتخابات_النصفية #أمريكا #الكونغرس #السياسة_الأمريكية الجمهوريون الديمقراطيون سياسة",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 42,
+    "comments": 1,
+    "shares": null
+   },
+   "cover": "media/instagram-dfspd32tfc5.jpg"
+  },
+  {
+   "id": "instagram:DfSiS4bz1P6",
+   "platform": "instagram",
+   "postId": "DfSiS4bz1P6",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfSiS4bz1P6/",
+   "embedUrl": "https://www.instagram.com/p/DfSiS4bz1P6/embed/",
+   "createdAt": 1793730848000,
+   "caption": "«التفاصيل»\nأرسلت المملكة المتحدة مذكرة احتجاجية بقالب \"استفسار\" لحكومة دولة الكويت، حول قانونية إجراء \n«منح جواز كويتي» لشخص غير كويتي سحبت منه الجنسية!\nإذ كيف لشخص سحبت منه الجنسية وأصبح (غير كويتي) يتم السماح له بالسفر عن طريق جواز مكتوب في خانة الجنسية (كويتي).. مما ورّط الدولة بشبهة التزوير.\n\nوإثر هذا الأمر وبعد تكدس الآلاف من المسحوبة جناسيهم في بريطانيا بفترة قصيرة، لوّحت المملكة المتحدة بإلغاء منح تصريح ETA للجواز الكويتي بشكل نهائي والعودة إلى النظام القديم للفيزا التي تخضع للتدقيق ويجري العمل عليها لأسابيع، مما دفع حكومة الكويت إلى التراجع عن قرار مهلة (سنة كاملة) لجوازات سفر المسحوبة جناسيهم.\n\nتعد المملكة المتحدة الخيار الأسهل للمسحوبة جناسيهم بالنسبة إلى الهجرة، فهي لا تحتاج إلى إعداد مسبق للتقديم على الفيزا كدول الاتحاد الأوروبي أو الولايات المتحدة أو كندا أو غيرها، بل يكتفى باستخراج تصريح الإذن الإلكتروني ETA الذي يمنح للمتقدم حامل الجواز الكويتي بعد دقائق أو سويعات من لحظة التقديم.\nتعد هي الخيار الآمن نظراً لسهولة ومرونة الإجراءات فيها، وسرعة البت في الطلبات، والمزايا التي يتمتع فيها اللاجئ.\n#بريطانيا\n#الكويت",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 463,
+    "comments": 40,
+    "shares": null
+   },
+   "cover": "media/instagram-dfsis4bz1p6.jpg"
+  },
+  {
+   "id": "tiktok:7704004151860006151",
+   "platform": "tiktok",
+   "postId": "7704004151860006151",
+   "accountId": "0e63bb4ee950",
+   "url": "https://www.tiktok.com/@yousefali82__/video/7704004151860006151",
+   "embedUrl": "https://www.tiktok.com/player/v1/7704004151860006151?autoplay=1&loop=1&music_info=1&description=1&rel=0&native_context_menu=1",
+   "createdAt": 1793728256000,
+   "caption": "#شعب_الصيني_ماله_حل😂😂 #الكويت #شرق_الرياض #شويخ #ميزان ",
+   "kind": "video",
+   "duration": 118,
+   "stats": {
+    "views": 10100,
+    "likes": 170,
+    "comments": 4,
+    "shares": 108
+   },
+   "cover": "media/tiktok-7704004151860006151.jpg"
+  },
+  {
+   "id": "instagram:DfSYEKxR50_",
+   "platform": "instagram",
+   "postId": "DfSYEKxR50_",
+   "accountId": "1d514a49925d",
+   "url": "https://www.instagram.com/p/DfSYEKxR50_/",
+   "embedUrl": "https://www.instagram.com/p/DfSYEKxR50_/embed/",
+   "createdAt": 1793725562000,
+   "caption": "موّهنا الصورة… لا صرخته.\n\nرجلٌ جريح، وجهه مغطّى بالدماء، يصرخ من الألم وهو ينزل من سيارة الإسعاف، ثم ينحني فوق نقّالة عليها جسدٌ مغطّى ببطانية.\nوفي مخيّم للخيام، يلتفّ الناس حول رجل يصرخ نحو السماء.\n\nفي غزة، تتكرّر هذه الصرخة كل يوم. فمن ما زال يسمعها؟\n\n⚠️ مشاهد مموّهة احترامًا له ولكم.\n🎥 تصوير: ناهض حجاج · لؤي الجدي\nOn a flouté l’image. Pas son cri.\n\nBlessé, le visage en sang, un homme hurle sa douleur en descendant d’une ambulance. Puis il se penche sur un brancard où repose un corps recouvert d’une couverture.\nDans un camp de tentes, une foule entoure un homme qui crie vers le ciel.\n\nÀ Gaza, ce cri revient chaque jour. Qui l’écoute encore ?\n\n⚠️ Images floutées, par respect pour lui et pour vous.\n🎥 Images : Nahed Hajjaj · Louay Al-Jadi\n#Gaza #غزة #Palestine #فلسطين #Témoignage شهادة",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 17,
+    "comments": 0,
+    "shares": null
+   },
+   "cover": "media/instagram-dfsyekxr50_.jpg"
+  },
+  {
+   "id": "instagram:DfSUmo5zDxS",
+   "platform": "instagram",
+   "postId": "DfSUmo5zDxS",
+   "accountId": "f383a0e9f40d",
+   "url": "https://www.instagram.com/p/DfSUmo5zDxS/",
+   "embedUrl": "https://www.instagram.com/p/DfSUmo5zDxS/embed/",
+   "createdAt": 1793723667000,
+   "caption": "راحت على الأعمال الجليلة وأبناء الكويتيات.. والآن فقط مهلة 10 أيام أمام إحصاء 65 للسفر خارج ‫#الكويت‬",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 143,
+    "comments": 29,
+    "shares": null
+   },
+   "cover": "media/instagram-dfsumo5zdxs.jpg"
+  },
+  {
+   "id": "instagram:DfRt4KHtRuL",
+   "platform": "instagram",
+   "postId": "DfRt4KHtRuL",
+   "accountId": "38d4ad3689be",
+   "url": "https://www.instagram.com/p/DfRt4KHtRuL/",
+   "embedUrl": "https://www.instagram.com/p/DfRt4KHtRuL/embed/",
+   "createdAt": 1793703376000,
+   "caption": "سندي وضهري في الدنيا..الحج❤️",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 19173,
+    "comments": 391,
+    "shares": null
+   },
+   "cover": "media/instagram-dfrt4khtrul.jpg"
+  },
+  {
+   "id": "instagram:DfRkiH7RBsm",
+   "platform": "instagram",
+   "postId": "DfRkiH7RBsm",
+   "accountId": "1d514a49925d",
+   "url": "https://www.instagram.com/p/DfRkiH7RBsm/",
+   "embedUrl": "https://www.instagram.com/p/DfRkiH7RBsm/embed/",
+   "createdAt": 1793698529000,
+   "caption": "⁨\t⁨\t⁨\tحتما سننتصر ✌️🇮🇷🤫⁩⁩⁩",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 97,
+    "comments": 9,
+    "shares": null
+   },
+   "cover": "media/instagram-dfrkih7rbsm.jpg"
+  },
+  {
+   "id": "instagram:DfRjyDWNPKG",
+   "platform": "instagram",
+   "postId": "DfRjyDWNPKG",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfRjyDWNPKG/",
+   "embedUrl": "https://www.instagram.com/p/DfRjyDWNPKG/embed/",
+   "createdAt": 1793698174000,
+   "caption": "حتما ستنتصر ارواح أطفالنا 💚🇮🇷. #ايران #ميناب #حقوق_الإنسان #viral #غزة @iranarabia @iraninarabic_official @doc.geno alieaayaser @h.mortada01",
+   "kind": "video",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 68,
+    "comments": 6,
+    "shares": null
+   },
+   "cover": "media/instagram-dfrjydwnpkg.jpg"
+  },
+  {
+   "id": "instagram:DfRb4aGtnma",
+   "platform": "instagram",
+   "postId": "DfRb4aGtnma",
+   "accountId": "18bfbd6745fc",
+   "url": "https://www.instagram.com/p/DfRb4aGtnma/",
+   "embedUrl": "https://www.instagram.com/p/DfRb4aGtnma/embed/",
+   "createdAt": 1793693945000,
+   "caption": "☢️ هل تعلمون أن قرار استخدام السلاح النووي في أمريكا يتخذه شخص واحد؟\n\nإنه الرئيس وحده: لا يحتاج موافقة الكونغرس، ولا يملك أحد إيقافه، ويُنفَّذ أمره خلال دقائق.\n\nوهذا الشخص اليوم هو ترامب، الذي:\n▪️ أمر بتحريك غواصتين نوويتين بعد تراشق كلامي مع مسؤول روسي على وسائل التواصل (2025)\n▪️ أمر باستئناف اختبار الأسلحة النووية بعد توقف دام 33 عامًا (2025)\n▪️ ترك آخر معاهدة تحدّ من الترسانتين الأمريكية والروسية تنتهي دون تمديد (2026)\n\nمصير الملايين معلّق بمزاج رجل واحد.\n\n#ترامب #السلاح_النووي #أمريكا",
+   "kind": "image",
+   "duration": null,
+   "stats": {
+    "views": null,
+    "likes": 30,
+    "comments": 0,
+    "shares": null
+   },
+   "cover": "media/instagram-dfrb4agtnma.jpg"
+  },
   {
    "id": "instagram:DfRSkGutNGl",
    "platform": "instagram",
@@ -195,8 +803,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 8,
-    "comments": 1,
+    "likes": 18,
+    "comments": 2,
     "shares": null
    },
    "cover": "media/instagram-dfrskgutngl.jpg"
@@ -214,8 +822,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 1810,
-    "comments": 74,
+    "likes": 4715,
+    "comments": 199,
     "shares": null
    },
    "cover": "media/instagram-dfqpukdspcd.jpg"
@@ -252,8 +860,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 21,
-    "comments": 2,
+    "likes": 34,
+    "comments": 6,
     "shares": null
    },
    "cover": "media/instagram-dfqml7tu4la.jpg"
@@ -271,7 +879,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 84,
+    "likes": 87,
     "comments": 7,
     "shares": null
    },
@@ -290,7 +898,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 119,
+    "likes": 129,
     "comments": 12,
     "shares": null
    },
@@ -309,8 +917,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 198,
-    "comments": 102,
+    "likes": 294,
+    "comments": 183,
     "shares": null
    },
    "cover": "media/instagram-dfqd9bds6dl.jpg"
@@ -327,10 +935,10 @@
    "kind": "video",
    "duration": 169,
    "stats": {
-    "views": 3785,
-    "likes": 59,
-    "comments": 1,
-    "shares": 12
+    "views": 4971,
+    "likes": 85,
+    "comments": 5,
+    "shares": 31
    },
    "cover": "media/tiktok-7703633151762959623.jpg"
   },
@@ -365,10 +973,10 @@
    "kind": "video",
    "duration": 119,
    "stats": {
-    "views": 45100,
-    "likes": 699,
-    "comments": 22,
-    "shares": 771
+    "views": 68800,
+    "likes": 997,
+    "comments": 35,
+    "shares": 1169
    },
    "cover": "media/tiktok-7703602742433942791.jpg"
   },
@@ -404,8 +1012,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 2354,
-    "comments": 634,
+    "likes": 2528,
+    "comments": 686,
     "shares": null
    },
    "cover": "media/instagram-dfoik_dtdlj.jpg"
@@ -423,8 +1031,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 1218,
-    "comments": 39,
+    "likes": 1492,
+    "comments": 56,
     "shares": null
    },
    "cover": "media/instagram-dfnumfau4rl.jpg"
@@ -442,8 +1050,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 732,
-    "comments": 395,
+    "likes": 769,
+    "comments": 442,
     "shares": null
    },
    "cover": "media/instagram-dfns8a1mvh6.jpg"
@@ -461,8 +1069,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 91,
-    "comments": 24,
+    "likes": 95,
+    "comments": 29,
     "shares": null
    },
    "cover": "media/instagram-dfnydcrtcvv.jpg"
@@ -480,8 +1088,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 49155,
-    "comments": 642,
+    "likes": 59145,
+    "comments": 780,
     "shares": null
    },
    "cover": "media/instagram-dfnpnugnyi9.jpg"
@@ -499,7 +1107,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 360,
+    "likes": 362,
     "comments": 198,
     "shares": null
    },
@@ -518,8 +1126,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 1536,
-    "comments": 340,
+    "likes": 1539,
+    "comments": 341,
     "shares": null
    },
    "cover": "media/instagram-dflpylpzog_.jpg"
@@ -537,7 +1145,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 2442,
+    "likes": 2640,
     "comments": 136,
     "shares": null
    },
@@ -556,8 +1164,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 24647,
-    "comments": 505,
+    "likes": 28972,
+    "comments": 552,
     "shares": null
    },
    "cover": "media/instagram-dfk_pq9te1b.jpg"
@@ -575,8 +1183,8 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 3017,
-    "comments": 76,
+    "likes": 3250,
+    "comments": 77,
     "shares": null
    },
    "cover": "media/instagram-dfkyf8xukxm.jpg"
@@ -593,10 +1201,10 @@
    "kind": "video",
    "duration": 209,
    "stats": {
-    "views": 9829,
-    "likes": 115,
-    "comments": 16,
-    "shares": 81
+    "views": 11100,
+    "likes": 131,
+    "comments": 20,
+    "shares": 105
    },
    "cover": "media/tiktok-7702815883525098760.jpg"
   },
@@ -613,7 +1221,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 21,
+    "likes": 23,
     "comments": 1,
     "shares": null
    },
@@ -689,7 +1297,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 35,
+    "likes": 38,
     "comments": 2,
     "shares": null
    },
@@ -783,10 +1391,10 @@
    "kind": "video",
    "duration": 64,
    "stats": {
-    "views": 158300,
-    "likes": 1356,
+    "views": 159800,
+    "likes": 1367,
     "comments": 237,
-    "shares": 2606
+    "shares": 2615
    },
    "cover": "media/tiktok-7702434277270621441.jpg"
   },
@@ -841,7 +1449,7 @@
    "duration": null,
    "stats": {
     "views": null,
-    "likes": 34,
+    "likes": 37,
     "comments": 10,
     "shares": null
    },
