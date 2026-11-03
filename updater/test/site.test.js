@@ -242,3 +242,20 @@ test('stories: downloaded with the Instagram login, listed in order, removed whe
     delete process.env.IG_SESSIONID;
   }
 });
+
+test('a new Instagram login retries stories right away', async () => {
+  const state = await readJson('data/state.json');
+  for (const a of state.accounts) if (a.platform === 'instagram') Object.assign(a, { storiesCheckedAt: Date.now() + 10 * 3600_000, storyError: 'login not accepted' });
+  await fs.writeFile(path.join(root, 'data/state.json'), JSON.stringify(state));
+  process.env.IG_SESSIONID = 'NEW_SESSION_value_1234567890';
+  try {
+    await update({ root, origins, extraMediaHosts: ['127.0.0.1'], enableBrowser: false, enableYtdlp: false, spacingMs: null });
+  } finally {
+    delete process.env.IG_SESSIONID;
+  }
+  const after = await readJson('data/state.json');
+  const ig = after.accounts.find((a) => a.platform === 'instagram');
+  assert.equal(ig.storyError, null);
+  assert.ok(ig.stories.length > 0, 'stories fetched with the new login');
+  assert.ok(!JSON.stringify(after).includes('NEW_SESSION'), 'the login itself is never stored');
+});

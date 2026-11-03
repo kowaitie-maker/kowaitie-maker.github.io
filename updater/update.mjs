@@ -3,6 +3,7 @@
 // rewrites feed.json (read by the page), data/state.json (memory between runs)
 // and media/ (covers and avatars). Secrets come from environment variables
 // and are never written to disk.
+import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -139,6 +140,17 @@ export async function update({
     igSessionId: cleanSessionId(env.IG_SESSIONID),
     telegram: { token, chatId },
   };
+
+  // A new Instagram login cancels any wait left over from a refused one (a short one-way
+  // fingerprint tells logins apart; the login itself is never written anywhere).
+  const sessionTag = db.settings.igSessionId ? crypto.createHash('sha256').update(db.settings.igSessionId).digest('hex').slice(0, 8) : null;
+  if (db.sessionTag !== sessionTag) {
+    for (const a of db.accounts) {
+      delete a.storiesCheckedAt;
+      a.storyError = null;
+    }
+    db.sessionTag = sessionTag;
+  }
 
   const mediaDir = path.join(root, 'media');
   const media = createMediaCache({ dir: mediaDir, extraHosts: extraMediaHosts });
